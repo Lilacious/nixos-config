@@ -26,15 +26,12 @@
     # permitRootLogin = "yes";
   };
 
-
+  # zstd compression
   fileSystems = {
     "/".options = [ "compress=zstd" ];
     "/home".options = [ "compress=zstd" ];
     "/nix".options = [ "compress=zstd" "noatime" ];
-    "/swap".options = [ "noatime" ];
   };
-
-  swapDevices = [ { device = "/swap/swapfile"; } ];
 
   # mirrored 4 TB drives
   fileSystems."/mnt/data" = {

@@ -14,61 +14,31 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "tmpfs";
-      fsType = "tmpfs";
-    };
-
-  fileSystems."/iso" =
-    { device = "/dev/disk/by-uuid/1980-01-01-00-00-00-00";
-      fsType = "iso9660";
-    };
-
-  fileSystems."/nix/.ro-store" =
-    { device = "/iso/nix-store.squashfs";
-      fsType = "squashfs";
-      options = [ "loop" ];
-    };
-
-  fileSystems."/nix/.rw-store" =
-    { device = "tmpfs";
-      fsType = "tmpfs";
-    };
-
-  fileSystems."/nix/store" =
-    { device = "overlay";
-      fsType = "overlay";
-    };
-
-  fileSystems."/mnt" =
-    { device = "/dev/nvme0n1p2";
+    { device = "/dev/nvme0n1p3";
       fsType = "btrfs";
       options = [ "subvol=root" ];
     };
 
-  fileSystems."/mnt/home" =
-    { device = "/dev/nvme0n1p2";
+  fileSystems."/home" =
+    { device = "/dev/nvme0n1p3";
       fsType = "btrfs";
       options = [ "subvol=home" ];
     };
 
-  fileSystems."/mnt/nix" =
-    { device = "/dev/nvme0n1p2";
+  fileSystems."/nix" =
+    { device = "/dev/nvme0n1p3";
       fsType = "btrfs";
       options = [ "subvol=nix" ];
     };
 
-  fileSystems."/mnt/swap" =
-    { device = "/dev/nvme0n1p2";
-      fsType = "btrfs";
-      options = [ "subvol=swap" ];
-    };
-
-  fileSystems."/mnt/boot/efi" =
-    { device = "/dev/disk/by-uuid/6851-3F12";
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/50FC-AE1D";
       fsType = "vfat";
     };
 
-  swapDevices = [ ];
+  swapDevices =
+    [ { device = "/dev/disk/by-uuid/eb31dfe6-3390-4b41-90ac-ef9954c9c88b"; }
+    ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
@@ -82,3 +52,4 @@
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
+
