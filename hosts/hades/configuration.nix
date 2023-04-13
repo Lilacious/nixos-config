@@ -39,7 +39,16 @@
     fsType = "zfs";
   };
 
+  services.zfs.autoScrub.enable = true;
+
+  services.zfs.trim.enable = true;
+
   networking.hostId = "d93a8103";
+
+  # enable nfs service
+  services.nfs.server.enable = true;
+
+
 
   # security.polkit.enable = true;
 
