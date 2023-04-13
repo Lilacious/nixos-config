@@ -45,11 +45,6 @@
 
   networking.hostId = "d93a8103";
 
-  # enable nfs service
-  services.nfs.server.enable = true;
-
-
-
   # security.polkit.enable = true;
 
   # hardware.enableRedistributableFirmware = true;
