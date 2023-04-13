@@ -42,6 +42,8 @@
     fsType = "zfs";
   };
 
+  networking.hostId = "d93a8103";
+
   # security.polkit.enable = true;
 
   # hardware.enableRedistributableFirmware = true;
