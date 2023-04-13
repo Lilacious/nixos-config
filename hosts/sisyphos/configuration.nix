@@ -3,7 +3,7 @@
   imports = [
     ./hardware-configuration.nix
     ../../profiles/workstation.nix
-    ../../users/kailee.nix
+    ../../users/kailee/kailee.nix
     ./packages.nix
   ];
   system.stateVersion = "22.05";

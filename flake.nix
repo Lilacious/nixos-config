@@ -35,7 +35,7 @@
               home-manager.useUserPackages = true;
               home-manager.users.kailee = { 
                 imports = [
-                  ./modules/home/home.nix
+                  ./users/kailee/home.nix
                 ];
               };
             }
