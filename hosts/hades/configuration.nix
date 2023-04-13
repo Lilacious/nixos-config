@@ -36,6 +36,12 @@
 
   swapDevices = [ { device = "/swap/swapfile"; } ];
 
+  # mirrored 4 TB drives
+  fileSystems."/mnt/data" = {
+    device = "data";
+    fsType = "zfs";
+  };
+
   # security.polkit.enable = true;
 
   # hardware.enableRedistributableFirmware = true;
