@@ -2,6 +2,7 @@
 {
   imports = [
     ../../modules/home/git.nix
+    ../../modules/home/zsh.nix
   ];
   home.username = "kailee";
   home.homeDirectory = "/home/kailee";
