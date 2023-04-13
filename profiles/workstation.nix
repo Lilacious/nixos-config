@@ -1,0 +1,10 @@
+{
+  imports = [
+    ./common.nix
+    ../modules/nixos/plasma5.nix
+    ../modules/nixos/syncthing.nix
+    ../modules/nixos/xorg.nix
+    ../modules/nixos/pipewire.nix
+  ];
+}
+
