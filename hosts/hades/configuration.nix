@@ -45,6 +45,12 @@
 
   networking.hostId = "d93a8103";
 
+  # disk spin-down
+  powerManagement.powerUpCommands = ''
+  ${pkgs.hdparm}/sbin/hdparm -S 1 /dev/disk/by-id/ata-ST4000DM004-2CV104_WFN86XH3
+  ${pkgs.hdparm}/sbin/hdparm -S 1 /dev/disk/by-id/ata-ST4000DM004-2CV104_WFN86XLT
+'';
+
   # security.polkit.enable = true;
 
   # hardware.enableRedistributableFirmware = true;
