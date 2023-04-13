@@ -47,9 +47,16 @@
 
   # disk spin-down
   powerManagement.powerUpCommands = ''
-  ${pkgs.hdparm}/sbin/hdparm -S 180 /dev/disk/by-id/ata-ST4000DM004-2CV104_WFN86XH3
-  ${pkgs.hdparm}/sbin/hdparm -S 180 /dev/disk/by-id/ata-ST4000DM004-2CV104_WFN86XLT
-'';
+    ${pkgs.hdparm}/sbin/hdparm -S 180 /dev/disk/by-id/ata-ST4000DM004-2CV104_WFN86XH3
+    ${pkgs.hdparm}/sbin/hdparm -S 180 /dev/disk/by-id/ata-ST4000DM004-2CV104_WFN86XLT
+  '';
+
+  powerManagement = {
+    # powertop autotune
+    powertop.enable = true;
+    # SATA Active Link Power Management
+    scsiLinkPolicy = "med_power_with_dipm";
+  };
 
   # security.polkit.enable = true;
 
