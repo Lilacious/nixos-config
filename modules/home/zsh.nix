@@ -27,8 +27,7 @@
 
     shellAliases = {
       ll = "ls -l";
-      update-sisyphos = "cd ~/nixos-config && sudo nixos-rebuild switch --flake .#sisyphos";
-      update-hades = "cd ~/nixos-config && sudo nixos-rebuild switch --flake .#hade";
+      update = "cd ~/nixos-config && sudo nixos-rebuild switch --flake .#$HOST";
     };
   };
 }
