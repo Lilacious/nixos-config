@@ -19,6 +19,16 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  services.openssh = {
+  enable = true;
+    # require public key authentication for better security
+    # passwordAuthentication = false;
+    # kbdInteractiveAuthentication = false;
+    # permitRootLogin = "yes";
+  };
+
+
+
   security.polkit.enable = true;
 
   hardware.enableRedistributableFirmware = true;
