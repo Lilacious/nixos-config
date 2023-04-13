@@ -8,7 +8,6 @@
     ripgrep
     fd
     ncdu
-
   ];
 }
 
