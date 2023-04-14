@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
 let
-    normalFontFamily        =       "Fira Code";
+  normalFontFamily        =       "Fira Code";
   boldFontFamily          =       "Fira Code";
   italicFontFamily        =       "Fira Code";
   boldItalicFontFamily    =       "Fira Code";
@@ -31,8 +31,8 @@ in
         # to the window manager's recommended size.
         
         dimensions = {
-          columns = "0";
-          lines = "0";
+          columns = 0;
+          lines = 0;
         };
 
         # Window position (changes require restart)
@@ -41,8 +41,8 @@ in
         # If the position is not set, the window manager will handle the placement.
 
         #position = {
-        #  x = "0";
-        #  y = "0";
+        #  x = 0;
+        #  y = 0;
         #};
 
         # Window padding (changes require restart)
@@ -51,8 +51,8 @@ in
         # by DPI and the specified value is always added at both opposing sides.
         
         padding = {
-          x = "5";
-          y = "5";
+          x = 5;
+          y = 5;
         };
         
         # Spread additional padding evenly around the terminal content.
@@ -76,7 +76,7 @@ in
         # Window opacity as a floating point number from `0.0` to `1.0`.
         # The value `0.0` is completely transparent and `1.0` is opaque.
         
-        opacity= "1.0";
+        opacity= 1.0;
 
         # Startup Mode (changes require restart)
         #
@@ -123,7 +123,7 @@ in
         #
         # Prefer resizing window by discrete steps equal to cell dimensions.
         
-        resize_increments = "false";
+        resize_increments = false;
 
         # Make `Option` key behave as `Alt` (macOS only):
         #   - OnlyLeft
@@ -138,11 +138,11 @@ in
       scrolling = {
         # Maximum number of lines in the scrollback buffer.
         # Specifying '0' will disable scrolling.
-        history = "10000";
+        history = 10000;
 
         # Scrolling distance multiplier.
       
-        multiplier = "3";
+        multiplier = 3;
       };
 
       # Font configuration
@@ -215,15 +215,15 @@ in
 
         # Point size
 
-        size = "11.0";
+        size = 9.0;
 
         # Offset is the extra space around each character. `offset.y` can be thought
         # of as modifying the line spacing, and `offset.x` as modifying the letter
         # spacing.
         
         offset = {
-          x = "0";
-          y = "0";
+          x = 0;
+          y = 0;
         };
 
         # Glyph offset determines the locations of the glyphs within their cells with
@@ -231,8 +231,8 @@ in
         # right, increasing `y` moves the glyph upward.
         
         glyph_offset = {
-          x = "0";
-          y = "0";
+          x = 0;
+          y = 0;
         };
 
         # Use built-in font for box drawing characters.
@@ -241,12 +241,12 @@ in
         # characters (Unicode points 2500 - 259f).
         #
         
-        builtin_box_drawing = "true";
+        builtin_box_drawing = true;
       };
 
       # If `true`, bold text is drawn using the bright color variants.
       
-      draw_bold_text_with_bright_colors = "false";
+      draw_bold_text_with_bright_colors = false;
 
       # Colors (Rosé Pine Moon)
 
@@ -380,13 +380,13 @@ in
         
         normal = {
           black =   "#393552";
-          red =     "#eb6f92";
-          green =   "#3e8fb0";
-          yellow =  "#f6c177";
-          blue =    "#9ccfd8";
-          magenta = "#c4a7e7";
-          cyan =    "#ea9a97";
-          white =   "#e0def4";
+          red =     "#ce6180";
+          green =   "#56b455";
+          yellow =  "#d7a968";
+          blue =    "#89b5bd";
+          magenta = "#ac92ca";
+          cyan =    "#cd8784";
+          white =   "#c4c2d6";
         };
 
         # Bright colors
@@ -394,7 +394,7 @@ in
         bright = {
           black =   "#6e6a86";
           red =     "#eb6f92";
-          green =   "#3e8fb0";
+          green =   "#62ce61";
           yellow =  "#f6c177";
           blue =    "#9ccfd8";
           magenta = "#c4a7e7";
