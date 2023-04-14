@@ -248,7 +248,7 @@ in
       
       draw_bold_text_with_bright_colors = false;
 
-      # Colors (Rosé Pine Moon)
+      # Colors
 
       colors = {
 
@@ -379,27 +379,27 @@ in
         # Normal colors
         
         normal = {
-          black =   "#393552";
-          red =     "#ce6180";
-          green =   "#56b455";
-          yellow =  "#d7a968";
-          blue =    "#89b5bd";
-          magenta = "#ac92ca";
-          cyan =    "#cd8784";
-          white =   "#c4c2d6";
+          black =   "#444a73";
+          red =     "#ff5370";
+          green =   "#4fd652";
+          yellow =  "#ffc777";
+          blue =    "#3e68d7";
+          magenta = "#d73ed2";
+          cyan =    "#86e1fc";
+          white =   "#d0d0d0";
         };
 
         # Bright colors
 
         bright = {
-          black =   "#6e6a86";
-          red =     "#eb6f92";
-          green =   "#62ce61";
-          yellow =  "#f6c177";
-          blue =    "#9ccfd8";
-          magenta = "#c4a7e7";
-          cyan =    "#ea9a97";
-          white =   "#e0def4";
+          black =   "#a2a5b9";
+          red =     "#ffa9b7";
+          green =   "#a7eba9";
+          yellow =  "#ffe3bb";
+          blue =    "#9fb3eb";
+          magenta = "#eb9fe9";
+          cyan =    "#c3f0fe";
+          white =   "#e8e8e8";
         };
 
         # Dim colors
