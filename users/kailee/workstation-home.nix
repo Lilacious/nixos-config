@@ -4,6 +4,7 @@
     ../../modules/home/git.nix
     ../../modules/home/zsh.nix
     ../../modules/home/pkgs.nix
+    ../../modules/home/alacritty.nix
   ];
   home.username = "kailee";
   home.homeDirectory = "/home/kailee";
