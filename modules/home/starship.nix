@@ -10,9 +10,9 @@
 
       add_newline = false;
 
-      line_break.disabled = false;
+      line_break.disabled = true;
 
-      right_format = "$status";
+      format = "$all$fill$status$cmd_duration\n$character";
 
       username = {
         show_always = false;
@@ -63,6 +63,15 @@
       status = {
         disabled = false;
       };
+
+      fill = {
+        symbol = " ";
+      };
+
+      cmd_duration = {
+        format = "[$duration]($style) ";
+      };
+
      
     };
   };
