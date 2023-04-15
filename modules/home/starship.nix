@@ -41,7 +41,7 @@
       };
 
       git_status = {
-        format = "[$conflicted$stashed$deleted$renamed$staged$modified$untracked$ahead_behind]($style)";
+        format = "[$conflicted$stashed$deleted$renamed$staged$modified$untracked$ahead_behind ]($style)";
         conflicted = " =($count)";
         ahead = " ⇡($count)";
         behind = " ⇣($count)";
