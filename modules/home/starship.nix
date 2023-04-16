@@ -22,15 +22,15 @@
 
       character = {
         format = "$symbol";
-        success_symbol = "[ ❯ ](bold green)";
-        error_symbol = "[ ❮ ](bold red)";
-        vicmd_symbol = "[ ❯ ](bold yellow)";
+        success_symbol = "[❯ ](bold green)";
+        error_symbol = "[❮ ](bold red)";
+        vicmd_symbol = "[❯ ](bold yellow)";
       };
 
       directory = {
-        format = "[$read_only]($read_only_style)[ $path]($style) ";
+        format = "[$read_only]($read_only_style)[$path]($style) ";
         read_only = " ";
-        truncation_length = 3;
+        truncation_length = 6;
         truncation_symbol = "../";
       };
 
