@@ -7,6 +7,7 @@
       keepassxc
       jetbrains.idea-ultimate
       vscodium
+      discord
     #  thunderbird  
   ];
 }
