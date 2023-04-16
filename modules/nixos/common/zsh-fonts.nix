@@ -6,12 +6,12 @@
       hack-font
       fira-code
       roboto
-      (nerdfonts.override { fonts = [ "FiraCode" ]; })
+      (nerdfonts.override { fonts = [ "FiraCode" "Agave" ]; })
     ];
 
     fontconfig = {
       defaultFonts = {
-        serif = [ "Fira Code" "DejaVu Serif" ];
+        serif = [ "Agave Nerd Font" "Fira Code" "DejaVu Serif" ];
         emoji = [ "Noto Color Emoji" ];
         sansSerif = [ "Roboto Regular" "DejaVu Sans" ];
         monospace = [ "Hack" "DejaVu Sans Mono" ];

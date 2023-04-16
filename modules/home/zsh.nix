@@ -7,8 +7,9 @@
     enableSyntaxHighlighting = true;
     history = {
       ignoreSpace = true;
-      size = 5000000;
+      size = 500000;
       ignoreDups = true;
+      expireDuplicatesFirst = true;
     };
     historySubstringSearch.enable = true;
 

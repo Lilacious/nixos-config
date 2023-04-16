@@ -29,8 +29,6 @@
     };
   };
 
-
-
   security.polkit.enable = true;
 
   hardware.enableRedistributableFirmware = true;

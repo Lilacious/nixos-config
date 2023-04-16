@@ -1,9 +1,9 @@
 { config, pkgs, lib, ... }:
 let
-  normalFontFamily        =       "Fira Code";
-  boldFontFamily          =       "Fira Code";
-  italicFontFamily        =       "Fira Code";
-  boldItalicFontFamily    =       "Fira Code";
+  normalFontFamily        =       "Agave Nerd Font";
+  boldFontFamily          =       "Agave Nerd Font";
+  italicFontFamily        =       "Agave Nerd Font";
+  boldItalicFontFamily    =       "Agave Nerd Font";
 
 in
 {
@@ -215,7 +215,7 @@ in
 
         # Point size
 
-        size = 9.0;
+        size = 13.0;
 
         # Offset is the extra space around each character. `offset.y` can be thought
         # of as modifying the line spacing, and `offset.x` as modifying the letter
@@ -256,8 +256,8 @@ in
         
         primary = {
 
-          background = "#232136";
-          foreground = "#e0def4";
+          background = "#1E1E2E";
+          foreground = "#CDD6F4";
 
           # Bright and dim foreground colors
           #
@@ -266,8 +266,8 @@ in
           # `draw_bold_text_with_bright_colors` is `false`, the normal foreground
           # color will be used.
           
-          #dim_foreground = "#828482";
-          #bright_foreground = "#eaeaea";
+          dim_foreground = "#CDD6F4";
+          bright_foreground = "#CDD6F4";
         };
 
         # Cursor colors
@@ -278,8 +278,8 @@ in
         # affected cell, or hexadecimal colors like #ff00ff.
 
         cursor = {
-          text = "#e0def4";
-          cursor = "#56526e";
+          text = "#1E1E2E";
+          cursor = "#F5E0DC";
         };
 
         # Vi mode cursor colors
@@ -290,30 +290,28 @@ in
         # affected cell, or hexadecimal colors like #ff00ff.
 
         vi_mode_cursor = {
-          text = "#e0def4";
-          cursor = "#56526e";
+          text = "#1E1E2E";
+          cursor = "#B4BEFE";
         };
 
         # Search colors
         #
         # Colors used for the search bar and match highlighting.
 
-        /*
         search = {
 
           # Allowed values are CellForeground/CellBackground, which reference the
           # affected cell, or hexadecimal colors like #ff00ff.
           
           matches = {
-            foreground = "#000000";
-            background = "#ffffff";
+            foreground = "#1E1E2E";
+            background = "#A6ADC8";
           };
           focused_match = {
-            foreground = "#ffffff";
-            background = "#000000";
+            foreground = "#1E1E2E";
+            background = "#A6E3A1";
           };
         };
-        */
 
         # Keyboard hints
 
@@ -325,8 +323,8 @@ in
           # affected cell, or hexadecimal colors like #ff00ff.
 
           start = {
-            foreground = "#908caa";
-            background = "#2a273f";
+            foreground = "#1E1E2E";
+            background = "#F9E2AF";
           };
 
           # All characters after the first one in the hint label
@@ -335,8 +333,8 @@ in
           # affected cell, or hexadecimal colors like #ff00ff.
 
           end = {
-            foreground = "#6e6a86";
-            background = "#2a273f";
+            foreground = "#1E1E2E";
+            background = "#A6ADC8";
           };
         };
 
@@ -357,12 +355,10 @@ in
         # Color used for the footer bar on the bottom, used by search regex input,
         # hyperlink URI preview, etc.
 
-        /*
         footer_bar = {
-          background = "#c5c8c6";
-          foreground = "#1d1f21";
+          background = "#1E1E2E";
+          foreground = "#A6ADC8";
         };
-        */
 
         # Selection colors
         #
@@ -372,34 +368,34 @@ in
         # affected cell, or hexadecimal colors like #ff00ff.
 
         selection = {
-          text = "#e0def4";
-          background = "#44415a";
+          text = "#1E1E2E";
+          background = "#F5E0DC";
         };
 
         # Normal colors
         
         normal = {
-          black =   "#444a73";
-          red =     "#ff5370";
-          green =   "#4fd652";
-          yellow =  "#ffc777";
-          blue =    "#3e68d7";
-          magenta = "#d73ed2";
-          cyan =    "#86e1fc";
-          white =   "#d0d0d0";
+          black =   "#45475A";
+          red =     "#F38BA8";
+          green =   "#A6E3A1";
+          yellow =  "#F9E2AF";
+          blue =    "#89B4FA";
+          magenta = "#F5C2E7";
+          cyan =    "#94E2D5";
+          white =   "#BAC2DE";
         };
 
         # Bright colors
 
         bright = {
-          black =   "#a2a5b9";
-          red =     "#ffa9b7";
-          green =   "#a7eba9";
-          yellow =  "#ffe3bb";
-          blue =    "#9fb3eb";
-          magenta = "#eb9fe9";
-          cyan =    "#c3f0fe";
-          white =   "#e8e8e8";
+          black =   "#585B70";
+          red =     "#F38BA8";
+          green =   "#A6E3A1";
+          yellow =  "#F9E2AF";
+          blue =    "#89B4FA";
+          magenta = "#F5C2E7";
+          cyan =    "#94E2D5";
+          white =   "#A6ADC8";
         };
 
         # Dim colors
@@ -424,7 +420,10 @@ in
         # Example:
         #   `- { index: 16, color: '#ff00ff' }`
         #
-        #indexed_colors: []
+        indexed_colors = [
+          { index = 16; color = "#FAB387"; }
+          { index = 17; color = "#F5E0DC"; }
+        ];
 
         # Transparent cell backgrounds
         #
@@ -527,7 +526,7 @@ in
         # Time after which cursor stops blinking, in seconds.
         #
         # Specifying '0' will disable timeout for blinking.
-        #blink_timeout: 5
+        blink_timeout = 0;
 
         # If this is `true`, the cursor will be rendered as a hollow box when the
         # window is not focused.
