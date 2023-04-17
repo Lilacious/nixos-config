@@ -56,6 +56,26 @@
             }
           ];
         };
+
+        # penelope, laptop, workstation
+        penelope = lib.nixosSystem {
+          modules = [
+            ./hosts/penelope/configuration.nix
+
+            nur.nixosModules.nur
+
+            home-manager.nixosModules.home-manager {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.kailee = {
+                imports = [
+                  ./users/kailee/workstation-home.nix
+                ];
+              };
+            }
+          ];
+        };
+
       };
     };
 }
