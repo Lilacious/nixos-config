@@ -72,10 +72,6 @@
         format = "[$duration]($style) ";
       };
 
-      nix-shell = {
-        disabled = false;
-      };
-
 
     };
   };
