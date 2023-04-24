@@ -35,11 +35,6 @@
     "/nix".options = [ "compress=zstd" "noatime" ];
   };
 
-  # mirrored 4 TB drives
-  fileSystems."/mnt/data" = {
-    device = "data";
-    fsType = "zfs";
-  };
 
   services.zfs.autoScrub.enable = true;
 
