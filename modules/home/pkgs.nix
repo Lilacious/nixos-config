@@ -9,6 +9,7 @@
       vscodium
       discord
       element-desktop
+      mumble
     #  thunderbird  
   ];
 }
