@@ -8,6 +8,7 @@
       jetbrains.idea-ultimate
       vscodium
       discord
+      element-desktop
     #  thunderbird  
   ];
 }
