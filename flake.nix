@@ -8,9 +8,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nur.url = "github:nix-community/NUR";
+    hyprland.url = "github:hyprwm/Hyprland";
   };
 
-  outputs = { self, nixpkgs, home-manager, nur, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nur, hyprland, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -26,6 +27,8 @@
             ./hosts/sisyphos/configuration.nix
 
             nur.nixosModules.nur
+            
+            hyprland.nixosModules.default
 
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
@@ -33,6 +36,8 @@
               home-manager.users.kailee = {
                 imports = [
                   ./users/kailee/workstation-home.nix
+
+                  hyprland.nixosModules.default
                 ];
               };
             }
