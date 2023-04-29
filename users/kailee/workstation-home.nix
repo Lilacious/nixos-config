@@ -7,6 +7,7 @@
     ../../modules/home/pkgs.nix
     ../../modules/home/alacritty.nix
     ../../modules/home/themes.nix
+    ../../modules/home/kitty.nix
   ];
   home.username = "kailee";
   home.homeDirectory = "/home/kailee";
