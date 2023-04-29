@@ -50,6 +50,8 @@
 
             nur.nixosModules.nur
 
+            hyprland.homeManagerModules.default
+
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
@@ -75,6 +77,8 @@
               home-manager.users.kailee = {
                 imports = [
                   ./users/kailee/workstation-home.nix
+                  hyprland.homeManagerModules.default
+                  {wayland.windowManager.hyprland.enable = true;}
                 ];
               };
             }
