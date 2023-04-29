@@ -14,6 +14,7 @@
     historySubstringSearch.enable = true;
 
     shellAliases = {
+      ls = "ls --color=auto";
       ll = "ls -l";
       update = "cd ~/nixos-config && sudo nixos-rebuild switch --flake .#$HOST";
     };
