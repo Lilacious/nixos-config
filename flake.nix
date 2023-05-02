@@ -35,9 +35,10 @@
               home-manager.useUserPackages = true;
               home-manager.users.kailee = {
                 imports = [
-                  ./users/kailee/workstation-home.nix
+                  ./hosts/sisyphos/sisyphos-home.nix
 
                   hyprland.nixosModules.default
+
                 ];
               };
             }
@@ -78,9 +79,10 @@
               home-manager.useUserPackages = true;
               home-manager.users.kailee = {
                 imports = [
-                  ./users/kailee/workstation-home.nix
+                  ./hosts/penelope/penelope-home.nix
+
                   hyprland.homeManagerModules.default
-                  ./modules/home/hyprland.nix
+
                 ];
               };
             }
