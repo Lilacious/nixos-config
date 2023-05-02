@@ -80,8 +80,7 @@
                 imports = [
                   ./users/kailee/workstation-home.nix
                   hyprland.homeManagerModules.default
-                  {wayland.windowManager.hyprland.enable = true;}
-
+                  ./modules/home/hyprland.nix
                 ];
               };
             }
