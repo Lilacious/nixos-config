@@ -9,6 +9,8 @@
     ../../modules/home/themes.nix
     ../../modules/home/kitty.nix
     ../../modules/home/hyprland.nix
+    ../../modules/home/eww.nix
+
   ];
   home.username = "kailee";
   home.homeDirectory = "/home/kailee";

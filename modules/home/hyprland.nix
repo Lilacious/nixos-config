@@ -15,7 +15,7 @@
         follow_mouse = 1
 
         touchpad {
-          natural_scroll = false
+          natural_scroll = false # not natural at all :/
         }
 
         sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
@@ -23,10 +23,10 @@
 
       general {
         # See https://wiki.hyprland.org/Configuring/Variables/
-        gaps_in = 5
+        gaps_in = 2.5
         gaps_out = 5
         border_size = 2
-        col.active_border = rgba(33ccffee) rgba(00ff99ee) 45deg
+        col.active_border = rgba(33ccffee) rgba(00ff99ee) 45deg # defaultrgba(E6D7FFFF)
         col.inactive_border = rgba(595959aa)
 
         layout = dwindle
