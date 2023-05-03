@@ -7,7 +7,11 @@
       vimAlias = true;
       configure = {
         packages.myPlugins = with pkgs.vimPlugins; {
-          start = [ vim-lastplace vim-nix ]; 
+          start = [ 
+            vim-lastplace
+            vim-nix
+            yuck-vim
+          ]; 
           opt = [];
         };
         customRC = ''

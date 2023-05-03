@@ -18,7 +18,7 @@
           natural_scroll = false # not natural at all :/
         }
 
-        sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
+        sensitivity = 0.8 # -1.0 - 1.0, 0 means no modification.
       }
 
       general {
@@ -71,19 +71,14 @@
         new_is_master = true
       }
 
-      gestures {
-        # See https://wiki.hyprland.org/Configuring/Variables/
-        workspace_swipe = false
-      }
-
       # Example per-device config
       # See https://wiki.hyprland.org/Configuring/Keywords/#executing
-      device:epic-mouse-v1 {
-        sensitivity = -0.5
-      }
+      #device:epic-mouse-v1 {
+      #  sensitivity = -0.5
+      #}
 
       # Example windowrule v1
-      windowrule = float, ^(alacritty)$
+      # windowrule = float, ^(alacritty)$
       # Example windowrule v2
       # windowrulev2 = float,class:^(kitty)$,title:^(kitty)$
       # See https://wiki.hyprland.org/Configuring/Window-Rules/

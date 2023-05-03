@@ -37,7 +37,7 @@
                 imports = [
                   ./hosts/sisyphos/sisyphos-home.nix
 
-                  hyprland.nixosModules.default
+                  hyprland.homeManagerModules.default
 
                 ];
               };
