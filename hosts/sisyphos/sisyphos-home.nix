@@ -8,6 +8,7 @@
     ../../modules/home/alacritty.nix
     ../../modules/home/themes.nix
     ../../modules/home/hyprland.nix
+    ../../modules/home/eww.nix
 
   ];
   home.username = "kailee";
