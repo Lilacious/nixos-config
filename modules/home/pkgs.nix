@@ -10,6 +10,7 @@
       discord
       element-desktop
       texlive.combined.scheme-full
+      hyprpicker
     #  thunderbird  
   ];
 }

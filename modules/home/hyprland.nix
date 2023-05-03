@@ -131,6 +131,11 @@
       bindm = $Mod, mouse:272, movewindow
       bindm = $Mod, mouse:273, resizewindow
 
+      exec-once=waybar
+
+      env = XDG_CURRENT_DESKTOP, Hyprland
+      env = XDG_SESSION_TYPE, wayland
+      env = XDG_SESSION_DESKTOP, Hyprland
     '';
   };
 

@@ -15,7 +15,9 @@
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
-        inherit system;
+        inherit system; 
+        overlays = [
+        ];
       };
       lib = nixpkgs.lib;
     in
