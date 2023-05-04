@@ -11,6 +11,10 @@
             vim-lastplace
             vim-nix
             yuck-vim
+            nvim-surround
+            treesj
+            nvim-bqf
+            trouble-nvim
           ]; 
           opt = [];
         };
