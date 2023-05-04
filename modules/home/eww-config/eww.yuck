@@ -1,0 +1,15 @@
+(defwindow bar
+  :monitor 0
+  :geometry (geometry
+    :width "100%" 
+    :halign "center"
+    :anchor "top center"
+  )
+  :exclusive true
+  (hi))
+
+(defwidget hi []
+  (box :orientation "horizontal"
+       :halign "center"
+    (button :onclick "notify-send 'hello'"
+      "Greet")))
