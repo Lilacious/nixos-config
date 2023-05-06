@@ -14,8 +14,6 @@
             nvim-surround
             treesj
             nvim-bqf
-            trouble-nvim
-            nvim-colorizer-lua
           ]; 
           opt = [];
         };
