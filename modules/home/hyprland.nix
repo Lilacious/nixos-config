@@ -27,6 +27,13 @@
       device:tpps/2-ibm-trackpoint {
         sensitivity = 0.5
       }
+      gestures {
+        workspace_swipe = true
+        workspace_swipe_forever = true
+      }
+      misc {
+        disable_autoreload = true
+      }
 
       monitor=,highres,auto,1
 
@@ -74,7 +81,7 @@
 
       dwindle {
         # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/
-        pseudotile = true # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
+        pseudotile = true
         preserve_split = true # you probably want this
       }
 
@@ -145,7 +152,7 @@
       bindm = $Mod, mouse:272, movewindow
       bindm = $Mod, mouse:273, resizewindow
 
-      exec-once=waybar
+      # exec-once=eww open bar
 
       env = XDG_CURRENT_DESKTOP, Hyprland
       env = XDG_SESSION_TYPE, wayland
