@@ -21,6 +21,13 @@
         sensitivity = 0.8 # -1.0 - 1.0, 0 means no modification.
       }
 
+      device:synaptics-tm3276-022 {
+        sensitivity = 0.3
+      }
+      device:tpps/2-ibm-trackpoint {
+        sensitivity = 0.5
+      }
+
       monitor=,highres,auto,1
 
       general {
@@ -36,6 +43,9 @@
 
       decoration {
         rounding = 10
+        active_opacity = 1
+        inactive_opacity = 1
+        fullscreen_opacity = 1
         blur = true
         blur_size = 3
         blur_passes = 1
