@@ -90,7 +90,7 @@
       bind = $Mod, Return, exec, alacritty
       bind = $Mod, W, killactive,
       bind = $Mod, B, exec, firefox
-      bind = $Mod, M, fullscreen,
+      bind = $Mod, M, fullscreen, 1
       bind = CONTROLALT, Delete, exit,
       bind = $Mod, F, togglefloating,
       bind = $Mod, P, pseudo, # dwindle
