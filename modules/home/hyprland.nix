@@ -21,6 +21,8 @@
         sensitivity = 0.8 # -1.0 - 1.0, 0 means no modification.
       }
 
+      monitor=,highres,auto,1
+
       general {
         # See https://wiki.hyprland.org/Configuring/Variables/
         gaps_in = 2.5
