@@ -71,6 +71,7 @@
       master {
         # See https://wiki.hyprland.org/Configuring/Master-Layout/ 
         new_is_master = true
+        inherit_fullscreen = true
       }
 
       # Example per-device config
