@@ -9,9 +9,10 @@
     };
     nur.url = "github:nix-community/NUR";
     hyprland.url = "github:hyprwm/Hyprland";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
-  outputs = { self, nixpkgs, home-manager, nur, hyprland, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nur, hyprland, nixos-hardware, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -67,10 +68,12 @@
           ];
         };
 
-        # penelope, laptop, workstation
+        # penelope, laptop, workstation, Thinkpad T480
         penelope = lib.nixosSystem {
           modules = [
             ./hosts/penelope/configuration.nix
+
+            nixos-hardware.nixosModules.lenovo-thinkpad-t480
 
             nur.nixosModules.nur
 
