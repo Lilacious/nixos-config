@@ -3,6 +3,8 @@
 { 
   home.packages = with pkgs; [
     wofi
+    grim
+    slurp
   ];
   wayland.windowManager.hyprland = {
     enable = true;
@@ -36,6 +38,7 @@
       }
       misc {
         disable_autoreload = true
+        vfr = true
       }
 
       monitor=,highres,auto,1
@@ -56,12 +59,12 @@
         active_opacity = 1
         inactive_opacity = 1
         fullscreen_opacity = 1
-        blur = true
+        blur = false
         blur_size = 3
         blur_passes = 1
         blur_new_optimizations = true
 
-        drop_shadow = true
+        drop_shadow = false
         shadow_range = 4
         shadow_render_power = 3
         col.shadow = rgba(1a1a1aee)
@@ -114,6 +117,7 @@
       bind = $Mod, Space, exec, wofi -S drun
       bind = $Mod, M, fullscreen, 1
       bind = CONTROLALT, Delete, exit,
+      bind = $Mod, Print, exec, grim -g "$(slurp)"
       bind = $Mod, F, togglefloating,
       bind = $Mod, P, pseudo, # dwindle
       bind = $Mod, J, togglesplit, # dwindle
