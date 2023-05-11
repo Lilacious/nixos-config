@@ -117,7 +117,7 @@
       bind = $Mod, Space, exec, wofi -S drun
       bind = $Mod, M, fullscreen, 1
       bind = CONTROLALT, Delete, exit,
-      bind = $Mod, Print, exec, grim -g "$(slurp)"
+      bind = $Mod, Print, exec, grim -g "$(slurp)" ~/Pictures/Screenshots/"$(date +%Y%m%d-%H%M%S)".png
       bind = $Mod, F, togglefloating,
       bind = $Mod, P, pseudo, # dwindle
       bind = $Mod, J, togglesplit, # dwindle
