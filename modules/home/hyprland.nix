@@ -9,6 +9,8 @@
   wayland.windowManager.hyprland = {
     enable = true;
 
+    xwayland.enable = true;
+    
     extraConfig =  ''
       input {
         kb_layout = de
@@ -161,7 +163,7 @@
       bindm = $Mod, mouse:273, resizewindow
 
       # exec-once=eww open bar
-
+      exec-once=nm-applet --indicator & disown
       env = XDG_CURRENT_DESKTOP, Hyprland
       env = XDG_SESSION_TYPE, wayland
       env = XDG_SESSION_DESKTOP, Hyprland
