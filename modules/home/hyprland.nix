@@ -1,6 +1,9 @@
 ## dependent on hyprland flake input
 { pkgs, config, ... }:
 { 
+  home.packages = with pkgs; [
+    wofi
+  ];
   wayland.windowManager.hyprland = {
     enable = true;
 
@@ -108,6 +111,7 @@
       bind = $Mod, Return, exec, alacritty
       bind = $Mod, W, killactive,
       bind = $Mod, B, exec, firefox
+      bind = $Mod, Space, exec, wofi -S drun
       bind = $Mod, M, fullscreen, 1
       bind = CONTROLALT, Delete, exit,
       bind = $Mod, F, togglefloating,
