@@ -5,6 +5,7 @@
     wofi
     grim
     slurp
+    xdg-desktop-portal-hyprland
   ];
   wayland.windowManager.hyprland = {
     enable = true;
@@ -164,6 +165,7 @@
 
       # exec-once=eww open bar
       exec-once=nm-applet --indicator & disown
+      exec-once=dunst
       env = XDG_CURRENT_DESKTOP, Hyprland
       env = XDG_SESSION_TYPE, wayland
       env = XDG_SESSION_DESKTOP, Hyprland
