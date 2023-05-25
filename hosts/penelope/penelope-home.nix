@@ -13,6 +13,11 @@
 
 
   ];
+  programs.zsh.shellAliases = {
+    openFrontDoor = "ssh door@bourbon.w17.io buzzer";
+    openSesame = "ssh door@bourbon.w17.io open";
+    closeSesame = "ssh door@bourbon.w17.io close";
+  };
   home.username = "kailee";
   home.homeDirectory = "/home/kailee";
 
