@@ -27,6 +27,7 @@
   security.polkit.enable = true;
   services.dbus.enable = true;
 
+  hardware.bluetooth.enable = true;
 
   hardware.enableRedistributableFirmware = true;
 }
