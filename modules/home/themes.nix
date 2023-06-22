@@ -8,7 +8,7 @@
     x11.enable = true;
   };
   gtk = {
-    enable = true;
+    enable = false;
     font = {
       name = "Agave Nerd Font";
       size = 13;

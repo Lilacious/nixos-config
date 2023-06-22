@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   time.timeZone = "Europe/Berlin";
 
@@ -13,6 +14,12 @@
     LC_PAPER = "de_DE.UTF-8";
     LC_TELEPHONE = "de_DE.UTF-8";
     LC_TIME = "de_DE.UTF-8";
+  };
+
+  i18n.inputMethod = {
+    enabled = "ibus";
+    ibus.engines = with pkgs.ibus-engines; [ 
+    ];
   };
 
   console.keyMap = "de";

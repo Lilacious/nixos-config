@@ -26,14 +26,19 @@
 
   security.polkit.enable = true;
   services.dbus.enable = true;
-
+  # Bluetooth
   hardware.bluetooth.enable = true;
+  # Printer with avahi
   services.printing.enable = true;
   services.avahi.enable = true;
   services.avahi.nssmdns = true;
   # for a WiFi printer
   services.avahi.openFirewall = true;
 
+  # Virt-manager
+  virtualisation.libvirtd.enable = true;
+  programs.dconf.enable = true;
+  environment.systemPackages = with pkgs; [ virt-manager ];
 
   hardware.enableRedistributableFirmware = true;
 }
