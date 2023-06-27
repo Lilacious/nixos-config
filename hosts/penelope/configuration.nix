@@ -5,6 +5,9 @@
     ../../profiles/workstation.nix
     ../../users/kailee/kailee.nix
     ../sisyphos/packages.nix
+    ../../modules/nixos/syncthing.nix
+    #../../modules/nixos/printing.nix
+    ../../modules/nixos/bluetooth.nix
   ];
   system.stateVersion = "22.05";
 
@@ -26,14 +29,6 @@
 
   security.polkit.enable = true;
   services.dbus.enable = true;
-  # Bluetooth
-  hardware.bluetooth.enable = true;
-  # Printer with avahi
-  services.printing.enable = true;
-  services.avahi.enable = true;
-  services.avahi.nssmdns = true;
-  # for a WiFi printer
-  services.avahi.openFirewall = true;
 
   # Virt-manager
   virtualisation.libvirtd.enable = true;
