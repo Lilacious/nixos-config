@@ -4,6 +4,7 @@ let
   boldFontFamily          =       "Agave Nerd Font";
   italicFontFamily        =       "Agave Nerd Font";
   boldItalicFontFamily    =       "Agave Nerd Font";
+  fontSize                =       9;
 
 in
 {
@@ -215,7 +216,7 @@ in
 
         # Point size
 
-        size = 13.0;
+        size = fontSize;
 
         # Offset is the extra space around each character. `offset.y` can be thought
         # of as modifying the line spacing, and `offset.x` as modifying the letter
