@@ -5,6 +5,9 @@
     ../../profiles/workstation.nix
     ../../users/kailee/kailee.nix
     ./packages.nix
+    ../../modules/nixos/syncthing.nix
+    #../../modules/nixos/printing.nix
+    #../../modules/nixos/bluetooth.nix
   ];
   system.stateVersion = "22.05";
 

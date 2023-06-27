@@ -8,6 +8,7 @@
     ../../modules/nixos/syncthing.nix
     #../../modules/nixos/printing.nix
     ../../modules/nixos/bluetooth.nix
+    ../../modules/nixos/virtualization.nix
   ];
   system.stateVersion = "22.05";
 
@@ -29,13 +30,6 @@
 
   security.polkit.enable = true;
   services.dbus.enable = true;
-
-  # Virt-manager
-  virtualisation.libvirtd.enable = true;
-  programs.dconf.enable = true;
-  environment.systemPackages = with pkgs; [ 
-    virt-manager
-  ];
 
   hardware.enableRedistributableFirmware = true;
 }
