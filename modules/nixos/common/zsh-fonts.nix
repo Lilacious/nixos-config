@@ -1,8 +1,8 @@
 { config, pkgs, ... }:
 {
   fonts = {
-    enableDefaultFonts = true;
-    fonts = with pkgs; [
+    enableDefaultPackages = true;
+    packages = with pkgs; [
       hack-font
       fira-code
       roboto
