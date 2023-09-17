@@ -41,6 +41,10 @@
   services.zfs.autoScrub.enable = true;
 
   services.zfs.trim.enable = true;
+  
+  boot.supportedFilesystems = [ "zfs" ];
+
+  boot.zfs.forceImportRoot = false;
 
   networking.hostId = "d93a8103";
 
