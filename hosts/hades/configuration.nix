@@ -37,6 +37,7 @@
   };
   swapDevices = [ { device = "/swap/swapfile"; } ];
 
+  boot.zfs.extraPools = [ "data" ];
 
   services.zfs.autoScrub.enable = true;
 
