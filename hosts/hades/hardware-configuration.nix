@@ -14,31 +14,35 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/nvme0n1p3";
+    { device = "/dev/disk/by-uuid/d5543711-27ee-4540-a34c-df7c65892eef";
       fsType = "btrfs";
       options = [ "subvol=root" ];
     };
 
   fileSystems."/home" =
-    { device = "/dev/nvme0n1p3";
+    { device = "/dev/disk/by-uuid/d5543711-27ee-4540-a34c-df7c65892eef";
       fsType = "btrfs";
       options = [ "subvol=home" ];
     };
 
   fileSystems."/nix" =
-    { device = "/dev/nvme0n1p3";
+    { device = "/dev/disk/by-uuid/d5543711-27ee-4540-a34c-df7c65892eef";
       fsType = "btrfs";
       options = [ "subvol=nix" ];
     };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/50FC-AE1D";
+  fileSystems."/boot/efi" =
+    { device = "/dev/disk/by-uuid/DDA1-8293";
       fsType = "vfat";
     };
 
-  swapDevices =
-    [ { device = "/dev/disk/by-uuid/eb31dfe6-3390-4b41-90ac-ef9954c9c88b"; }
-    ];
+  fileSystems."/swap" =
+    { device = "/dev/disk/by-uuid/d5543711-27ee-4540-a34c-df7c65892eef";
+      fsType = "btrfs";
+      options = [ "subvol=swap" ];
+    };
+
+  swapDevices = [ ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
@@ -52,4 +56,3 @@
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
-

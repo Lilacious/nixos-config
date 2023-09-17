@@ -5,7 +5,7 @@
     ../../profiles/server.nix
     ../../users/kailee/kailee.nix
   ];
-  system.stateVersion = "22.05";
+  system.stateVersion = "23.05";
 
   networking.hostName = "hades";
 
@@ -22,8 +22,8 @@
   enable = true;
     settings = {
       # require public key authentication for better security
-      passwordAuthentication = false;
-      kbdInteractiveAuthentication = false;
+      # PasswordAuthentication = false;
+      # KbdInteractiveAuthentication = false;
       # permitRootLogin = "yes";
     };
   };
@@ -33,7 +33,9 @@
     "/".options = [ "compress=zstd" ];
     "/home".options = [ "compress=zstd" ];
     "/nix".options = [ "compress=zstd" "noatime" ];
+    "/swap".options = [ "noatime" ];
   };
+  swapDevices = [ { device = "/swap/swapfile"; } ];
 
 
   services.zfs.autoScrub.enable = true;
