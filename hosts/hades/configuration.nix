@@ -4,6 +4,8 @@
     ./hardware-configuration.nix
     ../../profiles/server.nix
     ../../users/kailee/kailee.nix
+    ./modules/dashboard.nix
+    ./modules/torrent.nix
   ];
   system.stateVersion = "23.05";
 
@@ -17,6 +19,11 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+
+  networking.firewall = {
+    enable = true;
+    allowPing = true;
+  };
 
   services.openssh = {
   enable = true;

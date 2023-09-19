@@ -1,6 +1,6 @@
 {
   imports = [
     ./common.nix
-    ../modules/nixos/syncthing.nix
+    # ../modules/nixos/syncthing.nix
   ];
 }
