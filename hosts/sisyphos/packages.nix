@@ -4,7 +4,6 @@
     gparted
     neofetch
 
-    exa
     ripgrep
     fd
     ncdu

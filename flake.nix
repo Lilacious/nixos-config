@@ -55,7 +55,9 @@
             ./hosts/hades/configuration.nix
 
             agenix.nixosModules.default
-            {environment.systemPackages = [ agenix.packages.x86_64-linux.default ];}
+            {environment.systemPackages = [ 
+              agenix.packages.x86_64-linux.default 
+            ];}
 
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
@@ -76,10 +78,13 @@
             ./hosts/penelope/configuration.nix
 
             nixos-hardware.nixosModules.lenovo-thinkpad-t480
+            
+            agenix.nixosModules.default
+            {environment.systemPackages = [ 
+              agenix.packages.x86_64-linux.default 
+            ];}
 
-            nur.nixosModules.nur
-
-            hyprland.nixosModules.default
+            # hyprland.nixosModules.default
 
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
