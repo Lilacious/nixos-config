@@ -8,5 +8,5 @@ let
   systems = [ nas laptop ];
 in
 {
-  "secret2.age".publicKeys = users ++ systems;
+  "nextcloud1.age".publicKeys = users ++ systems;
 }

@@ -6,6 +6,7 @@
     ../../users/kailee/kailee.nix
     ./modules/dashboard.nix
     ./modules/torrent.nix
+    ./modules/cloud.nix
   ];
   system.stateVersion = "23.05";
 
