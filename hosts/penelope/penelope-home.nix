@@ -7,8 +7,7 @@
     ../../modules/home/pkgs.nix
     ../../modules/home/alacritty.nix
     ../../modules/home/themes.nix
-
-
+    ../../modules/home/hyprland.nix
   ];
   programs.zsh.shellAliases = {
     openFrontDoor = "ssh door@bourbon.w17.io buzzer";

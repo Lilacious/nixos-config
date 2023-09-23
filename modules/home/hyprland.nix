@@ -1,12 +1,26 @@
 ## dependent on hyprland flake input
 { pkgs, config, ... }:
-{ 
+{
+  # Dependencies
+  #
+  imports = [
+    ./eww.nix
+  ];
   home.packages = with pkgs; [
-    wofi
+    bemenu
+    cliphist
     grim
     slurp
     xdg-desktop-portal-hyprland
+    # Wallpaper utilities
+    waypaper
+    swaybg
+    swww
+    # Auto mount removable drives
   ];
+
+  # Hyprland Config
+  #
   wayland.windowManager.hyprland = {
     enable = true;
 
@@ -62,15 +76,16 @@
         active_opacity = 1
         inactive_opacity = 1
         fullscreen_opacity = 1
-        blur = false
-        blur_size = 3
-        blur_passes = 1
-        blur_new_optimizations = true
-
         drop_shadow = false
         shadow_range = 4
         shadow_render_power = 3
         col.shadow = rgba(1a1a1aee)
+        blur {
+          enabled = false
+          size = 3
+          passes = 1
+          new_optimizations = true
+        }
       }
 
       animations {
@@ -164,8 +179,9 @@
       bindm = $Mod, mouse:273, resizewindow
 
       # exec-once=eww open bar
-      exec-once=nm-applet --indicator & disown
-      exec-once=dunst
+      exec-once = nm-applet --indicator & disown
+      exec-once = dunst
+      exec-once = udiskie &
       env = XDG_CURRENT_DESKTOP, Hyprland
       env = XDG_SESSION_TYPE, wayland
       env = XDG_SESSION_DESKTOP, Hyprland

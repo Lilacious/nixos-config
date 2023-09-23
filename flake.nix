@@ -10,8 +10,10 @@
     nur.url = "github:nix-community/NUR";
     hyprland.url = "github:hyprwm/Hyprland";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    agenix.url = "github:ryantm/agenix";
-    agenix.inputs.darwin.follows = "";
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.darwin.follows = "";
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, nur, hyprland, nixos-hardware, agenix , ... }@inputs:
@@ -25,6 +27,7 @@
     {
       nixosConfigurations = {
         # sisyphos, desktop, workstation
+        #
         sisyphos = lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
@@ -49,6 +52,7 @@
           ];
         };
         # hades, server, nas
+        #
         hades = lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
@@ -72,6 +76,7 @@
         };
 
         # penelope, laptop, workstation, Thinkpad T480
+        #
         penelope = lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
@@ -84,7 +89,7 @@
               agenix.packages.x86_64-linux.default 
             ];}
 
-            # hyprland.nixosModules.default
+            hyprland.nixosModules.default
 
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
@@ -100,7 +105,7 @@
             }
           ];
         };
-
+        # Add new hosts here
       };
     };
 }
