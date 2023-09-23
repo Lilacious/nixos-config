@@ -7,6 +7,7 @@
     ripgrep
     fd
     ncdu
+    tree
   ];
 }
 
