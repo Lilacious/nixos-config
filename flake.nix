@@ -102,6 +102,14 @@
 
                 ];
               };
+              home-manager.users.yunix = {
+                imports = [
+                  ./hosts/penelope/home.nix
+
+                  hyprland.homeManagerModules.default
+
+                ];
+              };
             }
           ];
         };
