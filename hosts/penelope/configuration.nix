@@ -6,9 +6,9 @@
     ../../users/kailee/kailee.nix
     ../sisyphos/packages.nix
     ../../modules/nixos/syncthing.nix
-    ../../modules/nixos/printing.nix
-    ../../modules/nixos/bluetooth.nix
-    ../../modules/nixos/virtualization.nix
+    #../../modules/nixos/printing.nix
+    #../../modules/nixos/bluetooth.nix
+    #../../modules/nixos/virtualization.nix
   ];
   system.stateVersion = "22.05";
 
