@@ -94,14 +94,6 @@
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.kailee = {
-                imports = [
-                  ./hosts/penelope/penelope-home.nix
-
-                  hyprland.homeManagerModules.default
-
-                ];
-              };
               home-manager.users.yunix = {
                 imports = [
                   ./hosts/penelope/home.nix
