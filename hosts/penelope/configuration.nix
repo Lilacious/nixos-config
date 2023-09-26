@@ -2,10 +2,9 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../../profiles/workstation.nix
-    #../../users/kailee/kailee.nix
     ../../users/yunix/yunix.nix
     ../sisyphos/packages.nix
+    ../../profiles/workstation.nix
     ../../modules/nixos/syncthing.nix
     #../../modules/nixos/printing.nix
     #../../modules/nixos/bluetooth.nix

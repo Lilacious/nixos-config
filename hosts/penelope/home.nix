@@ -9,9 +9,11 @@
     ../../modules/home/hyprland.nix
   ];
   programs.zsh.shellAliases = {
-    openFrontDoor = "ssh door@bourbon.w17.io buzzer";
-    openSesame = "ssh door@bourbon.w17.io open";
-    closeSesame = "ssh door@bourbon.w17.io close";
+    open-front-door = "ssh door@bourbon.w17.io buzzer";
+    open-sesame = "ssh door@bourbon.w17.io open";
+    close-sesame = "ssh door@bourbon.w17.io close";
+    battery-info-internal = "upower -i /org/freedesktop/UPower/devices/battery_BAT0";
+    battery-info-external = "upower -i /org/freedesktop/UPower/devices/battery_BAT1";
   };
   home.username = "yunix";
   home.homeDirectory = "/home/yunix";

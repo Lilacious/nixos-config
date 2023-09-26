@@ -5,20 +5,29 @@
   #
   imports = [
     ./eww.nix
+    ./dunst.nix
   ];
   home.packages = with pkgs; [
+    # qt libraries
+    libsForQt5.qt5.qtwayland
+    qt6.qtwayland
+
     # Launcher
     bemenu
+
     # Clipboard manager
     cliphist
     grim
     slurp
     xdg-desktop-portal-hyprland
+    
     # Wallpaper utilities
     waypaper
     swaybg
     swww
+    
     # Auto mount removable drives
+    udiskie
   ];
 
   # Hyprland Config

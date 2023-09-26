@@ -16,7 +16,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, nur, hyprland, nixos-hardware, agenix , ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nur, hyprland, nixos-hardware, agenix, ... }@inputs:
     let
       pkgs = import nixpkgs {
         overlays = [
