@@ -14,6 +14,7 @@
             nvim-surround
             treesj
             nvim-bqf
+            vimPlugins.nvim-ufo
           ]; 
           opt = [];
         };

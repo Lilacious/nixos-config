@@ -7,4 +7,3 @@
     ../modules/nixos/fonts.nix
   ];
 }
-

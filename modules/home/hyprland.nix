@@ -10,6 +10,8 @@
     ./swaylock.nix
   ];
   home.packages = with pkgs; [
+    eww-wayland
+
     # qt libraries
     libsForQt5.qt5.qtwayland
     qt6.qtwayland
