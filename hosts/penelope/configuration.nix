@@ -2,7 +2,8 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../../users/yunix/yunix.nix
+    ../../users/user.nix
+    ../../modules/nixos/hyprland.nix
     ../sisyphos/packages.nix
     ../../profiles/workstation.nix
     ../../modules/nixos/syncthing.nix

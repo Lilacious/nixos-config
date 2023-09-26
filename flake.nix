@@ -18,6 +18,11 @@
 
   outputs = { self, nixpkgs, home-manager, nur, hyprland, nixos-hardware, agenix, ... }@inputs:
     let
+      variables = {
+        username = "yunix";
+        shell = "zsh";
+      };
+
       pkgs = import nixpkgs {
         overlays = [
         ];
@@ -79,6 +84,10 @@
         #
         penelope = lib.nixosSystem {
           system = "x86_64-linux";
+          specialArgs = { 
+            inherit inputs; 
+            inherit variables; 
+          };
           modules = [
             ./hosts/penelope/configuration.nix
 

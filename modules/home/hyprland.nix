@@ -6,6 +6,7 @@
   imports = [
     ./eww.nix
     ./dunst.nix
+    ./themes.nix
   ];
   home.packages = with pkgs; [
     # qt libraries
