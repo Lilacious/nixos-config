@@ -7,6 +7,7 @@
     ./eww.nix
     ./dunst.nix
     ./themes.nix
+    ./swaylock.nix
   ];
   home.packages = with pkgs; [
     # qt libraries
@@ -189,6 +190,9 @@
       # Move/resize windows with mainMod + LMB/RMB and dragging
       bindm = $Mod, mouse:272, movewindow
       bindm = $Mod, mouse:273, resizewindow
+
+      # Laptop lid switch
+      bindl=,switch:Lid Switch,exec,swaylock
 
       # exec-once=eww open bar
       exec-once = nm-applet --indicator & disown
