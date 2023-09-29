@@ -10,27 +10,33 @@
     ./themes.nix
     ./swaylock.nix
     ./anyrun.nix
+    ./udiskie.nix
   ];
   home.packages = with pkgs; [
     eww-wayland
 
-    # qt libraries
+    ## qt libraries
     libsForQt5.qt5.qtwayland
     qt6.qtwayland
 
-    # Clipboard manager
+    ## Clipboard manager
     cliphist
     grim
     slurp
     xdg-desktop-portal-hyprland
     
-    # Wallpaper utilities
+    ## Wallpaper utilities
     waypaper
     swaybg
     swww
-    
-    # Auto mount removable drives
-    udiskie
+
+    ## Colour picker
+    hyprpicker
+
+    ## Other
+    wirelesstools # Eww script dependency
+    libsForQt5.polkit-kde-agent  # Authentication agent
+    xorg.xhost
   ];
 
   # Hyprland Config
@@ -140,7 +146,7 @@
       # Example windowrule v2
       # windowrulev2 = float,class:^(kitty)$,title:^(kitty)$
       # See https://wiki.hyprland.org/Configuring/Window-Rules/
-
+      windowrulev2 = float,title:^(.*Authentication.*)$
       
       $Mod = SUPER
       bind = $Mod, Return, exec, alacritty
@@ -209,13 +215,11 @@
       exec-once=eww open main
       exec-once = nm-applet --indicator & disown
       exec-once = dunst
-      exec-once = udiskie &
+      exec-once = ${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1
+      exec-once = xhost +SI:localuser:root
       env = XDG_CURRENT_DESKTOP, Hyprland
       env = XDG_SESSION_TYPE, wayland
       env = XDG_SESSION_DESKTOP, Hyprland
      '';
-
-
   };
-  
 }

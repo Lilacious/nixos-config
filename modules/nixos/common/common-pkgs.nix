@@ -1,25 +1,31 @@
 { config, pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    # network
+    ## Network
     wget
     curl
 
-    # system
+    ## System
     pciutils
     usbutils
     dmidecode
     lm_sensors
     htop
-    powertop
 
-    # files
+    ## Files
     zip
     unzip
 
-    # clipboard
+    ## Clipboard
     wl-clipboard
     xclip
+
+    ## Other
+    neofetch  # Sys info fetcher
+    tree  # Indented directory listing
+    ncdu  # Disk usage analyzer
+    ripgrep
+    fd  # Simple find command
   ];
 }
 

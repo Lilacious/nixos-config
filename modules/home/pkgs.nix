@@ -10,7 +10,6 @@
       # discord
       # element-desktop
       # texlive.combined.scheme-full
-      hyprpicker
       networkmanagerapplet
       mumble
     #  thunderbird  

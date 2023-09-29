@@ -3,10 +3,10 @@
   imports = [
     inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t480
     ./hardware-configuration.nix
+    ./packages.nix
     ../../users/user.nix
     ../../modules/nixos/agenix.nix
     ../../modules/nixos/hyprland.nix
-    ../sisyphos/packages.nix
     ../../profiles/workstation.nix
     ../../modules/nixos/syncthing.nix
     #../../modules/nixos/printing.nix

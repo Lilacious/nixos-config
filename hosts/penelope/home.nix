@@ -4,7 +4,6 @@
     ../../modules/home/git.nix
     ../../modules/home/zsh.nix
     ../../modules/home/starship.nix
-    ../../modules/home/pkgs.nix
     ../../modules/home/alacritty.nix
     ../../modules/home/hyprland.nix
   ];

@@ -8,7 +8,7 @@
     history = {
       ignoreSpace = true;
       size = 500000;
-      ignoreDups = true;
+      ignoreAllDups = true;
       expireDuplicatesFirst = true;
     };
     historySubstringSearch.enable = true;
@@ -18,6 +18,8 @@
       ll = "ls -l";
       c = "clear";
       update = "cd ~/nixos-config && sudo nixos-rebuild switch --flake .#$HOST";
+      edit-packages = "vim ~/nixos-config/hosts/$HOST/packages.nix";
+      edit-common-pkgs = "vim ~/nixos-config/modules/nixos/common/common-pkgs.nix";
     };
   };
 }

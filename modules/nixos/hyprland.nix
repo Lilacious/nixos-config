@@ -20,4 +20,5 @@
   # Swaylock fix
   security.pam.services.swaylock = {};
 
+  services.udisks2.enable = true;
 }
