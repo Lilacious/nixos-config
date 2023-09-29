@@ -1,13 +1,15 @@
 ## dependent on hyprland flake input
-{ pkgs, config, ... }:
+{ pkgs, config, hyprland, ... }:
 {
   # Dependencies
   #
   imports = [
+    hyprland.homeManagerModules.default
     ./eww.nix
     ./dunst.nix
     ./themes.nix
     ./swaylock.nix
+    ./anyrun.nix
   ];
   home.packages = with pkgs; [
     eww-wayland
@@ -15,9 +17,6 @@
     # qt libraries
     libsForQt5.qt5.qtwayland
     qt6.qtwayland
-
-    # Launcher
-    bemenu
 
     # Clipboard manager
     cliphist
@@ -147,7 +146,7 @@
       bind = $Mod, Return, exec, alacritty
       bind = $Mod, W, killactive,
       bind = $Mod, B, exec, firefox
-      bind = $Mod, Space, exec, ~/nixos-config/scripts/bemenu.sh
+      bind = $Mod, Space, exec, anyrun --plugins $ANYRUNAPPLICATIONS
       bind = $Mod, M, fullscreen, 1
       bind = CONTROLALT, Delete, exit,
       bind = $Mod, Print, exec, grim -g "$(slurp)" ~/Pictures/Screenshots/"$(date +%Y%m%d-%H%M%S)".png
@@ -160,6 +159,17 @@
       bind = $Mod, right, movefocus, r
       bind = $Mod, up, movefocus, u
       bind = $Mod, down, movefocus, d
+
+      # Volume and microphone control
+      binde = ,XF86AudioRaiseVolume, exec, amixer -Mq set Master 5%+ unmute
+      binde = ,XF86AudioLowerVolume, exec, amixer -Mq set Master 5%- unmute
+      bind = ,XF86AudioMute, exec, amixer -q set Master toggle
+      bind = ,XF86AudioMicMute, exec, amixer set Capture toggle
+
+      # Backlight control
+      # set min brightness to 10 with "light -N 10"
+      bind= ,XF86MonBrightnessUp, exec, light -A 5
+      bind= ,XF86MonBrightnessDown, exec, light -U 5
 
       # Switch workspaces with mainMod + [0-9]
       bind = $Mod, 1, workspace, 1
@@ -196,7 +206,7 @@
       # Laptop lid switch
       bindl=,switch:Lid Switch,exec,swaylock
 
-      # exec-once=eww open bar
+      exec-once=eww open main
       exec-once = nm-applet --indicator & disown
       exec-once = dunst
       exec-once = udiskie &

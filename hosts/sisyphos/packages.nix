@@ -4,6 +4,8 @@
     gparted
     neofetch
 
+    wirelesstools
+
     ripgrep
     fd
     ncdu

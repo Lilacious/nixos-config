@@ -4,6 +4,7 @@
     ./hardware-configuration.nix
     ../../profiles/server.nix
     ../../users/kailee/kailee.nix
+    ../../modules/nixos/agenix.nix
     ./modules/dashboard.nix
     ./modules/torrent.nix
     ./modules/cloud.nix

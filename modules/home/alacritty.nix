@@ -4,7 +4,7 @@ let
   boldFontFamily          =       "Agave Nerd Font";
   italicFontFamily        =       "Agave Nerd Font";
   boldItalicFontFamily    =       "Agave Nerd Font";
-  fontSize                =       9;
+  fontSize                =       20;
 
 in
 {

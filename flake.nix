@@ -14,9 +14,13 @@
       url = "github:ryantm/agenix";
       inputs.darwin.follows = "";
     };
+    anyrun = { 
+      url = "github:Kirottu/anyrun";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, nur, hyprland, nixos-hardware, agenix, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nur, hyprland, nixos-hardware, agenix, anyrun, ... }@inputs:
     let
       variables = {
         username = "yunix";
@@ -63,18 +67,15 @@
           modules = [
             ./hosts/hades/configuration.nix
 
-            agenix.nixosModules.default
-            {environment.systemPackages = [ 
-              agenix.packages.x86_64-linux.default 
-            ];}
-
             home-manager.nixosModules.home-manager {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.kailee = {
-                imports = [
-                  ./users/kailee/server-home.nix
-                ];
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.kailee = {
+                  imports = [
+                    ./users/kailee/server-home.nix
+                  ];
+                };
               };
             }
           ];
@@ -83,33 +84,25 @@
         # penelope, laptop, workstation, Thinkpad T480
         #
         penelope = lib.nixosSystem {
-          system = "x86_64-linux";
           specialArgs = { 
-            inherit inputs; 
-            inherit variables; 
+            inherit inputs variables;
+            system = "x86_64-linux";
           };
           modules = [
             ./hosts/penelope/configuration.nix
 
-            nixos-hardware.nixosModules.lenovo-thinkpad-t480
-            
-            agenix.nixosModules.default
-            {environment.systemPackages = [ 
-              agenix.packages.x86_64-linux.default 
-            ];}
-
-            hyprland.nixosModules.default
-
             home-manager.nixosModules.home-manager {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.yunix = {
-                imports = [
-                  ./hosts/penelope/home.nix
-
-                  hyprland.homeManagerModules.default
-
-                ];
+              home-manager = {
+                extraSpecialArgs = {
+                  inherit hyprland anyrun;
+                };
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.yunix = {
+                  imports = [
+                    ./hosts/penelope/home.nix
+                  ];
+                };
               };
             }
           ];

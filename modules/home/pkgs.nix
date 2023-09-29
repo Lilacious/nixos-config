@@ -5,11 +5,11 @@
     firefox
       kate
       keepassxc
-      jetbrains.idea-ultimate
+      # jetbrains.idea-ultimate
       vscodium
-      discord
-      element-desktop
-      texlive.combined.scheme-full
+      # discord
+      # element-desktop
+      # texlive.combined.scheme-full
       hyprpicker
       networkmanagerapplet
       mumble

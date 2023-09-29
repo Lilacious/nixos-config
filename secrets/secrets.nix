@@ -6,7 +6,6 @@ let
   nas = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOLN5Wu+GSsdLJfPZXy8q6CGL9VmCHN2hTObNpbXf5YR";
   laptop = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHGTfIF2MLDp01ISXoP67lymVV7cnQugW5SP/E5zfgkk";
   systems = [ nas laptop ];
-in
-{
+in {
   "nextcloud1.age".publicKeys = users ++ systems;
 }

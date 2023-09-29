@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   home.pointerCursor = {
     package = pkgs.catppuccin-cursors.mochaPink;
@@ -8,10 +8,11 @@
     x11.enable = true;
   };
   gtk = {
-    enable = false;
+    enable = true;
+    gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
     font = {
       name = "Agave Nerd Font";
-      size = 13;
+      size = 15;
     };
     iconTheme = {
       name = "Papirus-Dark";
