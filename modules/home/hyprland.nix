@@ -10,7 +10,6 @@
     ./themes.nix
     ./swaylock.nix
     ./anyrun.nix
-    ./udiskie.nix
   ];
   home.packages = with pkgs; [
     eww-wayland

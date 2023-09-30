@@ -26,6 +26,9 @@
     ncdu  # Disk usage analyzer
     ripgrep
     fd  # Simple find command
+    socat
+    python3
+    jq # JSON processor
   ];
 }
 
