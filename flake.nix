@@ -63,7 +63,10 @@
         # hades, server, nas
         #
         hades = lib.nixosSystem {
-          system = "x86_64-linux";
+          specialArgs = { 
+            inherit inputs variables;
+            system = "x86_64-linux";
+          };
           modules = [
             ./hosts/hades/configuration.nix
 

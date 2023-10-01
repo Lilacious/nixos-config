@@ -11,9 +11,8 @@
     package = pkgs.nextcloud27;
 
     extraApps = with config.services.nextcloud.package.packages.apps; {
-      inherit memories calendar contacts
-      maps twofactor_webauthn spreed
-      bookmarks polls;
+      inherit calendar contacts
+      maps spreed;
     };
     extraAppsEnable = true;
     hostName = "cloud.yu-nix.de";
