@@ -110,6 +110,27 @@
             }
           ];
         };
+        hermes = lib.nixosSystem {
+          specialArgs = { 
+            inherit inputs variables;
+            system = "x86_64-linux";
+          };
+          modules = [
+            ./hosts/hermes/configuration.nix
+
+            home-manager.nixosModules.home-manager {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.yunix = {
+                  imports = [
+                    ./hosts/hermes/home.nix
+                  ];
+                };
+              };
+            }
+          ];
+        };
         # Add new hosts here
       };
     };
