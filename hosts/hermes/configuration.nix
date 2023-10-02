@@ -12,10 +12,19 @@
   system.stateVersion = "23.05";
 
   boot.loader = {
-  grub = {
-     efiSupport = true;
-     efiInstallAsRemovable = true;
+    efi.efiSysMountPoint = "/boot/efi";
+    grub = {
+      efiSupport = true;
+      efiInstallAsRemovable = true;
       device = "nodev";
+      enableCryptodisk = true;
+    };
+  };
+
+  boot.initrd.luks.devices = {
+    root = {
+      device = "/dev/disk/by-uuid/TODO";
+      preLVM = true;
     };
   };
 
