@@ -15,6 +15,9 @@
   ];
   system.stateVersion = "22.05";
 
+  # Linux kernel
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   networking.hostName = "penelope";
 
   # Enable networking

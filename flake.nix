@@ -110,13 +110,13 @@
             }
           ];
         };
-        hermes = lib.nixosSystem {
+        generic = lib.nixosSystem {
           specialArgs = { 
             inherit inputs variables;
             system = "x86_64-linux";
           };
           modules = [
-            ./hosts/hermes/configuration.nix
+            ./hosts/generic/configuration.nix
 
             home-manager.nixosModules.home-manager {
               home-manager = {
@@ -124,7 +124,7 @@
                 useUserPackages = true;
                 users.yunix = {
                   imports = [
-                    ./hosts/hermes/home.nix
+                    ./hosts/generic/home.nix
                   ];
                 };
               };
