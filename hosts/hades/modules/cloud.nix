@@ -30,6 +30,9 @@
         "localcloud.yu-nix.de"
       ];
     };
+
+    maxUploadSize = "32G";
+
     configureRedis = true;
     caching.apcu = false;
   };
