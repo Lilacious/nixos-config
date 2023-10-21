@@ -71,8 +71,6 @@
       cmd_duration = {
         format = "[$duration]($style) ";
       };
-
-
     };
   };
 }

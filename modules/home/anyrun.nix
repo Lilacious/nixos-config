@@ -9,6 +9,7 @@ in {
 
   home.sessionVariables = {
     ANYRUNAPPLICATIONS="${anyrun.packages.${pkgs.system}.applications}/lib/libapplications.so";
+    ANYRUNSHELL="${anyrun.packages.${pkgs.system}.shell}/lib/libshell.so";
   };
 
   programs.anyrun = {
@@ -17,6 +18,7 @@ in {
       plugins = with anyrun.packages.${pkgs.system}; [
         applications
         randr
+        shell
         symbols
       ];
 

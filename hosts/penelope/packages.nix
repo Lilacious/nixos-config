@@ -8,7 +8,7 @@
     keepassxc
 
     ## IDE
-    # jetbrains.idea-ultimate
+    jetbrains.idea-ultimate
     vscodium
 
     ## Communication

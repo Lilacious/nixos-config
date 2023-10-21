@@ -29,6 +29,7 @@
     socat
     python3
     jq # JSON processor
+    cheat # cheat sheet
   ];
 }
 

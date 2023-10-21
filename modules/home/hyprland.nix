@@ -151,7 +151,7 @@
       bind = $Mod, Return, exec, alacritty
       bind = $Mod, W, killactive,
       bind = $Mod, B, exec, firefox
-      bind = $Mod, Space, exec, anyrun --plugins $ANYRUNAPPLICATIONS
+      bind = $Mod, Space, exec, anyrun --plugins $ANYRUNAPPLICATIONS --plugins $ANYRUNSHELL
       bind = $Mod, M, fullscreen, 1
       bind = CONTROLALT, Delete, exit,
       bind = $Mod, Print, exec, grim -g "$(slurp)" ~/Pictures/Screenshots/"$(date +%Y%m%d-%H%M%S)".png
