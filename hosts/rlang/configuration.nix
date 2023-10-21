@@ -49,7 +49,7 @@
     packages = with pkgs; [
       firefox
       rstudio
-      r
+      R
     ];
   };
 
