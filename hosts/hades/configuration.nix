@@ -11,6 +11,8 @@
   ];
   system.stateVersion = "23.05";
 
+  boot.kernelPackages = pkgs.linuxPackages_hardened;
+
   networking.hostName = "hades";
 
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.

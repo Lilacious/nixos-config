@@ -11,7 +11,7 @@
     package = pkgs.nextcloud27;
 
     extraApps = with config.services.nextcloud.package.packages.apps; {
-      inherit calendar contacts
+      inherit calendar contacts mail memories twofactor_webauthn
       maps spreed;
     };
     extraAppsEnable = true;
@@ -27,9 +27,12 @@
       adminpassFile = config.age.secrets.nextcloud.path;
       dbtype = "pgsql";
       extraTrustedDomains = [
-        "next.cloud"
+        "localcloud.yu-nix.de"
       ];
     };
+
+    maxUploadSize = "32G";
+
     configureRedis = true;
     caching.apcu = false;
   };
