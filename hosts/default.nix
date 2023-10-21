@@ -63,7 +63,7 @@ in {
           useGlobalPkgs = true;
           useUserPackages = true;
           users.kailee.imports = [  #TODO
-            sisyphos-home.nix #TODO
+            ./sisyphos-home.nix #TODO
           ];
         };
       }
