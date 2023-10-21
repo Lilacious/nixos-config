@@ -10,9 +10,16 @@
       ./hardware-configuration.nix
     ];
 
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader = {
+    efi = {
+      canTouchEfiVariables = true;
+      efiSysMountPoint = "/boot";
+    };
+    grub = {
+       efiSupport = true;
+       device = "nodev";
+    };
+  };
 
   networking.hostName = "rlang"; # Define your hostname.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
