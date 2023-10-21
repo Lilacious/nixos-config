@@ -61,7 +61,7 @@
   };
 
   programs.bash.shellAliases = {
-    update = "sudo nixos-rebuild switch --flake github:lilacious/nixos-config#rlang";
+    update = "nix-collect-garbage && sudo nixos-rebuild switch --flake github:lilacious/nixos-config#rlang";
   };
 
   # List packages installed in system profile. To search, run:
