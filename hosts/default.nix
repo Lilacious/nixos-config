@@ -41,7 +41,7 @@ in {
           useGlobalPkgs = true;
           useUserPackages = true;
           users.kailee.imports = [ #TODO
-            ../../users/kailee/server-home.nix  #TODO
+            ../users/kailee/server-home.nix  #TODO
           ];
         };
       }
