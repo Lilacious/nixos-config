@@ -88,7 +88,7 @@ in {
       }
     ];
   };
-  ## rlang
+  ## rlang, other
   rlang = lib.nixosSystem {
     specialArgs = { 
       system = "x86_64-linux";
