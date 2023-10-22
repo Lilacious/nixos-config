@@ -32,7 +32,12 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, nixos-hardware, agenix, plasma-manager, nur, hyprland, anyrun, ... }@inputs:
+  outputs = { 
+    self, nixpkgs, 
+    home-manager, nixos-hardware, agenix, 
+    plasma-manager, nur, hyprland, anyrun, 
+    ... 
+  }@inputs:
   let
     variables = {
       username = "yunix";
