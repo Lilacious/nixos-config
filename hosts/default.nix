@@ -35,7 +35,7 @@ in {
       system = "x86_64-linux";
     };
     modules = [
-      ./configuration.nix
+      ./hades/configuration.nix
       home-manager.nixosModules.home-manager {
         home-manager = {
           useGlobalPkgs = true;
@@ -54,7 +54,7 @@ in {
       system = "x86_64-linux";
     };
     modules = [
-      ./configuration.nix
+      ./sisyphos/configuration.nix
       home-manager.nixosModules.home-manager {
         home-manager = {
           extraSpecialArgs = {
@@ -63,7 +63,7 @@ in {
           useGlobalPkgs = true;
           useUserPackages = true;
           users.kailee.imports = [  #TODO
-            ./sisyphos-home.nix #TODO
+            ./sisyphos/sisyphos-home.nix #TODO
           ];
         };
       }
