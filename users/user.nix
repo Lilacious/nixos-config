@@ -9,6 +9,7 @@ in  {
     isNormalUser = true;
     description = "${capitalizedInitial}";
     extraGroups = [ "networkmanager" "wheel" "video" ]; # Default groups
+    initialPassword = "changeme";
     shell = pkgs.${variables.shell}; # Set default shell
   };
 }
