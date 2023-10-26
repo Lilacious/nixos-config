@@ -216,6 +216,7 @@
       exec-once = dunst
       exec-once = ${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1
       exec-once = xhost +SI:localuser:root
+      exec-once = swaybg -m fill -i ~/Pictures/Wallpaper/default.png
       env = XDG_CURRENT_DESKTOP, Hyprland
       env = XDG_SESSION_TYPE, wayland
       env = XDG_SESSION_DESKTOP, Hyprland
