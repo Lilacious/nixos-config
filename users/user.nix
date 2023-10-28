@@ -12,4 +12,10 @@ in  {
     initialPassword = "changeme";
     shell = pkgs.${variables.shell}; # Set default shell
   };
+  
+  home-manager.users.${variables.username} = {
+    home.username = "${variables.username}";
+    home.homeDirectory = "/home/${variables.username}";
+    home.stateVersion = "23.05";
+  };
 }

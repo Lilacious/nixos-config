@@ -2,9 +2,9 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../../profiles/server.nix
-    ../../users/kailee/kailee.nix
-    ../../modules/nixos/agenix.nix
+    ../../users/user.nix
+    ../../modules
+    ../../secrets
     ./modules/dashboard.nix
     ./modules/torrent.nix
     ./modules/cloud.nix
@@ -14,6 +14,18 @@
   boot.kernelPackages = pkgs.linuxPackages_hardened;
 
   networking.hostName = "hades";
+
+  boot.loader = {
+    efi = {
+      canTouchEfiVariables = true;
+      efiSysMountPoint = "/boot/efi"; ## remove to mount efi partition to <root>/boot
+    };
+    grub = {
+      enable = true;
+      efiSupport = true;
+      device = "nodev";
+    };
+  };
 
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 

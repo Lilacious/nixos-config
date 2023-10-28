@@ -1,6 +1,16 @@
-{ pkgs, ... }:
+{ lib, ... }:
+
+with lib;
 {
-  time.timeZone = "Europe/Berlin";
+  imports = [
+    ./font.nix
+    ./git.nix
+    ./nix.nix
+    ./pkgs.nix
+    ./starship.nix
+    ./vim.nix
+    ./zsh.nix
+  ];
 
   i18n.defaultLocale = "en_US.UTF-8";
 
@@ -16,21 +26,11 @@
     LC_TIME = "de_DE.UTF-8";
   };
 
-  i18n.inputMethod = {
-    enabled = "fcitx5";
-    fcitx5.addons = with pkgs; [
-        fcitx5-mozc
-        fcitx5-gtk
-    ];
-  };
-  environment.sessionVariables = rec {
-    GTK_IM_MODULE = "fcitx";
-    QT_IM_MODULE = "fcitx";
-    XMODIFIERS = "@im=fcitx";
-  };
+  ## Default keymap
+  console.keyMap = mkDefault "de";
+    
+  ## Default time zone
+  time.timeZone = mkDefault "Europe/Berlin";
 
-
-
-
-  console.keyMap = "de";
+  nixpkgs.config.allowUnfree = mkDefault true;
 }

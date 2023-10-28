@@ -1,6 +1,8 @@
 { pkgs, ... }:
 {
-  environment.variables = { EDITOR = "vim"; };
+  environment.variables = { 
+    EDITOR = "vim"; 
+  };
 
   environment.systemPackages = with pkgs; [
     (neovim.override {
@@ -24,6 +26,10 @@
           set clipboard+=unnamedplus
         '';
       };
-    }
-  )];
+    })
+
+    ## Clipboard
+    wl-clipboard
+    xclip
+  ];
 }

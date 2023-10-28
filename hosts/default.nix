@@ -16,14 +16,9 @@ in {
       ./penelope/configuration.nix
       home-manager.nixosModules.home-manager {
         home-manager = {
-          extraSpecialArgs = {
-            inherit hyprland anyrun;
-          };
+          extraSpecialArgs = {};
           useGlobalPkgs = true;
           useUserPackages = true;
-          users.${variables.username}.imports = [
-            ./penelope/home.nix
-          ];
         };
       }
     ];
@@ -40,9 +35,6 @@ in {
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
-          users.kailee.imports = [ #TODO
-            ../users/kailee/server-home.nix  #TODO
-          ];
         };
       }
     ];
@@ -64,25 +56,6 @@ in {
           useUserPackages = true;
           users.kailee.imports = [  #TODO
             ./sisyphos/sisyphos-home.nix #TODO
-          ];
-        };
-      }
-    ];
-  };
-  ## generic
-  generic = lib.nixosSystem {
-    specialArgs = { 
-      inherit inputs variables;
-      system = "x86_64-linux";
-    };
-    modules = [
-      ./generic/configuration.nix
-      home-manager.nixosModules.home-manager {
-        home-manager = {
-          useGlobalPkgs = true;
-          useUserPackages = true;
-          users.${variables.username}.imports = [
-            ./generic/home.nix
           ];
         };
       }

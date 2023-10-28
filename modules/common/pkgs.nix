@@ -16,20 +16,13 @@
     zip
     unzip
 
-    ## Clipboard
-    wl-clipboard
-    xclip
-
     ## Other
-    neofetch  # Sys info fetcher
-    tree  # Indented directory listing
-    ncdu  # Disk usage analyzer
+    neofetch    # Sys info fetcher
+    tree        # Indented directory listing
+    ncdu        # Disk usage analyzer
     ripgrep
-    fd  # Simple find command
-    socat
+    fd          # Simple find command
     python3
-    jq # JSON processor
-    cheat # cheat sheet
+    cheat       # cheat sheet
   ];
 }
-
