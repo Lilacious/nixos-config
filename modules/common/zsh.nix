@@ -24,8 +24,7 @@
         ls = "ls --color=auto";
         ll = "ls -l";
         c = "clear";
-        update = "cd ~/nixos-config && 
-          sudo nixos-rebuild switch --flake .#$HOST";
+        update = "cd ~/nixos-config && sudo nixos-rebuild switch --flake .#$HOST";
       };
     };
   };
