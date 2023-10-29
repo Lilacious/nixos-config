@@ -21,8 +21,10 @@
       };
 
       shellAliases = {
-        ls = "ls --color=auto";
-        ll = "ls -l";
+        ls = "eza -g";
+        ll = "eza -l";
+        la = "eza -a";
+        tree = "eza -T";
         c = "clear";
         update = "cd ~/nixos-config && sudo nixos-rebuild switch --flake .#$HOST";
       };

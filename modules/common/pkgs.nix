@@ -16,13 +16,24 @@
     zip
     unzip
 
+    ### Core utils
+    ## find
+    fd          # Simple find command
+    ## du/df
+    ncdu        # Disk usage analyzer ncurses
+    # du-dust     # Disk usage analizer in rust
+    duf         # Disk Usage/Free Utility
+    ## grep
+    ripgrep     # Better grep for code search
+    ## cat
+    # lolcat      # A rainbow version of cat
+    bat         # Better cat with syntax highlighting
+    ## ls/tree
+    eza         # ls replacement
+    # tree        # Indented directory listing
+
     ## Other
     neofetch    # Sys info fetcher
-    tree        # Indented directory listing
-    ncdu        # Disk usage analyzer
-    ripgrep
-    fd          # Simple find command
-    python3
     cheat       # cheat sheet
   ];
 }

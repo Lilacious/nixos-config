@@ -13,17 +13,18 @@
 
     ## Communication
     mumble
-    # discord
-    # element-desktop
+    discord
+    element-desktop
 
     ## Network
     networkmanagerapplet
 
     ## Other
     edid-decode # decode display edid to readable info
-    gparted # parted with ui
+    # gparted # parted with ui
     wireguard-tools
     # texlive.combined.scheme-full
     # thunderbird    
+    python3
   ];
 }

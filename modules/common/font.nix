@@ -14,6 +14,7 @@
     ];
 
     fontconfig = {
+      enable = true;
       defaultFonts = {
         serif = [ 
           "Agave Nerd Font" 
