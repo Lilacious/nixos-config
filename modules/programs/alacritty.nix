@@ -5,7 +5,7 @@ let
   boldFontFamily          =       "Agave Nerd Font";
   italicFontFamily        =       "Agave Nerd Font";
   boldItalicFontFamily    =       "Agave Nerd Font";
-  fontSize                =       8;
+  fontSize                =       12;
 in {
   home-manager.users.${variables.username} = {
     programs.alacritty = {
