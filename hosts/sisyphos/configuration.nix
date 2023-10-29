@@ -2,8 +2,7 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../../profiles/workstation.nix
-    ../../users/kailee/kailee.nix
+    ../../users/user.nix
     ./packages.nix
     ../../modules/nixos/syncthing.nix
     #../../modules/nixos/printing.nix

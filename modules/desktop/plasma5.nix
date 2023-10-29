@@ -1,5 +1,4 @@
 { config, lib, pkgs, ... }:
-
 with lib;
 {
   options = {
@@ -25,13 +24,18 @@ with lib;
 
     environment = {
       plasma5.excludePackages = with pkgs.libsForQt5; [
-        #elisa
+        elisa
         #khelpcenter
-        #konsole
-        #oxygen
+        konsole
+        oxygen
       ];
-      systemPackages = with pkgs.libsForQt5; [
-        bismuth
+      systemPackages = [
+        (pkgs.catppuccin-kde.override {
+          flavour = [ "mocha" ];
+          accents = [ "pink" ];
+          winDecStyles = [ "modern" ];
+        })
+        pkgs.catppuccin-cursors.mochaPink
       ];
     };
   };
