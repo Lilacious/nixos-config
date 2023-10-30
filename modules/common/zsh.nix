@@ -26,6 +26,7 @@
         la = "eza -a";
         tree = "eza -T";
         c = "clear";
+        cat = "bat";
         update = "cd ~/nixos-config && sudo nixos-rebuild switch --flake .#$HOST";
       };
     };

@@ -7,6 +7,7 @@ with lib;
     ./git.nix
     ./nix.nix
     ./pkgs.nix
+    ./security.nix
     ./starship.nix
     ./vim.nix
     ./zsh.nix
