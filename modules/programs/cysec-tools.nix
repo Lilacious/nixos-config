@@ -15,9 +15,10 @@ in
   };
   config = mkIf (cfg.enable) {
     environment.systemPackages = with pkgs; [
-      john
-      hashcat
       binwalk
+      hashcat
+      john
+      nmap
     ];
   };
 }
