@@ -25,17 +25,25 @@
     };
   };
 
-  ## Enable desktop environment
-  desktopEnvironment = {
-    enable = true;
-    plasma5.enable = true;
+  myModules = {
+    ## Enable desktop environment
+    desktop = {
+      enable = true;
+      plasma5.enable = true;
+    };
+
+    services = {
+      ## Enable printing
+      printing.enable = true;
+
+      ## Enable virtualization
+      virtualization.enable = true;
+    };
+
+    programs = {
+      cysecTools.enable = false;
+    };
   };
-
-  ## Enable virtualization
-  virt-manager.enable = true;
-
-  ## Enable printing
-  printing.enable = true;
 
   ## Enable networking
   networking.networkmanager.enable = true;

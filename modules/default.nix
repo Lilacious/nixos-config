@@ -1,3 +1,6 @@
+{ config, lib, ... }:
+
+with lib;
 {
   imports = [
     ./common

@@ -1,8 +1,11 @@
 { config, lib, pkgs, ... }:
 with lib;
+let
+  cfg = config.myModules.desktop.plasma5;
+in
 {
   options = {
-    desktopEnvironment.plasma5 = {
+    myModules.desktop.plasma5 = {
       enable = mkOption {
         type = types.bool;
         default = false;
@@ -10,7 +13,7 @@ with lib;
     };
   };
 
-  config = mkIf (config.desktopEnvironment.plasma5.enable) {
+  config = mkIf (cfg.enable) {
     services = {
       xserver = {
         enable = true;

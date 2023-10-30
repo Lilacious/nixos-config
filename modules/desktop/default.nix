@@ -7,7 +7,7 @@ with lib;
   ];
 
   options = {
-    desktopEnvironment = {
+    myModules.desktop = {
       enable = mkOption {
         type = types.bool;
         default = false;
@@ -15,7 +15,7 @@ with lib;
     };
   };
 
-  config = mkIf (config.desktopEnvironment.enable) {
+  config = mkIf (config.myModules.desktop.enable) {
     services.xserver = {
       enable = mkDefault false;
       layout = mkDefault "de";

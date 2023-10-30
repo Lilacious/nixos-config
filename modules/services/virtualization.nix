@@ -1,16 +1,18 @@
 { config, lib, pkgs, variables, ... }:
 
 with lib;
-{
+let
+  cfg = config.myModules.services.virtualization;
+in {
   options = {
-    virt-manager = {
+    myModules.services.virtualization = {
       enable = mkOption {
         type = types.bool;
         default = false;
       };
     };
   };
-  config = mkIf (config.virt-manager.enable) {
+  config = mkIf (cfg.enable) {
     virtualisation.libvirtd.enable = true;
     programs.dconf.enable = true;
     environment.systemPackages = with pkgs; [ 
