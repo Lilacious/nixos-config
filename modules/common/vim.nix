@@ -27,10 +27,10 @@
           set nocompatible
           set backspace=indent,eol,start
 
-          ## Clipboard support
+          " Clipboard support
           set clipboard+=unnamedplus
 
-          ## Set color scheme
+          " Set color scheme
           colorscheme catppuccin-mocha
         '';
       };

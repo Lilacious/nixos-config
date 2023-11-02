@@ -55,6 +55,7 @@
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       firefox
+      discord
       rstudio
       R
     ];
