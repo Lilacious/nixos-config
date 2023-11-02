@@ -61,6 +61,8 @@
     ];
   };
 
+  nixpkgs.config.allowUnfree = true;
+
   programs.bash.shellAliases = {
     update = "nix-collect-garbage && sudo nixos-rebuild switch --flake github:lilacious/nixos-config#rlang";
   };
