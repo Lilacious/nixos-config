@@ -11,8 +11,6 @@
   ];
   system.stateVersion = "23.05";
 
-  boot.kernelPackages = pkgs.linuxPackages_hardened;
-
   security.doas.enable = false;
 
   networking.hostName = "hades";
