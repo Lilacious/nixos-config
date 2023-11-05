@@ -35,6 +35,7 @@
     ## Other
     neofetch    # Sys info fetcher
     cheat       # cheat sheet
+    powertop
 
     ### Important
     ## System wide git needed for doas nixos-switch --flake
