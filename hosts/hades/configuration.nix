@@ -30,6 +30,8 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  networking.interfaces.enp1s0.wakeOnLan.enable = true;
+
   services.openssh = {
   enable = true;
     settings = {
