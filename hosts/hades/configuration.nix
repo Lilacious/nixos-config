@@ -13,6 +13,8 @@
 
   boot.kernelPackages = pkgs.linuxPackages_hardened;
 
+  services.logrotate.checkConfig = false; ## Hardened fix
+
   networking.hostName = "hades";
 
   boot.loader = {
