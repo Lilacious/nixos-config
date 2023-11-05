@@ -13,7 +13,7 @@
 
   boot.kernelPackages = pkgs.linuxPackages_hardened;
 
-  services.logrotate.checkConfig = false; ## Hardened fix
+  security.doas.enable = false;
 
   networking.hostName = "hades";
 

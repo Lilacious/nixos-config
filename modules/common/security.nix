@@ -3,7 +3,7 @@
 with lib;
 {
   networking.firewall = {
-    enable = mkDefault true;
+    enable = mkForce true;
   };
 
   security.sudo.enable = mkIf( config.security.doas.enable ) false;
@@ -16,7 +16,7 @@ with lib;
       keepEnv = true;
     }];
   };
-  home-manager.users.${variables.username} = {
+  home-manager.users.${variables.username} = mkIf( config.security.doas.enable ) {
     programs.zsh = {
       shellAliases = {
         sudo = "doas";
