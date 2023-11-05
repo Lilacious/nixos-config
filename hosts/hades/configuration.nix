@@ -42,6 +42,10 @@
     };
   };
 
+  networking.firewall = {
+    allowedTCPPorts = [ 22 ];
+  };
+
   # zstd compression
   fileSystems = {
     "/".options = [ "compress=zstd" ];
