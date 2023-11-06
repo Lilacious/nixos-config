@@ -1,4 +1,8 @@
 { config, lib, pkgs, ... }:
+let
+  ## Transcoding
+  go-vod = pkgs.callPackage ../../../pkgs/go-vod.nix {};
+in
 {
   services.nextcloud = {
     enable = true;
@@ -11,8 +15,8 @@
     package = pkgs.nextcloud27;
 
     extraApps = with config.services.nextcloud.package.packages.apps; {
-      inherit calendar contacts mail memories twofactor_webauthn
-      maps spreed;
+      inherit calendar contacts mail memories 
+      maps spreed previewgenerator;
     };
     extraAppsEnable = true;
     hostName = "cloud.yu-nix.de";
@@ -30,28 +34,34 @@
       extraTrustedDomains = [
         "localcloud.yu-nix.de"
       ];
+      trustedProxies = [
+        "proxy.yu-nix.de"
+      ];
+    };
+    extraOptions = {
+      "memories.exiftool_no_local" = true;
+      "memories.exiftool" = "${pkgs.exiftool}/bin/exiftool";
+      ## Transcoding
+      "memories.vod.path" = "${go-vod}/bin/go-vod";
+      "memories.vod.ffmpeg" = "${pkgs.ffmpeg}/bin/ffmpeg";
+      "memories.vod.ffprobe" = "${pkgs.ffmpeg}/bin/ffprobe";
     };
 
-    phpOptions = lib.mkForce {
-      catch_workers_output = "yes";
-      display_errors = "stderr";
-      error_reporting = "E_ALL & ~E_DEPRECATED & ~E_STRICT";
-      expose_php = "Off";
-      "opcache.enable_cli" = "1";
-      "opcache.fast_shutdown" = "1";
-      "opcache.interned_strings_buffer" = "8";
-      "opcache.max_accelerated_files" = "10000";
-      "opcache.memory_consumption" = "128";
-      "opcache.revalidate_freq" = "1";
-      "openssl.cafile" = "/etc/ssl/certs/ca-certificates.crt";
-      short_open_tag = "Off";
-      memory_limit = "-1";
+    phpOptions = {
+      "apc.enable_cli" = "1";
     };
+
+    phpExtraExtensions = all: [
+      all.imagick
+    ];
 
     maxUploadSize = "32G";
 
     configureRedis = true;
-    caching.redis = true;
+    caching = {
+      apcu = true;
+      redis = true;
+    };
   };
 
   age.secrets.nextcloud = {
@@ -60,7 +70,35 @@
     group = "nextcloud";
   };
 
+  environment.systemPackages = with pkgs; [
+    perl
+    exiftool
+    ffmpeg
+
+    ## Transcoding
+    go-vod
+  ];
+
+  ## Background index fix
+  systemd.services.nextcloud-cron = {
+    path = [pkgs.perl];
+  };
+
   networking.firewall = {
     allowedTCPPorts = [ 80 443 ];
+  };
+
+  ## Transcoding
+  systemd.services."go-vod" = {
+    path = with pkgs; [
+      ffmpeg
+    ];
+    serviceConfig = {
+      DynamicUser = true;
+      ExecStart = "${go-vod}/bin/go-vod";
+      DeviceAllow = [ "/dev/dri/renderD128" "/dev/dri/renderD129" ];
+      ReadOnlyPaths = config.services.nextcloud.home;
+      SupplementaryGroups = [ "nextcloud" ];
+    };
   };
 }
