@@ -1,6 +1,7 @@
 { config, lib, pkgs, inputs, ... }:
 {
   imports = [
+    inputs.nixos-hardware.nixosModules.common-cpu-intel
     ./hardware-configuration.nix
     ../../users/user.nix
     ../../modules

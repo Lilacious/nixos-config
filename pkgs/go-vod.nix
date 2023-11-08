@@ -1,27 +1,17 @@
-{ pkgs, stdenv, lib, fetchurl, autoPatchelfHook, ... }:
+## From rafaelsgirao's nixos-config on github
 
-pkgs.stdenv.mkDerivation rec {
+{ lib, buildGoModule, fetchFromGitHub, ... }:
+buildGoModule rec {
   pname = "go-vod";
   version = "0.1.25";
 
-  src = fetchurl {
-    url = "https://github.com/pulsejet/go-vod/releases/download/0.1.25/go-vod-amd64";
-    sha256 = "1rh88y9xg9qjm6a0pkxy27jrk0krgpyxmgf3b4mwmn2nyq1nv12g";
+  src = fetchFromGitHub {
+    owner = "pulsejet";
+    repo = pname;
+    rev = "${version}";
+    hash = "sha256-OTi1ouMLHOrCIg1HL6I7tLz/p6y5uE8GQxL3jFSuKB0=";
   };
 
-  nativeBuildInputs = [
-    autoPatchelfHook
-  ];
-
-  dontUnpack = true;
-
-  dontBuild = true;
-
-  dontConfigure = true;
-
-  installPhase = ''
-    runHook preInstall
-    install -m755 -D ${src} $out/bin/go-vod
-    runHook postInstall
-  '';
+  deleteVendor = true;
+  vendorHash = null;
 }
