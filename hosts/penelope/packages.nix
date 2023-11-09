@@ -23,7 +23,8 @@
     edid-decode # decode display edid to readable info
     # gparted # parted with ui
     wireguard-tools
-    # texlive.combined.scheme-full
+    # texlive.combined.scheme-basic
+    texlive.combined.scheme-full
     # thunderbird    
     python3
   ];
