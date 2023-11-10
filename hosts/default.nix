@@ -1,4 +1,4 @@
-{ inputs, variables, nixpkgs, home-manager, nur, hyprland, nixos-hardware, agenix, anyrun, ... }:
+{ inputs, variables, nixpkgs, home-manager, nur, nixos-hardware, agenix, ... }:
 let
   pkgs = import nixpkgs {
     config.allowUnfree = true;
@@ -50,7 +50,6 @@ in {
       home-manager.nixosModules.home-manager {
         home-manager = {
           extraSpecialArgs = {
-            inherit hyprland anyrun;
           };
           useGlobalPkgs = true;
           useUserPackages = true;
