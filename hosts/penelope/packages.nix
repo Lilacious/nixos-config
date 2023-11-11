@@ -26,6 +26,8 @@
     # texlive.combined.scheme-basic
     texlive.combined.scheme-full
     # thunderbird    
+    ## Development
     python3
+    gcc
   ];
 }
