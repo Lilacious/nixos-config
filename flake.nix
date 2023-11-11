@@ -18,16 +18,12 @@
       inputs.home-manager.follows = "nixpkgs";
     };
     nur.url = "github:nix-community/NUR";
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = { 
     self, nixpkgs, 
     home-manager, nixos-hardware, agenix, 
-    plasma-manager, nur, nixvim, 
+    plasma-manager, nur, 
     ... 
   }@inputs:
   let
@@ -41,7 +37,7 @@
         inherit (nixpkgs) lib;
         inherit inputs nixpkgs variables;
         inherit home-manager nixos-hardware agenix;
-        inherit plasma-manager nur nixvim;
+        inherit plasma-manager nur;
       }
     );
   };
