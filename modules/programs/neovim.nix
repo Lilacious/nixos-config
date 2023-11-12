@@ -32,9 +32,8 @@ with lib;
             plugin = nvim-colorizer-lua;
             config = "lua require'colorizer'.setup()";
           }
-          ## Better syntax highlighting
-          nvim-treesitter.withAllGrammars
-
+          ## File type icons
+          nvim-web-devicons
           #### Completion engine with LSP
           ## Collection of configurations for built-in LSP client
           nvim-lspconfig

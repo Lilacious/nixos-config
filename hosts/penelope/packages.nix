@@ -19,6 +19,9 @@
     ## Network
     networkmanagerapplet
 
+    ## PDF viewer
+    zathura
+
     ## Other
     edid-decode # decode display edid to readable info
     # gparted # parted with ui
