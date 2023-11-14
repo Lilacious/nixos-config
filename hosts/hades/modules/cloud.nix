@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, pkgs, ... }:
 let
   ## Transcoding
   go-vod = pkgs.callPackage ../../../pkgs/go-vod.nix {};
