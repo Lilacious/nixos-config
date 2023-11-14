@@ -49,6 +49,11 @@
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
+  i18n.supportedLocales = [
+    "en_US.UTF-8/UTF-8"
+    "de_DE.UTF-8/UTF-8"
+  ];
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.amelie = {
     isNormalUser = true;
