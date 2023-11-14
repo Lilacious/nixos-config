@@ -9,7 +9,11 @@ in
     ({
       enabled = "fcitx5";
       fcitx5.addons = with pkgs; [
+        ## Japanese IM
         fcitx5-mozc
+        ## Chinese pinyin IM
+        fcitx5-chinese-addons
+
         fcitx5-gtk
       ];
     })
