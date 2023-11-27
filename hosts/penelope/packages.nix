@@ -22,6 +22,9 @@
     ## PDF viewer
     zathura
 
+    ## Flash card
+    anki
+
     ## Other
     edid-decode # decode display edid to readable info
     # gparted # parted with ui
