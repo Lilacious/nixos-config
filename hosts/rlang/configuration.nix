@@ -61,9 +61,11 @@
     packages = with pkgs; [
       firefox
       discord
-      (rstudio.override {
+      (rstudioWrapper.override {
         packages = with rPackages; [ 
-          mosaic 
+          mosaic
+          GGally
+          ggplot2
         ];
       })
       R
