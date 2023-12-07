@@ -63,6 +63,7 @@
       discord
       rstudio
       R
+      rPackages.mosaic
     ];
   };
 
