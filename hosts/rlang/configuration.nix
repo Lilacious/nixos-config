@@ -61,9 +61,12 @@
     packages = with pkgs; [
       firefox
       discord
-      rstudio
+      (rstudio.override {
+        packages = with rPackages; [ 
+          mosaic 
+        ];
+      })
       R
-      rPackages.mosaic
     ];
   };
 
