@@ -1,8 +1,12 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    ## Web browser
+    ## Password manager
+    keepassxc
 
+    ## IDE
+    jetbrains.idea-ultimate
+    vscodium
 
     ## Communication
     mumble

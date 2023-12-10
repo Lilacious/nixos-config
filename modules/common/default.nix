@@ -26,6 +26,7 @@ with lib;
 
   i18n.extraLocaleSettings = {
     ## LC_ALL = "C";
+    LANGUAGE = "en_US.UTF-8";
     LC_ADDRESS = "de_DE.UTF-8";
     LC_IDENTIFICATION = "de_DE.UTF-8";
     LC_MEASUREMENT = "de_DE.UTF-8";

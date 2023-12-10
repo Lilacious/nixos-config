@@ -22,6 +22,7 @@ in
       sqlmap
       thc-hydra
       nmap
+      padbuster
     ];
   };
 }
