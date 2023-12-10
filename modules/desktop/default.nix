@@ -1,4 +1,4 @@
-{ config, lib, variables, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 with lib;
 {
@@ -46,8 +46,10 @@ with lib;
       enable = true;
     };
   
-    home-manager.users.${variables.username} = {
-      programs.alacritty.enable = true;
+    myModules = {
+      programs = {
+        alacritty.enable = true;
+      };
     };
   };
 }

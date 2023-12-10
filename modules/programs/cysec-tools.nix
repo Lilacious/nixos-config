@@ -19,6 +19,7 @@ in
       hashcat
       gobuster
       john
+      sqlmap
       thc-hydra
       nmap
     ];
