@@ -1,4 +1,4 @@
-{ config, lib, pkgs, inputs, variables, ... }:
+{ inputs, variables, ... }:
 {
   imports = [
     inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t480
@@ -41,7 +41,8 @@
     };
 
     programs = {
-      cysecTools.enable = false;
+      cysecTools.enable = true;
+      firefoxDevedition.enable = true;
     };
   };
 

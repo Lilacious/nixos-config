@@ -32,13 +32,14 @@ in
         konsole
         oxygen
       ];
-      systemPackages = [
-        (pkgs.catppuccin-kde.override {
+      systemPackages = with pkgs; [
+        (catppuccin-kde.override {
           flavour = [ "mocha" ];
           accents = [ "pink" ];
           winDecStyles = [ "modern" ];
         })
-        pkgs.catppuccin-cursors.mochaPink
+        catppuccin-cursors.mochaPink
+        papirus-icon-theme
       ];
     };
   };

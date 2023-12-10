@@ -40,6 +40,11 @@ with lib;
   
     ## GNOME programs
     programs.dconf.enable = true;
+
+    ## Firefox
+    programs.firefox = {
+      enable = true;
+    };
   
     home-manager.users.${variables.username} = {
       programs.alacritty.enable = true;

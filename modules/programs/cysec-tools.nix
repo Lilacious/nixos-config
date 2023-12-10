@@ -17,7 +17,9 @@ in
     environment.systemPackages = with pkgs; [
       binwalk
       hashcat
+      gobuster
       john
+      thc-hydra
       nmap
     ];
   };
