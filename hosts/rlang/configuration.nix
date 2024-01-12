@@ -66,6 +66,8 @@
           mosaic
           GGally
           ggplot2
+          psych
+          car
         ];
       })
       R
