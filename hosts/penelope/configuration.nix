@@ -38,6 +38,8 @@
 
       ## Enable virtualization
       virtualization.enable = true;
+
+      syncthing.enable = true;
     };
 
     programs = {
