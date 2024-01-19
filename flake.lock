@@ -84,7 +84,6 @@
         ]
       },
       "locked": {
-        "lastModified": 1704485878,
         "narHash": "sha256-i7UH31IZyil99EUB5qnQJAiszFkea1B1yZf5pQEDIYg=",
         "owner": "vriska",
         "repo": "nix-rpi5",
