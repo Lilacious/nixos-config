@@ -25,6 +25,8 @@
         hist = "log --pretty=format:\"%h %ad|%s%d 
           [%an]\" --graph --date=short";
         pushcb = "push origin HEAD:refs/for/master";
+        clone-all = "clone --recurse-submodules";
+        pull-all = "pull --recurse-submodules";
       };
       ignores = [
         "*.yunix"
