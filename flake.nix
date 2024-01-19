@@ -18,6 +18,10 @@
       inputs.home-manager.follows = "nixpkgs";
     };
     nur.url = "github:nix-community/NUR";
+    linux-rpi5 = {
+      url = "gitlab:vriska/nix-rpi5";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { 

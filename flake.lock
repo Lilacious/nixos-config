@@ -21,6 +21,20 @@
         "type": "github"
       }
     },
+    "flake-compat": {
+      "locked": {
+        "lastModified": 1696426674,
+        "narHash": "sha256-kvjfFW7WAETZlt09AgDn1MrtKzP7t90Vf7vypd3OL1U=",
+        "rev": "0f9255e01c2351cc7d116c072cb317785dd33b33",
+        "revCount": 57,
+        "type": "tarball",
+        "url": "https://api.flakehub.com/f/pinned/edolstra/flake-compat/1.0.1/018afb31-abd1-7bff-a5e4-cff7e18efb7a/source.tar.gz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://flakehub.com/f/edolstra/flake-compat/1.tar.gz"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -49,11 +63,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1704498488,
-        "narHash": "sha256-yINKdShHrtjdiJhov+q0s3Y3B830ujRoSbHduUNyKag=",
+        "lastModified": 1705660020,
+        "narHash": "sha256-1tOuNh+UbiZlaC8RrpQzzypgnLBC67eRlBunfkE4sbQ=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "51e44a13acea71b36245e8bd8c7db53e0a3e61ee",
+        "rev": "2064348e555b6aa963da6372a8f14e6acb80a176",
         "type": "github"
       },
       "original": {
@@ -62,13 +76,34 @@
         "type": "github"
       }
     },
+    "linux-rpi5": {
+      "inputs": {
+        "flake-compat": "flake-compat",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1704485878,
+        "narHash": "sha256-i7UH31IZyil99EUB5qnQJAiszFkea1B1yZf5pQEDIYg=",
+        "owner": "vriska",
+        "repo": "nix-rpi5",
+        "rev": "ac9942532e1dc2f825ad2aa3a6d31bfbd3b42eed",
+        "type": "gitlab"
+      },
+      "original": {
+        "owner": "vriska",
+        "repo": "nix-rpi5",
+        "type": "gitlab"
+      }
+    },
     "nixos-hardware": {
       "locked": {
-        "lastModified": 1704632650,
-        "narHash": "sha256-83J/nd/NoLqo3vj0S0Ppqe8L+ijIFiGL6HNDfCCUD/Q=",
+        "lastModified": 1705312285,
+        "narHash": "sha256-rd+dY+v61Y8w3u9bukO/hB55Xl4wXv4/yC8rCGVnK5U=",
         "owner": "NixOS",
         "repo": "nixos-hardware",
-        "rev": "c478b3d56969006e015e55aaece4931f3600c1b2",
+        "rev": "bee2202bec57e521e3bd8acd526884b9767d7fa0",
         "type": "github"
       },
       "original": {
@@ -96,11 +131,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1704538339,
-        "narHash": "sha256-1734d3mQuux9ySvwf6axRWZRBhtcZA9Q8eftD6EZg6U=",
+        "lastModified": 1705496572,
+        "narHash": "sha256-rPIe9G5EBLXdBdn9ilGc0nq082lzQd0xGGe092R/5QE=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "46ae0210ce163b3cba6c7da08840c1d63de9c701",
+        "rev": "842d9d80cfd4560648c785f8a4e6f3b096790e19",
         "type": "github"
       },
       "original": {
@@ -112,11 +147,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1704703461,
-        "narHash": "sha256-wrALL/W2fmV+ct+LWb+ThFCwap+48jyTXNBA2Qozqpw=",
+        "lastModified": 1705693547,
+        "narHash": "sha256-/6rVfbj1oaycjvYJeZRqL+ApzNL2FNf6pmfWuk+9Bhs=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "6559903e1813f675e5f72ca092d6f3afa727e1fc",
+        "rev": "868aa9b52241ad7c8cb89cdd207f8d0149ebf95b",
         "type": "github"
       },
       "original": {
@@ -135,11 +170,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1704383901,
-        "narHash": "sha256-i2+yzhc13omN+z9K8W3/+23g7D6yWfLb5Qn5f8VVvZI=",
+        "lastModified": 1705257805,
+        "narHash": "sha256-hx88TjxRWR9hEYrePm2aR/rKAu4VFx4irgN7AofE0Wg=",
         "owner": "pjones",
         "repo": "plasma-manager",
-        "rev": "f11fd526015b5e6b3622c660eda4c4a13d7592bc",
+        "rev": "87ca0e29c6fccfb7f09be6ff137716db5a7c8d8f",
         "type": "github"
       },
       "original": {
@@ -152,6 +187,7 @@
       "inputs": {
         "agenix": "agenix",
         "home-manager": "home-manager_2",
+        "linux-rpi5": "linux-rpi5",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
         "nur": "nur",

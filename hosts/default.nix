@@ -1,12 +1,8 @@
 { inputs, variables, nixpkgs, home-manager, nur, nixos-hardware, agenix, ... }:
 let
-  pkgs = import nixpkgs {
-    config.allowUnfree = true;
-  };
-  
   lib = nixpkgs.lib;
 in {        
-  # penelope, laptop, workstation, Thinkpad T480
+  ## penelope, laptop, workstation, Thinkpad T480
   penelope = lib.nixosSystem {
     specialArgs = { 
       inherit inputs variables;
@@ -14,6 +10,23 @@ in {
     };
     modules = [
       ./penelope/configuration.nix
+      home-manager.nixosModules.home-manager {
+        home-manager = {
+          extraSpecialArgs = {};
+          useGlobalPkgs = true;
+          useUserPackages = true;
+        };
+      }
+    ];
+  };
+  ## arupi 
+  arupi = lib.nixosSystem {
+    specialArgs = {
+      inherit inputs variables;
+      system = "aarch64-linux";
+    };
+    modules = [
+      ./arupi/configuration.nix
       home-manager.nixosModules.home-manager {
         home-manager = {
           extraSpecialArgs = {};
@@ -39,6 +52,14 @@ in {
       }
     ];
   };
+
+
+
+
+
+
+
+
   # sisyphos, desktop, workstation, builder
   sisyphos = lib.nixosSystem {
     specialArgs = { 
