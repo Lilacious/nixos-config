@@ -1,4 +1,4 @@
-{ linux-rpi5, ... }:
+{ pkgs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -22,7 +22,9 @@
     };
   };
 
-  boot.kernelPackages = linux-rpi5.linux_rpi5;
+  services.openssh.enable = true;
+
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.networkmanager.enable = true;
 }
