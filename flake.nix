@@ -18,15 +18,12 @@
       inputs.home-manager.follows = "nixpkgs";
     };
     nur.url = "github:nix-community/NUR";
-    linux-rpi5 = {
-      url = "gitlab:vriska/nix-rpi5";
-    };
   };
 
   outputs = { 
     self, nixpkgs, 
     home-manager, nixos-hardware, agenix, 
-    plasma-manager, nur, linux-rpi5, 
+    plasma-manager, nur, 
     ... 
   }@inputs:
   let
@@ -40,7 +37,7 @@
         inherit (nixpkgs) lib;
         inherit inputs nixpkgs variables;
         inherit home-manager nixos-hardware agenix;
-        inherit plasma-manager nur linux-rpi5;
+        inherit plasma-manager nur;
       }
     );
   };
