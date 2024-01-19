@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ linux-rpi5, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -22,7 +22,7 @@
     };
   };
 
-  boot.kernelPackages = pkgs.linux_rpi5;
+  boot.kernelPackages = linux-rpi5.linux_rpi5;
 
   networking.networkmanager.enable = true;
 }
