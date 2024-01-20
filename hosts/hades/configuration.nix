@@ -82,8 +82,4 @@
     # SATA Active Link Power Management
     scsiLinkPolicy = "med_power_with_dipm";
   };
-
-  # security.polkit.enable = true;
-
-  # hardware.enableRedistributableFirmware = true;
 }

@@ -43,6 +43,7 @@ with lib;
     
   ## Default time zone
   time.timeZone = mkDefault "Europe/Berlin";
-
+  
+  hardware.enableRedistributableFirmware = mkDefault true;
   nixpkgs.config.allowUnfree = mkDefault true;
 }

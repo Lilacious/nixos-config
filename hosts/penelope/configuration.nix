@@ -54,7 +54,6 @@
   ## Bluetooth
   hardware.bluetooth.enable = true;
 
-  # security.polkit.enable = true;
   # services.dbus.enable = true;
 
   # hardware.enableRedistributableFirmware = true;

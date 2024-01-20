@@ -6,6 +6,8 @@ with lib;
     enable = mkForce true;
   };
 
+  security.polkit.enable = mkDefault false;
+
   security.sudo.enable = mkIf( config.security.doas.enable ) false;
 
   security.doas = {
@@ -16,6 +18,7 @@ with lib;
       keepEnv = true;
     }];
   };
+
   home-manager.users.${variables.username} = mkIf( config.security.doas.enable ) {
     programs.zsh = {
       shellAliases = {
