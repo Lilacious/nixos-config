@@ -4,32 +4,35 @@
     ./hardware-configuration.nix
     ../../users/user.nix
     ./packages.nix
-    ../../modules/nixos/syncthing.nix
-    #../../modules/nixos/printing.nix
-    #../../modules/nixos/bluetooth.nix
+    ../../modules
   ];
-  system.stateVersion = "22.05";
+  system.stateVersion = "23.11";
 
   networking.hostName = "sisyphos";
 
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+  boot.loader = {
+    efi = {
+      canTouchEfiVariables = true;
+    };
+    grub = {
+      enable = true;
+      efiSupport = true;
+      device = "nodev";
+    };
+  };
 
   # Enable networking
   networking.networkmanager.enable = true;
 
   services.openssh = {
-  enable = true;
-    settings = {
-      # require public key authentication for better security
-      passwordAuthentication = false;
-      kbdInteractiveAuthentication = false;
-      # permitRootLogin = "yes";
-    };
+    enable = true;
   };
 
-  hardware.enableRedistributableFirmware = true;
+  networking.firewall = {
+    allowedTCPPorts = [ 22 ];
+  };
+  
+  environment.systemPackages = with pkgs; [
+    steamPackages.steamcmd
+  ];
 }
