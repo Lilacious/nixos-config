@@ -53,14 +53,7 @@ in {
     ];
   };
 
-
-
-
-
-
-
-
-  # sisyphos, desktop, workstation, builder
+  # sisyphos, builder
   sisyphos = lib.nixosSystem {
     specialArgs = { 
       inherit inputs variables;
@@ -70,13 +63,9 @@ in {
       ./sisyphos/configuration.nix
       home-manager.nixosModules.home-manager {
         home-manager = {
-          extraSpecialArgs = {
-          };
+          extraSpecialArgs = {};
           useGlobalPkgs = true;
           useUserPackages = true;
-          users.kailee.imports = [  #TODO
-            ./sisyphos/sisyphos-home.nix #TODO
-          ];
         };
       }
     ];
