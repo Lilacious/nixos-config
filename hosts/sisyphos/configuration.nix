@@ -3,7 +3,6 @@
   imports = [
     ./hardware-configuration.nix
     ../../users/user.nix
-    ./packages.nix
     ../../modules
   ];
   system.stateVersion = "23.11";
