@@ -4,6 +4,9 @@ let
   cfg = config.myModules.desktop.plasma5;
 in
 {
+  imports = [
+    ./plasma-config.nix
+  ];
   options = {
     myModules.desktop.plasma5 = {
       enable = mkOption {

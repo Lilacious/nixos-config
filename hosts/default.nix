@@ -1,4 +1,4 @@
-{ inputs, variables, nixpkgs, home-manager, nur, nixos-hardware, agenix, ... }:
+{ inputs, variables, nixpkgs, home-manager, nur, nixos-hardware, plasma-manager, agenix, ... }:
 let
   lib = nixpkgs.lib;
 in {        
@@ -10,6 +10,23 @@ in {
     };
     modules = [
       ./penelope/configuration.nix
+      home-manager.nixosModules.home-manager {
+        home-manager = {
+          extraSpecialArgs = {};
+          useGlobalPkgs = true;
+          useUserPackages = true;
+        };
+      }
+    ];
+  };
+  ## kalypso
+  kalypso = {
+    specialArgs = {
+      inherit inputs variables;
+      system = "x86_64-linux";
+    };
+    modules = [
+      ./kalypso/configuration.nix
       home-manager.nixosModules.home-manager {
         home-manager = {
           extraSpecialArgs = {};
@@ -52,7 +69,6 @@ in {
       }
     ];
   };
-
   # sisyphos, builder
   sisyphos = lib.nixosSystem {
     specialArgs = { 
