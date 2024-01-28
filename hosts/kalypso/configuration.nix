@@ -2,6 +2,7 @@
   imports = [
     ./hardware-configuration.nix
     ./packages.nix
+    ./vfio.nix
     ../../users/user.nix
     ../../modules
   ];

@@ -5,8 +5,8 @@
     keepassxc
 
     ## IDE
-    # jetbrains.idea-ultimate
-    # vscodium
+    jetbrains.idea-ultimate
+    vscodium
 
     ## Communication
     # mumble
