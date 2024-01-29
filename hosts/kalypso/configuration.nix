@@ -50,4 +50,36 @@
 
   ## Bluetooth
   hardware.bluetooth.enable = true;
+
+  services.samba-wsdd = {
+  # make shares visible for Windows clients
+  enable = true;
+  openFirewall = true;
+};
+
+## amd gpu fan control
+programs.corectrl.enable = true;
+
+## Samba share
+services.samba = {
+  enable = true;
+  openFirewall = true;
+  securityType = "user";
+  extraConfig = ''
+    server string = smbnix
+    netbios name = smbnix
+    hosts allow = 192.168.122.11 ## 192.168.0. 127.0.0.1 localhost
+  '';
+  shares = {
+    data = {
+      path = "/data";
+      browseable = "yes";
+      "read only" = "no";
+      "guest ok" = "no";
+      "create mask" = "0644";
+      "directory mask" = "0755";
+      "force user" = "yunix";
+    };
+  };
+};
 }

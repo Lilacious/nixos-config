@@ -21,7 +21,7 @@ with lib;
       layout = mkDefault "de";
       excludePackages = with pkgs; [ xterm ];
     };
-  
+
     # Enable sound with pipewire.
     sound.enable = false;
     hardware.pulseaudio.enable = false;
@@ -48,6 +48,9 @@ with lib;
       #  }];
       #};
     };
+
+    ## Real-time microphone noise suppression
+    programs.noisetorch.enable = true; 
   
     security.polkit.enable = true;
     ## GNOME programs
@@ -57,7 +60,7 @@ with lib;
     programs.firefox = {
       enable = true;
     };
-  
+
     myModules = {
       programs = {
         alacritty.enable = true;

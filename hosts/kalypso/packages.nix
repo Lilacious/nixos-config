@@ -7,7 +7,6 @@
     ## IDE
     jetbrains.idea-ultimate
     vscodium
-
     ## Communication
     # mumble
     discord

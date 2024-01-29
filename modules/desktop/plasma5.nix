@@ -43,6 +43,7 @@ in
         })
         catppuccin-cursors.mochaPink
         papirus-icon-theme
+        xwaylandvideobridge
       ];
     };
   };
