@@ -4,7 +4,10 @@ with lib;
   ## GPU passthrough
   boot.kernelParams = [ "intel_iommu=on" ];
   boot.kernelModules = [ "vfio" "vfio_iommu_type1" "vfio_pci" "vfio_virqfd" ];
-  boot.extraModprobeConfig ="options vfio-pci ids=10de:2782,10de:22bc";
+  boot.extraModprobeConfig = ''
+    ## Isolate GPU
+    options vfio-pci ids=10de:2782,10de:22bc
+  '';
   systemd.tmpfiles.rules = [
     "f /dev/shm/looking-glass 0660 ${variables.username} kvm -"
   ];
