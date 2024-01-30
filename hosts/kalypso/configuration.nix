@@ -76,8 +76,8 @@
       hosts allow = 192.168.122.11 ## 192.168.0. 127.0.0.1 localhost
     '';
     shares = {
-      data = {
-        path = "/data";
+      share = {
+        path = "/data/share";
         browseable = "yes";
         "read only" = "no";
         "guest ok" = "no";
