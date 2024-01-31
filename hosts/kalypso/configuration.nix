@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -21,6 +22,8 @@
       device = "nodev";
     };
   };
+
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   ## Local modules
   myModules = {

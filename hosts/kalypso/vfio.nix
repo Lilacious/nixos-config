@@ -4,20 +4,18 @@ with lib;
   ## GPU passthrough
   boot.kernelParams = [ "intel_iommu=on" ];
   boot.kernelModules = [ "vfio" "vfio_iommu_type1" "vfio_pci" "vfio_virqfd" ];
+
   boot.extraModprobeConfig = ''
-    ## Isolate GPU
     options vfio-pci ids=10de:2782,10de:22bc
-    ## OSX-KVM
-    options kvm_intel nested=1
-    options kvm_intel emulate_invalid_guest_state=0
-    options kvm ignore_msrs=1
   '';
+  
   systemd.tmpfiles.rules = [
     "f /dev/shm/looking-glass 0660 ${variables.username} kvm -"
   ];
   myModules.services.virtualization.enable = mkForce true;
 
   environment.systemPackages = with pkgs; [
+    libguestfs-with-appliance
     looking-glass-client
   ];
 
