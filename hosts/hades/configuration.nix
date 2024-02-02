@@ -12,7 +12,7 @@
   ];
   system.stateVersion = "23.05";
 
-  boot.kernelPackages = pkgs.linuxPackages_6_5;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   security.doas.enable = false;
 
@@ -21,7 +21,7 @@
   boot.loader = {
     efi = {
       canTouchEfiVariables = true;
-      efiSysMountPoint = "/boot/efi"; ## remove to mount efi partition to <root>/boot
+      efiSysMountPoint = "/boot/efi";
     };
     grub = {
       enable = true;
@@ -39,14 +39,10 @@
   enable = true;
     settings = {
       # require public key authentication for better security
-      # PasswordAuthentication = false;
-      # KbdInteractiveAuthentication = false;
-      # permitRootLogin = "yes";
+      settings.PasswordAuthentication = false;
+      settings.KbdInteractiveAuthentication = false;
+      #settings.PermitRootLogin = "yes";
     };
-  };
-
-  networking.firewall = {
-    allowedTCPPorts = [ 22 ];
   };
 
   # zstd compression
