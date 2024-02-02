@@ -39,9 +39,9 @@
   enable = true;
     settings = {
       # require public key authentication for better security
-      settings.PasswordAuthentication = false;
-      settings.KbdInteractiveAuthentication = false;
-      #settings.PermitRootLogin = "yes";
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
+      #PermitRootLogin = "yes";
     };
   };
 
