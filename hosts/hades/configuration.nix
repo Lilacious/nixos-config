@@ -75,5 +75,6 @@
     powertop.enable = true;
     # SATA Active Link Power Management
     scsiLinkPolicy = "med_power_with_dipm";
+    cpuFreqGovernor = "ondemand";
   };
 }
