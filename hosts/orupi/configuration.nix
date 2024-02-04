@@ -28,7 +28,7 @@
 
   services.openssh.enable = true;
 
-  boot.kernelPackages = (pkgs.callPackage ../../pkgs/rk3588-linux/package.nix {});
+  boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.callPackage ../../pkgs/rk3588-linux/package.nix {});
 
   networking.networkmanager.enable = true;
 }
