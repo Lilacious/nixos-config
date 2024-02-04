@@ -19,7 +19,7 @@ in {
       }
     ];
   };
-  ## kalypso
+  ## kalypso, workstation
   kalypso = lib.nixosSystem {
     specialArgs = {
       inherit inputs variables;
@@ -63,6 +63,23 @@ in {
       ./hades/configuration.nix
       home-manager.nixosModules.home-manager {
         home-manager = {
+          useGlobalPkgs = true;
+          useUserPackages = true;
+        };
+      }
+    ];
+  };
+  ## orupi 
+  orupi = lib.nixosSystem {
+    specialArgs = {
+      inherit inputs variables;
+      system = "aarch64-linux";
+    };
+    modules = [
+      ./orupi/configuration.nix
+      home-manager.nixosModules.home-manager {
+        home-manager = {
+          extraSpecialArgs = {};
           useGlobalPkgs = true;
           useUserPackages = true;
         };
