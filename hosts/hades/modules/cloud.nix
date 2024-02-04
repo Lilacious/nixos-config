@@ -12,7 +12,7 @@ in
     # Increment the version of services.nextcloud.package in your config by 1
     # $ Update
     # $ nextcloud-occ maintenance:mode --off
-    package = pkgs.nextcloud27;
+    package = pkgs.nextcloud28;
 
     extraApps = with config.services.nextcloud.package.packages.apps; {
       inherit calendar contacts mail memories 
@@ -23,22 +23,25 @@ in
     home = "/data/nextcloud/home";
     datadir = "/data/nextcloud/data";
     https = true;
-    logType = "file";
-    logLevel = 3;
     autoUpdateApps.enable = true;
     database.createLocally = true;
     config = {
       adminuser = "lilacious";
       adminpassFile = config.age.secrets.nextcloud.path;
       dbtype = "pgsql";
+    };
+    settings = {
+      log_type = "file";
+      loglevel = 3;
+
       extraTrustedDomains = [
         "localcloud.yu-nix.de"
       ];
+
       trustedProxies = [
         "proxy.yu-nix.de"
       ];
-    };
-    extraOptions = {
+
       "memories.exiftool_no_local" = true;
       "memories.exiftool" = "${pkgs.exiftool}/bin/exiftool";
       ## Transcoding

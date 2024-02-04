@@ -12,8 +12,6 @@
   ];
   system.stateVersion = "23.05";
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
   security.doas.enable = false;
 
   networking.hostName = "hades";
@@ -39,9 +37,9 @@
   enable = true;
     settings = {
       # require public key authentication for better security
-      settings.PasswordAuthentication = false;
-      settings.KbdInteractiveAuthentication = false;
-      #settings.PermitRootLogin = "yes";
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
+      #PermitRootLogin = "yes";
     };
   };
 
@@ -77,5 +75,6 @@
     powertop.enable = true;
     # SATA Active Link Power Management
     scsiLinkPolicy = "med_power_with_dipm";
+    cpuFreqGovernor = "ondemand";
   };
 }
