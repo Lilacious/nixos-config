@@ -9,10 +9,17 @@
 
   networking.hostName = "orupi";
 
+  ## Grub bootloader
   boot.loader = {
-    efi.canTouchEfiVariables = true;
-    systemd-boot.enable = true;
-    grub.enable = false;
+    efi = {
+      canTouchEfiVariables = false;
+    };
+    grub = {
+      enable = true;
+      efiSupport = true;
+      efiInstallAsRemovable = true;
+      device = "nodev";
+    };
   };
 
   hardware = {
