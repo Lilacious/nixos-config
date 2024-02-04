@@ -2,6 +2,7 @@
 { stdenv
 , fetchFromGitLab
 , buildLinux
+, lib
 , modDirVersionArg ? null
 , ... } @ args:
 
