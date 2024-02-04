@@ -1,18 +1,38 @@
-{
-  fetchzip,
-  linuxManualConfig,
-  ...
-}:
-(linuxManualConfig {
-  version = "6.8-collabora-rk3588";
-  modDirVersion = "6.8.0-rc1";
 
-  src = fetchzip {
-    url = "https://gitlab.collabora.com/hardware-enablement/rockchip-3588/linux/-/archive/v6.8-rc1/linux-v6.8-rc1.zip";
-    sha256 = "sha256-44YfESw5J8WwSkB+A538aa+0e6U4m06XynOP42No2WY=";
-  };
+{ stdenv
+, fetchFromGitLab
+, buildLinux
+, modDirVersionArg ? null
+, ... } @ args:
 
-  configfile = ./linux-rockchip-rk3588-collabora.config;
+let
+  inherit (stdenv.lib)
+    concatStrings
+    intersperse
+    take
+    splitString
+    optionalString
+  ;
+in
+(
+  buildLinux (args // rec {
+    version = "6.8-rc1";
 
-  allowImportFromDerivation = true;
-})
+    modDirVersion = if (modDirVersionArg == null) then concatStrings (intersperse "." (take 3 (splitString "." "${version}.0"))) else modDirVersionArg;
+
+    extraMeta.branch = concatStrings (intersperse "." (take 2 (splitString "." version)));
+
+    src = fetchFromGitLab {
+      domain = "gitlab.collabora.com";
+      owner = "rockchip-3588";
+      repo = "linux";
+      rev = "${version}";
+      sha256 = "0awqab6a7rsmyd87icg4yir3za084664j50hclgw6hkpl0ppmpsd";
+    };
+
+    postInstall = (optionalString (args ? postInstall) args.postInstall) + ''
+      mkdir -p "$out/nix-support"
+      cp -v "$buildRoot/.config" "$out/nix-support/build.config"
+    '';
+  } // (args.argsOverride or {}))
+)
