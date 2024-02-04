@@ -1,13 +1,12 @@
 
-{ stdenv
+{ lib
 , fetchFromGitLab
 , buildLinux
-, lib
 , modDirVersionArg ? null
 , ... } @ args:
 
 let
-  inherit (stdenv.lib)
+  inherit (lib)
     concatStrings
     intersperse
     take
