@@ -5,7 +5,7 @@
 }:
 (linuxManualConfig {
   version = "6.8-collabora-rk3588";
-  modDirVersion = "6.8-rc1";
+  modDirVersion = "6.8.0-rc1";
 
   src = fetchzip {
     url = "https://gitlab.collabora.com/hardware-enablement/rockchip-3588/linux/-/archive/v6.8-rc1/linux-v6.8-rc1.zip";
