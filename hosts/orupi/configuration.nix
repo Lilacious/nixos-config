@@ -9,11 +9,11 @@
 
   networking.hostName = "orupi";
 
-  ## Grub bootloader
   boot.loader = {
     efi = {
       canTouchEfiVariables = false;
     };
+    timeout = 1;
     grub = {
       enable = true;
       efiSupport = true;
@@ -22,18 +22,13 @@
     };
   };
 
-  hardware = {
-    deviceTree = {
-      # https://github.com/armbian/build/blob/f9d7117/config/boards/orangepi5-plus.wip#L10C51-L10C51
-      name = "rockchip/rk3588-orangepi-5-plus.dtb";
-      overlays = [
-      ];
-    };
-    firmware = [
-    ];
-  };
+  hardware.deviceTree.name = "rockchip/rk3588-orangepi-5-plus.dtb";
 
-  services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    settings.PasswordAuthentication = false;
+    settings.KbdInteractiveAuthentication = false;
+  };
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
