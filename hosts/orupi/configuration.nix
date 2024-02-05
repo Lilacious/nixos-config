@@ -4,6 +4,7 @@
     ./hardware-configuration.nix
     ../../users/user.nix
     ../../modules
+    ../../private/hosts/orupi
   ];
   system.stateVersion = "23.11";
 
