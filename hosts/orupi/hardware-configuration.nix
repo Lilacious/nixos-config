@@ -8,23 +8,23 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "nvme" "usbhid" ];
+  boot.initrd.availableKernelModules = [ ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/32fc30f2-464a-4710-85e3-5ddee0b65fa6";
+    { device = "/dev/disk/by-uuid/d7f3e1d2-b5c9-409d-b834-6707408cf46f";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/30D0-EBD0";
+    { device = "/dev/disk/by-uuid/0009-A469";
       fsType = "vfat";
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/c0ec4217-cb11-4b69-bb8c-0eac305fe02f"; }
+    [ { device = "/dev/disk/by-uuid/25379b48-e074-42cc-ba04-a17a12d08da7"; }
     ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
@@ -36,5 +36,4 @@
   # networking.interfaces.enP4p65s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
-  powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
 }
