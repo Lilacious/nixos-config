@@ -36,23 +36,6 @@ in {
       }
     ];
   };
-  ## arupi 
-  arupi = lib.nixosSystem {
-    specialArgs = {
-      inherit inputs variables;
-      system = "aarch64-linux";
-    };
-    modules = [
-      ./arupi/configuration.nix
-      home-manager.nixosModules.home-manager {
-        home-manager = {
-          extraSpecialArgs = {};
-          useGlobalPkgs = true;
-          useUserPackages = true;
-        };
-      }
-    ];
-  };
   ## hades, nas, server
   hades = lib.nixosSystem {
     specialArgs = { 
@@ -113,5 +96,4 @@ in {
     ];
   };
   ## Add new hosts here
-
 }
