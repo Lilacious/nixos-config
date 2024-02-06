@@ -4,6 +4,7 @@
     ./hardware-configuration.nix
     ../../users/user.nix
     ../../modules
+    ./modules
   ];
   system.stateVersion = "23.11";
 
@@ -33,4 +34,6 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.networkmanager.enable = true;
+
+  powerManagement.cpuFreqGovernor = "ondemand";
 }
