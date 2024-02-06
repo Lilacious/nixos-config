@@ -51,8 +51,10 @@ with lib;
           set nocompatible
           set backspace=indent,eol,start
           set number
+
           "" Clipboard support
-          set clipboard+=unnamedplus
+
+          set clipboard=unnamedplus
 
           "" Set color scheme
           colorscheme catppuccin-mocha

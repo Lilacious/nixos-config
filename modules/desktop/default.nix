@@ -18,7 +18,7 @@ with lib;
   config = mkIf (config.myModules.desktop.enable) {
     services.xserver = {
       enable = mkDefault false;
-      layout = mkDefault "de";
+      xkb.layout = mkDefault "de";
       excludePackages = with pkgs; [ xterm ];
     };
 
