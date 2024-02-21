@@ -23,6 +23,7 @@
     # texlive.combined.scheme-basic
     # texlive.combined.scheme-full
     # thunderbird    
+    xournalpp
 
     ## Development
     (python3.withPackages(ps: with ps; [ tkinter ]))
