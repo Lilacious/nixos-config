@@ -1,12 +1,12 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, variables, inputs, ... }:
 with lib;
 let
   cfg = config.myModules.desktop.plasma5;
 in
 {
-  imports = [
-    ./plasma-config.nix
-  ];
+  #imports = [
+  #  ./plasma-config.nix
+  #];
   options = {
     myModules.desktop.plasma5 = {
       enable = mkOption {
@@ -45,6 +45,25 @@ in
         papirus-icon-theme
         xwaylandvideobridge
       ];
+    };
+
+    home-manager.users.${variables.username} = {
+      imports = [
+        inputs.plasma-manager.homeManagerModules.plasma-manager
+        ./plasma-configs.nix
+      ];
+
+      gtk = {
+        enable = true;
+        theme = {
+          name = "Catppuccin-Mocha-Compact-Pink-Dark";
+          package = pkgs.catppuccin-gtk.override {
+            accents = [ "pink" ];
+            size = "compact";
+            variant = "mocha";
+          };
+        };
+      };
     };
   };
 }
