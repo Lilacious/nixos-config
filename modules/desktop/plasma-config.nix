@@ -144,7 +144,7 @@
       "kwin"."Window Maximize" = "Meta+M";
       "kwin"."Window Maximize Horizontal" = [ ];
       "kwin"."Window Maximize Vertical" = [ ];
-      "kwin"."Window Minimize" = "Meta+PgDown";
+      "kwin"."Window Minimize" = "Meta+N";
       "kwin"."Window Move" = [ ];
       "kwin"."Window Move Center" = [ ];
       "kwin"."Window No Border" = [ ];
@@ -349,7 +349,7 @@
       "kglobalshortcutsrc"."org.kde.plasma.emojier.desktop"."_k_friendly_name" = "Emoji Selector";
       "kglobalshortcutsrc"."org.kde.spectacle.desktop"."_k_friendly_name" = "Spectacle";
       "kglobalshortcutsrc"."org_kde_powerdevil"."_k_friendly_name" = "Power Management";
-      "kglobalshortcutsrc"."plasmashell"."_k_friendly_name" = "Plasma";
+      "kglobalshortcutsrc"."plasmashell"."_k_friendly_name" = "Activity switching";
       "kglobalshortcutsrc"."systemsettings.desktop"."_k_friendly_name" = "System Settings";
       "khotkeysrc"."Data"."DataCount" = 3;
       "khotkeysrc"."Data_1"."Comment" = "KMenuEdit Global Shortcuts";
@@ -957,7 +957,7 @@
       "plasma-localerc"."Formats"."LC_TELEPHONE" = "de_DE.UTF-8";
       "plasma-localerc"."Formats"."LC_TIME" = "en_DE.UTF-8";
       "plasma-localerc"."Translations"."LANGUAGE" = "en_US";
-      "plasmarc"."Wallpapers"."usersWallpapers" = "/home/yunix/Pictures/Wallpaper/default.png";
+      "plasmarc"."Wallpapers"."usersWallpapers" = "/nix/store/i0vcjfygq43kf3z8ar6jvigx3xsj1ynw-plasma-workspace-wallpapers-5.27.10/share/wallpapers/DarkestHour/,/data/main-drive/DMIC/Wallpaper/wallhaven-wq37kp_2560x1440.png";
     };
   };
 }

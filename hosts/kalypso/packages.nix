@@ -24,6 +24,7 @@
     # texlive.combined.scheme-full
     # thunderbird    
     xournalpp
+    spotify
 
     ## Development
     (python3.withPackages(ps: with ps; [ tkinter ]))
