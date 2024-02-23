@@ -238,7 +238,7 @@
       "org_kde_powerdevil"."PowerOff" = "Power Off";
       "org_kde_powerdevil"."Sleep" = "Sleep";
       "org_kde_powerdevil"."Toggle Keyboard Backlight" = "Keyboard Light On/Off";
-      "org_kde_powerdevil"."Turn Off Screen" = [ ];
+      "org_kde_powerdevil"."Turn Off Screen" = "Meta+Ctrl+Alt+End";
       "plasmashell"."activate task manager entry 1" = [ ];
       "plasmashell"."activate task manager entry 10" = [ ];
       "plasmashell"."activate task manager entry 2" = [ ];

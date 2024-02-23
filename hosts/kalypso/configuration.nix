@@ -53,6 +53,15 @@
   ## Enable networking
   networking.networkmanager.enable = true;
 
+  ## Network briges
+  networking.interfaces.enp39s0.useDHCP = true;
+  networking.interfaces.br0.useDHCP = true;
+  networking.bridges = {
+  "br0" = {
+    interfaces = [ "enp39s0" ];
+  };
+};
+
   ## Bluetooth
   hardware.bluetooth.enable = true;
 
