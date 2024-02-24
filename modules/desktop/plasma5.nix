@@ -50,7 +50,7 @@ in
     home-manager.users.${variables.username} = {
       imports = [
         inputs.plasma-manager.homeManagerModules.plasma-manager
-        ./plasma-configs.nix
+        ./plasma-config.nix
       ];
 
       gtk = {
