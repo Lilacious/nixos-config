@@ -28,7 +28,9 @@
     wireguard-tools
     # texlive.combined.scheme-basic
     texlive.combined.scheme-full
-    # thunderbird    
+    # thunderbird 
+    moonlight-qt
+
     ## Development
     python3
     gcc
