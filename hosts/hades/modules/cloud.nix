@@ -1,6 +1,5 @@
 { config, pkgs, ... }:
 let
-  ## Transcoding
   go-vod = pkgs.callPackage ../../../pkgs/go-vod/package.nix {};
 in
 {
@@ -16,7 +15,7 @@ in
 
     extraApps = with config.services.nextcloud.package.packages.apps; {
       inherit calendar contacts mail memories 
-      maps spreed previewgenerator;
+      maps previewgenerator;
     };
     extraAppsEnable = true;
     hostName = "cloud.yu-nix.de";
@@ -30,41 +29,32 @@ in
       adminpassFile = config.age.secrets.nextcloud.path;
       dbtype = "pgsql";
     };
+
     settings = {
       log_type = "file";
       loglevel = 3;
 
+      default_phone_region = "DE";
+
       extraTrustedDomains = [
-        "cloudset.yu-nix.de"
-        "cloudv6.yu.nix.de"
       ];
 
-      trustedProxies = [
-      ];
+      "maintenance_window_start" = 1;
 
       "memories.exiftool_no_local" = true;
       "memories.exiftool" = "${pkgs.exiftool}/bin/exiftool";
-      ## Transcoding
       "memories.vod.path" = "${go-vod}/bin/go-vod";
-      "memories.vod.ffmpeg" = "${pkgs.ffmpeg}/bin/ffmpeg";
-      "memories.vod.ffprobe" = "${pkgs.ffmpeg}/bin/ffprobe";
+      "memories.vod.ffmpeg" = "${pkgs.jellyfin-ffmpeg}/bin/ffmpeg";
+      "memories.vod.ffprobe" = "${pkgs.jellyfin-ffmpeg}/bin/ffprobe";
     };
 
     phpOptions = {
-      "apc.enable_cli" = "1";
+      "opcache.interned_strings_buffer" = "32";
     };
 
-    phpExtraExtensions = all: [
-      all.imagick
-    ];
-
-    maxUploadSize = "32G";
+    maxUploadSize = "128G";
 
     configureRedis = true;
-    caching = {
-      apcu = true;
-      redis = true;
-    };
   };
 
   age.secrets.nextcloud = {
@@ -76,7 +66,7 @@ in
   environment.systemPackages = with pkgs; [
     perl
     exiftool
-    ffmpeg
+    jellyfin-ffmpeg
 
     ## Transcoding
     go-vod
@@ -87,26 +77,11 @@ in
     path = [pkgs.perl];
   };
 
-  networking.firewall = {
-    allowedTCPPorts = [ 80 443 ];
-  };
-
-  ## Transcoding
-  systemd.services."go-vod" = {
-    path = with pkgs; [
-      ffmpeg
-    ];
-    serviceConfig = {
-      DynamicUser = true;
-      ExecStart = "${go-vod}/bin/go-vod";
-      DeviceAllow = [ "/dev/dri/renderD128" "/dev/dri/renderD129" ];
-      ReadOnlyPaths = config.services.nextcloud.home;
-      SupplementaryGroups = [ "nextcloud" ];
+  services.nginx.virtualHosts = {
+    ${config.services.nextcloud.hostName} = {
+      forceSSL = true;
+      enableACME = true;
     };
-  };
-
-  services.nginx.virtualHosts.${config.services.nextcloud.hostName} = {
-    forceSSL = true;
-    enableACME = true;
+    "localhost".listen = [ { addr = "127.0.0.1"; port = 4080; } ];
   };
 }
