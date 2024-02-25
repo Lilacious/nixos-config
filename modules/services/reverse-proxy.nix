@@ -19,10 +19,10 @@ in
 
     services.nginx = {
       enable = true;
-      recommendedGzipSettings = true;
-      recommendedOptimisation = true;
-      recommendedProxySettings = true;
-      recommendedTlsSettings = true;
+      recommendedGzipSettings = mkDefault true;
+      recommendedOptimisation = mkDefault true;
+      recommendedProxySettings = mkDefault true;
+      recommendedTlsSettings = mkDefault true;
     };
 
     networking.firewall.allowedTCPPorts = [
