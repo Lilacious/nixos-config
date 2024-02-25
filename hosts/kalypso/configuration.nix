@@ -23,6 +23,7 @@
     };
   };
 
+  ## Linux Kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   ## Local modules
@@ -55,17 +56,16 @@
   ## Bluetooth
   hardware.bluetooth.enable = true;
 
+
+  ## Enable OpenTabletDriver
+  hardware.opentabletdriver.enable = true;
+
+  ## Enable Steam
   programs.steam = {
     enable = true;
   };
-
-  services.samba-wsdd = {
-  # make shares visible for Windows clients
-    enable = true;
-    openFirewall = true;
-  };
-
-  ## amd gpu fan control
+  
+  ## AMD GPU fan control
   programs.corectrl.enable = true;
 
   ## Samba share

@@ -8,7 +8,7 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "nvme" "ahci" "xhci_pci" "usbhid" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "nvme" "ahci" "xhci_pci" "usbhid" "usbcore" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
@@ -23,13 +23,8 @@
       fsType = "vfat";
     };
 
-  fileSystems."/data/main-drive" =
+  fileSystems."/data" =
     { device = "/dev/disk/by-uuid/399e4d37-0319-478e-9947-9eafc311c0a7";
-      fsType = "ext4";
-    };
-
-  fileSystems."/data/share" =
-    { device = "/dev/disk/by-uuid/ed2a1f57-2390-4c5b-bb50-84b087c52415";
       fsType = "ext4";
     };
 
@@ -42,8 +37,10 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
+  # networking.interfaces.br0.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp39s0.useDHCP = lib.mkDefault true;
   # networking.interfaces.virbr0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.vnet5.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlo1.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

@@ -17,7 +17,7 @@
       "kcm_touchpad"."Enable Touchpad" = [ ];
       "kcm_touchpad"."Toggle Touchpad" = "Touchpad Toggle";
       "kded5"."Show System Activity" = "Ctrl+Esc";
-      "kded5"."display" = ["Display" "Meta+P"];
+      "kded5"."display" = ["" "Display" "Meta+P"];
       "khotkeys"."{d03619b6-9b3c-48cc-9d9c-a2aadb485550}" = [ ];
       "kmix"."decrease_microphone_volume" = "Microphone Volume Down";
       "kmix"."decrease_volume" = "Volume Down";
@@ -26,7 +26,7 @@
       "kmix"."mic_mute" = "Microphone Mute";
       "kmix"."mute" = "Volume Mute";
       "ksmserver"."Halt Without Confirmation" = [ ];
-      "ksmserver"."Lock Session" = ["Meta+L" "Screensaver"];
+      "ksmserver"."Lock Session" = ["" "Meta+L" "Screensaver"];
       "ksmserver"."Log Out" = "Ctrl+Alt+Del";
       "ksmserver"."Log Out Without Confirmation" = [ ];
       "ksmserver"."Reboot Without Confirmation" = [ ];
@@ -34,7 +34,7 @@
       "kwin"."Decrease Opacity" = [ ];
       "kwin"."Edit Tiles" = "Meta+T";
       "kwin"."Expose" = "Ctrl+F9";
-      "kwin"."ExposeAll" = ["Ctrl+F10" "Launch (C)"];
+      "kwin"."ExposeAll" = ["" "Ctrl+F10" "Launch (C)"];
       "kwin"."ExposeClass" = "Ctrl+F7";
       "kwin"."ExposeClassCurrentDesktop" = [ ];
       "kwin"."Increase Opacity" = [ ];
@@ -47,7 +47,7 @@
       "kwin"."MoveZoomRight" = [ ];
       "kwin"."MoveZoomUp" = [ ];
       "kwin"."Overview" = [ ];
-      "kwin"."PoloniumCycleLayouts" = ", ";
+      "kwin"."PoloniumCycleLayouts" = "Meta+,none";
       "kwin"."PoloniumEngineBTree" = [ ];
       "kwin"."PoloniumEngineHalf" = [ ];
       "kwin"."PoloniumEngineKWin" = [ ];
@@ -144,7 +144,7 @@
       "kwin"."Window Maximize" = "Meta+M";
       "kwin"."Window Maximize Horizontal" = [ ];
       "kwin"."Window Maximize Vertical" = [ ];
-      "kwin"."Window Minimize" = "Meta+N";
+      "kwin"."Window Minimize" = "Meta+PgDown";
       "kwin"."Window Move" = [ ];
       "kwin"."Window Move Center" = [ ];
       "kwin"."Window No Border" = [ ];
@@ -208,7 +208,7 @@
       "kwin"."Window to Screen 6" = [ ];
       "kwin"."Window to Screen 7" = [ ];
       "kwin"."view_actual_size" = "Meta+0";
-      "kwin"."view_zoom_in" = ["Meta++" "Meta+="];
+      "kwin"."view_zoom_in" = ["" "Meta++" "Meta+="];
       "kwin"."view_zoom_out" = "Meta+-";
       "mediacontrol"."mediavolumedown" = [ ];
       "mediacontrol"."mediavolumeup" = [ ];
@@ -221,7 +221,7 @@
       "org.kde.dolphin.desktop"."_launch" = "Meta+E";
       "org.kde.krunner.desktop"."RunClipboard" = "Alt+Shift+F2";
       "org.kde.krunner.desktop"."_launch" = "Meta+Space";
-      "org.kde.plasma.emojier.desktop"."_launch" = ["Meta+." "Meta+Ctrl+Alt+Shift+Space"];
+      "org.kde.plasma.emojier.desktop"."_launch" = ["" "Meta+." "Meta+Ctrl+Alt+Shift+Space"];
       "org.kde.spectacle.desktop"."ActiveWindowScreenShot" = "Meta+Print";
       "org.kde.spectacle.desktop"."CurrentMonitorScreenShot" = [ ];
       "org.kde.spectacle.desktop"."FullScreenScreenShot" = "Shift+Print";
@@ -238,7 +238,7 @@
       "org_kde_powerdevil"."PowerOff" = "Power Off";
       "org_kde_powerdevil"."Sleep" = "Sleep";
       "org_kde_powerdevil"."Toggle Keyboard Backlight" = "Keyboard Light On/Off";
-      "org_kde_powerdevil"."Turn Off Screen" = "Meta+Ctrl+Alt+End";
+      "org_kde_powerdevil"."Turn Off Screen" = [ ];
       "plasmashell"."activate task manager entry 1" = [ ];
       "plasmashell"."activate task manager entry 10" = [ ];
       "plasmashell"."activate task manager entry 2" = [ ];
@@ -283,7 +283,7 @@
       "kactivitymanagerdrc"."activities"."e1bbce15-23ae-40da-85ea-6cbb8649f18c" = "Default";
       "kactivitymanagerdrc"."main"."currentActivity" = "e1bbce15-23ae-40da-85ea-6cbb8649f18c";
       "kcminputrc"."Libinput.10429.2353.UGTABLET 6 inch PenTablet Pen"."OutputName" = "HDMI-A-2";
-      "kcminputrc"."Libinput.1133.49291.Logitech G502 HERO Gaming Mouse"."PointerAcceleration" = 0.4;
+      "kcminputrc"."Libinput.1133.49291.Logitech G502 HERO Gaming Mouse"."PointerAcceleration" = 0.400;
       "kcminputrc"."Libinput.2.10.TPPS/2 IBM TrackPoint"."PointerAcceleration" = 1.0;
       "kcminputrc"."Mouse"."X11LibInputXAccelProfileFlat" = true;
       "kcminputrc"."Mouse"."XLbInptPointerAcceleration" = 1;
@@ -939,7 +939,7 @@
       "kwinrc"."Windows"."DelayFocusInterval" = 0;
       "kwinrc"."Windows"."FocusPolicy" = "FocusFollowsMouse";
       "kwinrc"."Windows"."NextFocusPrefersMouse" = true;
-      "kwinrc"."Windows"."Placement" = "Centered";
+      "kwinrc"."Windows"."Placement" = "Maximizing";
       "kwinrc"."Xwayland"."Scale" = 1;
       "kwinrc"."org.kde.kdecoration2"."ButtonsOnLeft" = "M";
       "kwinrc"."org.kde.kdecoration2"."ButtonsOnRight" = "IAX";
