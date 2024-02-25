@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 let
   ## Transcoding
-  go-vod = pkgs.callPackage ../../../pkgs/go-vod.nix {};
+  go-vod = pkgs.callPackage ../../../pkgs/go-vod/package.nix {};
 in
 {
   services.nextcloud = {
@@ -35,11 +35,11 @@ in
       loglevel = 3;
 
       extraTrustedDomains = [
-        "localcloud.yu-nix.de"
+        "cloudset.yu-nix.de"
+        "cloudv6.yu.nix.de"
       ];
 
       trustedProxies = [
-        "proxy.yu-nix.de"
       ];
 
       "memories.exiftool_no_local" = true;
@@ -103,5 +103,10 @@ in
       ReadOnlyPaths = config.services.nextcloud.home;
       SupplementaryGroups = [ "nextcloud" ];
     };
+  };
+
+  services.nginx.virtualHosts.${config.services.nextcloud.hostName} = {
+    forceSSL = true;
+    enableACME = true;
   };
 }
