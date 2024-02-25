@@ -1,6 +1,7 @@
 {
   imports = [
     ./adguard.nix
+    ./komga.nix
   ];
 
   security.acme.acceptTerms = true;
