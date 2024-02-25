@@ -4,7 +4,7 @@
     programs.git = {
       enable = true;
       userName = "Yuchen He";
-      userEmail = "yuchenhe126@gmail.com";
+      userEmail = "${variables.email}";
       aliases = {
         ci = "commit -s";
         co = "checkout";

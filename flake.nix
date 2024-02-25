@@ -30,6 +30,7 @@
     variables = {
       username = "yunix";
       shell = "zsh";
+      email = "yuchenhe126@gmail.com";
     };
   in {
     nixosConfigurations = (

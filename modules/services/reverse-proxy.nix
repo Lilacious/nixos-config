@@ -15,7 +15,7 @@ in
   };
   config = mkIf (cfg.enable) {
     security.acme.acceptTerms = true;
-    security.acme.defaults.email = "yuchenhe126@gmail.com";
+    security.acme.defaults.email = "${variables.email}";
 
     services.nginx = {
       enable = true;
