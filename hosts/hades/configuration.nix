@@ -6,9 +6,7 @@
     ../../users/user.nix
     ../../modules
     ../../secrets
-    ./modules/dashboard.nix
-    ./modules/torrent.nix
-    ./modules/cloud.nix
+    ./modules
   ];
   system.stateVersion = "23.05";
 
