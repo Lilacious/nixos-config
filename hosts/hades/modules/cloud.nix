@@ -18,11 +18,13 @@ in
       maps previewgenerator;
     };
     extraAppsEnable = true;
+    autoUpdateApps.enable = true;
+
     hostName = "cloud.yu-nix.de";
-    home = "/data/nextcloud/home";
+    home = "/var/lib/nextcloud";
     datadir = "/data/nextcloud/data";
     https = true;
-    autoUpdateApps.enable = true;
+
     database.createLocally = true;
     config = {
       adminuser = "lilacious";
