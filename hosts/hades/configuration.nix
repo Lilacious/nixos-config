@@ -1,4 +1,4 @@
-{ config, lib, pkgs, inputs, ... }:
+{ pkgs, inputs, ... }:
 {
   imports = [
     inputs.nixos-hardware.nixosModules.common-cpu-intel
@@ -29,8 +29,6 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  networking.interfaces.enp1s0.wakeOnLan.enable = true;
-
   services.openssh = {
   enable = true;
     settings = {
@@ -41,7 +39,7 @@
     };
   };
 
-  # zstd compression
+  # btrfs zstd compression
   fileSystems = {
     "/".options = [ "compress=zstd" ];
     "/home".options = [ "compress=zstd" ];
@@ -58,21 +56,41 @@
   
   boot.supportedFilesystems = [ "zfs" ];
 
-  boot.zfs.forceImportRoot = false;
-
   networking.hostId = "d93a8103";
 
   # disk spin-down
   powerManagement.powerUpCommands = ''
-    ${pkgs.hdparm}/sbin/hdparm -S 180 /dev/disk/by-id/ata-ST4000DM004-2CV104_WFN86XH3
-    ${pkgs.hdparm}/sbin/hdparm -S 180 /dev/disk/by-id/ata-ST4000DM004-2CV104_WFN86XLT
+    ${pkgs.hdparm}/sbin/hdparm -S 180 /dev/disk/by-id/ata-WDC_WD20EFRX-68EUZN0_WD-WCC4M5TR0YYR  
+    ${pkgs.hdparm}/sbin/hdparm -S 180 /dev/disk/by-id/ata-WDC_WD20EFRX-68EUZN0_WD-WCC4M6SETN2A
   '';
 
   powerManagement = {
     # powertop autotune
     powertop.enable = true;
     # SATA Active Link Power Management
-    scsiLinkPolicy = "med_power_with_dipm";
+    #scsiLinkPolicy = "med_power_with_dipm";
+    scsiLinkPolicy = "min_power";
     cpuFreqGovernor = "ondemand";
+  };
+
+  boot.kernelParams = [ 
+    "intel_pstate=disable"
+    "nvme_load=YES"
+    "nvme_core.default_ps_max_latency_us=500"
+    "pcie_aspm=powersave"
+  ];
+
+  systemd.services.ethaspm = {
+    wantedBy = [ "multi-user.target" ];
+    path = [ pkgs.coreutils ];
+    enable = true;
+    serviceConfig = {
+      User = "root";
+      Group = "root";
+    };
+    script = ''
+      echo '1' > '/sys/devices/pci0000:00/0000:00:1c.0/0000:01:00.0/link/l1_2_aspm'
+      echo '1' > '/sys/devices/pci0000:00/0000:00:1c.1/0000:02:00.0/link/l1_2_aspm'
+    '';
   };
 }
