@@ -52,18 +52,6 @@ in
         inputs.plasma-manager.homeManagerModules.plasma-manager
         ./plasma-config.nix
       ];
-
-      gtk = {
-        enable = true;
-        theme = {
-          name = "Catppuccin-Mocha-Compact-Pink-Dark";
-          package = pkgs.catppuccin-gtk.override {
-            accents = [ "pink" ];
-            size = "compact";
-            variant = "mocha";
-          };
-        };
-      };
     };
   };
 }

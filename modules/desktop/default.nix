@@ -4,6 +4,7 @@ with lib;
 {
   imports = [
     ./plasma5.nix
+    ./gtk.nix
   ];
 
   options = {

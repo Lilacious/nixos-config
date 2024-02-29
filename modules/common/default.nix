@@ -11,6 +11,7 @@ with lib;
     ./starship.nix
     ./vim.nix
     ./zsh.nix
+    ./xdg.nix
   ];
 
   i18n.supportedLocales = [
