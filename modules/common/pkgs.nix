@@ -10,7 +10,11 @@
     usbutils
     dmidecode
     lm_sensors
+
+    ## Tops
     htop
+    btop
+    powertop
 
     ## Files
     zip
@@ -19,6 +23,8 @@
     ### Core utils
     ## find
     fd          # Simple find command
+    fzf         # A command-line fuzzy finder
+
     ## du/df
     ncdu        # Disk usage analyzer ncurses
     # du-dust     # Disk usage analizer in rust
@@ -35,7 +41,6 @@
     ## Other
     neofetch    # Sys info fetcher
     cheat       # cheat sheet
-    powertop
 
     ### Important
     ## System wide git needed for doas nixos-switch --flake

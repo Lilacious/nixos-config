@@ -19,6 +19,5 @@ in  {
       home.homeDirectory = "/home/${variables.username}";
       home.stateVersion = "23.05";
     };
-    backupFileExtension = "backup";   
   };
 }
