@@ -6,6 +6,7 @@
     ./input-method.nix
     ./neovim.nix
     ./tmux.nix
+    ./tud-tools.nix
     ./zoxide.nix
   ];
 }

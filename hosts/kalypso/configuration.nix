@@ -46,6 +46,7 @@
 
     programs = {
       cysecTools.enable = false;
+      tudTools.enable = true;
       firefoxDevedition.enable = false;
     };
   };
@@ -55,7 +56,6 @@
 
   ## Bluetooth
   hardware.bluetooth.enable = true;
-
 
   ## Enable OpenTabletDriver
   #hardware.opentabletdriver.enable = true;
