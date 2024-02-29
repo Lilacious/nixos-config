@@ -58,7 +58,7 @@
 
 
   ## Enable OpenTabletDriver
-  hardware.opentabletdriver.enable = true;
+  #hardware.opentabletdriver.enable = true;
 
   ## Enable Steam
   programs.steam = {
