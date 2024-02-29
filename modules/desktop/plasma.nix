@@ -28,6 +28,7 @@ in
     environment = {
       plasma6.excludePackages = with pkgs.libsForQt5; [
         elisa
+        plasma-browser-integration
         #khelpcenter
         konsole
         oxygen
