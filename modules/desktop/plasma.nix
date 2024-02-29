@@ -1,14 +1,11 @@
 { config, lib, pkgs, variables, inputs, ... }:
 with lib;
 let
-  cfg = config.myModules.desktop.plasma5;
+  cfg = config.myModules.desktop.plasma;
 in
 {
-  #imports = [
-  #  ./plasma-config.nix
-  #];
   options = {
-    myModules.desktop.plasma5 = {
+    myModules.desktop.plasma = {
       enable = mkOption {
         type = types.bool;
         default = false;
@@ -22,14 +19,14 @@ in
         enable = true;
         displayManager = {
           sddm.enable = mkDefault true;
-          defaultSession = "plasmawayland";
+          #defaultSession = "plasmawayland";
         };
-        desktopManager.plasma5.enable = true;
+        desktopManager.plasma6.enable = true;
       };
     };
 
     environment = {
-      plasma5.excludePackages = with pkgs.libsForQt5; [
+      plasma6.excludePackages = with pkgs.libsForQt5; [
         elisa
         #khelpcenter
         konsole

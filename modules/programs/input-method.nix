@@ -17,7 +17,7 @@ in
         fcitx5-gtk
       ];
     })
-    (mkIf config.myModules.desktop.plasma5.enable {
+    (mkIf config.myModules.desktop.plasma.enable {
       fcitx5.addons = with pkgs; [
         libsForQt5.fcitx5-qt
         fcitx5-catppuccin

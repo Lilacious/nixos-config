@@ -29,7 +29,7 @@
     ## Enable desktop environment
     desktop = {
       enable = true;
-      plasma5.enable = true;
+      plasma.enable = true;
     };
 
     services = {
@@ -55,8 +55,6 @@
   hardware.bluetooth.enable = true;
 
   # services.dbus.enable = true;
-
-  # hardware.enableRedistributableFirmware = true;
 
   ## Custom aliases for penelope
   home-manager.users.${variables.username} = {

@@ -31,7 +31,7 @@
     ## Enable desktop environment
     desktop = {
       enable = true;
-      plasma5.enable = true;
+      plasma.enable = true;
     };
 
     services = {
