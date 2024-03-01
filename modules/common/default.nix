@@ -11,7 +11,6 @@ with lib;
     ./starship.nix
     ./vim.nix
     ./zsh.nix
-    ./xdg.nix
   ];
 
   i18n.supportedLocales = [
@@ -44,7 +43,8 @@ with lib;
     
   ## Default time zone
   time.timeZone = mkDefault "Europe/Berlin";
-  
+
+  programs.dconf.enable = true;
   hardware.enableRedistributableFirmware = true;
   nixpkgs.config.allowUnfree = true;
 }

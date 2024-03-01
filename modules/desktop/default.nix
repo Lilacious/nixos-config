@@ -5,6 +5,7 @@ with lib;
   imports = [
     ./plasma.nix
     ./gtk.nix
+    ./xdg.nix
   ];
 
   options = {
@@ -43,8 +44,6 @@ with lib;
     programs.noisetorch.enable = true; 
   
     security.polkit.enable = true;
-    ## GNOME programs
-    programs.dconf.enable = true;
 
     ## Firefox
     programs.firefox = {
