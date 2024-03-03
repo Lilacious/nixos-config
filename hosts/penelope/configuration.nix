@@ -54,8 +54,6 @@
   ## Bluetooth
   hardware.bluetooth.enable = true;
 
-  # services.dbus.enable = true;
-
   ## Custom aliases for penelope
   home-manager.users.${variables.username} = {
     programs.zsh = {
