@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, variables, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -54,6 +54,17 @@
   ## Enable networking
   networking.networkmanager.enable = true;
 
+  ## Enable SSH
+  services.openssh = {
+    enable = true;
+    settings = {
+      # require public key authentication for better security
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
+      #PermitRootLogin = "yes";
+    };
+  };
+
   ## Bluetooth
   hardware.bluetooth.enable = true;
 
@@ -67,27 +78,5 @@
   
   ## AMD GPU fan control
   programs.corectrl.enable = true;
-
-  ## Samba share
-  services.samba = {
-    enable = true;
-    openFirewall = true;
-    securityType = "user";
-    extraConfig = ''
-      server string = smbnix
-      netbios name = smbnix
-      hosts allow = 192.168.122.11 ## 192.168.0. 127.0.0.1 localhost
-    '';
-    shares = {
-      share = {
-        path = "/data/share";
-        browseable = "yes";
-        "read only" = "no";
-        "guest ok" = "no";
-        "create mask" = "0644";
-        "directory mask" = "0755";
-        "force user" = "yunix";
-      };
-    };
-  };
+  users.users.${variables.username}.extraGroups = [ "corectrl" ];
 }

@@ -30,7 +30,7 @@
   networking.networkmanager.enable = true;
 
   services.openssh = {
-  enable = true;
+    enable = true;
     settings = {
       # require public key authentication for better security
       PasswordAuthentication = false;
