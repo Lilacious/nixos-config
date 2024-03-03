@@ -15,7 +15,7 @@ in
 
     extraApps = with config.services.nextcloud.package.packages.apps; {
       inherit calendar contacts mail memories 
-      maps previewgenerator;
+      maps previewgenerator impersonate;
     };
     extraAppsEnable = true;
     autoUpdateApps.enable = true;
