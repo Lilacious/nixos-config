@@ -41,7 +41,11 @@
       ## Enable virtualization
       virtualization.enable = true;
 
+      ## Enable syncthing
       syncthing.enable = true;
+
+      ## AMD GPU fan control
+      corectrl.enable = true;
     };
 
     programs = {
@@ -75,8 +79,4 @@
   programs.steam = {
     enable = true;
   };
-  
-  ## AMD GPU fan control
-  programs.corectrl.enable = true;
-  users.users.${variables.username}.extraGroups = [ "corectrl" ];
 }
