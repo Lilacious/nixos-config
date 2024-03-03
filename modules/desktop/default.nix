@@ -40,9 +40,6 @@ with lib;
       #media-session.enable = true;
     };
 
-    ## Real-time microphone noise suppression
-    programs.noisetorch.enable = true; 
-  
     security.polkit.enable = true;
 
     ## Firefox

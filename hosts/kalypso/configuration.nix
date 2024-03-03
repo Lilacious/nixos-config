@@ -44,6 +44,12 @@
       ## Enable syncthing
       syncthing.enable = true;
 
+      ## Real-time microphone noise suppression
+      noisetorch = {
+        enable = true;
+        deviceId = "alsa_input.usb-Generic_Blue_Microphones_2108BAB0E2G8-00.analog-stereo";
+      };
+
       ## AMD GPU fan control
       corectrl.enable = true;
     };
