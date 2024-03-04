@@ -19,7 +19,7 @@ in
     })
     (mkIf config.myModules.desktop.plasma.enable {
       fcitx5.addons = with pkgs; [
-        libsForQt5.fcitx5-qt
+        kdePackages.fcitx5-qt
         fcitx5-catppuccin
       ];
     })
