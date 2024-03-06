@@ -11,6 +11,9 @@
     dmidecode
     lm_sensors
 
+    ## Hard drive monitoring
+    smartmontools
+
     ## Tops
     htop
     btop
