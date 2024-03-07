@@ -17,28 +17,16 @@ in {
     import ./hades { inherit inputs variables; }
   );
 
-  ## orupi 
+  ## orupi, server
   orupi = lib.nixosSystem (
     import ./orupi { inherit inputs variables; }
   );
 
   # sisyphos, builder
-  sisyphos = lib.nixosSystem {
-    specialArgs = { 
-      inherit inputs variables;
-      system = "x86_64-linux";
-    };
-    modules = [
-      ./sisyphos/configuration.nix
-      home-manager.nixosModules.home-manager {
-        home-manager = {
-          extraSpecialArgs = {};
-          useGlobalPkgs = true;
-          useUserPackages = true;
-        };
-      }
-    ];
-  };
+  sisyphos = lib.nixosSystem (
+    import ./orupi { inherit inputs variables; }
+  );
+
   ## rlang, other
   rlang = lib.nixosSystem {
     specialArgs = { 
