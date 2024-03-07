@@ -1,11 +1,11 @@
-{ variables, inputs, ... }:
+{ inputs, variables, ... }:
 {
-  specialArgs = { 
-      inherit inputs variables;
-      system = "x86_64-linux";
+  specialArgs = {
+    inherit inputs variables;
+    system = "x86_64-linux";
   };
   modules = [
-    ./configuration.nix
+    ./kalypso/configuration.nix
     inputs.home-manager.nixosModules.home-manager {
       home-manager = {
         extraSpecialArgs = {};

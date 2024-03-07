@@ -1,29 +1,17 @@
-{ inputs, variables, nixpkgs, home-manager, nur, nixos-hardware, plasma-manager, agenix, ... }:
+{ inputs, variables, nixpkgs, home-manager, ... }:
 let
   lib = nixpkgs.lib;
 in {        
   ## penelope, laptop, workstation, Thinkpad T480
-  penelope = lib.nixosSystem ( import ./penelope { 
-      inherit inputs home-manager variables; 
-  });
+  penelope = lib.nixosSystem ( 
+    import ./penelope { inherit inputs variables; }
+  );
 
   ## kalypso, workstation
-  kalypso = lib.nixosSystem {
-    specialArgs = {
-      inherit inputs variables;
-      system = "x86_64-linux";
-    };
-    modules = [
-      ./kalypso/configuration.nix
-      home-manager.nixosModules.home-manager {
-        home-manager = {
-          extraSpecialArgs = {};
-          useGlobalPkgs = true;
-          useUserPackages = true;
-        };
-      }
-    ];
-  };
+  kalypso = lib.nixosSystem (
+    import ./penelope { inherit inputs variables; }
+  );
+
   ## hades, nas, server
   hades = lib.nixosSystem {
     specialArgs = { 
