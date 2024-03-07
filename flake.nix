@@ -37,8 +37,6 @@
       import ./hosts { 
         inherit (nixpkgs) lib;
         inherit inputs nixpkgs variables;
-        inherit home-manager nixos-hardware agenix;
-        inherit plasma-manager nur;
       }
     );
   };
