@@ -3,22 +3,10 @@ let
   lib = nixpkgs.lib;
 in {        
   ## penelope, laptop, workstation, Thinkpad T480
-  penelope = lib.nixosSystem {
-    specialArgs = { 
-      inherit inputs variables;
-      system = "x86_64-linux";
-    };
-    modules = [
-      ./penelope/configuration.nix
-      home-manager.nixosModules.home-manager {
-        home-manager = {
-          extraSpecialArgs = {};
-          useGlobalPkgs = true;
-          useUserPackages = true;
-        };
-      }
-    ];
-  };
+  penelope = lib.nixosSystem ( import ./penelope { 
+      inherit inputs home-manager variables; 
+  });
+
   ## kalypso, workstation
   kalypso = lib.nixosSystem {
     specialArgs = {
