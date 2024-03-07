@@ -9,25 +9,14 @@ in {
 
   ## kalypso, workstation
   kalypso = lib.nixosSystem (
-    import ./penelope { inherit inputs variables; }
+    import ./kalypso { inherit inputs variables; }
   );
 
   ## hades, nas, server
-  hades = lib.nixosSystem {
-    specialArgs = { 
-      inherit inputs variables;
-      system = "x86_64-linux";
-    };
-    modules = [
-      ./hades/configuration.nix
-      home-manager.nixosModules.home-manager {
-        home-manager = {
-          useGlobalPkgs = true;
-          useUserPackages = true;
-        };
-      }
-    ];
-  };
+  hades = lib.nixosSystem (
+    import ./hades { inherit inputs variables; }
+  );
+
   ## orupi 
   orupi = lib.nixosSystem {
     specialArgs = {
