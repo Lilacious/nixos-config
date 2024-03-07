@@ -3,6 +3,7 @@
 with lib;
 {
   imports = [
+    ./alias.nix
     ./font.nix
     ./git.nix
     ./nix.nix

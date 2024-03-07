@@ -20,10 +20,8 @@ with lib;
   };
 
   home-manager.users.${variables.username} = mkIf( config.security.doas.enable ) {
-    programs.zsh = {
-      shellAliases = {
-        sudo = "doas";
-      };
+    home.shellAliases = {
+      sudo = "doas";
     };
   };
 }
