@@ -18,22 +18,10 @@ in {
   );
 
   ## orupi 
-  orupi = lib.nixosSystem {
-    specialArgs = {
-      inherit inputs variables;
-      system = "aarch64-linux";
-    };
-    modules = [
-      ./orupi/configuration.nix
-      home-manager.nixosModules.home-manager {
-        home-manager = {
-          extraSpecialArgs = {};
-          useGlobalPkgs = true;
-          useUserPackages = true;
-        };
-      }
-    ];
-  };
+  orupi = lib.nixosSystem (
+    import ./orupi { inherit inputs variables; }
+  );
+
   # sisyphos, builder
   sisyphos = lib.nixosSystem {
     specialArgs = { 
