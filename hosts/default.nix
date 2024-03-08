@@ -28,13 +28,9 @@ in {
   );
 
   ## rlang, other
-  rlang = lib.nixosSystem {
-    specialArgs = { 
-      system = "x86_64-linux";
-    };
-    modules = [
-      ./rlang/configuration.nix
-    ];
-  };
+  rlang = lib.nixosSystem (
+    import ./rlang {}
+  );
+
   ## Add new hosts here
 }
