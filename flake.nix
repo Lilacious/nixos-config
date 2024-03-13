@@ -17,13 +17,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "nixpkgs";
     };
-    nur.url = "github:nix-community/NUR";
   };
 
   outputs = { 
     self, nixpkgs, 
     home-manager, nixos-hardware, agenix, 
-    plasma-manager, nur, 
+    plasma-manager, 
     ... 
   }@inputs:
   let

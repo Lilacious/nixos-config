@@ -270,6 +270,13 @@
       "services.services.org.kde.plasma-systemmonitor.desktop"."_launch" = "Ctrl+Esc";
       "services.services.org.kde.spectacle.desktop"."RecordWindow" = [ ];
       "services.services.org.kde.spectacle.desktop"."_launch" = "Print";
+      "services.services.services.Alacritty.desktop"."_launch" = "Meta+Return";
+      "services.services.services.firefox.desktop"."_launch" = "Meta+B";
+      "services.services.services.org.kde.krunner.desktop"."_launch" = "Meta+Space";
+      "services.services.services.org.kde.plasma-systemmonitor.desktop"."_launch" = "Ctrl+Esc";
+      "services.services.services.org.kde.spectacle.desktop"."RecordWindow" = [ ];
+      "services.services.services.org.kde.spectacle.desktop"."_launch" = "Print";
+      "services.services.services.systemsettings.desktop"."_launch" = [ ];
       "services.services.systemsettings.desktop"."_launch" = [ ];
       "services.systemsettings.desktop"."_launch" = [ ];
     };
@@ -982,6 +989,7 @@
       "plasma-localerc"."Formats"."LC_TIME" = "en_DE.UTF-8";
       "plasma-localerc"."Translations"."LANGUAGE" = "en_US";
       "plasmarc"."Wallpapers"."usersWallpapers" = "/home/yunix/Pictures/Wallpaper/default.png";
+      "systemsettingsrc"."KFileDialog Settings"."detailViewIconSize" = 16;
     };
   };
 }
