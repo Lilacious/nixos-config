@@ -21,8 +21,8 @@ in
           sddm.enable = mkDefault true;
           #defaultSession = "plasmawayland";
         };
-        desktopManager.plasma6.enable = true;
       };
+      desktopManager.plasma6.enable = true;
     };
 
     environment = {

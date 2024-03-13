@@ -7,6 +7,7 @@
     ./neovim.nix
     ./tmux.nix
     ./tud-tools.nix
+    ./vscode.nix
     ./zoxide.nix
   ];
 }

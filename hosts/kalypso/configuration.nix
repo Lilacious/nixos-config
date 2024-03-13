@@ -55,6 +55,12 @@
     };
 
     programs = {
+      vscode = {
+        enable = true;
+        extensions = with pkgs.vscode-extensions; [
+          ms-python.python
+        ];
+      };
       cysecTools.enable = false;
       tudTools.enable = true;
       firefoxDevedition.enable = false;
