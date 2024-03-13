@@ -17,8 +17,8 @@ with lib;
       settings = {
         win = {
           fullScreen = true;
-          #size = "2560x1440";
-          size = "1920x1080";
+          size = "2560x1440";
+          #size = "1920x1080";
         };
       };
     };
