@@ -34,12 +34,14 @@ in {
         enableUpdateCheck = false;
 
         userSettings = {
+          "vim"."useSystemClipboard" = true;
           "workbench"."colorTheme" = "Catppuccin Mocha";
           "catppuccin"."accentColor" = "pink";
         };
 
         extensions = with pkgs.vscode-extensions; [
           jnoortheen.nix-ide
+          vscodevim.vim
           catppuccin.catppuccin-vsc
         ] ++ cfg.extensions;
       };
