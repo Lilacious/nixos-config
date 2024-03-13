@@ -35,6 +35,11 @@ in {
 
         userSettings = {
           "vim"."useSystemClipboard" = true;
+          "vim"."enableNeovim" = true;
+          "vim"."neovimUseConfigFile" = true;
+          "extensions"."experimental"."affinity" = {
+            "vscodevim"."vim" = 1;
+          };
           "workbench"."colorTheme" = "Catppuccin Mocha";
           "catppuccin"."accentColor" = "pink";
         };
