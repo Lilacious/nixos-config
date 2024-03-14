@@ -3,6 +3,7 @@
 with lib;
 let
   cfg = config.myModules.programs.vscode;
+  jsonFormat = pkgs.formats.json { };
 in {
   options = {
     myModules.programs.vscode = {
@@ -14,6 +15,11 @@ in {
       package = mkOption {
         type = types.package;
         default = pkgs.vscodium;
+      };
+
+      userSettings = mkOption {
+        type = jsonFormat.type;
+        default = { };
       };
 
       extensions = mkOption {
@@ -42,7 +48,7 @@ in {
           };
           "workbench"."colorTheme" = "Catppuccin Mocha";
           "catppuccin"."accentColor" = "pink";
-        };
+        } // cfg.userSettings;
 
         extensions = with pkgs.vscode-extensions; [
           jnoortheen.nix-ide
