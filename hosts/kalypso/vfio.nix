@@ -1,4 +1,4 @@
-{ variables, lib, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 with lib;
 {
   ## GPU passthrough
@@ -11,7 +11,7 @@ with lib;
   '';
 
   ## Looking Glass
-  home-manager.users.${variables.username} = {
+  home-manager.users.${config.variables.username} = {
     programs.looking-glass-client = {
       enable = true;
       settings = {
@@ -37,7 +37,7 @@ with lib;
 
   ## Looking Glass shared mem permission
   systemd.tmpfiles.rules = [
-    "f /dev/shm/looking-glass 0660 ${variables.username} kvm -"
+    "f /dev/shm/looking-glass 0660 ${config.variables.username} kvm -"
   ];
 
   myModules.services.virtualization.enable = mkForce true;

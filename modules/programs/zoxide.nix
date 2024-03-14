@@ -1,8 +1,6 @@
-{ lib, variables, pkgs, ... }:
-
-with lib;
+{ config, ... }:
 {
-  home-manager.users.${variables.username} = {
+  home-manager.users.${config.variables.username} = {
     programs = {
       zoxide = {
         enable = true;

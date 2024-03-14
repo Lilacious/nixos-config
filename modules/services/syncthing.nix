@@ -1,4 +1,4 @@
-{ config, lib, variables, ... }:
+{ config, lib, ... }:
 
 with lib;
 let
@@ -17,9 +17,9 @@ in
     services = {
       syncthing = {
         enable = true;
-        user = "${variables.username}";
-        dataDir = "/home/${variables.username}/Sync";
-        configDir = "/home/${variables.username}/Sync/.config/syncthing";        
+        user = "${config.variables.username}";
+        dataDir = "/home/${config.variables.username}/Sync";
+        configDir = "/home/${config.variables.username}/Sync/.config/syncthing";        
       };
     };
   };

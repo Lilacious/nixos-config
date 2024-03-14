@@ -1,4 +1,4 @@
-{ config, lib, variables, ... }:
+{ config, lib, ... }:
 
 with lib;
 let
@@ -15,7 +15,7 @@ in
   };
   config = mkIf (cfg.enable) {
     security.acme.acceptTerms = true;
-    security.acme.defaults.email = "${variables.email}";
+    security.acme.defaults.email = "${config.variables.email}";
 
     services.nginx = {
       enable = true;

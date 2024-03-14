@@ -1,6 +1,6 @@
-{ variables, ... }:
+{ config, ... }:
 {
-  home-manager.users.${variables.username} = {
+  home-manager.users.${config.variables.username} = {
     programs.starship = {
       enable = true;
       enableZshIntegration = true;

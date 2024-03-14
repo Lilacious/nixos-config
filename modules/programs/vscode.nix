@@ -1,4 +1,4 @@
-{ config, lib, pkgs, variables, ... }:
+{ config, lib, pkgs, ... }:
 
 with lib;
 let
@@ -29,7 +29,7 @@ in {
     };
   };
   config = mkIf (cfg.enable) {
-    home-manager.users.${variables.username} = {
+    home-manager.users.${config.variables.username} = {
       programs.vscode = {
         enable = true;
 

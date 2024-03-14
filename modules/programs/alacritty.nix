@@ -1,4 +1,4 @@
-{ variables, lib, config, ... }:
+{ lib, config, ... }:
 with lib;
 let
   cfg = config.myModules.programs.alacritty;
@@ -18,7 +18,7 @@ in {
     };
   };
   config = mkIf (cfg.enable) {
-    home-manager.users.${variables.username} = {
+    home-manager.users.${config.variables.username} = {
       programs.alacritty = {
         enable = true;
         settings = {

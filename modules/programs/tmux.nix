@@ -1,8 +1,8 @@
-{ lib, variables, pkgs, ... }:
+{ lib, config, pkgs, ... }:
 
 with lib;
 {
-  home-manager.users.${variables.username} = {
+  home-manager.users.${config.variables.username} = {
     programs.tmux = {
       enable = mkDefault true;
       clock24 = true;

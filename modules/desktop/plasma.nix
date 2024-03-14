@@ -1,4 +1,4 @@
-{ config, lib, pkgs, variables, inputs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 with lib;
 let
   cfg = config.myModules.desktop.plasma;
@@ -45,7 +45,7 @@ in
       ];
     };
 
-    home-manager.users.${variables.username} = {
+    home-manager.users.${config.variables.username} = {
       imports = [
         inputs.plasma-manager.homeManagerModules.plasma-manager
         ./plasma-config.nix

@@ -1,9 +1,9 @@
-{ variables, pkgs, config, ... }:
+{ pkgs, config, ... }:
 let
-  homecfg = config.home-manager.users.${variables.username};
+  homecfg = config.home-manager.users.${config.variables.username};
 in
 {
-  home-manager.users.${variables.username} = {
+  home-manager.users.${config.variables.username} = {
     home.pointerCursor = {
       package = pkgs.catppuccin-cursors.mochaPink;
       name = "Catppuccin-Mocha-Pink-Cursors";

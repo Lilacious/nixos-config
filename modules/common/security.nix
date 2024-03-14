@@ -1,4 +1,4 @@
-{ lib, variables, config, ... }:
+{ lib, config, ... }:
 
 with lib;
 {
@@ -19,7 +19,7 @@ with lib;
     }];
   };
 
-  home-manager.users.${variables.username} = mkIf( config.security.doas.enable ) {
+  home-manager.users.${config.variables.username} = mkIf( config.security.doas.enable ) {
     home.shellAliases = {
       sudo = "doas";
     };

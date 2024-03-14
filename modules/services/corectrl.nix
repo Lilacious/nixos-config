@@ -1,4 +1,4 @@
-{ config, lib, variables, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 with lib;
 let
@@ -14,7 +14,7 @@ in {
   };
   config = mkIf (cfg.enable) {
     programs.corectrl.enable = true;
-    users.users.${variables.username}.extraGroups = [ "corectrl" ];
+    users.users.${config.variables.username}.extraGroups = [ "corectrl" ];
 
     systemd.user.services.corectrl-systray = {
       enable = true;

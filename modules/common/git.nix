@@ -1,10 +1,10 @@
-{ variables, ... }:
+{ config, ... }:
 {
-  home-manager.users.${variables.username} = {
+  home-manager.users.${config.variables.username} = {
     programs.git = {
       enable = true;
       userName = "Yuchen He";
-      userEmail = "${variables.email}";
+      userEmail = "${config.variables.email}";
       aliases = {
         ci = "commit -s";
         co = "checkout";

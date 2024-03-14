@@ -1,4 +1,4 @@
-{ config, lib, variables, ... }:
+{ config, lib, ... }:
 
 with lib;
 let
@@ -13,7 +13,7 @@ in {
     };
   };
   config = mkIf (cfg.enable) {
-    home-manager.users.${variables.username} = {
+    home-manager.users.${config.variables.username} = {
       programs.helix = {
         enable = true;
       };

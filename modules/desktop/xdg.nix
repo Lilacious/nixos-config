@@ -1,11 +1,11 @@
-{ variables, config, ... }:
+{ config, ... }:
 {
-  home-manager.users.${variables.username} = {
+  home-manager.users.${config.variables.username} = {
     xdg = {
       enable = true;
-      cacheHome = "${config.users.users.${variables.username}.home}/.cache";
-      configHome = "${config.users.users.${variables.username}.home}/.config";
-      dataHome = "${config.users.users.${variables.username}.home}/.local/share";
+      cacheHome = "${config.users.users.${config.variables.username}.home}/.cache";
+      configHome = "${config.users.users.${config.variables.username}.home}/.config";
+      dataHome = "${config.users.users.${config.variables.username}.home}/.local/share";
     };
   };
 }

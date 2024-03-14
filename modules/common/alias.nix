@@ -1,6 +1,6 @@
-{ variables, ... }:
+{ config, ... }:
 {
-  home-manager.users.${variables.username} = {
+  home-manager.users.${config.variables.username} = {
     home.shellAliases = {
       ls = "eza";
       ll = "eza -lgS";

@@ -1,4 +1,4 @@
-{ config, lib, variables, ... }:
+{ config, lib, ... }:
 with lib;
 let
   cfg = config.myModules.desktop.hyprland;
@@ -48,7 +48,7 @@ in
   config = mkIf (cfg.enable) {
     programs.hyprland.enable = true;
     
-    home-manager.users.${variables.username} = {
+    home-manager.users.${config.variables.username} = {
       wayland.windowManager.hyprland = {
         enable = true;
 

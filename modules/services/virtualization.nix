@@ -1,4 +1,4 @@
-{ config, lib, pkgs, variables, ... }:
+{ config, lib, ... }:
 
 with lib;
 let
@@ -16,9 +16,9 @@ in {
     virtualisation.libvirtd.enable = true;
     programs.virt-manager.enable = true;
 
-    users.users.${variables.username}.extraGroups = [ "libvirtd" ];
+    users.users.${config.variables.username}.extraGroups = [ "libvirtd" ];
 
-    home-manager.users.${variables.username} = {
+    home-manager.users.${config.variables.username} = {
       dconf.settings = {
         "org/virt-manager/virt-manager/connections" = {
           autoconnect = ["qemu:///system"];
