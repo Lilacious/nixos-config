@@ -25,6 +25,7 @@
     xournalpp
     spotify
     kitty
+    alejandra
 
     ## Development
     (python3.withPackages(ps: with ps; [ tkinter ]))
