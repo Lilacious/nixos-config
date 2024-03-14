@@ -1,7 +1,7 @@
-{ inputs, variables, ... }:
+{ inputs, ... }:
 {
   specialArgs = {
-    inherit inputs variables;
+    inherit inputs;
     system = "aarch64-linux";
   };
   modules = [

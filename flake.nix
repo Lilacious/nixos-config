@@ -25,17 +25,11 @@
     plasma-manager, 
     ... 
   }@inputs:
-  let
-    variables = {
-      username = "yunix";
-      shell = "zsh";
-      email = "yuchenhe126@gmail.com";
-    };
-  in {
+  {
     nixosConfigurations = (
       import ./hosts { 
         inherit (nixpkgs) lib;
-        inherit inputs nixpkgs variables;
+        inherit inputs nixpkgs;
       }
     );
   };
