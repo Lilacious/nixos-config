@@ -24,6 +24,7 @@
     # thunderbird    
     xournalpp
     spotify
+    kitty
 
     ## Development
     (python3.withPackages(ps: with ps; [ tkinter ]))

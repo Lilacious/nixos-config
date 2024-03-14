@@ -3,8 +3,9 @@
 with lib;
 {
   imports = [
-    ./plasma.nix
     ./gtk.nix
+    ./hyprland.nix
+    ./plasma.nix
     ./xdg.nix
   ];
 

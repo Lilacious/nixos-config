@@ -32,6 +32,7 @@
     desktop = {
       enable = true;
       plasma.enable = true;
+      hyprland.enable = true;
     };
 
     services = {
