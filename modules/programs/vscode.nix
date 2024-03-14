@@ -40,6 +40,8 @@ in {
         enableUpdateCheck = false;
 
         userSettings = {
+          "nix"."enableLanguageServer" = true;
+          "nix"."serverPath" = "nil";
           "vim"."useSystemClipboard" = true;
           "vim"."enableNeovim" = true;
           "vim"."neovimUseConfigFile" = true;
