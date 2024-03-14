@@ -1,8 +1,8 @@
-{ config, lib, pkgs, inputs, ... }:
+{ pkgs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
-    ../../users/user.nix
+    ../../users
     ../../modules
   ];
   system.stateVersion = "23.11";

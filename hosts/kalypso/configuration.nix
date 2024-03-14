@@ -1,10 +1,10 @@
-{ pkgs, variables, ... }:
+{ pkgs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
     ./packages.nix
     ./vfio.nix
-    ../../users/user.nix
+    ../../users
     ../../modules
   ];
   system.stateVersion = "23.11";

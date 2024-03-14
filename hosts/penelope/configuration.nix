@@ -1,10 +1,10 @@
-{ inputs, variables, ... }:
+{ inputs, config, pkgs, ... }:
 {
   imports = [
     inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t480
     ./hardware-configuration.nix
     ./packages.nix
-    ../../users/user.nix
+    ../../users
     ../../modules
     ../../secrets   ## agenix
   ];
@@ -61,7 +61,7 @@
   hardware.bluetooth.enable = true;
 
   ## Custom aliases for penelope
-  home-manager.users.${variables.username} = {
+  home-manager.users.${config.variables.username} = {
     home.shellAliases = {
       open-front-door = "ssh door@bourbon.w17.io buzzer";
       open-sesame = "ssh door@bourbon.w17.io open";

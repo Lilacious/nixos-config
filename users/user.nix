@@ -1,22 +1,22 @@
-{ pkgs, variables, lib, ... }:
+{ pkgs, config, lib, ... }:
 let
   capitalizedInitial =
-    lib.toUpper( builtins.substring 0 1 "${variables.username}" ) 
-    + builtins.substring 1 100 "${variables.username}";
+    lib.toUpper( builtins.substring 0 1 "${config.variables.username}" ) 
+    + builtins.substring 1 100 "${config.variables.username}";
 
 in  { 
-  users.users.${variables.username} = {
+  users.users.${config.variables.username} = {
     isNormalUser = true;
     description = "${capitalizedInitial}";
     extraGroups = [ "networkmanager" "wheel" "video" ]; # Default groups
     initialPassword = "changeme";
-    shell = pkgs.${variables.shell}; # Set default shell
+    shell = pkgs.${config.variables.shell}; # Set default shell
   };
   
   home-manager = {
-    users.${variables.username} = {
-      home.username = "${variables.username}";
-      home.homeDirectory = "/home/${variables.username}";
+    users.${config.variables.username} = {
+      home.username = "${config.variables.username}";
+      home.homeDirectory = "/home/${config.variables.username}";
       home.stateVersion = "23.05";
     };
   };
