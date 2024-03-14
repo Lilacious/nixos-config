@@ -46,6 +46,8 @@ in
   };
 
   config = mkIf (cfg.enable) {
+    myModules.desktop.windowManager.wayland = true;
+
     programs.hyprland.enable = true;
     
     home-manager.users.${config.variables.username} = {

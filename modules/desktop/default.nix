@@ -1,6 +1,9 @@
 { config, lib, pkgs, ... }:
 
 with lib;
+let 
+  cfg = config.myModules.desktop;
+in
 {
   imports = [
     ./gtk.nix
@@ -14,6 +17,20 @@ with lib;
       enable = mkOption {
         type = types.bool;
         default = false;
+      };
+      windowManager = {
+        enable = mkOption {
+          type = types.bool;
+          default = cfg.wayland||cfg.xserver;
+        };
+        wayland = mkOption {
+          type = types.bool;
+          default = false;
+        };
+        xserver = mkOption {
+          type = types.bool;
+          default = false;
+        };
       };
     };
   };
