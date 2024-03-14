@@ -44,8 +44,14 @@
           {
             plugin = nvim-lspconfig;
             config = ''
-              lua local lspconfig = require('lspconfig')
-              lua require'lspconfig'.nil_ls.setup{}
+              lua << END
+                local lspconfig = require('lspconfig')
+                require'lspconfig'.nil_ls.setup{
+                  settings = {["nil"] = {
+                    nix = {flake = {autoArchive = true}},
+                  }},
+                }
+              END
             '';
           }
         ];        
