@@ -4,6 +4,13 @@ let
 in
 {
   home-manager.users.${variables.username} = {
+    home.pointerCursor = {
+      package = pkgs.catppuccin-cursors.mochaPink;
+      name = "Catppuccin-Mocha-Pink-Cursors";
+      size = 16;
+      gtk.enable = true;
+    };
+
     gtk = {
       enable = true;
       gtk2.configLocation = "${homecfg.xdg.configHome}/gtk-2.0/gtkrc";
