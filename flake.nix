@@ -12,16 +12,17 @@
     systems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" "x86_64-darwin" ];
 
     imports = [
+      ./hosts/kalypso
     ];
 
-    flake = {
-      nixosConfigurations = (
-        import ./hosts { 
-          inherit (nixpkgs) lib;
-          inherit inputs nixpkgs;
-        }
-      );
-    };
+    #flake = {
+    #  nixosConfigurations = (
+    #    import ./hosts { 
+    #      inherit (nixpkgs) lib;
+    #      inherit inputs nixpkgs;
+    #    }
+    #  );
+    #};
   };
 
   inputs = {
