@@ -7,13 +7,14 @@ with lib; let
   cfg = config.myModules.desktop;
 in {
   imports = [
+    ./common.nix
   ];
 
   options = {
     myModules.desktop = {
       enable = mkOption {
         type = types.bool;
-        default = cfg.desktopEnvironment || windowManager;
+        default = cfg.desktopEnvironment.enable || windowManager.enable;
       };
 
       desktopEnvironment = {
