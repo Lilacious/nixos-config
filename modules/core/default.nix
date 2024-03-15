@@ -3,6 +3,7 @@
 {
   imports = [
     ./common.nix
+    ./locale.nix
     ./neovim.nix
     ./nix.nix
   ];
