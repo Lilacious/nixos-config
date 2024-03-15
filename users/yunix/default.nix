@@ -1,5 +1,5 @@
 {
   imports = [
-    ./yunix
+    ./yunix.nix
   ];
 }
