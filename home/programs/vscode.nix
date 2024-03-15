@@ -5,11 +5,11 @@
   ...
 }:
 with lib; let
-  cfg = config.myModules.programs.vscode;
+  cfg = config.myHome.programs.vscode;
   jsonFormat = pkgs.formats.json {};
 in {
   options = {
-    myModules.programs.vscode = {
+    myHome.programs.vscode = {
       enable = mkOption {
         type = types.bool;
         default = false;
