@@ -26,6 +26,7 @@
     spotify
     kitty
     alejandra
+    obs-studio
 
     ## Development
     (python3.withPackages(ps: with ps; [ tkinter ]))
