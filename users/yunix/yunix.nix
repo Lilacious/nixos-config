@@ -11,8 +11,17 @@ in {
       type = types.bool;
       default = true;
       description = lib.mdDoc ''
-        Enable the the Yunix user.
+        Enable the Yunix user.
       '';
+    };
+    options.myUsers.yunix = {
+      disableHomeManager = mkOption {
+        type = types.bool;
+        default = false;
+        description = lib.mdDoc ''
+          Disable home-manager the Yunix user.
+        '';
+      };
     };
   };
 
@@ -28,6 +37,12 @@ in {
       ];
       initialPassword = "changeme";
       shell = "zsh";
+    };
+
+    home-manager.users.yunix = mkIf (!cfg.disableHomeManager) {
+      home.username = "yunix";
+      home.homeDirectory = "${config.users.users.yunix.home}";
+      home.stateVersion = "23.05";
     };
   };
 }
