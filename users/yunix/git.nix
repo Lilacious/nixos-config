@@ -1,0 +1,48 @@
+{
+  lib,
+  config,
+  ...
+}:
+with lib; let
+  cfg = config.myUsers.yunix;
+in {
+  options.myUsers.yunix = {
+    git = mkOption {
+      type = types.bool;
+      default = true;
+    };
+  };
+
+  config = mkIf cfg.git {
+    home-manager.users.yunix = {
+      programs.git = {
+        enable = true;
+        userName = "Yuchen He";
+        userEmail = "yuchenhe126@gmail.com";
+        aliases = {
+          ci = "commit -s";
+          co = "checkout";
+          br = "branch";
+          st = "status";
+          df = "diff";
+          dc = "diff --cached";
+          lol = "log --graph --decorate 
+          --pretty=oneline --abbrev-commit";
+          lola = "log --graph --decorate 
+          --pretty=oneline --abbrev-commit --all";
+          lolb = "log --graph --decorate 
+          --pretty=format:'%Cred%h%Creset 
+          -%C(yellow)%d%Creset %s %Cgreen(%cr) 
+          %C(bold blue)<%an>%Creset' 
+          --abbrev-commit --all 
+          --simplify-by-decoration";
+          hist = "log --pretty=format:\"%h %ad|%s%d 
+          [%an]\" --graph --date=short";
+        };
+        ignores = [
+          "*.yunix"
+        ];
+      };
+    };
+  };
+}
