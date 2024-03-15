@@ -6,5 +6,6 @@
     ./locale.nix
     ./neovim.nix
     ./nix.nix
+    ./pkgs.nix
   ];
 }
