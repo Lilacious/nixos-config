@@ -2,6 +2,7 @@
 # used by most hosts.
 {
   imports = [
+    ./common.nix
     ./neovim.nix
     ./nix.nix
   ];
