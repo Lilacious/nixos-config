@@ -1,7 +1,14 @@
-# nixos-config
+# Nix(OS) configuration files
 
 new implementation that supports multiple users
 
-### My Nixos flakes
+## Installation
 
-Basic setup for one user with home manager
+Create, format and mount needed partitions.
+
+Generate `hardware-configuration.nix` in `./host/<host>`
+
+```
+cd <repo>
+$ nixos-install --flake .#<host>
+```
