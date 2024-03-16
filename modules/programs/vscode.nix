@@ -40,6 +40,7 @@ in {
         enableUpdateCheck = false;
 
         userSettings = {
+          "editor"."fontFamily" = "Agave Nerd Font";
           "nix"."enableLanguageServer" = true;
           "nix"."serverPath" = "nil";
           "vim"."useSystemClipboard" = true;
