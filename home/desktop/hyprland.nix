@@ -6,18 +6,51 @@
 }:
 with lib; let
   cfg = config.myHome.desktop.hyprland;
-  hyprld = config.myModules.desktop.hyprland;
 in {
   options = {
     myHome.desktop.hyprland = {
       enable = mkOption {
         type = types.bool;
-        default = hyprld;
+        default = true;
+      };
+
+      terminal = mkOption {
+        type = types.str;
+        default = "alacritty";
+      };
+
+      browser = mkOption {
+        type = types.str;
+        default = "firefox";
+      };
+
+      settings = mkOption {
+        type = with lib.types; let
+          valueType =
+            nullOr (oneOf [
+              bool
+              int
+              float
+              str
+              path
+              (attrsOf valueType)
+              (listOf valueType)
+            ])
+            // {
+              description = "Hyprland configuration value";
+            };
+        in
+          valueType;
+        default = {
+          monitor = [
+            ",preferred,auto,auto"
+          ];
+        };
       };
     };
   };
   config = mkIf (cfg.enable) {
-    yland.windowManager.hyprland = {
+    wayland.windowManager.hyprland = {
       enable = true;
 
       settings =
@@ -87,8 +120,8 @@ in {
 
           bind = [
             "CONTROLALT, Delete, exit,"
-            "$mod, Return, exec, ${hyprld.terminal}"
-            "$mod, B, exec, ${hyprld.browser}"
+            "$mod, Return, exec, ${cfg.terminal}"
+            "$mod, B, exec, ${cfg.browser}"
             "$mod, W, killactive,"
             "$mod, M, fullscreen, 1" ## monocle
             "$mod, F, togglefloating,"
@@ -135,7 +168,7 @@ in {
             "$mod, mouse:273, resizewindow"
           ];
         }
-        // hyprld.settings;
+        // cfg.settings;
     };
   };
 }
