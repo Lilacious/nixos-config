@@ -8,6 +8,7 @@ with lib; let
 in {
   imports = [
     ./audio.nix
+    ./display-manager.nix
     ./common.nix
   ];
 
