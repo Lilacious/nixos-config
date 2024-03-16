@@ -3,6 +3,7 @@
     isNormalUser = true;
     description = "Yunix";
     extraGroups = [
+      "corectrl"
       "libvirtd"
       "networkmanager"
       "video"
