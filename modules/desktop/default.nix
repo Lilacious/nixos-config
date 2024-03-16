@@ -4,7 +4,8 @@
   ...
 }:
 with lib; let
-  cfg = config.myModules.desktop;
+  WM = config.myModules.desktop.windowManager;
+  DE = config.myModules.desktop.desktopEnvironment;
 in {
   imports = [
     ./audio.nix
@@ -18,7 +19,7 @@ in {
     myModules.desktop = {
       enable = mkOption {
         type = types.bool;
-        default = cfg.desktopEnvironment.enable || windowManager.enable;
+        default = WM.enable || DE.enable;
       };
 
       displayManager = {
@@ -38,7 +39,7 @@ in {
       windowManager = {
         enable = mkOption {
           type = types.bool;
-          default = cfg.wayland || cfg.xserver;
+          default = WM.wayland || WM.xserver;
         };
 
         wayland = mkOption {
