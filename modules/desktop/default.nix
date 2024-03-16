@@ -7,6 +7,7 @@ with lib; let
   cfg = config.myModules.desktop;
 in {
   imports = [
+    ./audio.nix
     ./common.nix
   ];
 
