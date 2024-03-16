@@ -10,5 +10,9 @@ with lib; {
 
   imports = [
     ./core
+    ./desktop
+    ./other
+    ./programs
+    ./services
   ];
 }
