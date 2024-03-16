@@ -19,6 +19,7 @@
     home.stateVersion = "23.05";
     imports = [
       ./git.nix
+      ./syncthing.nix
       ../../home
     ];
   };

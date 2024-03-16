@@ -30,9 +30,6 @@
       ## Enable printing
       printing.enable = false;
 
-      ## Enable syncthing
-      syncthing.enable = true;
-
       ## Real-time microphone noise suppression
       noisetorch = {
         enable = true;
