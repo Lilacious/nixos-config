@@ -17,42 +17,6 @@
   ## Linux Kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  ## Local modules
-  myModules = {
-    ## Enable desktop environment
-    desktop = {
-      enable = true;
-      plasma.enable = true;
-      hyprland.enable = true;
-    };
-
-    services = {
-      ## Enable printing
-      printing.enable = false;
-
-      ## Real-time microphone noise suppression
-      noisetorch = {
-        enable = true;
-      };
-
-      ## AMD GPU fan control
-      corectrl.enable = true;
-    };
-
-    programs = {
-      vscode = {
-        enable = true;
-        extensions = with pkgs.vscode-extensions; [
-          ms-python.python
-        ];
-      };
-      cysecTools.enable = false;
-      tudTools.enable = true;
-      firefoxDevedition.enable = false;
-      virt-manager.enable = true;
-    };
-  };
-
   ## Enable networking
   networking.networkmanager.enable = true;
 
@@ -76,5 +40,38 @@
   ## Enable Steam
   programs.steam = {
     enable = true;
+  };
+
+  ## Local modules
+  myModules = {
+    ## Enable desktop environment
+    desktop = {
+      plasma.enable = true;
+      hyprland.enable = true;
+    };
+
+    services = {
+      ## Enable printing
+      printing.enable = false;
+
+      ## Real-time microphone noise suppression
+      noisetorch.enable = true;
+
+      ## AMD GPU fan control
+      corectrl.enable = true;
+    };
+
+    programs = {
+      cysecTools.enable = false;
+      firefoxDevedition.enable = false;
+      tudTools.enable = true;
+      virt-manager.enable = true;
+      vscode = {
+        enable = true;
+        extensions = with pkgs.vscode-extensions; [
+          ms-python.python
+        ];
+      };
+    };
   };
 }
