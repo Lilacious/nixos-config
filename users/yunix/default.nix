@@ -1,8 +1,4 @@
-{
-  inputs,
-  config,
-  ...
-}: {
+{pkgs, ...}: {
   users.users.yunix = {
     isNormalUser = true;
     description = "Yunix";
@@ -14,19 +10,11 @@
       "wheel"
     ];
     initialPassword = "changeme";
-    shell = "zsh";
+    shell = pkgs.zsh;
   };
 
-  home-manager.users.yunix = {
-    home.username = "yunix";
-    home.homeDirectory = "${config.users.users.yunix.home}";
-    home.stateVersion = "23.05";
-    imports = [
-      inputs.plasma-manager.homeManagerModules.plasma-manager
-      ./plasma-config.nix
-      ./git.nix
-      ./syncthing.nix
-      ../../home
-    ];
-  };
+  imports = [
+    ./home.nix
+    ./syncthing.nix
+  ];
 }
