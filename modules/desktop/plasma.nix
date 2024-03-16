@@ -6,7 +6,7 @@
   ...
 }:
 with lib; let
-  cfg = config.myModules.desktop.plasma;
+  cfg = config.myModules.desktop;
 in {
   options = {
     myModules.desktop.plasma = {
@@ -17,8 +17,8 @@ in {
     };
   };
 
-  config = mkIf (cfg.enable) {
-    cfg.displayManager.enable = mkForce true;
+  config = mkIf cfg.plasma.enable {
+    myModules.desktop.displayManager.enable = true;
 
     services.desktopManager.plasma6.enable = true;
 
