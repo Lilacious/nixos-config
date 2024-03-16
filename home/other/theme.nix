@@ -6,7 +6,7 @@
 }:
 with lib; let
   cfg = config.myHome.other.theme;
-  dsktp = config.myModules.desktop;
+  dsktp = config.myHome.desktop;
 in {
   options = {
     myHome.other.theme = {
@@ -27,7 +27,7 @@ in {
 
     gtk = {
       enable = true;
-      gtk2.configLocation = "${xdg.configHome}/gtk-2.0/gtkrc";
+      gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
       theme = {
         name = "Catppuccin-Mocha-Compact-Pink-Dark";
         package = pkgs.catppuccin-gtk.override {
