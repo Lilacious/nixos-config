@@ -10,7 +10,7 @@ in {
     myHome.other.alias = {
       enable = mkOption {
         type = types.bool;
-        default = false;
+        default = true;
       };
     };
   };
