@@ -11,7 +11,7 @@ in {
       type = types.bool;
       default = true;
       description = lib.mdDoc ''
-        Enable the Yunix user.
+        Enable this user.
       '';
     };
     options.myUsers.yunix = {
@@ -19,7 +19,7 @@ in {
         type = types.bool;
         default = false;
         description = lib.mdDoc ''
-          Disable home-manager the Yunix user.
+          Disable home-manager for this user.
         '';
       };
     };
