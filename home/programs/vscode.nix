@@ -6,13 +6,14 @@
 }:
 with lib; let
   cfg = config.myHome.programs.vscode;
+  dsktp = config.myModules.desktop;
   jsonFormat = pkgs.formats.json {};
 in {
   options = {
     myHome.programs.vscode = {
       enable = mkOption {
         type = types.bool;
-        default = false;
+        default = dsktp.enable;
       };
 
       package = mkOption {
