@@ -10,6 +10,7 @@ in {
     ./audio.nix
     ./common.nix
     ./display-manager.nix
+    ./hyprland.nix
     ./plasma.nix
   ];
 
