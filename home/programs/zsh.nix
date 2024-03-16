@@ -12,7 +12,7 @@ in {
     myHome.programs.zsh = {
       enable = mkOption {
         type = types.bool;
-        default = false;
+        default = true;
       };
     };
   };

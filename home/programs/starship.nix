@@ -10,7 +10,7 @@ in {
     myHome.programs.starship = {
       enable = mkOption {
         type = types.bool;
-        default = false;
+        default = true;
       };
     };
   };

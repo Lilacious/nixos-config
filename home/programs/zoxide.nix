@@ -10,7 +10,7 @@ in {
     myHome.programs.eza = {
       enable = mkOption {
         type = types.bool;
-        default = false;
+        default = true;
       };
     };
   };
