@@ -1,3 +1,4 @@
+# For system config see nix-config/modules/programs/vscode.nix
 {
   config,
   lib,
@@ -6,7 +7,7 @@
 }:
 with lib; let
   cfg = config.myHome.programs.vscode;
-  dsktp = config.myModules.desktop;
+  dsktp = config.myHome.desktop;
   jsonFormat = pkgs.formats.json {};
 in {
   options = {
@@ -14,11 +15,6 @@ in {
       enable = mkOption {
         type = types.bool;
         default = dsktp.enable;
-      };
-
-      package = mkOption {
-        type = types.package;
-        default = pkgs.vscodium;
       };
 
       userSettings = mkOption {
@@ -36,7 +32,7 @@ in {
     programs.vscode = {
       enable = true;
 
-      package = cfg.package;
+      package = pkgs.vscodium;
 
       enableExtensionUpdateCheck = false;
 

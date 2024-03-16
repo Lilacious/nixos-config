@@ -4,5 +4,6 @@
     ./firefox-devedition.nix
     ./tud-tools.nix
     ./virt-manager.nix
+    ./vscode.nix
   ];
 }
