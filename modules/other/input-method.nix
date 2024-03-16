@@ -22,6 +22,7 @@ in {
         ];
       }
       (mkIf cfg.plasma.enable {
+        fcitx5.plasma6Support = true;
         fcitx5.addons = with pkgs; [
           kdePackages.fcitx5-qt
           fcitx5-catppuccin
