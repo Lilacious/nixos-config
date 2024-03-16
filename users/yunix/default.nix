@@ -1,4 +1,8 @@
-{config, ...}: {
+{
+  inputs,
+  config,
+  ...
+}: {
   users.users.yunix = {
     isNormalUser = true;
     description = "Yunix";
@@ -18,6 +22,8 @@
     home.homeDirectory = "${config.users.users.yunix.home}";
     home.stateVersion = "23.05";
     imports = [
+      inputs.plasma-manager.homeManagerModules.plasma-manager
+      ./plasma-config.nix
       ./git.nix
       ./syncthing.nix
       ../../home
