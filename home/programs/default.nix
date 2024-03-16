@@ -3,7 +3,7 @@
     ./alacritty.nix
     ./eza.nix
     ./starship.nix
-    ./virtualization.nix
+    ./virt-manager.nix
     ./vscode.nix
     ./zoxide.nix
     ./zsh.nix
