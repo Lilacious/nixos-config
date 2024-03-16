@@ -15,7 +15,7 @@ in {
     };
   };
   config = mkIf cfg.enable {
-    shellAliases = {
+    home.shellAliases = {
       c = "clear";
       cat = "bat";
       update = "cd ~/nixos-config && sudo nixos-rebuild switch --flake .#$HOST";

@@ -4,10 +4,10 @@
   ...
 }:
 with lib; let
-  cfg = config.myHome.programs.eza;
+  cfg = config.myHome.programs.zoxide;
 in {
   options = {
-    myHome.programs.eza = {
+    myHome.programs.zoxide = {
       enable = mkOption {
         type = types.bool;
         default = true;
@@ -20,7 +20,7 @@ in {
         enable = true;
       };
     };
-    shellAliases = {
+    home.shellAliases = {
       cd = "z"; # zoxide
       cdf = "zi"; # z with fzf
     };
