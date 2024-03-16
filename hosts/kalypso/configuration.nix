@@ -30,9 +30,6 @@
       ## Enable printing
       printing.enable = false;
 
-      ## Enable virtualization
-      virtualization.enable = true;
-
       ## Enable syncthing
       syncthing.enable = true;
 
@@ -55,6 +52,7 @@
       cysecTools.enable = false;
       tudTools.enable = true;
       firefoxDevedition.enable = false;
+      virt-manager.enable = true;
     };
   };
 

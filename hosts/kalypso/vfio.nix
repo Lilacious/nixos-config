@@ -43,7 +43,7 @@ with lib; {
     "f /dev/shm/looking-glass 0660 yunix kvm -"
   ];
 
-  myModules.services.virtualization.enable = mkForce true;
+  myModules.programs.virt-manager.enable = mkForce true;
 
   environment.systemPackages = with pkgs; [
     libguestfs-with-appliance
