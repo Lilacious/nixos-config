@@ -6,7 +6,7 @@
 with lib; let
   cfg = config.myModules;
 in {
-  config = mkIf cfg {
+  config = mkIf cfg.enable {
     i18n.supportedLocales = [
       "en_IE.UTF-8/UTF-8"
       "en_US.UTF-8/UTF-8"

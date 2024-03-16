@@ -9,9 +9,9 @@ with lib; let
 in {
   options.myModules.core.zsh.enable = mkOption {
     type = types.bool;
-    default = true;
+    default = config.myModules.enable;
   };
-  config = mkIf cfg {
+  config = mkIf cfg.enable {
     ## For programs.zsh.enableCompletion
     environment.pathsToLink = ["/share/zsh"];
     ## Enable zsh system-wide

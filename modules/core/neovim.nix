@@ -7,7 +7,7 @@
 with lib; let
   cfg = config.myModules;
 in {
-  config = mkIf cfg {
+  config = mkIf cfg.enable {
     # Enable systemwide neovim
     programs.neovim = {
       enable = true;
