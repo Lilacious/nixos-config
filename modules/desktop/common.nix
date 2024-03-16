@@ -6,7 +6,7 @@
 with lib; let
   cfg = config.myModules.desktop;
 in {
-  config = mkIf cfg {
+  config = mkIf cfg.enable {
     services.xserver = {
       # Disable xserver by default
       enable = mkDefault false;
