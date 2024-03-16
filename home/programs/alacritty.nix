@@ -5,6 +5,7 @@
 }:
 with lib; let
   cfg = config.myHome.programs.alacritty;
+  dsktp = config.myModules.desktop;
 
   normalFontFamily = "Agave Nerd Font";
   boldFontFamily = "Agave Nerd Font";
@@ -16,7 +17,7 @@ in {
     myModules.programs.alacritty = {
       enable = mkOption {
         type = types.bool;
-        default = false;
+        default = dsktp.enable;
       };
     };
   };
