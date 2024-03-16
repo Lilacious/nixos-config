@@ -7,5 +7,6 @@
     ./neovim.nix
     ./nix.nix
     ./pkgs.nix
+    ./zsh.nix
   ];
 }
