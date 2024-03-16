@@ -5,8 +5,12 @@
   ...
 }:
 with lib; let
-  cfg = config.myModules;
+  cfg = config.myModules.core.zsh;
 in {
+  options.myModules.core.zsh.enable = mkOption {
+    type = types.bool;
+    default = true;
+  };
   config = mkIf cfg {
     ## For programs.zsh.enableCompletion
     environment.pathsToLink = ["/share/zsh"];

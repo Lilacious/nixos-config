@@ -6,6 +6,7 @@
 }:
 with lib; let
   cfg = config.myHome.programs.zsh;
+  syscfg = config.myModules.core.zsh;
 in {
   options = {
     myHome.programs.zsh = {
@@ -15,7 +16,7 @@ in {
       };
     };
   };
-  config = mkIf cfg.enable {
+  config = mkIf (cfg.enable && syscfg.enable) {
     programs.zsh = {
       enable = true;
       enableAutosuggestions = true;
