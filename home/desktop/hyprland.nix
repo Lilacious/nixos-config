@@ -11,7 +11,7 @@ in {
     myHome.desktop.hyprland = {
       enable = mkOption {
         type = types.bool;
-        default = true;
+        default = false;
       };
 
       terminal = mkOption {
