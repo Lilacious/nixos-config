@@ -168,6 +168,10 @@ in {
             "$mod, mouse:272, movewindow"
             "$mod, mouse:273, resizewindow"
           ];
+
+          exec-once = [
+            "mako"
+          ];
         }
         // cfg.settings;
     };
