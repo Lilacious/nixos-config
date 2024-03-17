@@ -18,7 +18,7 @@ in {
   };
 
   config = mkIf cfg.plasma.enable {
-    myModules.desktop.displayManager.enable = true;
+    myModules.desktop.desktopEnvironment.enable = true;
 
     services.desktopManager.plasma6.enable = true;
 

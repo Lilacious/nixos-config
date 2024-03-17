@@ -22,13 +22,6 @@ in {
         default = WM.enable || DE.enable;
       };
 
-      displayManager = {
-        enable = mkOption {
-          type = types.str;
-          default = "sddm";
-        };
-      };
-
       desktopEnvironment = {
         enable = mkOption {
           type = types.bool;
