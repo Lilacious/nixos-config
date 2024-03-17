@@ -3,6 +3,7 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
 with lib; let
@@ -52,6 +53,7 @@ in {
   };
   config = mkIf (cfg.enable) {
     home.packages = with pkgs; [
+      hyprpaper
       wlr-randr
       # QT wayland support
       kdePackages.qtwayland
@@ -96,8 +98,8 @@ in {
             ## Rounded corner radius
             rounding = 10;
             ## Opacity
-            active_opacity = 0.95;
-            inactive_opacity = 0.95;
+            active_opacity = 0.99;
+            inactive_opacity = 0.98;
             fullscreen_opacity = 1.0;
             ## Shadows
             drop_shadow = true;
@@ -126,6 +128,10 @@ in {
               "fade, 1, 7, default"
               "workspaces, 1, 6, default"
             ];
+          };
+
+          misc = {
+            disable_splash_rendering = true;
           };
 
           input = {
@@ -197,9 +203,15 @@ in {
             "mako"
             "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1"
             "xhost +SI:localuser:root"
+            "hyprpaper"
           ];
         }
         // cfg.settings;
     };
+    xdg.configFile."hypr/hyprpaper.conf".text = ''
+      splash = false
+      preload = ~/Pictures/Wallpapers/KDEScarlettTreeDark.png
+      wallpaper = ,~/Pictures/Wallpapers/KDEScarlettTreeDark.png
+    '';
   };
 }
