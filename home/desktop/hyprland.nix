@@ -53,6 +53,9 @@ in {
   config = mkIf (cfg.enable) {
     home.packages = with pkgs; [
       wlr-randr
+      # QT wayland support
+      kdePackages.qtwayland
+      libsForQt5.qt5.qtwayland
       # Polkit agent and dependency
       kdePackages.polkit-kde-agent-1
       kdePackages.kirigami
