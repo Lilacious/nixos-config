@@ -1,6 +1,7 @@
 {
   imports = [
     ./alacritty.nix
+    ./bemenu.nix
     ./eza.nix
     ./starship.nix
     ./virt-manager.nix

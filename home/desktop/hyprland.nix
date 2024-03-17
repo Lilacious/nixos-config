@@ -122,6 +122,7 @@ in {
             "CONTROLALT, Delete, exit,"
             "$mod, Return, exec, ${cfg.terminal}"
             "$mod, B, exec, ${cfg.browser}"
+            "$mod, Space, exec, bemenu-run"
             "$mod, W, killactive,"
             "$mod, M, fullscreen, 1" ## monocle
             "$mod, F, togglefloating,"
