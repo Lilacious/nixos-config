@@ -28,6 +28,7 @@
     texlive.combined.scheme-full
     # thunderbird
     moonlight-qt
+    firefox
 
     ## Development
     python3

@@ -26,6 +26,7 @@
     kitty
     alejandra
     obs-studio
+    firefox
 
     ## Development
     (python3.withPackages (ps: with ps; [tkinter]))
