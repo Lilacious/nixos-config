@@ -2,6 +2,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 with lib; let
@@ -50,6 +51,26 @@ in {
     };
   };
   config = mkIf (cfg.enable) {
+    home.packages = with pkgs; [
+      wlr-randr
+      # Polkit agent and dependency
+      kdePackages.polkit-kde-agent-1
+      kdePackages.kirigami
+      # Fix GTK-WARNING: cannot open display
+      xorg.xhost
+    ];
+
+    home.sessionVariables = {
+      GDK_BACKEND = "wayland,x11";
+      QT_QPA_PLATFORM = "wayland;xcb";
+      #QT_AUTO_SCREEN_SCALE_FACTOR = 1;
+      #QT_WAYLAND_DISABLE_WINDOWDECORATION = 1;
+      SDL_VIDEODRIVER = "wayland";
+      CLUTTER_BACKEND = "wayland";
+      XDG_SESSION_TYPE = "wayland";
+      XDG_SESSION_DESKTOP = "Hyprland";
+    };
+
     wayland.windowManager.hyprland = {
       enable = true;
 
@@ -171,6 +192,8 @@ in {
 
           exec-once = [
             "mako"
+            "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1"
+            "xhost +SI:localuser:root"
           ];
         }
         // cfg.settings;
