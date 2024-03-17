@@ -4,5 +4,6 @@
     ./kalypso
     ./orupi
     ./penelope
+    ./rlang
   ];
 }
