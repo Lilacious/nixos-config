@@ -25,10 +25,11 @@ in {
     environment = {
       plasma6.excludePackages = with pkgs.kdePackages; [
         elisa
-        plasma-browser-integration
+        kate
         khelpcenter
-        konsole
+        okular
         oxygen
+        plasma-browser-integration
       ];
       systemPackages = with pkgs; [
         (catppuccin-kde.override {
