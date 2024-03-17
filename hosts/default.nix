@@ -3,5 +3,6 @@
     ./hades
     ./kalypso
     ./orupi
+    ./penelope
   ];
 }
