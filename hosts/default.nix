@@ -2,5 +2,6 @@
   imports = [
     ./hades
     ./kalypso
+    ./orupi
   ];
 }
