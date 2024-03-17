@@ -10,7 +10,11 @@ in {
 
     myHome = {
       desktop = {
-        enable = cfg.desktop.enable;
+        desktopEnvironment = cfg.desktop.desktopEnvironment;
+        windowManager = {
+          wayland = cfg.desktop.windowManager.wayland;
+          xserver = cfg.desktop.windowManager.xserver;
+        };
         hyprland.enable = cfg.desktop.hyprland.enable;
       };
       programs = {
