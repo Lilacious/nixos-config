@@ -276,6 +276,13 @@
       "services.services.services.org.kde.plasma-systemmonitor.desktop"."_launch" = "Ctrl+Esc";
       "services.services.services.org.kde.spectacle.desktop"."RecordWindow" = [];
       "services.services.services.org.kde.spectacle.desktop"."_launch" = "Print";
+      "services.services.services.services.Alacritty.desktop"."_launch" = "Meta+Return";
+      "services.services.services.services.firefox.desktop"."_launch" = "Meta+B";
+      "services.services.services.services.org.kde.krunner.desktop"."_launch" = "Meta+Space";
+      "services.services.services.services.org.kde.plasma-systemmonitor.desktop"."_launch" = "Ctrl+Esc";
+      "services.services.services.services.org.kde.spectacle.desktop"."RecordWindow" = [];
+      "services.services.services.services.org.kde.spectacle.desktop"."_launch" = "Print";
+      "services.services.services.services.systemsettings.desktop"."_launch" = [];
       "services.services.services.systemsettings.desktop"."_launch" = [];
       "services.services.systemsettings.desktop"."_launch" = [];
       "services.systemsettings.desktop"."_launch" = [];
@@ -295,7 +302,7 @@
       "kcminputrc"."Libinput.2.10.TPPS/2 IBM TrackPoint"."PointerAcceleration" = 1.0;
       "kcminputrc"."Mouse"."X11LibInputXAccelProfileFlat" = true;
       "kcminputrc"."Mouse"."XLbInptPointerAcceleration" = 1;
-      "kcminputrc"."Mouse"."cursorTheme" = "Catppuccin-Mocha-Pink-Cursors";
+      "kcminputrc"."Mouse"."cursorTheme" = "default";
       "kcminputrc"."Tmp"."update_info" = "delete_cursor_old_default_size.upd:DeleteCursorOldDefaultSize";
       "kded5rc"."Module-appmenu"."autoload" = true;
       "kded5rc"."Module-baloosearchmodule"."autoload" = true;
@@ -969,7 +976,7 @@
       "kwinrc"."Tiling.92e842d7-5928-5c43-884a-4912e7cc82ed"."tiles" = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
       "kwinrc"."Tiling.bd455426-91b5-5aa4-b78c-9e21c3c810ab"."tiles" = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
       "kwinrc"."Wayland"."EnablePrimarySelection" = false;
-      "kwinrc"."Wayland"."InputMethod[$e]" = "/run/current-system/sw/share/applications/org.fcitx.Fcitx5.desktop";
+      "kwinrc"."Wayland"."InputMethod[$e]" = "/run/current-system/sw/share/applications/fcitx5-wayland-launcher.desktop";
       "kwinrc"."Windows"."Placement" = "Centered";
       "kwinrc"."Xwayland"."Scale" = 1;
       "kwinrc"."org.kde.kdecoration2"."ButtonsOnLeft" = "M";
