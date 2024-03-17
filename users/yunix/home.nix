@@ -34,6 +34,7 @@ in {
 
     imports = [
       inputs.plasma-manager.homeManagerModules.plasma-manager
+      inputs.hyprpaper.homeManagerModules.hyprpaper
       ./plasma-config.nix
       ./git.nix
       ../../home

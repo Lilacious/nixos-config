@@ -2,7 +2,8 @@
 {
   imports = [
     ./desktop
-    ./programs
     ./other
+    ./programs
+    ./services
   ];
 }

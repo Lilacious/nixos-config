@@ -9,6 +9,7 @@
     nixos-hardware,
     agenix,
     plasma-manager,
+    hyprpaper,
     ...
   } @ inputs:
     flake-parts.lib.mkFlake {inherit inputs;}
@@ -35,5 +36,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "nixpkgs";
     };
+    hyprpaper.url = "github:hyprwm/hyprpaper";
   };
 }
