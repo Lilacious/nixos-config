@@ -41,6 +41,6 @@ in {
   };
 
   imports = [
-    ./hyprland.nix
+    ./hyprland
   ];
 }
