@@ -61,6 +61,8 @@ in {
       kdePackages.kirigami
       # Fix GTK-WARNING: cannot open display
       xorg.xhost
+      # XDG desktop file picker
+      xdg-desktop-portal-gtk
     ];
 
     home.sessionVariables = {
