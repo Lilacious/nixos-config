@@ -7,6 +7,7 @@
 }:
 with lib; let
   cfg = config.myModules.desktop;
+  catDE = pkgs.callPackage ../../pkgs/catppuccin-kde/package.nix {};
 in {
   options = {
     myModules.desktop.plasma = {
@@ -32,7 +33,7 @@ in {
         plasma-browser-integration
       ];
       systemPackages = with pkgs; [
-        (catppuccin-kde.override {
+        (catDE.override {
           flavour = ["mocha"];
           accents = ["pink"];
           winDecStyles = ["modern"];
