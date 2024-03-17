@@ -34,9 +34,10 @@ in {
 
       package = pkgs.vscodium;
 
+      # Manage vscode only through HM
       enableExtensionUpdateCheck = false;
-
       enableUpdateCheck = false;
+      mutableExtensionsDir = false;
 
       userSettings =
         {
@@ -56,9 +57,9 @@ in {
 
       extensions = with pkgs.vscode-extensions;
         [
+          catppuccin.catppuccin-vsc
           jnoortheen.nix-ide
           vscodevim.vim
-          catppuccin.catppuccin-vsc
         ]
         ++ cfg.extensions;
     };
