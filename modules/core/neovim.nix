@@ -24,6 +24,13 @@ in {
 
           "" Set color scheme
           colorscheme catppuccin-mocha
+
+          "" command alias
+          cnoreabbrev W w
+          cnoreabbrev Q q
+          cnoreabbrev Wq wq
+          cnoreabbrev WQ wq
+          cnoreabbrev Q! q!
         '';
         packages.myVimPackage = with pkgs.vimPlugins; {
           start = [
