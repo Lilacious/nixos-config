@@ -23,7 +23,6 @@ in {
           userSettings = cfg.programs.vscode.userSettings;
           extensions = cfg.programs.vscode.extensions;
         };
-        zsh.enable = cfg.core.zsh.enable;
       };
     };
 

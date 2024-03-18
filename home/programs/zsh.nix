@@ -1,17 +1,19 @@
 # For system config see nix-config/modules/core/zsh.nix
 {
   config,
+  osConfig,
   lib,
   ...
 }:
 with lib; let
   cfg = config.myHome.programs.zsh;
+  osCfg = osConfig.myModules.core.zsh;
 in {
   options = {
     myHome.programs.zsh = {
       enable = mkOption {
         type = types.bool;
-        default = true;
+        default = osCfg.enable;
       };
     };
   };
