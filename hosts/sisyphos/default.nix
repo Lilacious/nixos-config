@@ -19,7 +19,9 @@ in {
         hm
         {
           home-manager = {
-            extraSpecialArgs = {};
+            extraSpecialArgs = {
+              inherit inputs;
+            };
             useGlobalPkgs = true;
             useUserPackages = true;
           };
