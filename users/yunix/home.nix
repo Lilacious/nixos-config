@@ -13,15 +13,7 @@ in {
     };
 
     myHome = {
-      desktop = {
-        desktopEnvironment = cfg.desktop.desktopEnvironment;
-        windowManager = {
-          wayland = cfg.desktop.windowManager.wayland;
-          xserver = cfg.desktop.windowManager.xserver;
-        };
-      };
       programs = {
-        virt-manager.enable = cfg.programs.virt-manager.enable;
         vscode = {
           enable = cfg.programs.vscode.enable;
           userSettings = cfg.programs.vscode.userSettings;

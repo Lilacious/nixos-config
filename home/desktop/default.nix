@@ -1,40 +1,39 @@
 {
   lib,
-  config,
+  osConfig,
   ...
 }:
 with lib; let
-  WM = config.myHome.desktop.windowManager;
-  DE = config.myHome.desktop.desktopEnvironment;
+  osCfg = osConfig.myModules.desktop;
 in {
   options = {
     myHome.desktop = {
       enable = mkOption {
         type = types.bool;
-        default = WM.enable || DE.enable;
+        default = osCfg.enable;
       };
 
       desktopEnvironment = {
         enable = mkOption {
           type = types.bool;
-          default = false;
+          default = osCfg.desktopEnvironment.enable;
         };
       };
 
       windowManager = {
         enable = mkOption {
           type = types.bool;
-          default = WM.wayland || WM.xserver;
+          default = osCfg.windowManager.enable;
         };
 
         wayland = mkOption {
           type = types.bool;
-          default = false;
+          default = osCfg.windowManager.wayland;
         };
 
         xserver = mkOption {
           type = types.bool;
-          default = false;
+          default = osCfg.windowManager.xserver;
         };
       };
     };

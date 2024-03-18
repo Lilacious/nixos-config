@@ -1,18 +1,19 @@
 # For system config see nix-config/modules/programs/virt-manager.nix
 {
   config,
+  osConfig,
   lib,
   ...
 }:
 with lib; let
   cfg = config.myHome.programs.virt-manager;
-  dsktp = config.myHome.desktop;
+  osCfg = osConfig.myModules.programs.virt-manager;
 in {
   options = {
     myHome.programs.virt-manager = {
       enable = mkOption {
         type = types.bool;
-        default = dsktp.enable;
+        default = osCfg.enable;
       };
     };
   };
