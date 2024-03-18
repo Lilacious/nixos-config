@@ -1,30 +1,31 @@
 # For system config see nix-config/modules/programs/vscode.nix
 {
   config,
+  osConfig,
   lib,
   pkgs,
   ...
 }:
 with lib; let
   cfg = config.myHome.programs.vscode;
-  dsktp = config.myHome.desktop;
+  osCfg = osConfig.myModules.programs.vscode;
   jsonFormat = pkgs.formats.json {};
 in {
   options = {
     myHome.programs.vscode = {
       enable = mkOption {
         type = types.bool;
-        default = dsktp.enable;
+        default = osCfg.enable;
       };
 
       userSettings = mkOption {
         type = jsonFormat.type;
-        default = {};
+        default = osCfg.userSettings;
       };
 
       extensions = mkOption {
         type = types.listOf types.package;
-        default = [];
+        default = osCfg.extensions;
       };
     };
   };
