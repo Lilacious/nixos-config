@@ -1,6 +1,7 @@
 {
   imports = [
     ./alacritty.nix
+    ./anyrun.nix
     ./bemenu.nix
     ./eza.nix
     ./starship.nix

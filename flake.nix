@@ -4,11 +4,7 @@
   outputs = {
     self,
     nixpkgs,
-    home-manager,
     flake-parts,
-    nixos-hardware,
-    agenix,
-    plasma-manager,
     ...
   } @ inputs:
     flake-parts.lib.mkFlake {inherit inputs;}
@@ -34,6 +30,10 @@
       url = "github:pjones/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "nixpkgs";
+    };
+    anyrun = {
+      url = "github:Kirottu/anyrun";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 }
