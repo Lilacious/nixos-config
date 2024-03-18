@@ -1,10 +1,12 @@
 {
   config,
+  osConfig,
   lib,
   ...
 }:
 with lib; let
   cfg = config.myHome.desktop.hyprland;
+  osCfg = osConfig.myModules.desktop.hyprland;
 in {
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland.settings =
@@ -74,6 +76,6 @@ in {
           "suppressevent maximize, class:.*"
         ];
       }
-      // cfg.settings;
+      // osCfg.settings;
   };
 }

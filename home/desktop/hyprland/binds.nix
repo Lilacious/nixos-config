@@ -1,11 +1,12 @@
 {
   config,
+  osConfig,
   lib,
-  pkgs,
   ...
 }:
 with lib; let
   cfg = config.myHome.desktop.hyprland;
+  osCfg = osConfig.myModules.desktop.hyprland;
 in {
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland.settings = {
@@ -13,8 +14,8 @@ in {
 
       bind = [
         "CONTROLALT, Delete, exit,"
-        "$mod, Return, exec, ${cfg.terminal}"
-        "$mod, B, exec, ${cfg.browser}"
+        "$mod, Return, exec, ${osCfg.terminal}"
+        "$mod, B, exec, ${osCfg.browser}"
         "$mod, Space, exec, anyrun"
         "$mod, W, killactive,"
         "$mod, M, fullscreen, 1" ## monocle

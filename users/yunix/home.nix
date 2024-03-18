@@ -19,7 +19,6 @@ in {
           wayland = cfg.desktop.windowManager.wayland;
           xserver = cfg.desktop.windowManager.xserver;
         };
-        hyprland.enable = cfg.desktop.hyprland.enable;
       };
       programs = {
         virt-manager.enable = cfg.programs.virt-manager.enable;
