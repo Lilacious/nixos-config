@@ -57,6 +57,10 @@ in {
           format = " {temperatureC}°C";
         };
 
+        disk = {
+          format = " {percentage_used}%";
+        };
+
         tray = {
           icon-size = 20;
           spacing = 10;
@@ -66,25 +70,26 @@ in {
           scroll-step = 1;
           format = "{icon} {volume}%";
           format-bluetooth = "{icon} {volume}% ";
-          format-muted = "";
+          format-muted = "󰖁";
           format-icons = {
-            headphones = "";
-            handsfree = "";
+            headphone = "";
+            hand-sfree = "";
             headset = "󰋎";
             phone = "";
             portable = "";
             car = "";
-            default = ["" ""];
+            default = ["󰕿" "󰖀" "󰕾"];
           };
           on-click = "pavucontrol";
         };
 
         battery = {
+          bat = "BAT0";
           states = {
             warning = 30;
             critical = 15;
           };
-          format = " {capacity}%";
+          format = "  {capacity}%";
           format-discharging = "{icon} {capacity}%";
           format-icons = [
             "󰂃"
@@ -99,6 +104,33 @@ in {
             "󰂂"
             "󰁹"
           ];
+        };
+
+        "battery#1" = {
+          bat = "BAT1";
+          states = {
+            warning = 30;
+            critical = 15;
+          };
+          format = "  {capacity}%";
+          format-discharging = "{icon} {capacity}%";
+          format-icons = [
+            "󰂃"
+            "󰁺"
+            "󰁻"
+            "󰁼"
+            "󰁽"
+            "󰁾"
+            "󰁿"
+            "󰂀"
+            "󰂁"
+            "󰂂"
+            "󰁹"
+          ];
+        };
+
+        backlight = {
+          format = "  {percent}%";
         };
 
         # Hyprland
@@ -173,16 +205,17 @@ in {
             "network"
             "cpu"
             "memory"
-            "temperature"
-            "backlight"
-            "battery"
+            "disk"
           ];
         };
 
         "group/utils" = {
           "orientation" = "inherit";
           "modules" = [
+            "backlight"
             "pulseaudio"
+            "battery"
+            "battery#1"
           ];
         };
 

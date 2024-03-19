@@ -107,9 +107,11 @@ box#workspaces {
     margin: 3px 10px 0;
 }
 
+
 #network,
 #cpu,
 #memory,
+#disk,
 #temperature,
 #battery,
 #backlight,
@@ -117,7 +119,7 @@ box#workspaces {
     font-weight: bold;
     font-size: 14px;
     padding: 2px 8px 0;
-    color: @lavender;
+    color: @rosewater;
 }
 
 #window {
@@ -139,6 +141,7 @@ box#workspaces {
     color: @yellow
 }
 
+#disk,
 #temperature {
     color: @pink
 }
