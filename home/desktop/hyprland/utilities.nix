@@ -10,6 +10,7 @@ in {
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       hyprpaper
+      hyprpicker
       wlr-randr
       # QT wayland support
       kdePackages.qtwayland
@@ -23,26 +24,29 @@ in {
       xdg-desktop-portal-gtk
     ];
 
-    wayland.windowManager.hyprland.settings = {
-      env = [
-        "GDK_BACKEND,wayland,x11"
-        "QT_QPA_PLATFORM,wayland;xcb"
-        "SDL_VIDEODRIVER,wayland"
-        "CLUTTER_BACKEND,wayland"
-        "XDG_CURRENT_DESKTOP,Hyprland"
-        "XDG_SESSION_TYPE,wayland"
-        "XDG_SESSION_DESKTOP,Hyprland"
+    wayland.windowManager.hyprland = {
+      plugins = [
       ];
+      settings = {
+        env = [
+          "GDK_BACKEND,wayland,x11"
+          "QT_QPA_PLATFORM,wayland;xcb"
+          "SDL_VIDEODRIVER,wayland"
+          "CLUTTER_BACKEND,wayland"
+          "XDG_CURRENT_DESKTOP,Hyprland"
+          "XDG_SESSION_TYPE,wayland"
+          "XDG_SESSION_DESKTOP,Hyprland"
+        ];
 
-      exec-once = [
-        "hyprpaper"
-        "mako"
-        "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1"
-        "xhost +SI:localuser:root"
-        "waybar"
-      ];
+        exec-once = [
+          "hyprpaper"
+          "mako"
+          "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1"
+          "xhost +SI:localuser:root"
+          "waybar"
+        ];
+      };
     };
-
     xdg.configFile."hypr/hyprpaper.conf".text = ''
       splash = false
       preload = ~/Pictures/Wallpapers/KDEScarlettTreeDark.png

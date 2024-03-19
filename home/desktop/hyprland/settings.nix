@@ -18,7 +18,7 @@ in {
           ## Gaps between windows and monitor edges
           gaps_out = 6;
           ## Border color
-          "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
+          "col.active_border" = "rgba(f5c2e7aa) rgba(a6e3a1aa) 45deg";
           "col.inactive_border" = "rgba(595959aa)";
           ## Layout to use. [dwindle/master]
           layout = "dwindle";
@@ -28,8 +28,8 @@ in {
           ## Rounded corner radius
           rounding = 10;
           ## Opacity
-          active_opacity = 0.99;
-          inactive_opacity = 0.98;
+          active_opacity = 1.0;
+          inactive_opacity = 1.0;
           fullscreen_opacity = 1.0;
           ## Shadows
           drop_shadow = true;
@@ -61,6 +61,7 @@ in {
         };
 
         misc = {
+          disable_hyprland_logo = true;
           disable_splash_rendering = true;
         };
 
