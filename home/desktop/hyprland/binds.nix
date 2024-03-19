@@ -14,14 +14,18 @@ in {
 
       bind = [
         "CONTROLALT, Delete, exit,"
+        "$mod, Space, exec, anyrun"
         "$mod, Return, exec, ${osCfg.terminal}"
         "$mod, B, exec, ${osCfg.browser}"
-        "$mod, Space, exec, anyrun"
-        "$mod, W, killactive,"
+        "$mod, F, fullscreen,"
+        "$mod, G, togglegroup,"
+        "$mod, J, changegroupactive, f"
+        "$mod, K, changegroupactive, b"
+        "$mod, T, togglesplit," ## dwindle
         "$mod, M, fullscreen, 1" ## monocle
-        "$mod, F, togglefloating,"
+        "$mod, N, togglefloating,"
         "$mod, P, pseudo," ## dwindle
-        "$mod, J, togglesplit," ## dwindle
+        "$mod, W, killactive,"
         ## Move focus with mainMod + arrow keys
         "$mod, left, movefocus, l"
         "$mod, right, movefocus, r"
@@ -50,17 +54,45 @@ in {
         "$mod SHIFT, 9, movetoworkspacesilent, 9"
         "$mod SHIFT, 0, movetoworkspacesilent, 10"
         ## Example special workspace (scratchpad)
-        "$mod, S, togglespecialworkspace, magic"
-        "$mod SHIFT, S, movetoworkspace, special:magic"
+        "ALT , S, togglespecialworkspace, magic"
+        "ALT_SHIFT, S, movetoworkspace, special:magic"
         ## Scroll through existing workspaces with mainMod + scroll
         "$mod, mouse_down, workspace, e+1"
         "$mod, mouse_up, workspace, e-1"
+
+        # screenshot
+        "$mod SHIFT, S, exec, grimblast --notify --cursor --freeze copysave area"
+
+        ", Print, exec, grimblast --notify --cursor copysave output"
+
+        "$mod, Print, exec, grimblast --notify --cursor copysave screen"
       ];
 
       bindm = [
         # Move/resize windows with mainMod + LMB/RMB and dragging"
         "$mod, mouse:272, movewindow"
         "$mod, mouse:273, resizewindow"
+      ];
+
+      bindl = [
+        # media controls
+        ", XF86AudioPlay, exec, playerctl play-pause"
+        ", XF86AudioPrev, exec, playerctl previous"
+        ", XF86AudioNext, exec, playerctl next"
+        ", XF86AudioStop, exec, playerctl stop"
+
+        ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+        ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+      ];
+
+      bindle = [
+        # volume
+        ", XF86AudioRaiseVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 6%+"
+        ", XF86AudioLowerVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 6%-"
+
+        # backlight
+        ", XF86MonBrightnessUp, exec, brillo -q -u 300000 -A 5"
+        ", XF86MonBrightnessDown, exec, brillo -q -u 300000 -U 5"
       ];
     };
   };

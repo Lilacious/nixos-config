@@ -11,7 +11,10 @@ in {
     home.packages = with pkgs; [
       hyprpaper
       hyprpicker
+      grimblast
       wlr-randr
+      pavucontrol
+      brillo
       # QT wayland support
       kdePackages.qtwayland
       libsForQt5.qt5.qtwayland

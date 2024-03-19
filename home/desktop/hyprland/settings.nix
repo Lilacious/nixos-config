@@ -60,9 +60,16 @@ in {
           ];
         };
 
-        misc = {
-          disable_hyprland_logo = true;
-          disable_splash_rendering = true;
+        group = {
+          groupbar = {
+            font_family = "Agave Nerd Font";
+            font_size = 10;
+            "col.active" = "rgba(1e1e2eee)";
+            "col.inactive" = "rgba(373a50ee)";
+            text_color = "rgba(cba6f7ff)";
+          };
+          "col.border_active" = "rgba(1e1e2eee)";
+          "col.border_inactive" = "rgba(373a50ee)";
         };
 
         input = {
@@ -70,7 +77,13 @@ in {
         };
 
         dwindle = {
+          pseudotile = true;
           preserve_split = true;
+        };
+
+        misc = {
+          disable_hyprland_logo = true;
+          disable_splash_rendering = true;
         };
 
         windowrulev2 = [
