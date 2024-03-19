@@ -23,6 +23,7 @@
   myModules = {
     desktop = {
       plasma.enable = true;
+      hyprland.enable = true;
     };
 
     services = {

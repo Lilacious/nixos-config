@@ -42,7 +42,7 @@ in {
           valueType;
         default = {
           monitor = [
-            ",preferred,auto,auto"
+            ",preferred,auto,1"
           ];
         };
       };
