@@ -24,7 +24,6 @@
     xournalpp
     spotify
     kitty
-    alejandra
     obs-studio
     firefox
 

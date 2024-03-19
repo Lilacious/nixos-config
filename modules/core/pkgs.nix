@@ -50,6 +50,7 @@ in {
       # tree        # Indented directory listing
 
       ## Other
+      alejandra # nix formating
       neofetch # Sys info fetcher
       cheat # cheat sheet
 
