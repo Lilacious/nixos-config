@@ -1,0 +1,218 @@
+/* Catppuccin Mocha palette */
+
+@define-color rosewater #f5e0dc;
+@define-color flamingo  #f2cdcd;
+@define-color pink      #f5c2e7;
+@define-color mauve     #cba6f7;
+@define-color red       #f38ba8;
+@define-color maroon    #eba0ac;
+@define-color peach     #fab387;
+@define-color yellow    #f9e2af;
+@define-color green     #a6e3a1;
+@define-color teal      #94e2d5;
+@define-color sky       #89dceb;
+@define-color sapphire  #74c7ec;
+@define-color blue      #89b4fa;
+@define-color lavender  #b4befe;
+
+@define-color text     #cad3f5;
+@define-color subtext0 #b8c0e0;
+@define-color subtext1 #a5adcb;
+
+@define-color overlay0 #6c7086;
+@define-color overlay1 #7f849c;
+@define-color overlay2 #9399b2;
+
+@define-color surface0 #a6adc8;
+@define-color surface1 #bac2de;
+@define-color surface2 #cdd6f4;
+
+@define-color base   #1e1e2e;
+@define-color mantle #181825;
+@define-color crust  #11111b;
+
+@define-color border rgba(89, 89, 89, 0.93);
+@define-color border2 #373A50;
+@define-color modules #25283C;
+
+* {
+    font-family: Agave Nerd Font, sans-serif;
+    border-radius: 10px;
+}
+
+window#waybar {
+    background-color: rgba(30, 30, 46, 0.95);
+    border: 2px solid @border;
+    transition-property: background-color;
+    transition-duration: 0.5s;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+button {
+    /* Use box-shadow instead of border so the text isn't offset */
+    box-shadow: inset 0 -3px transparent;
+    /* Avoid rounded borders under each button name */
+    border: none;
+    border-radius: 0;
+}
+
+button:hover {
+    background: inherit;
+    box-shadow: inset 0 -2px @blue;
+}
+
+/* Hyprland */
+box#workspaces {
+    padding: 0 2px;
+    margin: 6px 10px;
+    border: 2px solid @border2;
+}
+
+#workspaces {
+    font-size: 20px;
+    color: @text;
+    background-color: @modules;
+}
+
+#workspaces button {
+    background-color: transparent;
+    border-radius: 10px;
+    margin: 0 4px;
+}
+
+#workspaces button.empty {
+    color: @overlay0;
+}
+
+#workspaces button.visible {
+    color: @blue;
+}
+
+#workspaces button.active {
+    color: @green;
+}
+
+#workspaces button.urgent {
+    color: @red;
+}
+
+/* Modules */
+#clock {
+    font-size: 16px;
+    color: @text;
+    font-weight: bold;
+    margin: 3px 10px 0;
+}
+
+#network,
+#cpu,
+#memory,
+#temperature,
+#battery,
+#backlight,
+#pulseaudio {
+    font-weight: bold;
+    font-size: 14px;
+    padding: 2px 8px 0;
+    color: @lavender;
+}
+
+#window {
+    font-weight: bold;
+    font-size: 15px;
+    padding: 3px 8px 0;
+    color: @mauve;
+}
+
+#network {
+    color: @peach;
+}
+
+#cpu {
+    color: @green;
+}
+
+#memory {
+    color: @yellow
+}
+
+#temperature {
+    color: @pink
+}
+
+#backlight {
+    color: @blue
+}
+
+#tray {
+    padding: 0 10px;   
+}
+
+/* Custom Modules */
+
+#custom-nix {
+    font-size: 25px;
+    margin: 0 15px 0 10px;
+    color: @blue;
+}
+
+#custom-power {
+    font-size: 22px;
+    margin: 2px 10px 0 10px;
+    color: @red;
+}
+
+#custom-quit {
+    font-size: 25px;
+    margin: 2px 10px 0 10px;
+    padding: 0 5px;
+    color: @blue;
+}
+
+#custom-lock {
+    font-size: 25px;
+    margin: 0 5px 0 5px;
+    padding: 0 5px;
+    color: @teal;
+}
+
+#custom-reboot {
+    font-size: 28px;
+    margin: 0 0px 1px 8px;
+    padding: 0 10px 0 5px;
+    color: @maroon;
+}
+
+#custom-separator-right,
+#custom-separator-left {
+  font-weight: bold;
+  font-size: 20px;
+  padding: 0 10px 0 8px;
+  color: @text;
+}
+
+/* Groups */
+box#stats,
+box#utils {
+    padding: 0 2px;
+    margin: 6px 8px;
+    border: 2px solid @border2;
+    background-color: @modules;
+}
+
+box#tray {
+    padding: 0 10px;
+    margin: 6px 10px;
+    border: 2px solid @border2;
+    background-color: @modules;
+}
+
+#power-opt {
+    padding: 0 5px;
+    margin: 6px 5px;
+    border: 0px solid @border2;
+    background-color: transparent;
+}

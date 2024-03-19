@@ -1,5 +1,7 @@
 {
   imports = [
+    ./waybar
+
     ./alacritty.nix
     ./anyrun.nix
     ./bemenu.nix
