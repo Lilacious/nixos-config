@@ -14,9 +14,9 @@ in {
         general = {
           border_size = 2;
           ## Gaps between windows
-          gaps_in = 2.5;
+          gaps_in = 3;
           ## Gaps between windows and monitor edges
-          gaps_out = 5;
+          gaps_out = 6;
           ## Border color
           "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
           "col.inactive_border" = "rgba(595959aa)";
