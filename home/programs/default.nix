@@ -5,6 +5,7 @@
     ./alacritty.nix
     ./anyrun.nix
     ./bemenu.nix
+    ./btop.nix
     ./eza.nix
     ./starship.nix
     ./virt-manager.nix
