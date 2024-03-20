@@ -19,13 +19,14 @@ in {
           fcitx5-chinese-addons
 
           fcitx5-gtk
+
+          fcitx5-catppuccin
         ];
       }
       (mkIf cfg.plasma.enable {
         fcitx5.plasma6Support = true;
         fcitx5.addons = with pkgs; [
           kdePackages.fcitx5-qt
-          fcitx5-catppuccin
         ];
       })
     ]);
