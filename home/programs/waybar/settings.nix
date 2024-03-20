@@ -198,6 +198,12 @@ in {
           "on-click" = "shutdown now";
         };
 
+        "custom/sleep" = {
+          "format" = "󰤄";
+          "tooltip" = false;
+          "on-click" = "systemctl suspend";
+        };
+
         # Groups
         "group/stats" = {
           "orientation" = "inherit";
@@ -228,10 +234,11 @@ in {
           };
           "modules" = [
             "custom/nix"
-            "custom/power"
-            "custom/quit"
             "custom/lock"
+            "custom/sleep"
+            "custom/quit"
             "custom/reboot"
+            "custom/power"
           ];
         };
       }
