@@ -34,6 +34,7 @@ in {
         env = [
           "GDK_BACKEND,wayland,x11"
           "QT_QPA_PLATFORM,wayland;xcb"
+          "QT_QPA_PLATFORMTHEME,kde" # use kde theme
           "SDL_VIDEODRIVER,wayland"
           "CLUTTER_BACKEND,wayland"
           "XDG_CURRENT_DESKTOP,Hyprland"
