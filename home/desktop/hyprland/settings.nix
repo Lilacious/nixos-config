@@ -18,8 +18,8 @@ in {
           ## Gaps between windows and monitor edges
           gaps_out = 6;
           ## Border color
-          "col.active_border" = "rgba(f5c2e7aa) rgba(a6e3a1aa) 45deg";
-          "col.inactive_border" = "rgba(595959aa)";
+          "col.active_border" = " rgba(74c7ecee) rgba(f5c2e7ee) 45deg";
+          "col.inactive_border" = "rgba(373a50aa)";
           ## Layout to use. [dwindle/master]
           layout = "dwindle";
         };
@@ -68,8 +68,8 @@ in {
             "col.inactive" = "rgba(373a50ee)";
             text_color = "rgba(cba6f7ff)";
           };
-          "col.border_active" = "rgba(1e1e2eee)";
-          "col.border_inactive" = "rgba(373a50ee)";
+          "col.border_active" = "rgba(f5c2e7ee) rgba(74c7ecee) 45deg";
+          "col.border_inactive" = "rgba(373a50aa)";
         };
 
         input = {
