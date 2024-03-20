@@ -183,7 +183,7 @@ in {
         "custom/lock" = {
           "format" = "󰍁";
           "tooltip" = false;
-          "on-click" = "swaylock";
+          "on-click" = "hyprlock";
         };
 
         "custom/reboot" = {

@@ -14,6 +14,7 @@ in {
 
       bind = [
         "CONTROLALT, Delete, exit,"
+        "CONTROLALT, L, exec, hyprlock"
         "$mod, Space, exec, anyrun"
         "$mod, Return, exec, ${osCfg.terminal}"
         "$mod, B, exec, ${osCfg.browser}"
