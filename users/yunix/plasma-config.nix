@@ -282,6 +282,13 @@
       "services.services.services.services.org.kde.plasma-systemmonitor.desktop"."_launch" = "Ctrl+Esc";
       "services.services.services.services.org.kde.spectacle.desktop"."RecordWindow" = [];
       "services.services.services.services.org.kde.spectacle.desktop"."_launch" = "Print";
+      "services.services.services.services.services.Alacritty.desktop"."_launch" = "Meta+Return";
+      "services.services.services.services.services.firefox.desktop"."_launch" = "Meta+B";
+      "services.services.services.services.services.org.kde.krunner.desktop"."_launch" = "Meta+Space";
+      "services.services.services.services.services.org.kde.plasma-systemmonitor.desktop"."_launch" = "Ctrl+Esc";
+      "services.services.services.services.services.org.kde.spectacle.desktop"."RecordWindow" = [];
+      "services.services.services.services.services.org.kde.spectacle.desktop"."_launch" = "Print";
+      "services.services.services.services.services.systemsettings.desktop"."_launch" = [];
       "services.services.services.services.systemsettings.desktop"."_launch" = [];
       "services.services.services.systemsettings.desktop"."_launch" = [];
       "services.services.systemsettings.desktop"."_launch" = [];
@@ -977,6 +984,7 @@
       "kwinrc"."Tiling.bd455426-91b5-5aa4-b78c-9e21c3c810ab"."tiles" = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
       "kwinrc"."Wayland"."EnablePrimarySelection" = false;
       "kwinrc"."Wayland"."InputMethod[$e]" = "/run/current-system/sw/share/applications/fcitx5-wayland-launcher.desktop";
+      "kwinrc"."Windows"."FocusPolicy" = "FocusFollowsMouse";
       "kwinrc"."Windows"."Placement" = "Centered";
       "kwinrc"."Xwayland"."Scale" = 1;
       "kwinrc"."org.kde.kdecoration2"."ButtonsOnLeft" = "M";
