@@ -23,13 +23,13 @@ in {
 
       font = "Agave Nerd Font 14";
 
-      borderSize = 1;
+      borderSize = 2;
       borderRadius = 10;
-      borderColor = "#f38ba8";
+      borderColor = "#f5c2e7";
       backgroundColor = "#1e1e2e";
 
       anchor = "bottom-right";
-      margin = "10,25,5";
+      margin = "25,25";
     };
 
     home.packages = with pkgs; [libnotify];
