@@ -43,7 +43,6 @@ in {
         ];
 
         exec-once = [
-          "hyprpaper"
           "mako"
           "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1"
           "xhost +SI:localuser:root"
@@ -56,5 +55,18 @@ in {
       preload = ~/Pictures/Wallpapers/KDEScarlettTreeDark.png
       wallpaper = ,~/Pictures/Wallpapers/KDEScarlettTreeDark.png
     '';
+
+    systemd.user.services.hyprpaper = {
+      Unit = {
+        Description = "Hyprland wallpaper daemon";
+        PartOf = ["hyprland-session.target"];
+      };
+
+      Service = {
+        ExecStart = "${lib.getExe pkgs.hyprpaper}";
+        Restart = "on-failure";
+      };
+      Install.WantedBy = ["hyprland-session.target"];
+    };
   };
 }
