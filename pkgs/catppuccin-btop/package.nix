@@ -3,7 +3,6 @@
   fetchFromGitHub,
   lib,
 }:
-
 stdenvNoCC.mkDerivation {
   pname = "catppuccin-btop";
   version = "2023-08-07";
