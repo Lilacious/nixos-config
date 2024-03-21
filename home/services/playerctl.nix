@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 with lib; let
@@ -17,5 +18,6 @@ in {
   };
   config = mkIf cfg.enable {
     services.playerctld.enable = true;
+    home.packages = with pkgs; [playerctl];
   };
 }
