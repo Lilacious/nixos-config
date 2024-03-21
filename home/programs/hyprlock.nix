@@ -20,15 +20,23 @@ in {
   config = mkIf cfg.enable {
     programs.hyprlock = {
       enable = true;
+
+      general = {
+        disable_loading_bar = true;
+        hide_cursor = false;
+      };
+
       backgrounds = [
         {
           monitor = "";
-          path = "";
+          path = "$HOME/Pictures/Wallpapers/KDEMilkyWay.png";
           color = "rgba(30, 30, 46, 1)";
         }
       ];
 
-      input-fields = [
+      input-fields = let
+        inputSpanOpt = ''weight="bold" style="italic" color="##cad3f5"'';
+      in [
         {
           monitor = "";
           size = {
@@ -39,7 +47,7 @@ in {
           dots_size = 0.25;
           dots_spacing = 0.25;
           fade_on_empty = false;
-          placeholder_text = "<i>Input Password...</i>";
+          placeholder_text = ''<span ${inputSpanOpt}>Input Password...</span>'';
           outer_color = "rgb(245, 194, 231)";
           inner_color = "rgba(37, 40, 60, 1)";
           font_color = "rgb(202, 211, 245)";
@@ -58,12 +66,25 @@ in {
       labels = [
         {
           monitor = "";
-          text = "<b>$TIME</b>";
+          text = ''cmd[update:30000] echo "<b>$(date +"%H:%M")</b>"'';
           color = "rgb(202, 211, 245)";
-          font_size = 45;
+          font_size = 80;
           font_family = "Agave Nerd Font";
           position = {
-            x = -12;
+            x = 0;
+            y = 260;
+          };
+          halign = "center";
+          valign = "center";
+        }
+        {
+          monitor = "";
+          text = ''cmd[update:60000] echo "<b>$(date +"%A, %d %B %Y")</b>"'';
+          color = "rgb(202, 211, 245)";
+          font_size = 25;
+          font_family = "Agave Nerd Font";
+          position = {
+            x = 0;
             y = 200;
           };
           halign = "center";
