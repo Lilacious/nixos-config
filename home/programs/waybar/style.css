@@ -215,9 +215,9 @@ box#utils {
 
 box#tray {
     padding: 0 10px;
-    margin: 6px 10px;
+    margin: 8px 8px;
     border: 2px solid @border2;
-    background-color: @modules;
+    background-color: #cfc9cd;
 }
 
 #power-opt {
