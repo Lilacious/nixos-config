@@ -21,15 +21,18 @@ in {
       enable = true;
       defaultTimeout = 3000;
 
-      font = "Agave Nerd Font 14";
+      font = "Agave Nerd Font 12";
 
       borderSize = 2;
       borderRadius = 10;
       borderColor = "#f5c2e7";
-      backgroundColor = "#1e1e2e";
+      backgroundColor = "#25283c";
+
+      height = 200;
+      width = 325;
 
       anchor = "bottom-right";
-      margin = "25,25";
+      margin = "75,75";
     };
 
     home.packages = with pkgs; [libnotify];
