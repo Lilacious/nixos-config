@@ -40,6 +40,8 @@ in {
           "XDG_CURRENT_DESKTOP,Hyprland"
           "XDG_SESSION_TYPE,wayland"
           "XDG_SESSION_DESKTOP,Hyprland"
+          "GTK_IM_MODULE,"
+          "QT_IM_MODULE,"
         ];
 
         exec-once = [
@@ -47,6 +49,7 @@ in {
           "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1"
           "xhost +SI:localuser:root"
           "waybar"
+          "fcitx5"
         ];
       };
     };
