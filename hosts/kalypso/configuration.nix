@@ -47,7 +47,13 @@
     ## Enable desktop environment
     desktop = {
       plasma.enable = true;
-      hyprland.enable = true;
+      hyprland = {
+        enable = true;
+        settings.monitor = [
+          "DP-1,preferred,0x0,1"
+          "HDMI-A-2,preferred,2560x360,1"
+        ];
+      };
     };
 
     services = {
