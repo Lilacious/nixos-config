@@ -1,5 +1,6 @@
 {
   lib,
+  options,
   ...
 }:
 with lib;
@@ -12,8 +13,21 @@ with lib;
     ./zsh.nix
   ];
 
-  networking.firewall.enable = mkForce true;
-  time.timeZone = mkDefault "Europe/Berlin";
-  hardware.enableRedistributableFirmware = mkDefault true;
-  nixpkgs.config.allowUnfree = mkDefault true;
+  config = (
+    mkMerge [
+      {
+        time.timeZone = mkDefault "Europe/Berlin";
+        nixpkgs.config.allowUnfree = mkDefault true;
+      }
+      # nix-darwin has no hardware options
+      (
+        if (builtins.hasAttr "hardware" options) then
+          {
+            hardware.enableRedistributableFirmware = mkDefault true;
+          }
+        else
+          { }
+      )
+    ]
+  );
 }
