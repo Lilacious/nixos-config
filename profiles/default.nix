@@ -1,6 +1,8 @@
 {
   flake.nixosModules = {
-    server = ./server.nix;
+    nixos = import ./nixos.nix;
+    server = import ./server.nix;
     workstation = import ./workstation.nix;
+    wsl = import ./wsl.nix;
   };
 }

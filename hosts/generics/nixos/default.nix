@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ self, inputs, ... }:
 let
   inherit (inputs.nixpkgs) lib;
   amd = "x86_64-linux";
@@ -13,7 +13,7 @@ in
       };
       modules = [
         ./configuration.nix
-        ../../../profiles/nixos.nix
+        self.nixosModules.nixos
 
         {
           networking.hostName = "nixos-amd";
@@ -28,7 +28,7 @@ in
       };
       modules = [
         ./configuration.nix
-        ../../../profiles/nixos.nix
+        self.nixosModules.nixos
 
         {
           networking.hostName = "nixos-arm";

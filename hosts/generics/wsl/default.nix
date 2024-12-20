@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ self, inputs, ... }:
 let
   inherit (inputs.nixpkgs) lib;
   arch = "x86_64-linux";
@@ -12,7 +12,7 @@ in
       };
       modules = [
         ./configuration.nix
-        ../../../profiles/wsl.nix
+        self.nixosModules.wsl
 
         inputs.nixos-wsl.nixosModules.default
         {
