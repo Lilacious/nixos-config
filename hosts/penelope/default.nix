@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ self, inputs, ... }:
 let
   inherit (inputs.nixpkgs) lib;
   nixhw = inputs.nixos-hardware.nixosModules;
@@ -15,7 +15,7 @@ in
         ./hardware-configuration.nix
         ./configuration.nix
         ./modules
-        ../../profiles/workstation.nix
+        self.nixosModules.workstation
 
         {
           ## Custom aliases for penelope
