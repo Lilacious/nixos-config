@@ -7,7 +7,7 @@ in
   flake.nixosConfigurations = {
     kalypso = lib.nixosSystem {
       specialArgs = {
-        inherit inputs;
+        inherit self inputs;
         system = "x86_64-linux";
       };
       modules = [

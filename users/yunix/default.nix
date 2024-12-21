@@ -1,5 +1,4 @@
 {
-  config,
   lib,
   pkgs,
   options,
@@ -7,7 +6,7 @@
 }:
 with lib;
 let
-  subOpt = options.users.users.type.getSubOptions [];
+  subOpt = options.users.users.type.getSubOptions [ ];
 in
 {
   users.users.yunix = (
@@ -48,16 +47,4 @@ in
       )
     ]
   );
-
-  home-manager.users.yunix = {
-    home = {
-      username = "yunix";
-      homeDirectory = "${config.users.users.yunix.home}";
-      stateVersion = "23.05";
-    };
-    imports = [
-      ./git.nix
-      ../../home
-    ];
-  };
 }

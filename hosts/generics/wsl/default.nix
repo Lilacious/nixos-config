@@ -7,7 +7,7 @@ in
   flake.nixosConfigurations = {
     wsl = lib.nixosSystem {
       specialArgs = {
-        inherit inputs;
+        inherit self inputs;
         system = arch;
       };
       modules = [

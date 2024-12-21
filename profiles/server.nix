@@ -1,7 +1,12 @@
 {
+  self,
   inputs,
+  config,
   ...
 }:
+let
+  username = "yunix";
+in
 {
   imports = [
     ./nixos.nix
@@ -15,10 +20,23 @@
         };
         useGlobalPkgs = true;
         useUserPackages = true;
+
+        users.${username} = {
+          home = {
+            username = "${username}";
+            homeDirectory = "${config.users.users.${username}.home}";
+            stateVersion = "23.05";
+          };
+          imports = [
+            ../users/${username}/git.nix
+            self.nixosModules.home-core
+            self.nixosModules.home-programs
+          ];
+        };
       };
     }
 
-    ../users/yunix
+    ../users/${username}
   ];
 
   services.openssh = {

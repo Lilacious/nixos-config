@@ -10,9 +10,4 @@
 
     ../users/wsl
   ];
-
-  wsl = {
-    enable = true;
-    defaultUser = "nixos";
-  };
 }

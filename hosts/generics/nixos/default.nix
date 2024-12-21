@@ -8,7 +8,7 @@ in
   flake.nixosConfigurations = {
     nixos-amd = lib.nixosSystem {
       specialArgs = {
-        inherit inputs;
+        inherit self inputs;
         system = amd;
       };
       modules = [
@@ -23,7 +23,7 @@ in
     };
     nixos-arm = lib.nixosSystem {
       specialArgs = {
-        inherit inputs;
+        inherit self inputs;
         system = arm;
       };
       modules = [

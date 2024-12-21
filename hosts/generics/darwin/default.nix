@@ -8,7 +8,7 @@ in
   flake.darwinConfigurations = {
     darwin-amd = lib.darwinSystem {
       specialArgs = {
-        inherit inputs;
+        inherit self inputs;
         system = amd;
       };
 
@@ -24,7 +24,7 @@ in
     };
     darwin-arm = lib.darwinSystem {
       specialArgs = {
-        inherit inputs;
+        inherit self inputs;
         system = arm;
       };
 

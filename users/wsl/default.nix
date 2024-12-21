@@ -1,5 +1,6 @@
 ## WSL user
 {
+  self,
   inputs,
   config,
   pkgs,
@@ -23,6 +24,11 @@ in
     }
   ];
 
+  wsl = {
+    enable = true;
+    defaultUser = "nixos";
+  };
+
   users.users.${user} = {
     isNormalUser = true;
     shell = pkgs.zsh;
@@ -35,7 +41,7 @@ in
       stateVersion = "23.05";
     };
     imports = [
-      ../../home/core
+      self.nixosModules.home-core
     ];
   };
 }
