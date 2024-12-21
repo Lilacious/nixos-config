@@ -1,4 +1,4 @@
-{ self, inputs, ... }:
+{ self, inputs, pkgs, ... }:
 let
   inherit (inputs.darwin) lib;
   amd = "x86_64-darwin";
@@ -17,6 +17,7 @@ in
 
         {
           networking.hostName = "darwin-amd";
+          nix.package = pkgs.lix;
           nixpkgs.hostPlatform = amd;
           system.stateVersion = 5;
         }
@@ -33,6 +34,7 @@ in
 
         {
           networking.hostName = "darwin-arm";
+          nix.package = pkgs.lix;
           nixpkgs.hostPlatform = amd;
           system.stateVersion = 5;
         }
