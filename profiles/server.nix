@@ -31,7 +31,7 @@ in
           };
           imports = [
             ../home/core
-          ] ++ optional (builtins.fileExists gitFile) [gitFile];
+          ] ++ optional (builtins.pathExists gitFile) gitFile;
         };
       };
     }

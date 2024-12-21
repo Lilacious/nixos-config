@@ -1,10 +1,13 @@
 {
   inputs,
   config,
+  lib,
   ...
 }:
+with lib;
 let
   username = "yunix";
+  gitFile = ../users/${username}/git.nix;
 in 
 {
   imports = [
@@ -28,9 +31,8 @@ in
             stateVersion = "23.05";
           };
           imports = [
-            ../users/${username}/git.nix
             ../home/core
-          ];
+          ] ++ optional (builtins.pathExists gitFile) gitFile;
         };
       };
     }
