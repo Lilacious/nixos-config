@@ -10,7 +10,7 @@ with lib;
 let
   cfg = config.myHome.desktop.plasma;
   osCfg = osConfig.myModules.desktop.plasma;
-  mode = config.programs.plasma.kwin.nightLight.mode;
+  inherit (config.programs.plasma.kwin.nightLight) mode;
 in
 {
   options = {

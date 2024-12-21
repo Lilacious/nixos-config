@@ -2,8 +2,7 @@
 with lib;
 {
   # nix-darwin has no i18n nor console options
-  config = (
-    mkMerge [
+  config = mkMerge [
       (
         if (builtins.hasAttr "i18n" options) then
           {
@@ -47,6 +46,5 @@ with lib;
         else
           { }
       )
-    ]
-  );
+    ];
 }

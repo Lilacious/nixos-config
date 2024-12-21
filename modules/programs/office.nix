@@ -23,7 +23,7 @@ in
         (mkIf (!cfg.plasma.enable) [
           libreoffice
         ])
-        (mkIf (cfg.plasma.enable) [
+        (mkIf cfg.plasma.enable [
           libreoffice-qt
         ])
         (mkIf cfg.spellCheck.enable [

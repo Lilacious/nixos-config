@@ -9,8 +9,7 @@ let
   subOpt = options.users.users.type.getSubOptions [ ];
 in
 {
-  users.users.yunix = (
-    mkMerge [
+  users.users.yunix = mkMerge [
       {
         home = if pkgs.stdenv.isDarwin then "/Users/yunix" else "/home/yunix";
         description = "Yunix";
@@ -25,7 +24,7 @@ in
       }
       # nix-darwin
       (
-        if (builtins.hasAttr "extraGroups" (subOpt)) then
+        if (builtins.hasAttr "extraGroups" subOpt) then
           {
             extraGroups = [
               "libvirtd"
@@ -38,13 +37,12 @@ in
           { }
       )
       (
-        if (builtins.hasAttr "isNormalUser" (subOpt)) then
+        if (builtins.hasAttr "isNormalUser" subOpt) then
           {
             isNormalUser = true;
           }
         else
           { }
       )
-    ]
-  );
+    ];
 }

@@ -13,8 +13,7 @@ with lib;
     ./zsh.nix
   ];
 
-  config = (
-    mkMerge [
+  config = mkMerge [
       {
         time.timeZone = mkDefault "Europe/Berlin";
         nixpkgs.config.allowUnfree = mkDefault true;
@@ -28,6 +27,5 @@ with lib;
         else
           { }
       )
-    ]
-  );
+    ];
 }
