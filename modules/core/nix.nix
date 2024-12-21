@@ -1,8 +1,11 @@
 {
   nix = {
+    #`nix.settings.auto-optimise-store` is known to corrupt the Nix Store,
+    # please use `nix.optimise.automatic` instead.
+    optimise.automatic = true;
     settings = {
       experimental-features = "nix-command flakes";
-      auto-optimise-store = true;
+      auto-optimise-store = false;
       warn-dirty = false;
 
       ## Binary cache
