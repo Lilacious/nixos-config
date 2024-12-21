@@ -1,6 +1,5 @@
 ## WSL user
 {
-  self,
   inputs,
   config,
   pkgs,
@@ -41,7 +40,7 @@ in
       stateVersion = "23.05";
     };
     imports = [
-      self.nixosModules.home-core
+      ../../home/core
     ];
   };
 }

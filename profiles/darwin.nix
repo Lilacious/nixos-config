@@ -1,5 +1,4 @@
 {
-  self,
   inputs,
   config,
   ...
@@ -30,7 +29,7 @@ in
           };
           imports = [
             ../users/${username}/git.nix
-            self.nixosModules.home-core
+            ../home/core
           ];
         };
       };

@@ -16,7 +16,6 @@
       ];
 
       imports = [
-        ./home
         ./hosts
         ./profiles
       ];
