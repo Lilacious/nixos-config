@@ -1,57 +1,70 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
+with lib;
 {
-  environment.systemPackages = with pkgs; [
-    ### Network
-    wget
-    curl
+  config = mkMerge [
+    {
+      environment.systemPackages = with pkgs; [
+        ### Hard drive monitoring
+        smartmontools
 
-    ### System
-    pciutils
-    usbutils
-    dmidecode
-    lm_sensors
+        ### Tops
+        htop
+        btop
 
-    ### Hard drive monitoring
-    smartmontools
+        ### Files
+        zip
+        unzip
 
-    ### Tops
-    htop
-    btop
-    powertop
+        ### Core utils
+        ## find
+        fd # Simple find command
+        fzf # A command-line fuzzy finder
 
-    ### Files
-    zip
-    unzip
+        ## grep
+        ripgrep # Better grep for code search
+        ## cat
+        # lolcat      # A rainbow version of cat
+        # bat # Better cat with syntax highlighting
+        ## ls/tree
+        eza # ls & tree replacement
 
-    ### Core utils
-    ## find
-    fd # Simple find command
-    fzf # A command-line fuzzy finder
+        ## Nix
+        comma # runs software without installing
+        nixfmt-rfc-style # nix formating
+        deadnix # Find and remove unused code in nix files
+        statix # Lints and suggestions for nix-lang
+        nixpkgs-review # review nixpkgs pr
+        nix-init # package generation
+        sops # For sops-nix
 
-    ## du/df
-    ncdu # Disk usage analyzer ncurses
-    # du-dust     # Disk usage analizer in rust
-    duf # Disk Usage/Free Utility
-    ## grep
-    ripgrep # Better grep for code search
-    ## cat
-    # lolcat      # A rainbow version of cat
-    # bat # Better cat with syntax highlighting
-    ## ls/tree
-    eza # ls & tree replacement
+        ## Other
+        fastfetch # Sys info fetcher
+        cheat # cheat sheet
+        git
+      ];
+    }
 
-    ## Nix
-    comma # runs software without installing
-    nixfmt-rfc-style # nix formating
-    deadnix # Find and remove unused code in nix files
-    statix # Lints and suggestions for nix-lang
-    nixpkgs-review # review nixpkgs pr
-    nix-init # package generation
-    sops # For sops-nix
+    (mkIf pkgs.stdenv.isLinux {
+      environment.systemPackages = with pkgs; [
+        ### Network
+        wget
+        curl
 
-    ## Other
-    fastfetch # Sys info fetcher
-    cheat # cheat sheet
-    git
+        ### System
+        pciutils
+        usbutils
+        dmidecode
+        lm_sensors
+
+        ### Tops
+        powertop
+
+        ### Core utils
+        ## du/df
+        ncdu # Disk usage analyzer ncurses
+        # du-dust     # Disk usage analizer in rust
+        duf # Disk Usage/Free Utility
+      ];
+    })
   ];
 }
