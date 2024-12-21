@@ -35,6 +35,7 @@ in
         khelpcenter # kde documentation
         okular # document viewer
         krdp # rdp application
+        xwaylandvideobridge
       ];
       systemPackages = with pkgs; [
         (catppuccin-kde.override {
