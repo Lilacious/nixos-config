@@ -14,18 +14,18 @@ with lib;
   ];
 
   config = mkMerge [
-      {
-        time.timeZone = mkDefault "Europe/Berlin";
-        nixpkgs.config.allowUnfree = mkDefault true;
-      }
-      # nix-darwin has no hardware options
-      (
-        if (builtins.hasAttr "hardware" options) then
-          {
-            hardware.enableRedistributableFirmware = mkDefault true;
-          }
-        else
-          { }
-      )
-    ];
+    {
+      time.timeZone = mkDefault "Europe/Berlin";
+      nixpkgs.config.allowUnfree = mkDefault true;
+    }
+    # nix-darwin has no hardware options
+    (
+      if (builtins.hasAttr "hardware" options) then
+        {
+          hardware.enableRedistributableFirmware = mkDefault true;
+        }
+      else
+        { }
+    )
+  ];
 }

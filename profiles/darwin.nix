@@ -8,7 +8,7 @@ with lib;
 let
   username = "yunix";
   gitFile = ../users/${username}/git.nix;
-in 
+in
 {
   imports = [
     ../modules/core
