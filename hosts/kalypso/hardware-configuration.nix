@@ -8,6 +8,7 @@
   modulesPath,
   ...
 }:
+
 {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
@@ -18,7 +19,6 @@
     "ahci"
     "xhci_pci"
     "usbhid"
-    "usbcore"
     "sd_mod"
   ];
   boot.initrd.kernelModules = [ ];
@@ -33,6 +33,10 @@
   fileSystems."/boot/efi" = {
     device = "/dev/disk/by-uuid/62BD-40C6";
     fsType = "vfat";
+    options = [
+      "fmask=0022"
+      "dmask=0022"
+    ];
   };
 
   fileSystems."/data" = {
@@ -49,10 +53,7 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.br0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp39s0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.virbr0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.vnet5.useDHCP = lib.mkDefault true;
+  # networking.interfaces.enp38s0.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlo1.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
