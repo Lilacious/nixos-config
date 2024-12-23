@@ -1,4 +1,9 @@
-{ self, inputs, pkgs, ... }:
+{
+  self,
+  inputs,
+  pkgs,
+  ...
+}:
 let
   inherit (inputs.darwin) lib;
   amd = "x86_64-darwin";
