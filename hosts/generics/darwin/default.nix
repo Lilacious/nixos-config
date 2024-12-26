@@ -1,7 +1,6 @@
 {
   self,
   inputs,
-  pkgs,
   ...
 }:
 let
@@ -18,13 +17,12 @@ in
       };
 
       modules = [
+        ./configuration.nix
         self.darwinModules.darwin
 
         {
           networking.hostName = "darwin-amd";
-          nix.package = pkgs.lix;
           nixpkgs.hostPlatform = amd;
-          system.stateVersion = 5;
         }
       ];
     };
@@ -35,13 +33,12 @@ in
       };
 
       modules = [
+        ./configuration.nix
         self.darwinModules.darwin
 
         {
           networking.hostName = "darwin-arm";
-          nix.package = pkgs.lix;
           nixpkgs.hostPlatform = amd;
-          system.stateVersion = 5;
         }
       ];
     };
