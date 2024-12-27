@@ -15,12 +15,4 @@
   };
 
   networking.networkmanager.enable = true;
-
-  ## Local modules
-  myModules = {
-    ## Enable desktop environment
-    desktop = {
-      plasma.enable = true;
-    };
-  };
 }
