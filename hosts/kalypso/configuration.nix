@@ -1,4 +1,5 @@
 {
+  pkgs,
   config,
   ...
 }:
@@ -15,6 +16,10 @@
       enable = true;
       efiSupport = true;
       device = "nodev";
+
+      theme = pkgs.catppuccin-grub.override { flavor = "mocha"; };
+      # Lags on Nvidia GPU workaround
+      gfxmodeEfi = "1920x1080x32,auto";
     };
   };
 
