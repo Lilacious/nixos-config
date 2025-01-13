@@ -28,7 +28,7 @@ in
             # Nix
             nil_ls = {
               enable = cfg.nix;
-              settings.nix.flake.autoArchive = mkDefault true;
+              settings.nix.flake.autoArchive = mkDefault false;
             };
             # C/C++
             clangd.enable = cfg.c;
