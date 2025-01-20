@@ -11,6 +11,7 @@ let
 in
 {
   imports = [
+    ./cosmic.nix
     ./display-manager.nix
     ./gnome.nix
     ./plasma.nix

@@ -49,5 +49,8 @@
     plasma-manager.url = "github:nix-community/plasma-manager";
     plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
     plasma-manager.inputs.home-manager.follows = "home-manager";
+
+    nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
+    nixos-cosmic.inputs.nixpkgs.follows = "nixpkgs";
   };
 }
