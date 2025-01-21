@@ -22,6 +22,9 @@ in
       heroic.enable = mkEnableOption "heroic game launcher" // {
         default = true;
       };
+      prism.enable = mkEnableOption "prism launcher" // {
+        default = true;
+      };
     };
   };
   config = mkIf cfg.enable {
@@ -34,6 +37,9 @@ in
         ])
         (mkIf cfg.heroic.enable [
           heroic
+        ])
+        (mkIf cfg.prism.enable [
+          prismlauncher
         ])
       ]);
 
