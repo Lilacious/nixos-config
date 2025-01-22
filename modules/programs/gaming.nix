@@ -33,7 +33,10 @@ in
       (mkMerge [
         (mkIf cfg.emulators.enable [
           melonDS # DS Emulator
-          lime3ds # 3DS Emulator
+          # Disable due to
+          # 1. build failure
+          # 2. apparently will be superseded by azahar emulator
+          #lime3ds # 3DS Emulator
         ])
         (mkIf cfg.heroic.enable [
           heroic
