@@ -26,7 +26,7 @@
   ## Use proprietary NVIDIA drivers
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia = {
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    package = config.boot.kernelPackages.nvidiaPackages.latest;
     open = true;
     modesetting.enable = true;
   };
