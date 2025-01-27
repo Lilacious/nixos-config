@@ -17,6 +17,7 @@
 
       imports = [
         ./hosts
+        ./nixvim
         ./profiles
       ];
     };
