@@ -1,21 +1,20 @@
 {
   ## Command alias
   extraConfigVim = ''
-    cnoreabbrev q qa
     cnoreabbrev Q q
-    cnoreabbrev Q! q!
-    cnoreabbrev q1 q!
-    cnoreabbrev Q1 q!
+    cnoreabbrev Q! qa!
+    cnoreabbrev q1 qa!
+    cnoreabbrev Q1 qa!
     cnoreabbrev W w
-    cnoreabbrev Wq wq
-    cnoreabbrev WQ wq
-    cnoreabbrev wQ wq
-    cnoreabbrev wq1 wq!
-    cnoreabbrev wQ! wq!
-    cnoreabbrev Wq! wq!
-    cnoreabbrev wQ1 wq!
-    cnoreabbrev Wq1 wq!
-    cnoreabbrev WQ1 wq!
+    cnoreabbrev Wq wqa
+    cnoreabbrev WQ wqa
+    cnoreabbrev wQ wqa
+    cnoreabbrev wq1 wqa!
+    cnoreabbrev wQ! wqa!
+    cnoreabbrev Wq! wqa!
+    cnoreabbrev wQ1 wqa!
+    cnoreabbrev Wq1 wqa!
+    cnoreabbrev WQ1 wqa!
   '';
   keymaps = [
     # Clear highlights on search when pressing <Esc> in normal mode
