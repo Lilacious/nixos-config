@@ -12,7 +12,6 @@ in
 {
   imports = [
     ./nixos.nix
-    ../modules
 
     inputs.home-manager.nixosModules.home-manager
     {
