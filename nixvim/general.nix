@@ -1,23 +1,29 @@
 {
-  performance.byteCompileLua = {
-    enable = true;
-    plugins = true;
-    nvimRuntime = true;
-  };
+  config = {
+    viAlias = true;
+    vimAlias = true;
 
-  colorschemes = {
-    catppuccin = {
+    performance.byteCompileLua = {
       enable = true;
-      settings = {
-        flavour = "mocha";
-        term_colors = true;
+      plugins = true;
+      configs = true;
+      nvimRuntime = true;
+    };
+
+    colorschemes = {
+      catppuccin = {
+        enable = true;
+        settings = {
+          flavour = "mocha";
+          term_colors = true;
+        };
       };
     };
-  };
 
-  # Leader key <Space>
-  globals = {
-    mapleader = " ";
-    maplocalleader = " ";
+    # Leader key <Space>
+    globals = {
+      mapleader = " ";
+      maplocalleader = " ";
+    };
   };
 }

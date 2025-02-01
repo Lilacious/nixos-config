@@ -1,25 +1,27 @@
 { inputs, ... }:
+let
+  inherit (inputs) nixvim;
+in
 {
-  imports = [
-    inputs.nixvim.flakeModules.default
-  ];
-
-  nixvim = {
-    packages.enable = true;
-  };
-
   perSystem =
     { system, ... }:
-    {
-      nixvimConfigurations = {
-        nixvim = inputs.nixvim.lib.evalNixvim {
-          inherit system;
-          modules = [
-            ./clipboard.nix
-            ./general.nix
-            ./keymaps.nix
-          ];
+    let
+      inherit (nixvim.legacyPackages.${system})
+      makeNixvimWithModule;
+
+      nixvimModule = {
+        inherit system;
+        module = import ./nixvim.nix;
+        extraSpecialArgs = {
+          # inherit (inputs) foo;
         };
+      };
+
+      nvim = makeNixvimWithModule nixvimModule;
+    in
+    {
+      packages = {
+        nixvim = nvim;
       };
     };
 }
