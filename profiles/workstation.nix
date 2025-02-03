@@ -33,6 +33,7 @@ with lib;
         pandas
         statsmodels
         scikitlearn
+        seaborn
       ]
     ))
     gcc
