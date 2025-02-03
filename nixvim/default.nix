@@ -7,7 +7,8 @@ in
     { system, ... }:
     let
       inherit (nixvim.legacyPackages.${system})
-      makeNixvimWithModule;
+        makeNixvimWithModule
+        ;
 
       nixvimModule = {
         inherit system;

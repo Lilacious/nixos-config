@@ -17,6 +17,13 @@ with lib;
       viAlias = true;
       vimAlias = true;
 
+      performance.byteCompileLua = {
+        enable = true;
+        plugins = true;
+        configs = true;
+        nvimRuntime = true;
+      };
+
       # Leader key <Space>
       globals = {
         mapleader = " ";
