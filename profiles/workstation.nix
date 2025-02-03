@@ -26,6 +26,13 @@ with lib;
         sympy
         requests
         tkinter
+
+        ## jupyter notebook
+        scipy
+        jupyterlab
+        pandas
+        statsmodels
+        scikitlearn
       ]
     ))
     gcc
