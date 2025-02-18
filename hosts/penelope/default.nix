@@ -31,23 +31,5 @@ in
         ];
       };
     };
-    darwinConfigurations = {
-      penelope-darwin = inputs.darwin.lib.darwinSystem {
-        specialArgs = {
-          inherit self inputs;
-          system = "x86_64-darwin";
-        };
-
-        modules = [
-          ./darwin-configuration.nix
-          self.darwinModules.darwin
-
-          {
-            networking.hostName = "penelope-darwin";
-            nixpkgs.hostPlatform = "x86_64-darwin";
-          }
-        ];
-      };
-    };
   };
 }
