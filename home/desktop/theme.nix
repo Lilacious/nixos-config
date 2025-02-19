@@ -42,11 +42,7 @@ in
 
       iconTheme = {
         name = "WhiteSur";
-        # Build failure due to broken symlinks
-        # https://github.com/NixOS/nixpkgs/issues/380279
-        package = pkgs.whitesur-icon-theme.overrideAttrs {
-          dontCheckForBrokenSymlinks = true;
-        };
+        package = pkgs.whitesur-icon-theme;
       };
     };
   };
