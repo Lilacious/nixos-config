@@ -43,7 +43,7 @@ in
             };
             temperature = {
               day = null;
-              night = 3000;
+              night = 4000;
             };
           };
         };
