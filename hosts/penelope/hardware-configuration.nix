@@ -8,8 +8,10 @@
   modulesPath,
   ...
 }:
+
 {
   imports = [
+    (modulesPath + "/hardware/network/broadcom-43xx.nix")
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
@@ -29,21 +31,25 @@
     options = [ "subvol=root" ];
   };
 
-  fileSystems."/home" = {
-    device = "/dev/disk/by-uuid/ada2561c-eeb4-4ade-8a36-7ebcf765499f";
-    fsType = "btrfs";
-    options = [ "subvol=home" ];
-  };
-
   fileSystems."/nix" = {
     device = "/dev/disk/by-uuid/ada2561c-eeb4-4ade-8a36-7ebcf765499f";
     fsType = "btrfs";
     options = [ "subvol=nix" ];
   };
 
+  fileSystems."/home" = {
+    device = "/dev/disk/by-uuid/ada2561c-eeb4-4ade-8a36-7ebcf765499f";
+    fsType = "btrfs";
+    options = [ "subvol=home" ];
+  };
+
   fileSystems."/boot/efi" = {
     device = "/dev/disk/by-uuid/4696-767D";
     fsType = "vfat";
+    options = [
+      "fmask=0022"
+      "dmask=0022"
+    ];
   };
 
   swapDevices = [
@@ -59,6 +65,5 @@
   # networking.interfaces.wlp3s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
