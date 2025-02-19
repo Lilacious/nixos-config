@@ -51,7 +51,9 @@ with lib;
         enable = true;
         extensions = with pkgs.vscode-extensions; [
           ms-python.python
-          rust-lang.rust-analyzer
+          ## Build failure:
+          ## https://github.com/NixOS/nixpkgs/pull/383049/files
+          #rust-lang.rust-analyzer
           tamasfe.even-better-toml
           james-yu.latex-workshop
         ];
