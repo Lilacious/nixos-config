@@ -32,6 +32,8 @@ in
           };
           imports = [
             ../home/core
+            ../home/programs/alacritty.nix
+
           ] ++ optional (builtins.pathExists gitFile) gitFile;
         };
       };
