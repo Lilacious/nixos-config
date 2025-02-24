@@ -11,6 +11,10 @@
     pkgs.nerd-fonts.agave
   ];
 
+  environment.variables = {
+    EDITOR = "vim";
+  };
+
   # Install packages
   homebrew = {
     enable = true;
