@@ -6,13 +6,15 @@
 }:
 with lib;
 let
+inherit (pkgs.stdenv) isDarwin;
   cfg = config.myHome.programs.alacritty;
 
   normalFontFamily = "Agave Nerd Font";
   boldFontFamily = "Agave Nerd Font";
   italicFontFamily = "Agave Nerd Font";
   boldItalicFontFamily = "Agave Nerd Font";
-  fontSize = 12;
+  # font needs to be a bit bigger on MacOS
+  fontSize = if isDarwin then 16 else 12;
 in
 {
   options = {
@@ -25,7 +27,7 @@ in
 
   config = mkIf cfg.enable {
     programs.alacritty = mkMerge [
-      (mkIf pkgs.stdenv.isDarwin {
+      (mkIf isDarwin {
         package = pkgs.emptyDirectory;
       })
       {
