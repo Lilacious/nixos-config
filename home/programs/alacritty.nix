@@ -6,7 +6,7 @@
 }:
 with lib;
 let
-inherit (pkgs.stdenv) isDarwin;
+  inherit (pkgs.stdenv) isDarwin;
   cfg = config.myHome.programs.alacritty;
 
   normalFontFamily = "Agave Nerd Font";

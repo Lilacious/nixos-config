@@ -34,41 +34,38 @@ in
   config = mkIf cfg.enable {
     programs.vscode = {
       enable = true;
-
       package = pkgs.vscodium;
 
-      # Manage vscode only through HM
-      enableExtensionUpdateCheck = false;
-      enableUpdateCheck = false;
-      mutableExtensionsDir = false;
+      profiles.default = {
+        enableUpdateCheck = false;
+        userSettings = {
+          "editor"."fontFamily" = "Agave Nerd Font";
+          "nix"."enableLanguageServer" = true;
+          "nix"."serverPath" = "nil";
+          "vim"."useSystemClipboard" = true;
+          "vim"."enableNeovim" = true;
+          "vim"."neovimUseConfigFile" = true;
+          "extensions"."experimental"."affinity" = {
+            "vscodevim"."vim" = 1;
+          };
+          "workbench"."colorTheme" = "Catppuccin Mocha";
+          "workbench"."iconTheme" = "Catppuccin Mocha";
+          "catppuccin"."accentColor" = "mauve";
+        } // cfg.userSettings;
 
-      userSettings = {
-        "editor"."fontFamily" = "Agave Nerd Font";
-        "nix"."enableLanguageServer" = true;
-        "nix"."serverPath" = "nil";
-        "vim"."useSystemClipboard" = true;
-        "vim"."enableNeovim" = true;
-        "vim"."neovimUseConfigFile" = true;
-        "extensions"."experimental"."affinity" = {
-          "vscodevim"."vim" = 1;
-        };
-        "workbench"."colorTheme" = "Catppuccin Mocha";
-        "workbench"."iconTheme" = "Catppuccin Mocha";
-        "catppuccin"."accentColor" = "mauve";
-      } // cfg.userSettings;
-
-      extensions =
-        with pkgs.vscode-extensions;
-        [
-          catppuccin.catppuccin-vsc
-          catppuccin.catppuccin-vsc-icons
-          jnoortheen.nix-ide
-          vscodevim.vim
-          gruntfuggly.todo-tree
-          mkhl.direnv
-        ]
-        ++ cfg.extensions;
-
+        enableExtensionUpdateCheck = false;
+        extensions =
+          with pkgs.vscode-extensions;
+          [
+            catppuccin.catppuccin-vsc
+            catppuccin.catppuccin-vsc-icons
+            jnoortheen.nix-ide
+            vscodevim.vim
+            gruntfuggly.todo-tree
+            mkhl.direnv
+          ]
+          ++ cfg.extensions;
+      };
     };
     home.packages = [
       pkgs.nil
