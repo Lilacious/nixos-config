@@ -12,4 +12,9 @@ with lib;
   ];
 
   networking.firewall.enable = mkForce true;
+
+  boot = {
+    # Grub in text mode
+    loader.grub.splashImage = null;
+  };
 }
