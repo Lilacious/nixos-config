@@ -16,6 +16,9 @@
       efiSupport = true;
       device = "nodev";
 
+      # Lags on Nvidia GPU workaround
+      gfxmodeEfi = "1920x1080,auto";
+
       extraEntries = ''
         menuentry 'Windows' --class windows {
           insmod part_gpt

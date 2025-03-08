@@ -15,6 +15,7 @@ in
     ./display-manager.nix
     ./gnome.nix
     ./plasma.nix
+    ./plymouth.nix
   ];
 
   options = {
