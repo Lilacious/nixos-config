@@ -23,6 +23,5 @@ in
 
   config = mkIf cfg.enable {
     time.hardwareClockInLocalTime = cfg.windowsClockFix;
-    boot.loader.grub.useOSProber = true;
   };
 }
