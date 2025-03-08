@@ -1,5 +1,4 @@
 {
-  pkgs,
   config,
   ...
 }:
@@ -17,9 +16,14 @@
       efiSupport = true;
       device = "nodev";
 
-      theme = pkgs.catppuccin-grub.override { flavor = "mocha"; };
-      # Lags on Nvidia GPU workaround
-      gfxmodeEfi = "1920x1080x32,auto";
+      extraEntries = ''
+        menuentry 'Windows' --class windows {
+          insmod part_gpt
+          insmod fat
+          search --no-floppy --fs-uuid --set=root CC87-8144
+          chainloader /efi/Microsoft/Boot/bootmgfw.efi
+        }
+      '';
     };
   };
 
