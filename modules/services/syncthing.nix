@@ -44,6 +44,9 @@ in
             "Hades" = {
               id = "I7SODCH-2VBY2CC-K466KOQ-W3RVO7R-Z2GJZHH-6WRYKP3-SJFJ4DZ-YD5R5AP";
             };
+            "Hestia" = {
+              id = "HQCTYWV-HQ67DDS-V5SVNS7-EMI2QBC-WJ6TZXM-EOAXOGQ-X3X5J4G-F46MCAF";
+            };
             "Hypnos" = {
               id = "DDLFRKN-QGMRSJS-3G26GZG-7AHVC76-HALBQBW-HVBE775-BBRTNAK-WWCUIAD";
             };
@@ -71,6 +74,7 @@ in
               # Which devices to share the folder with
               devices = [
                 "Hades"
+                "Hestia"
                 "Hypnos"
                 "Kalypso"
                 "Leto"
