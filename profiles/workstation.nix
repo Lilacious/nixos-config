@@ -14,26 +14,26 @@ with lib;
     parsec-bin
 
     # UML
-    libsForQt5.umbrello
+    #libsForQt5.umbrello
 
     ## Development
     (python3.withPackages (
       ps: with ps; [
-        beautifulsoup4
         matplotlib
         numpy
         pycodestyle
         sympy
         requests
         tkinter
+        #beautifulsoup4
 
         ## jupyter notebook
-        scipy
-        jupyterlab
-        pandas
-        statsmodels
-        scikitlearn
-        seaborn
+        #scipy
+        #jupyterlab
+        #pandas
+        #statsmodels
+        #scikitlearn
+        #seaborn
       ]
     ))
     gcc
