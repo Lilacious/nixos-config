@@ -5,5 +5,6 @@
     ./helix.nix
     ./virt-manager.nix
     ./vscode.nix
+    ./zellij.nix
   ];
 }
