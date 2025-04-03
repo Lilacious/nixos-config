@@ -5,12 +5,13 @@
   ## Grub bootloader
   boot.loader = {
     efi = {
-      canTouchEfiVariables = true;
+      canTouchEfiVariables = false;
       efiSysMountPoint = "/boot/efi";
     };
     grub = {
       enable = true;
       efiSupport = true;
+      efiInstallAsRemovable = true;
       device = "nodev";
 
       extraEntries = ''
@@ -19,7 +20,7 @@
           insmod part_gpt
           insmod fat
           insmod search_fs_uuid
-          search --fs-uuid --no-floppy --set=root 4696-767D
+          search --fs-uuid --no-floppy --set=root D28F-11E8
           chainloader ($root)/efi/MacOS-opencore/oc/OpenCore.efi
         }
       '';
