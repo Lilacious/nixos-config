@@ -30,6 +30,7 @@
     package = config.boot.kernelPackages.nvidiaPackages.latest;
     open = true;
     modesetting.enable = true;
+    powerManagement.enable = true;
   };
 
   ## Enable networking

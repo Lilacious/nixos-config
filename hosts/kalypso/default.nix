@@ -12,6 +12,7 @@ in
       };
       modules = [
         nixhw.common-cpu-amd-pstate
+        nixhw.common-gpu-nvidia-nonprime
         nixhw.common-pc-ssd
         ./hardware-configuration.nix
         ./configuration.nix
