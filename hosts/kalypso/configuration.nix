@@ -15,18 +15,12 @@
       enable = true;
       efiSupport = true;
       device = "nodev";
+      useOSProber = true;
+      # Remember last selected entry
+      default = "saved";
 
       # Lags on Nvidia GPU workaround
       gfxmodeEfi = "1920x1080,auto";
-
-      extraEntries = ''
-        menuentry 'Windows' --class windows {
-          insmod part_gpt
-          insmod fat
-          search --no-floppy --fs-uuid --set=root CC87-8144
-          chainloader /efi/Microsoft/Boot/bootmgfw.efi
-        }
-      '';
     };
   };
 
