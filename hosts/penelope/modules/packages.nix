@@ -12,6 +12,6 @@
     # gparted # parted with ui
     wireguard-tools
     openconnect # VPN Client for Cisco's AnyConnect SSL VPN
-    signal-desktop # Signal messenger
+    signal-desktop-bin # Signal messenger
   ];
 }
