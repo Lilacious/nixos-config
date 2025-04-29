@@ -1,4 +1,9 @@
-{ lib, config, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 with lib;
 let
   cfg = config.myModules.nixvim.languages;
@@ -15,6 +20,7 @@ in
     php = mkEnableOption "PHP lsp & cmp";
     sql = mkEnableOption "SQL lsp & cmp";
     tex = mkEnableOption "LaTeX lsp & cmp";
+    haskell = mkEnableOption "Haskell lsp & cmp";
   };
 
   config = {
@@ -24,18 +30,24 @@ in
         nix.enable = true;
         lsp = {
           enable = true;
+          inlayHints = true;
+
           servers = {
             # Nix
             nil_ls = {
               enable = cfg.nix;
-              settings.nix.flake.autoArchive = mkDefault false;
+              settings.nix.flake.autoArchive = false;
             };
             # C/C++
             clangd.enable = cfg.c;
             # Python
             pyright.enable = cfg.python;
             # Rust
-            rust_analyzer.enable = cfg.rust;
+            rust_analyzer = {
+              enable = cfg.rust;
+              installCargo = false;
+              installRustc = false;
+            };
             # Markdown
             marksman.enable = cfg.markdown;
             # PHP
@@ -46,46 +58,66 @@ in
             texlab = {
               enable = cfg.tex;
             };
-          };
-        };
-
-        cmp = {
-          enable = true;
-          autoEnableSources = true;
-
-          settings = {
-            snippet = {
-              expand = ''
-                function(args)
-                  require('luasnip').lsp_expand(args.body)
-                end
-              '';
-            };
-            completion = {
-              completeopt = "menu,menuone,noinsert";
-            };
-            sources = [
-              { name = "nvim_lsp"; }
-              { name = "luasnip"; }
-              { name = "path"; }
-              { name = "buffer"; }
-            ];
-            mapping = {
-              "<CR>" = "cmp.mapping.confirm { select = true }";
-              "<Tab>" = "cmp.mapping.confirm { select = true }";
-              "<Down>" = "cmp.mapping.select_next_item()";
-              "<Up>" = "cmp.mapping.select_prev_item()";
+            # Haskell
+            hls = {
+              enable = cfg.haskell;
+              installGhc = false;
             };
           };
         };
+
+        cmp =
+          let
+            border = "rounded";
+          in
+          {
+            enable = true;
+            autoEnableSources = true;
+
+            settings = {
+              snippet = {
+                expand = ''
+                  function(args)
+                    require('luasnip').lsp_expand(args.body)
+                  end
+                '';
+              };
+              window = {
+                documentation = {
+                  inherit border;
+                };
+                completion = {
+                  inherit border;
+                  scrollbar = false;
+                  completeopt = "menu,menuone,noinsert";
+                };
+              };
+              sources = [
+                { name = "luasnip"; }
+                { name = "nvim_lsp"; }
+                { name = "nvim_lsp_signature_help"; }
+                { name = "path"; }
+                { name = "buffer"; }
+              ];
+              mapping = {
+                "<CR>" = "cmp.mapping.confirm { select = true }";
+                "<Tab>" = "cmp.mapping.confirm { select = true }";
+                "<Down>" = "cmp.mapping.select_next_item()";
+                "<Up>" = "cmp.mapping.select_prev_item()";
+              };
+            };
+          };
 
         # LaTeX filetype plugin
         vimtex = {
-          enable = true;
+          enable = cfg.tex;
           texlivePackage = null;
         };
+
         # Completion source for lsp
         cmp-nvim-lsp.enable = true;
+        # Pictograms for completion items
+        lspkind.enable = true;
         # Snippet Engine & its associated cmp source
         luasnip.enable = true;
         # Useful status updates for LSP.
@@ -94,6 +126,8 @@ in
         cmp-path.enable = true;
         # Premade snippets for various programming languages
         friendly-snippets.enable = true;
+        # Remove trailing trailing whitespace and lines.
+        trim.enable = true;
       };
     };
   };

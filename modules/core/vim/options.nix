@@ -6,10 +6,10 @@
     wrap = true; # Lines longer than the width of the window will wrap
     cursorline = true; # Highlight the text line of the cursor
     ## Tabs & indentation
-    tabstop = 2; # Set tab == n spaces
-    shiftwidth = 2; # Set indent with to n spaces
+    #tabstop = 2; # Set tab == n spaces
+    #shiftwidth = 2; # Set indent with to n spaces
     expandtab = false; # Expand tab into spaces
-    autoindent = true; # Copy current indent to new line
+    #autoindent = true; # Copy current indent to new line
     ## Search
     ignorecase = true; # Ignore case while searching
     smartcase = true; # Turn on case sensitivity automatically when needed

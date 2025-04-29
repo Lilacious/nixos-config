@@ -58,9 +58,12 @@ with lib;
       };
     };
     nixvim.languages = {
+      c = true;
       python = true;
+      rust = true;
       markdown = true;
       tex = true;
+      haskell = true;
     };
   };
 }
