@@ -1,5 +1,6 @@
 {
   imports = [
+    ./bash.nix
     ./btop.nix
     ./eza.nix
     ./starship.nix
