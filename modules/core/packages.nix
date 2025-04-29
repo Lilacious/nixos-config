@@ -28,13 +28,6 @@ with lib;
         ## ls/tree
         eza # ls & tree replacement
 
-        ## Nix
-        nixfmt-rfc-style # nix formating
-        deadnix # Find and remove unused code in nix files
-        statix # Lints and suggestions for nix-lang
-        nixpkgs-review # review nixpkgs pr
-        nix-init # package generation
-
         ## Other
         fastfetch # Sys info fetcher
         cheat # cheat sheet
