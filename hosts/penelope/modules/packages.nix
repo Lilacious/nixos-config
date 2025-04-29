@@ -1,9 +1,6 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    ## PDF viewer
-    zathura
-
     ## Flash card
     anki
 
