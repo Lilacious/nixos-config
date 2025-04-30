@@ -7,7 +7,7 @@ with lib;
 {
   imports = [
     ../modules/core
-    ../modules/core/vim
+    ../modules/vim
     inputs.nixvim.nixosModules.nixvim
   ];
 

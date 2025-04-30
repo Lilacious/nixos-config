@@ -12,7 +12,7 @@ in
 {
   imports = [
     ../modules/core
-    ../modules/core/vim
+    ../modules/vim
     inputs.nixvim.nixDarwinModules.nixvim
 
     inputs.home-manager.darwinModules.home-manager
