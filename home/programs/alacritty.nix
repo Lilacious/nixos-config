@@ -36,8 +36,8 @@ in
           env.TERM = "xterm-256color";
           window = {
             dimensions = {
-              columns = 0;
-              lines = 0;
+              columns = 125;
+              lines = 37;
             };
             padding = {
               x = 5;
