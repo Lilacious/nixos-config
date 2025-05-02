@@ -58,6 +58,8 @@
     lix-module.url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0-3.tar.gz";
     lix-module.inputs.nixpkgs.follows = "nixpkgs";
 
+    stylix.url = "github:danth/stylix";
+
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
 
     plasma-manager.url = "github:nix-community/plasma-manager";
