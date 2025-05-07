@@ -2,6 +2,7 @@
   imports = [
     ./alacritty.nix
     ./direnv.nix
+    ./fuzzel.nix
     ./ghostty.nix
     ./helix.nix
     ./kitty.nix
