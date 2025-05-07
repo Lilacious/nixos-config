@@ -37,13 +37,6 @@ in
         krdp # rdp application
         xwaylandvideobridge
       ];
-      systemPackages = with pkgs; [
-        (catppuccin-kde.override {
-          flavour = [ "mocha" ];
-          accents = [ "mauve" ];
-          winDecStyles = [ "modern" ];
-        })
-      ];
     };
   };
 }
