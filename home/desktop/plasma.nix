@@ -100,7 +100,7 @@ in
       if (builtins.hasAttr "stylix" options) then
         {
           stylix.targets.kde.enable = true;
-          programs.plasma.workspace.colorScheme = "untitled";
+          programs.plasma.workspace.colorScheme = "CustomDarkTheme";
         }
       else
         {
