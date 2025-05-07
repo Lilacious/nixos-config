@@ -2,6 +2,7 @@
   lib,
   pkgs,
   config,
+  options,
   ...
 }:
 with lib;
@@ -19,31 +20,44 @@ in
     };
   };
 
-  config = mkIf cfg.enable {
-    home.pointerCursor = {
-      package = pkgs.whitesur-cursors;
-      name = "WhiteSur-cursors";
-      size = 20;
-      gtk.enable = true;
-    };
+  config = mkIf cfg.enable (mkMerge [
+    {
+      home.pointerCursor = {
+        package = pkgs.whitesur-cursors;
+        name = "WhiteSur-cursors";
+        size = 20;
+        gtk.enable = true;
+      };
 
-    gtk = {
-      enable = true;
-      gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
+      gtk = {
+        enable = true;
+        gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
 
-      theme = {
-        name = "catppuccin-mocha-mauve-compact";
-        package = pkgs.catppuccin-gtk.override {
-          accents = [ "mauve" ];
-          variant = "mocha";
-          size = "compact";
+        iconTheme = {
+          name = "WhiteSur";
+          package = pkgs.whitesur-icon-theme;
         };
       };
-
-      iconTheme = {
-        name = "WhiteSur";
-        package = pkgs.whitesur-icon-theme;
-      };
-    };
-  };
+    }
+    (
+      if (builtins.hasAttr "stylix" options) then
+        {
+          stylix.targets.gtk = {
+            enable = true;
+            flatpakSupport.enable = true;
+          };
+        }
+      else
+        {
+          gtk.theme = {
+            name = "catppuccin-mocha-mauve-compact";
+            package = pkgs.catppuccin-gtk.override {
+              accents = [ "mauve" ];
+              variant = "mocha";
+              size = "compact";
+            };
+          };
+        }
+    )
+  ]);
 }
