@@ -7,5 +7,8 @@
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
     ../modules/vim
+
+    inputs.stylix.homeManagerModules.stylix
+    ../modules/stylix
   ];
 }

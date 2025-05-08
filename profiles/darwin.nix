@@ -12,8 +12,12 @@ in
 {
   imports = [
     ../modules/core
-    ../modules/vim
+
     inputs.nixvim.nixDarwinModules.nixvim
+    ../modules/vim
+
+    inputs.stylix.darwinModules.stylix
+    ../modules/stylix
 
     inputs.home-manager.darwinModules.home-manager
     {

@@ -5,8 +5,12 @@
 {
   imports = [
     ../modules/core
-    ../modules/vim
+
     inputs.nixvim.nixosModules.nixvim
+    ../modules/vim
+
+    inputs.stylix.nixosModules.stylix
+    ../modules/stylix
 
     ../users/wsl
   ];
