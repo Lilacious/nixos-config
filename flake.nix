@@ -55,7 +55,7 @@
 
     nixvim.url = "github:nix-community/nixvim";
 
-    lix-module.url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0-3.tar.gz";
+    lix-module.url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.0.tar.gz";
     lix-module.inputs.nixpkgs.follows = "nixpkgs";
 
     stylix.url = "github:danth/stylix";
