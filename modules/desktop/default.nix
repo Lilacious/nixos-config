@@ -14,6 +14,7 @@ in
     ./cosmic.nix
     ./display-manager.nix
     ./gnome.nix
+    #./niri.nix
     ./plasma.nix
     ./plymouth.nix
   ];

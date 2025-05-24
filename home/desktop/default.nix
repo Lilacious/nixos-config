@@ -45,6 +45,7 @@ in
 
   imports = [
     ./gnome.nix
+    #./niri.nix
     ./plasma.nix
     ./theme.nix
   ];
