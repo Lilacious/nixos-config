@@ -11,10 +11,7 @@ in
 {
   options = {
     myHome.programs.fuzzel = {
-      enable = mkOption {
-        type = types.bool;
-        default = true;
-      };
+      enable = mkEnableOption "fuzzel launcher";
     };
   };
   config = mkIf cfg.enable (mkMerge [

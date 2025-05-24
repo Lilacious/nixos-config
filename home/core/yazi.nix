@@ -2,6 +2,7 @@
   config,
   lib,
   options,
+  pkgs,
   ...
 }:
 with lib;
@@ -26,6 +27,7 @@ in
           };
         };
       };
+      home.packages = [ pkgs.ueberzugpp ];
     })
     (
       if (builtins.hasAttr "stylix" options) then
