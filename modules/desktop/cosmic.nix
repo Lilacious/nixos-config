@@ -11,14 +11,9 @@ in
 {
   options = {
     myModules.desktop.cosmic = {
-      enable = mkOption {
-        type = types.bool;
-        default = false;
-      };
+      enable = mkEnableOption "cosmic desktop";
     };
   };
-
-  imports = [ inputs.nixos-cosmic.nixosModules.default ];
 
   config = mkIf cfg.enable {
     myModules.desktop.desktopEnvironment.enable = true;
