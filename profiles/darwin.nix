@@ -37,11 +37,17 @@ in
           imports = [
             ../home/core
             ../home/programs/alacritty.nix
+            ../home/services/syncthing.nix
 
           ] ++ optional (builtins.pathExists gitFile) gitFile;
+          # Very hacky way to get syncthing to work on darwin
+          # TODO better solution maybe?
+          myHome.services.syncthing.enable = true;
         };
       };
     }
+    # Needed for syncthing to work
+    ../modules/services/syncthing.nix
 
     ../users/${username}
   ];

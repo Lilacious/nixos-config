@@ -52,10 +52,14 @@ in
   ];
 
   config = mkIf cfg.enable {
-    myHome.programs = {
-      alacritty.enable = true;
-      direnv.enable = true;
-      zathura.enable = true;
+    myHome = {
+      programs = {
+        alacritty.enable = true;
+        direnv.enable = true;
+        zathura.enable = true;
+      };
+      # Use the home-manager module on graphical systems
+      services.syncthing.enable = true;
     };
   };
 }

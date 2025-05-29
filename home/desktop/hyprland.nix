@@ -129,17 +129,17 @@ in
       services = {
         hyprpolkitagent.enable = true;
         hyprpaper = {
-        enable = true;
-        settings = {
-          ipc = "on";
-          splash = false;
-          preload = [
-            "~/Pictures/Wallpapers/KDEScarlettTreeDark.png"
-          ];
-          wallpaper = [
-            ", ~/Pictures/Wallpapers/KDEScarlettTreeDark.png"
-          ];
-        };
+          enable = true;
+          settings = {
+            ipc = "on";
+            splash = false;
+            preload = [
+              "~/Pictures/Wallpapers/KDEScarlettTreeDark.png"
+            ];
+            wallpaper = [
+              ", ~/Pictures/Wallpapers/KDEScarlettTreeDark.png"
+            ];
+          };
         };
       };
 

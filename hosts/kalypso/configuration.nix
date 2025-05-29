@@ -64,8 +64,6 @@
     services = {
       ## Enable printing
       printing.enable = true;
-      ## Enable syncthing
-      syncthing.enable = true;
     };
 
     other = {
