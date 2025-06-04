@@ -1,25 +1,12 @@
 {
   programs.nixvim = {
-    colorschemes = {
-      catppuccin = {
-        enable = true;
-        settings = {
-          flavour = "mocha";
-          term_colors = true;
-        };
-      };
-    };
-
     plugins = {
       # telescope and tree dependency
       web-devicons.enable = true;
       # Reopens at last edit position
       lastplace.enable = true;
       # Statusline/tabline plugin for Vim
-      lightline = {
-        enable = true;
-        settings.colorscheme = "catppuccin";
-      };
+      lualine.enable = true;
       # Indent guides for Neovim
       indent-blankline.enable = true;
       # Neovim colorizer

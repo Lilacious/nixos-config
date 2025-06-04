@@ -9,6 +9,7 @@ with lib;
     ./options.nix
     ./plugins.nix
     ./telescope.nix
+    ./theme.nix
   ];
 
   programs.nixvim = mkMerge [
