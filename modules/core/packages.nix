@@ -28,6 +28,9 @@ with lib;
         ## ls/tree
         eza # ls & tree replacement
 
+        ## nix
+        nixfmt-rfc-style
+
         ## Other
         fastfetch # Sys info fetcher
         cheat # cheat sheet
