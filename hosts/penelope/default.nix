@@ -18,6 +18,8 @@ in
           ./modules
           self.nixosModules.workstation
 
+          inputs.lix-module.nixosModules.default
+
           {
             ## Custom aliases for penelope
             home-manager.users.yunix.home.shellAliases = {

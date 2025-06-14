@@ -3,6 +3,11 @@
     #`nix.settings.auto-optimise-store` is known to corrupt the Nix Store,
     # please use `nix.optimise.automatic` instead.
     optimise.automatic = true;
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 30d";
+    };
     settings = {
       experimental-features = "nix-command flakes";
       auto-optimise-store = false;
@@ -24,4 +29,6 @@
       ];
     };
   };
+  # flakes require a git in PATH
+  programs.git.enable = true;
 }

@@ -34,7 +34,6 @@ with lib;
         ## Other
         fastfetch # Sys info fetcher
         cheat # cheat sheet
-        git
       ];
     }
 

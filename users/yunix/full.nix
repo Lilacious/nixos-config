@@ -56,7 +56,7 @@ in
       let
         buildMachine = {
           protocol = "ssh";
-          sshUser = username;
+          sshUser = "yu";
           sshKey = "${homedir}/.ssh/id_remotebuild";
           systems = [
             "i686-linux"
