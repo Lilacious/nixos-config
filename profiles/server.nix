@@ -6,6 +6,12 @@
     ../users/yunix/headless.nix
   ];
 
+  # Show failed systemd units on interactive login
+  environment.interactiveShellInit = ''
+    echo "\nFailed systemd units:" && \
+      systemctl --no-pager --failed || true
+  '';
+
   services.openssh = {
     enable = true;
     settings = {
