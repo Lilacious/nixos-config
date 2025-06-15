@@ -7,6 +7,12 @@
 with lib;
 let
   cfg = config.myHome.programs.zellij;
+  bind = keys: action: {
+    name = "bind \"${keys}\"";
+    value = {
+      "${action}" = [ ];
+    };
+  };
 in
 {
   options = {
@@ -20,15 +26,27 @@ in
     {
       programs.zellij = {
         enable = true;
-        attachExistingSession = true;
         enableBashIntegration = true;
         enableFishIntegration = true;
         enableZshIntegration = true;
-        exitShellOnExit = true;
         settings = {
           pane_frames = false;
           show_startup_tips = false;
           show_release_notes = false;
+
+          keybinds = {
+            "shared_except \"locked\"" = builtins.listToAttrs [
+              (bind "Alt m" "ToggleFocusFullscreen;")
+              (bind "Alt q" "CloseFocus;")
+              (bind "Alt w" ''
+                LaunchOrFocusPlugin "session-manager" {
+                  floating true
+                  move_to_focused_tab true
+                };'')
+              (bind "Alt e" "FocusNextPane;")
+              (bind "Alt r" "GoToNextTab;")
+            ];
+          };
         };
       };
     }
