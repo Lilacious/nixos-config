@@ -10,5 +10,6 @@
     ./vscode.nix
     ./waybar.nix
     ./zathura.nix
+    ./zellij.nix
   ];
 }

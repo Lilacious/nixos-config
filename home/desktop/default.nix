@@ -57,6 +57,7 @@ in
         alacritty.enable = true;
         direnv.enable = true;
         zathura.enable = true;
+        zellij.enable = true;
       };
       # Use the home-manager module on graphical systems
       services.syncthing.enable = true;
