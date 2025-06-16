@@ -9,6 +9,9 @@ let
   subOpt = options.users.users.type.getSubOptions [ ];
 in
 {
+  imports = [
+    ./syncthing.nix
+  ];
   users.users.yunix = mkMerge [
     {
       home = if pkgs.stdenv.isDarwin then "/Users/yunix" else "/home/yunix";

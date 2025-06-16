@@ -10,6 +10,7 @@ with lib;
     ./locale.nix
     ./nix.nix
     ./packages.nix
+    ./syncthing.nix
     ./zsh.nix
   ];
 
