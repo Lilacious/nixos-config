@@ -1,8 +1,16 @@
-{ lib, options, ... }:
+{
+  lib,
+  options,
+  config,
+  ...
+}:
 with lib;
+let
+  cfg = config.myModules.core;
+in
 {
   # nix-darwin has no i18n nor console options
-  config = mkMerge [
+  config = mkIf cfg.enable (mkMerge [
     (
       if (builtins.hasAttr "i18n" options) then
         {
@@ -46,5 +54,5 @@ with lib;
       else
         { }
     )
-  ];
+  ]);
 }

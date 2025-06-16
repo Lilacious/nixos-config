@@ -1,11 +1,15 @@
 {
   lib,
   pkgs,
+  config,
   ...
 }:
 with lib;
+let
+  cfg = config.myModules.core;
+in
 {
-  environment.shellAliases = mkMerge [
+  environment.shellAliases = mkIf cfg.enable (mkMerge [
     {
       c = "clear";
       neofetch = "fastfetch";
@@ -16,5 +20,5 @@ with lib;
     (mkIf pkgs.stdenv.isDarwin {
       update = "cd ~/nixos-config && darwin-rebuild switch --flake .#$HOST";
     })
-  ];
+  ]);
 }

@@ -25,7 +25,7 @@ in
         type = types.submodule {
           freeformType = settingsFormat.type;
         };
-        default = {};
+        default = { };
       };
     };
   };
@@ -33,7 +33,7 @@ in
     {
       assertions = [
         {
-          assertion = cfg.settings != {} -> cfg.user != "";
+          assertion = cfg.settings != { } -> cfg.user != "";
           message = ''
             myModules.services.syncthing.user must be set to an active user if
             myModules.services.syncthing.settings is not empty.

@@ -1,7 +1,15 @@
-{ pkgs, lib, ... }:
-with lib;
 {
-  config = mkMerge [
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+with lib;
+let
+  cfg = config.myModules.core;
+in
+{
+  config = mkIf cfg.enable (mkMerge [
     {
       environment.systemPackages = with pkgs; [
         ### Hard drive monitoring
@@ -59,5 +67,5 @@ with lib;
         duf # Disk Usage/Free Utility
       ];
     })
-  ];
+  ]);
 }
