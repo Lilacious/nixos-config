@@ -5,11 +5,11 @@
 }:
 with lib;
 let
-  cfg = config.myModules.services.printing;
+  cfg = config.myModules.desktop.services.printing;
 in
 {
   options = {
-    myModules.services.printing = {
+    myModules.desktop.services.printing = {
       enable = mkEnableOption "printing service";
     };
   };

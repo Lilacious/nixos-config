@@ -59,11 +59,11 @@
     desktop = {
       gnome.enable = false;
       plasma.enable = true;
-    };
 
-    services = {
-      ## Enable printing
-      printing.enable = true;
+      services = {
+        ## Enable printing
+        printing.enable = true;
+      };
     };
 
     other = {

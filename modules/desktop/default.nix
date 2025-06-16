@@ -11,6 +11,7 @@ let
 in
 {
   imports = [
+    ./audio.nix
     ./cosmic.nix
     ./display-manager.nix
     ./gnome.nix
@@ -18,6 +19,7 @@ in
     #./niri.nix
     ./plasma.nix
     ./plymouth.nix
+    ./printing.nix
   ];
 
   options = {
@@ -60,7 +62,6 @@ in
     myModules = {
       other.fonts.enable = true;
       programs.desktop.enable = true;
-      services.audio.enable = true;
     };
 
     services.xserver = {

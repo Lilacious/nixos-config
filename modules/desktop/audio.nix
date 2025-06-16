@@ -5,12 +5,14 @@
 }:
 with lib;
 let
-  cfg = config.myModules.services.audio;
+  cfg = config.myModules.desktop.services.audio;
 in
 {
   options = {
-    myModules.services.audio = {
-      enable = mkEnableOption "audio settings";
+    myModules.desktop.services.audio = {
+      enable = mkEnableOption "audio settings" // {
+        default = config.myModules.desktop.enable;
+      };
     };
   };
   config = mkIf cfg.enable {

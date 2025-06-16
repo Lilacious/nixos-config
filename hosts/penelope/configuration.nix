@@ -32,10 +32,10 @@
     desktop = {
       gnome.enable = false;
       plasma.enable = true;
-    };
 
-    services = {
-      printing.enable = true;
+      services = {
+        printing.enable = true;
+      };
     };
 
     programs = {

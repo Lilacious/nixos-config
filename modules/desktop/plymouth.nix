@@ -6,13 +6,13 @@
 }:
 with lib;
 let
-  cfg = config.myModules.desktop.plymouth;
+  cfg = config.myModules.desktop.services.plymouth;
 in
 {
   options = {
-    myModules.desktop.plymouth = {
+    myModules.desktop.services.plymouth = {
       enable = mkEnableOption "Plymouth" // {
-        default = true;
+        default = config.myModules.desktop.enable;
       };
     };
   };
