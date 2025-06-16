@@ -1,7 +1,9 @@
 {
   imports = [
     ./nixos.nix
-    ../modules
+    ../modules/desktop
+    ../modules/other
+    ../modules/programs
 
     ../users/yunix/full.nix
   ];
