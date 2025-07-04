@@ -5,17 +5,19 @@
 }:
 with lib;
 let
-  cfg = config.myModules.services.nginx;
+  cfg = config.myModules.services.reverseProxy;
 in
 {
   options = {
-    myModules.services.nginx = {
+    myModules.services.reverseProxy = {
       enable = mkEnableOption "nginx reverse proxy";
       acmeEmail = mkOption {
         type = types.nullOr types.str;
         default = null;
       };
-      openFirewall = mkEnableOption "open nginx firewall";
+      openFirewall = mkEnableOption "open nginx firewall" // {
+        default = true;
+      };
     };
   };
   config = mkIf cfg.enable {
@@ -32,7 +34,7 @@ in
     security.acme.defaults.email = mkDefault cfg.acmeEmail;
 
     services.nginx = {
-      enable = mkForce true;
+      enable = true;
       recommendedBrotliSettings = mkDefault true;
       recommendedGzipSettings = mkDefault true;
       recommendedOptimisation = mkDefault true;

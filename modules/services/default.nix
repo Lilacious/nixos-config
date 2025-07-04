@@ -1,6 +1,6 @@
 {
   imports = [
-    ./nginx.nix
     ./podman.nix
+    ./reverse-proxy.nix
   ];
 }
