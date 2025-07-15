@@ -18,7 +18,8 @@ in
           ./modules
           self.nixosModules.workstation
 
-          inputs.lix-module.nixosModules.default
+          # Remote builder broken on lix
+          #inputs.lix-module.nixosModules.default
 
           {
             ## Custom aliases for penelope
