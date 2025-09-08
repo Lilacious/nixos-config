@@ -41,7 +41,6 @@ in
       recommendedProxySettings = mkDefault true;
       recommendedTlsSettings = mkDefault true;
       recommendedUwsgiSettings = mkDefault false;
-      recommendedZstdSettings = mkDefault true;
     };
 
     networking.firewall.allowedTCPPorts = mkIf cfg.enable [
