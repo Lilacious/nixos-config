@@ -34,7 +34,7 @@ in
       spotify
       parsec-bin # remote desktop client
       obs-studio
-      jellyfin-media-player
+      #jellyfin-media-player
     ];
   };
 }
