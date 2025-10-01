@@ -21,6 +21,9 @@ in
 
       ## Network
       networkmanagerapplet
+      # university vpn client
+      eduvpn-client
+      networkmanager-openvpn
 
       ## Communication
       mumble
@@ -35,6 +38,10 @@ in
       parsec-bin # remote desktop client
       obs-studio
       #jellyfin-media-player
+    ];
+    ## Required for eduvpn-client
+    networking.networkmanager.plugins = with pkgs; [
+      networkmanager-openvpn
     ];
   };
 }
