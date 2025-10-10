@@ -19,7 +19,7 @@ in
         ./modules
         self.nixosModules.workstation
 
-        inputs.lix-module.nixosModules.default
+        #inputs.lix-module.nixosModules.default
       ];
     };
   };
