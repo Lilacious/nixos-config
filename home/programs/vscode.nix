@@ -51,7 +51,8 @@ in
           "workbench"."colorTheme" = "Catppuccin Mocha";
           "workbench"."iconTheme" = "Catppuccin Mocha";
           "catppuccin"."accentColor" = "mauve";
-        } // cfg.userSettings;
+        }
+        // cfg.userSettings;
 
         enableExtensionUpdateCheck = false;
         extensions =

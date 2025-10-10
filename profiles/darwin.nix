@@ -39,7 +39,8 @@ in
             ../home/programs/alacritty.nix
             ../home/services/syncthing.nix
 
-          ] ++ optional (builtins.pathExists gitFile) gitFile;
+          ]
+          ++ optional (builtins.pathExists gitFile) gitFile;
           # TODO better solution maybe?
           myHome.services.syncthing.enable = true;
         };

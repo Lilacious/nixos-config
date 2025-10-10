@@ -124,7 +124,8 @@ in
             "GDK_BACKEND,wayland,x11,*"
             "QT_QPA_PLATFORM,wayland;xcb"
           ];
-        } // osCfg.settings;
+        }
+        // osCfg.settings;
       };
       services = {
         hyprpolkitagent.enable = true;

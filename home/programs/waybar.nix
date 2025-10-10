@@ -154,13 +154,16 @@ in
             };
             battery = {
               weighted-average = true;
-            } // batteryAttrs;
+            }
+            // batteryAttrs;
             "battery#0" = {
               bat = "BAT0";
-            } // batteryAttrs;
+            }
+            // batteryAttrs;
             "battery#1" = {
               bat = "BAT1";
-            } // batteryAttrs;
+            }
+            // batteryAttrs;
             backlight = {
               format = "  {percent}%";
             };
