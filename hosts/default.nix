@@ -4,6 +4,7 @@
     ./generics
     ./other
 
+    ./deimos
     ./kalypso
     ./penelope
   ];
