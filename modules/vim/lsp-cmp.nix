@@ -20,10 +20,16 @@ in
     sql = mkEnableOption "SQL lsp & cmp";
     tex = mkEnableOption "LaTeX lsp & cmp";
     haskell = mkEnableOption "Haskell lsp & cmp";
+    java = mkEnableOption "Java lsp & cmp";
   };
 
   config = {
     programs.nixvim = {
+      # ENable virtual text for lsp
+      diagnostic.settings = {
+        virtual_lines.current_line = true;
+        virtual_text = true;
+      };
       # Allows extra capabilities providied by nvim-cmp
       plugins = {
         nix.enable = true;
@@ -62,6 +68,8 @@ in
               enable = cfg.haskell;
               installGhc = false;
             };
+            # Java
+            jdtls.enable = cfg.java;
           };
         };
 
