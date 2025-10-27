@@ -41,6 +41,7 @@
     programs = {
       gaming.enable = true;
       virt-manager.enable = true;
+      jetbrains.idea.enable = true;
     };
   };
 }
