@@ -35,7 +35,6 @@ in
         khelpcenter # kde documentation
         okular # document viewer
         krdp # rdp application
-        xwaylandvideobridge
       ];
     };
   };
