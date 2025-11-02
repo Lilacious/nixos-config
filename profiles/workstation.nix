@@ -12,6 +12,7 @@ with lib;
   environment.systemPackages = with pkgs; [
     # Remote desktop
     parsec-bin
+    moonlight-qt
 
     # UML
     #libsForQt5.umbrello
