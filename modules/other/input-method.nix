@@ -29,7 +29,7 @@ in
           ## Japanese IM
           fcitx5-mozc
           ## Chinese pinyin IM
-          fcitx5-chinese-addons
+          qt6Packages.fcitx5-chinese-addons
 
           catppuccin-fcitx5
         ];
