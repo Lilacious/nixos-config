@@ -25,7 +25,7 @@ in
       with pkgs;
       (mkMerge [
         (mkIf cfg.idea.enable [
-          jetbrains.idea-ultimate
+          jetbrains.idea
         ])
         (mkIf cfg.pycharm.enable [
           jetbrains.pycharm-community
