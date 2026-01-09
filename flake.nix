@@ -32,7 +32,7 @@
               nix-init # package generation
             ];
           };
-          formatter = pkgs.nixfmt-rfc-style;
+          formatter = pkgs.nixfmt;
         };
     };
 

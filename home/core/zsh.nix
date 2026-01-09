@@ -1,7 +1,6 @@
 # For system config see nix-config/modules/core/zsh.nix
 {
   config,
-  pkgs,
   lib,
   ...
 }:
@@ -21,6 +20,8 @@ in
   config = mkIf cfg.enable {
     programs.zsh = {
       enable = true;
+      dotDir = "${config.xdg.configHome}/zsh";
+
       autosuggestion.enable = true;
       enableCompletion = true;
       syntaxHighlighting.enable = true;

@@ -37,7 +37,7 @@ in
         eza # ls & tree replacement
 
         ## nix
-        nixfmt-rfc-style
+        nixfmt
 
         ## Other
         fastfetch # Sys info fetcher
