@@ -11,7 +11,7 @@ with lib;
 
   environment.systemPackages = with pkgs; [
     # Remote desktop
-    parsec-bin
+    #parsec-bin
     moonlight-qt
 
     # UML
@@ -39,7 +39,7 @@ with lib;
     ))
     gcc
     # texlive.combined.scheme-basic
-    texlive.combined.scheme-full
+    #texlive.combined.scheme-full
   ];
 
   myModules = {

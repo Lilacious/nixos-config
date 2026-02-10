@@ -9,7 +9,8 @@ let
   username = "yunix";
   homedir = config.users.users.${username}.home;
   isHost = x: config.networking.hostName == x;
-  buildEnable = (isHost "penelope" || isHost "kalypso");
+  # disable remote build
+  buildEnable = false && (isHost "penelope" || isHost "kalypso");
 in
 {
   imports = [
