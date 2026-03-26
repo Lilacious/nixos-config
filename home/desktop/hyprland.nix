@@ -110,7 +110,7 @@ in
                 + ''$(pamixer --toggle-mute --get-volume-human )"'';
               micMutectl =
                 ''${notify} "Microphone control" "Current volume: "''
-                + ''$(pamixer --default-source -t --get-volume-human)'';
+                + "$(pamixer --default-source -t --get-volume-human)";
             in
             [
               ", XF86AudioMute, exec, ${mutectl}"

@@ -28,7 +28,7 @@ in
 
         username = {
           show_always = false;
-          format = ''[$user]($style)'';
+          format = "[$user]($style)";
           disabled = false;
         };
 
@@ -48,7 +48,7 @@ in
 
         git_branch = {
           symbol = "  ";
-          format = ''[$symbol$branch]($style)'';
+          format = "[$symbol$branch]($style)";
           style = "bold green";
         };
 

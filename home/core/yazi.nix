@@ -21,6 +21,7 @@ in
     ({
       programs.yazi = {
         enable = true;
+        shellWrapperName = "y";
         settings = {
           log = {
             enabled = false;

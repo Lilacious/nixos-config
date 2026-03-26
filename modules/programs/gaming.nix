@@ -32,7 +32,7 @@ in
       with pkgs;
       (mkMerge [
         (mkIf cfg.emulators.enable [
-          melonDS # DS Emulator
+          melonds # DS Emulator
           # Disable due to
           # 1. build failure
           # 2. apparently will be superseded by azahar emulator
