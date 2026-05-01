@@ -41,7 +41,7 @@
     programs = {
       gaming.enable = true;
       virt-manager.enable = true;
-      jetbrains.idea.enable = true;
+      jetbrains.idea.enable = false;
       nintendo.switch.enable = true;
     };
   };
