@@ -19,10 +19,6 @@ in
       enable = true;
       autoPrune.enable = true;
       dockerCompat = true;
-      defaultNetwork.settings = {
-        # Required for container networking to be able to use names.
-        dns_enabled = true;
-      };
     };
     # Service to manually update podman containers
     # Warning: it won't work if the `serviceName` is modified or if backend is docker.
