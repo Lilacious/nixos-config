@@ -32,9 +32,11 @@ in
     };
   };
   config = mkIf cfg.enable {
-    programs.vscode = {
+    # 'programs.vscode' now always writes to Visual Studio Code's paths,
+    # hence use 'programs.vscodium' so that configuration is
+    # written to the fork's own paths.
+    programs.vscodium = {
       enable = true;
-      package = pkgs.vscodium;
 
       profiles.default = {
         enableUpdateCheck = false;
