@@ -23,6 +23,7 @@ in
   config = mkIf cfg.enable (mkMerge [
     {
       home.pointerCursor = {
+        enable = true;
         package = pkgs.whitesur-cursors;
         name = "WhiteSur-cursors";
         size = 20;
