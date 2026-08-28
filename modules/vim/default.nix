@@ -31,7 +31,7 @@ with lib;
         maplocalleader = " ";
       };
     }
-    (mkIf pkgs.stdenv.isLinux {
+    (mkIf pkgs.stdenv.hostPlatform.isLinux {
       defaultEditor = true;
     })
   ];

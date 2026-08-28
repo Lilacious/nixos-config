@@ -14,7 +14,7 @@ in
   ];
   users.users.yunix = mkMerge [
     {
-      home = if pkgs.stdenv.isDarwin then "/Users/yunix" else "/home/yunix";
+      home = if pkgs.stdenv.hostPlatform.isDarwin then "/Users/yunix" else "/home/yunix";
       description = "Yunix";
       shell = pkgs.zsh;
 

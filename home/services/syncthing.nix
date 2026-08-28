@@ -36,7 +36,7 @@ in
       inherit (osCfg) settings;
       # configDir options does not exist in hm, default path is:
       # configDir =
-      #   if pkgs.stdenv.isDarwin then
+      #   if pkgs.stdenv.hostPlatform.isDarwin then
       #     "~/Library/Application Support/Syncthing"
       #   else
       #     "~/.local/state/syncthing";

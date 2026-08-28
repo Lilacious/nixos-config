@@ -45,7 +45,7 @@ in
       ];
     }
 
-    (mkIf pkgs.stdenv.isLinux {
+    (mkIf pkgs.stdenv.hostPlatform.isLinux {
       environment.systemPackages = with pkgs; [
         ### Network
         wget

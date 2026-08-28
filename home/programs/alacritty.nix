@@ -7,7 +7,7 @@
 }:
 with lib;
 let
-  inherit (pkgs.stdenv) isDarwin;
+  inherit (pkgs.stdenv.hostPlatform) isDarwin;
   cfg = config.myHome.programs.alacritty;
 
   # font needs to be a bit bigger on MacOS
