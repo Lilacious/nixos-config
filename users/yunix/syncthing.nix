@@ -7,8 +7,8 @@ in
     user = "yunix";
     settings = {
       devices = {
-        "Hades" = {
-          id = "I7SODCH-2VBY2CC-K466KOQ-W3RVO7R-Z2GJZHH-6WRYKP3-SJFJ4DZ-YD5R5AP";
+        "Deimos" = {
+          id = "A7SU6SK-O26XB2T-AAYSEFT-2ZDKBBB-6MXUPIW-DHXLEPX-CQI32CZ-VAKJOQT";
         };
         "Hestia" = {
           id = "HQCTYWV-HQ67DDS-V5SVNS7-EMI2QBC-WJ6TZXM-EOAXOGQ-X3X5J4G-F46MCAF";
@@ -20,10 +20,10 @@ in
           id = "YCGZIQO-TIJG44Y-LXXAUW5-5U3VWIB-WROJHBQ-MEMVSJX-YO2NIWW-D3ODVAC";
         };
         "Leto" = {
-          id = "2B3AZKJ-C5IHVCO-EWSJU3K-RCCHTTM-BPL6K4M-FPSSNIY-IIKOGBI-TWGDZAT";
+          id = "4GFNPVP-VTSQ4TR-UJH7634-KR6HVXY-6W4LBF3-C2RG2NU-XA2WT6G-U5DV7Q4";
         };
-        "Orupi" = {
-          id = "U6WKHF6-K4MQL4M-MKDBJJW-FTGZZIN-7OLUJGQ-VCUGH7D-2GCHOGB-7SJKNQY";
+        "LetoII" = {
+          id = "IOT32FW-RQK52RO-MM3HWWN-RLGC6DH-MMMMZO2-G4AAEBY-ATWNNW4-GJKZKA5";
         };
         "Penelope" = {
           id = "TDAPHUQ-CXVBYJI-GIRIZTC-B3F7JNC-7DK7QTP-JX4AVB6-AER7FXE-SZLI6AX";
@@ -39,12 +39,12 @@ in
           };
           # Which devices to share the folder with
           devices = [
-            "Hades"
+            "Deimos"
             "Hestia"
             "Hypnos"
             "Kalypso"
             "Leto"
-            "Orupi"
+            "LetoII"
             "Penelope"
           ];
         };
