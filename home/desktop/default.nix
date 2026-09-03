@@ -55,6 +55,7 @@ in
     myHome = {
       programs = {
         alacritty.enable = true;
+        ghostty.enable = true;
         direnv.enable = true;
         zathura.enable = true;
         zellij.enable = true;

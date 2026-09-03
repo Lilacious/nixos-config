@@ -1,6 +1,8 @@
 {
   config,
   lib,
+  pkgs,
+  options,
   ...
 }:
 with lib;
@@ -13,17 +15,32 @@ in
       enable = mkEnableOption "Ghostty";
     };
   };
-  config = mkIf cfg.enable {
-    programs.ghostty = {
-      enable = true;
-      enableZshIntegration = true;
-      enableBashIntegration = true;
-      settings = {
-        font-size = 12;
-        font-family = "Agave Nerd Font";
-        theme = "catppuccin-mocha";
-        scrollback-limit = 10000;
+  config = mkIf cfg.enable (mkMerge [
+    {
+      programs.ghostty = {
+        enable = true;
+        enableZshIntegration = true;
+        enableBashIntegration = true;
+        settings = {
+          font-size = 12;
+          scrollback-limit = 10000;
+          # Ship the xterm-ghostty terminfo entry to hosts we ssh into, so
+          # remote shells get a TERM they can actually look up.
+          shell-integration-features = "ssh-env,ssh-terminfo";
+        };
       };
-    };
-  };
+      home.packages = with pkgs; [
+        ## Terminfo for terminals
+        ghostty.terminfo
+      ];
+    }
+    (
+      if (builtins.hasAttr "stylix" options) then
+        {
+          stylix.targets.ghostty.enable = true;
+        }
+      else
+        { }
+    )
+  ]);
 }
