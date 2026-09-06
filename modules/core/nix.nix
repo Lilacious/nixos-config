@@ -15,7 +15,10 @@ in
         options = "--delete-older-than 30d";
       };
       settings = {
-        experimental-features = "nix-command flakes";
+        experimental-features = [
+          "nix-command"
+          "flakes"
+        ];
         auto-optimise-store = false;
         warn-dirty = false;
 
