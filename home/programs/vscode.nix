@@ -41,18 +41,20 @@ in
       profiles.default = {
         enableUpdateCheck = false;
         userSettings = {
+          "claudeCode.preferredLocation" = "panel";
+          "catppuccin"."accentColor" = "mauve";
+          "extensions"."experimental"."affinity" = {
+            "vscodevim"."vim" = 1;
+          };
           "editor"."fontFamily" = "Agave Nerd Font";
+          "files"."enableTrash" = false;
           "nix"."enableLanguageServer" = true;
           "nix"."serverPath" = "nil";
           "vim"."useSystemClipboard" = true;
           "vim"."enableNeovim" = true;
           "vim"."neovimUseConfigFile" = true;
-          "extensions"."experimental"."affinity" = {
-            "vscodevim"."vim" = 1;
-          };
           "workbench"."colorTheme" = "Catppuccin Mocha";
           "workbench"."iconTheme" = "Catppuccin Mocha";
-          "catppuccin"."accentColor" = "mauve";
         }
         // cfg.userSettings;
 
@@ -60,12 +62,13 @@ in
         extensions =
           with pkgs.vscode-extensions;
           [
+            anthropic.claude-code
             catppuccin.catppuccin-vsc
             catppuccin.catppuccin-vsc-icons
-            jnoortheen.nix-ide
-            vscodevim.vim
             gruntfuggly.todo-tree
+            jnoortheen.nix-ide
             mkhl.direnv
+            vscodevim.vim
           ]
           ++ cfg.extensions;
       };
