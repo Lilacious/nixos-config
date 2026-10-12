@@ -41,10 +41,19 @@ in
       else
         { }
     )
+    # initial password, change immediately after first login
     (
       if (builtins.hasAttr "isNormalUser" subOpt) then
         {
           isNormalUser = true;
+        }
+      else
+        { }
+    )
+    (
+      if (builtins.hasAttr "initialPassword" subOpt) then
+        {
+          initialPassword = "changeme";
         }
       else
         { }
