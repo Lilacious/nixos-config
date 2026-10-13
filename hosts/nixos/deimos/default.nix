@@ -5,7 +5,7 @@
     system = "x86_64-linux";
     modules = [
       ./configuration.nix
-      ../../../users/yunix/headless.nix
+      ../../../users/yunix
 
       {
         wsl.defaultUser = "yunix";

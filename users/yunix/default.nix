@@ -12,6 +12,13 @@ in
   imports = [
     ./syncthing.nix
   ];
+
+  # See profile/base.nix
+  home-manager.users.yunix.imports = [
+    ../../home/core
+    ./git.nix
+  ];
+
   users.users.yunix = mkMerge [
     {
       home = if pkgs.stdenv.hostPlatform.isDarwin then "/Users/yunix" else "/home/yunix";

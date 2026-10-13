@@ -3,7 +3,7 @@
     ./nixos.nix
     ../modules/services
 
-    ../users/yunix/headless.nix
+    ../users/yunix
   ];
 
   # Show failed systemd units on interactive login
