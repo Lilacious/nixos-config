@@ -24,20 +24,19 @@ in
 
       i18n.defaultLocale = "en_US.UTF-8";
 
-      i18n.extraLocaleSettings = {
-        ## en_IE: English but de_DE like locale
-        LC_ALL = "en_IE.UTF-8";
-
-        #LC_ADDRESS = "de_DE.UTF-8";
-        #LC_IDENTIFICATION = "de_DE.UTF-8";
-        #LC_MEASUREMENT = "de_DE.UTF-8";
-        #LC_MONETARY = "de_DE.UTF-8";
-        #LC_NAME = "de_DE.UTF-8";
-        #LC_NUMERIC = "de_DE.UTF-8";
-        #LC_PAPER = "de_DE.UTF-8";
-        #LC_TELEPHONE = "de_DE.UTF-8";
-        #LC_TIME = "de_DE.UTF-8";
-      };
+      ## en_IE: English text with de_DE-like formats (24h time, metric, A4, EUR)
+      ## Don't set LC_ALL, it overrides LANG and every other category
+      i18n.extraLocaleSettings = genAttrs [
+        "LC_ADDRESS"
+        "LC_IDENTIFICATION"
+        "LC_MEASUREMENT"
+        "LC_MONETARY"
+        "LC_NAME"
+        "LC_NUMERIC"
+        "LC_PAPER"
+        "LC_TELEPHONE"
+        "LC_TIME"
+      ] (_: "en_IE.UTF-8");
     })
 
     (optionalAttrs (options ? console) {

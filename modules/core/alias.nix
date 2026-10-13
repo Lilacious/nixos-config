@@ -15,12 +15,12 @@ in
       neofetch = "fastfetch";
     }
     (mkIf pkgs.stdenv.hostPlatform.isLinux {
-      update = "cd ~/nixos-config && sudo nixos-rebuild switch --flake .#$HOST";
+      update = "cd ~/nixos-config && sudo nixos-rebuild switch --flake .";
 
       netstat = "ss";
     })
     (mkIf pkgs.stdenv.hostPlatform.isDarwin {
-      update = "cd ~/nixos-config && darwin-rebuild switch --flake .#$HOST";
+      update = "cd ~/nixos-config && sudo darwin-rebuild switch --flake .";
     })
   ]);
 }
