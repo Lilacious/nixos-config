@@ -43,10 +43,10 @@ in
 
         "org/gnome/settings-daemon/plugins/color" = {
           night-light-enabled = true;
-          night-light-temperature = "uint32 4000";
+          night-light-temperature = hm.gvariant.mkUint32 4000;
           night-light-schedule-automatic = false;
-          night-light-schedule-from = "0.0";
-          night-light-schedule-to = "0.0";
+          night-light-schedule-from = 0.0;
+          night-light-schedule-to = 0.0;
         };
 
         "org/gnome/desktop/wm/preferences" = {
@@ -179,7 +179,7 @@ in
         "org/gnome/shell/extensions/dash-to-dock" = {
           hot-keys = false;
           # multi-monitor = true; # Disabled due to theme missmatch
-          apply-custom-them = true;
+          apply-custom-theme = true;
         };
 
         "org/gnome/shell/extensions/just-perfection" = {
