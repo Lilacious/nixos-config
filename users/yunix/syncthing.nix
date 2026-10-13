@@ -32,7 +32,7 @@ in
       folders = {
         "KeePassXC" = {
           # Name of folder in Syncthing, also the folder ID
-          path = "/home/${cfg.user}/Sync/KeePassXC"; # Which folder to add to Syncthing
+          path = "${config.users.users.${cfg.user}.home}/Sync/KeePassXC"; # Which folder to add to Syncthing
           versioning = {
             type = "simple";
             params.keep = "250";
