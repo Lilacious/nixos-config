@@ -1,5 +1,9 @@
 # Use the NixOS module for servers and the home-manager module for
-# graphical systems and darwin
+# graphical systems and darwin. On servers the hm user service would only
+# run while the user is logged in (through ssh).
+# Desktops (home/desktop) and darwin (users/yunix/darwin.nix) enable the hm
+# module by default, servers must opt in per host:
+#   myModules.services.syncthing.enable = true;
 {
   config,
   lib,

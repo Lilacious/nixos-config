@@ -26,7 +26,10 @@ in
     server = self.lib.mkNixos "server" {
       profile = "server";
       system = amd;
-      modules = [ ./configuration.nix ];
+      modules = [
+        ./configuration.nix
+        { myModules.services.syncthing.enable = true; }
+      ];
     };
     desktop = self.lib.mkNixos "desktop" {
       profile = "desktop";

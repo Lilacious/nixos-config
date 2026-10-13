@@ -27,7 +27,4 @@
       PermitRootLogin = "no";
     };
   };
-  # Don't use the hm module on servers user systemd service
-  # is only active if the user is logged in (through ssh).
-  myModules.services.syncthing.enable = true;
 }
