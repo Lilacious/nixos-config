@@ -7,9 +7,9 @@
   ];
 
   # Show failed systemd units on interactive login
-  environment.interactiveShellInit = ''
-    echo "\nFailed systemd units:" && \
-      systemctl --no-pager --failed || true
+  environment.loginShellInit = ''
+    printf "\nFailed systemd units:\n"
+    systemctl --no-pager --failed || true
   '';
 
   documentation = {
