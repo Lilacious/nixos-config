@@ -23,9 +23,9 @@ in
   config = mkIf cfg.enable {
     assertions = [
       {
-        assertion = cfg.enable -> cfg.acmeEmail != null;
+        assertion = cfg.acmeEmail != null;
         message = ''
-          myModules.services.nginx.acmeEmail has to be set if myModules.services.nginx is enabled.
+          myModules.services.reverseProxy.acmeEmail has to be set if myModules.services.reverseProxy is enabled.
         '';
       }
     ];
@@ -43,7 +43,7 @@ in
       recommendedUwsgiSettings = mkDefault false;
     };
 
-    networking.firewall.allowedTCPPorts = mkIf cfg.enable [
+    networking.firewall.allowedTCPPorts = mkIf cfg.openFirewall [
       80
       443
     ];
