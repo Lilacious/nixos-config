@@ -5,7 +5,7 @@
   system.stateVersion = 5;
 
   # Add ability to used TouchID for sudo authentication
-  security.pam.enableSudoTouchIdAuth = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
 
   fonts.packages = [
     pkgs.nerd-fonts.agave

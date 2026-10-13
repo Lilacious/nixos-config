@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  options,
+  ...
+}:
 with lib;
 let
   cfg = config.myModules.core;
@@ -11,9 +16,10 @@ in
       optimise.automatic = true;
       gc = {
         automatic = true;
-        dates = "weekly";
         options = "--delete-older-than 30d";
-      };
+      }
+      # dates option deprecated on darwin, use default interval
+      // optionalAttrs (!(options.nix.gc ? interval)) { dates = "weekly"; };
       settings = {
         experimental-features = [
           "nix-command"
@@ -35,7 +41,7 @@ in
         ];
       };
     };
-    # flakes require a git in PATH
-    programs.git.enable = true;
+    # flakes require a git in PATH (darwin has no programs.git)
+    programs = optionalAttrs (options.programs ? git) { git.enable = true; };
   };
 }

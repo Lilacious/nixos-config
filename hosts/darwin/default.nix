@@ -5,18 +5,16 @@
 }:
 let
   inherit (inputs.darwin) lib;
-  amd = "x86_64-darwin";
   arm = "aarch64-darwin";
 in
 {
   ## darwinConfigurations in multiple files causes the following error
   ## -> stack overflow; max-call-depth exceeded
   flake.darwinConfigurations = {
-    # t480 hackintosh
     arnaea = lib.darwinSystem {
       specialArgs = {
         inherit self inputs;
-        system = amd;
+        system = arm;
       };
 
       modules = [
@@ -25,28 +23,12 @@ in
 
         {
           networking.hostName = "arnaea";
-          nixpkgs.hostPlatform = amd;
+          nixpkgs.hostPlatform = arm;
         }
       ];
     };
 
     #### Templates ####
-    darwin-amd = lib.darwinSystem {
-      specialArgs = {
-        inherit self inputs;
-        system = amd;
-      };
-
-      modules = [
-        ./configuration.nix
-        self.darwinModules.darwin
-
-        {
-          networking.hostName = "darwin-amd";
-          nixpkgs.hostPlatform = amd;
-        }
-      ];
-    };
     darwin-arm = lib.darwinSystem {
       specialArgs = {
         inherit self inputs;
@@ -56,6 +38,7 @@ in
       modules = [
         ./configuration.nix
         self.darwinModules.darwin
+        ../../users/generic
 
         {
           networking.hostName = "darwin-arm";
