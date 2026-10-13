@@ -15,6 +15,7 @@
       ];
 
       imports = [
+        ./lib
         ./hosts
         ./profiles
       ];

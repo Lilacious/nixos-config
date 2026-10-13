@@ -52,12 +52,12 @@ mount /dev/sda1 /mnt/boot
 ```
 - generate hardware-config.nix
 ```
-nixos-generate-config --root /mnt --dir path/to/nixos-config/hosts/HOST
+nixos-generate-config --root /mnt --dir path/to/nixos-config/hosts/nixos/HOST
 ```
 
 </details>
 
-Generate `hardware-configuration.nix` in `./host/<host>`
+Generate `hardware-configuration.nix` in `./hosts/nixos/<host>`
 
 ```
 cd <repo>
@@ -71,7 +71,7 @@ You install nix-dawin by running:
 nix run nix-darwin -- switch --flake .#darwin-arm
 ```
 - Change darwin-arm to your prefered darwinConfiguration host or create a
-new host using the entries in `hosts/generics/darwin` as template.
+new host using the entries in `hosts/darwin` (config in `hosts/templates/darwin`) as template.
 - After installing nix-darwin, you can run `update` to apply changes to your
 system.
 ## Uninstalling

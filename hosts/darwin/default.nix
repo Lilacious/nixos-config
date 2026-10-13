@@ -1,49 +1,17 @@
-{
-  self,
-  inputs,
-  ...
-}:
-let
-  inherit (inputs.darwin) lib;
-  arm = "aarch64-darwin";
-in
+{ self, ... }:
 {
   ## darwinConfigurations in multiple files causes the following error
   ## -> stack overflow; max-call-depth exceeded
   flake.darwinConfigurations = {
-    arnaea = lib.darwinSystem {
-      specialArgs = {
-        inherit self inputs;
-        system = arm;
-      };
-
-      modules = [
-        ./arnaea
-        self.darwinModules.darwin
-
-        {
-          networking.hostName = "arnaea";
-          nixpkgs.hostPlatform = arm;
-        }
-      ];
+    arnaea = self.lib.mkDarwin "arnaea" {
+      modules = [ ./arnaea ];
     };
 
     #### Templates ####
-    darwin-arm = lib.darwinSystem {
-      specialArgs = {
-        inherit self inputs;
-        system = arm;
-      };
-
+    darwin-arm = self.lib.mkDarwin "darwin-arm" {
       modules = [
-        ./configuration.nix
-        self.darwinModules.darwin
+        ../templates/darwin/configuration.nix
         ../../users/generic
-
-        {
-          networking.hostName = "darwin-arm";
-          nixpkgs.hostPlatform = arm;
-        }
       ];
     };
   };

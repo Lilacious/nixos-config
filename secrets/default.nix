@@ -15,6 +15,6 @@
 
   sops = {
     age.keyFile = "/var/lib/sops-nix/key.txt";
-    defaultSopsFile = ../hosts/${config.networking.hostName}/secrets.yaml;
+    defaultSopsFile = ../hosts/nixos/${config.networking.hostName}/secrets.yaml;
   };
 }
