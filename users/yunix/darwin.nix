@@ -41,4 +41,7 @@ in
       };
     }
   ];
+
+  # required by user specific options like system.defaults
+  system.primaryUser = username;
 }

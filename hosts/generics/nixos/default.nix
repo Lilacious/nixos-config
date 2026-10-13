@@ -15,6 +15,7 @@ in
       modules = [
         ./configuration.nix
         self.nixosModules.nixos
+        ../../../users/generic
 
         {
           networking.hostName = "nixos-amd";
@@ -30,6 +31,7 @@ in
       modules = [
         ./configuration.nix
         self.nixosModules.nixos
+        ../../../users/generic
 
         {
           networking.hostName = "nixos-arm";
@@ -50,6 +52,39 @@ in
         {
           networking.hostName = "server";
           nixpkgs.hostPlatform = amd;
+        }
+      ];
+    };
+    desktop = lib.nixosSystem {
+      specialArgs = {
+        inherit self inputs;
+        system = amd;
+      };
+      modules = [
+        ./configuration.nix
+        self.nixosModules.desktop
+
+        {
+          networking.hostName = "desktop";
+          nixpkgs.hostPlatform = amd;
+          # desktop does nothing without a DE/WM
+          myModules.desktop.plasma.enable = true;
+        }
+      ];
+    };
+    workstation = lib.nixosSystem {
+      specialArgs = {
+        inherit self inputs;
+        system = amd;
+      };
+      modules = [
+        ./configuration.nix
+        self.nixosModules.workstation
+
+        {
+          networking.hostName = "workstation";
+          nixpkgs.hostPlatform = amd;
+          myModules.desktop.plasma.enable = true;
         }
       ];
     };
