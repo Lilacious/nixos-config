@@ -24,7 +24,7 @@
       # require public key authentication for better security
       PasswordAuthentication = false;
       KbdInteractiveAuthentication = false;
-      #PermitRootLogin = "yes";
+      PermitRootLogin = "no";
     };
   };
   # Don't use the hm module on servers user systemd service
