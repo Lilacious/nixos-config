@@ -9,5 +9,7 @@
     };
 
     darwinModules.darwin = import ./darwin.nix;
+
+    homeModules.nix-linux = import ./nix-linux.nix;
   };
 }

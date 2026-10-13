@@ -23,10 +23,7 @@ in
     }
   ];
 
-  wsl = {
-    enable = true;
-    defaultUser = "nixos";
-  };
+  wsl.defaultUser = user;
 
   users.users.${user} = {
     isNormalUser = true;

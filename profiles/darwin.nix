@@ -11,13 +11,7 @@ let
 in
 {
   imports = [
-    ../modules/core
-
-    inputs.nixvim.nixDarwinModules.nixvim
-    ../modules/vim
-
-    inputs.stylix.darwinModules.stylix
-    ../modules/stylix
+    (import ./base.nix "darwin")
 
     inputs.home-manager.darwinModules.home-manager
     {

@@ -45,7 +45,7 @@ in
       };
       modules = [
         ./configuration.nix
-        self.nixosModules.nixos
+        self.nixosModules.server
 
         {
           networking.hostName = "server";

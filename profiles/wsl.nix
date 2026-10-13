@@ -4,16 +4,11 @@
 }:
 {
   imports = [
-    ../modules/core
-
-    inputs.nixvim.nixosModules.nixvim
-    ../modules/vim
-
-    inputs.stylix.nixosModules.stylix
-    ../modules/stylix
-
-    ../users/wsl
+    ./nixos.nix
+    inputs.nixos-wsl.nixosModules.default
   ];
+
+  wsl.enable = true;
 
   # Fix VSCode WSL
   programs.nix-ld.enable = true;

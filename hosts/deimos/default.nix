@@ -12,15 +12,11 @@ in
       };
       modules = [
         ./configuration.nix
-        self.nixosModules.nixos
+        self.nixosModules.wsl
         ../../users/yunix/headless.nix
 
-        inputs.nixos-wsl.nixosModules.default
         {
-          wsl = {
-            enable = true;
-            defaultUser = "yunix";
-          };
+          wsl.defaultUser = "yunix";
           networking.hostName = "deimos";
           nixpkgs.hostPlatform = arch;
           system.stateVersion = "24.05";

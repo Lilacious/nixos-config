@@ -13,8 +13,8 @@ in
       modules = [
         ./configuration.nix
         self.nixosModules.wsl
+        ../../../users/wsl
 
-        inputs.nixos-wsl.nixosModules.default
         {
           networking.hostName = "wsl";
           nixpkgs.hostPlatform = arch;
