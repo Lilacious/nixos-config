@@ -160,13 +160,8 @@ in
         };
       };
     }
-    (
-      if (builtins.hasAttr "stylix" options) then
-        {
-          stylix.targets.hyprland.enable = true;
-        }
-      else
-        { }
-    )
+    (optionalAttrs (options ? stylix) {
+      stylix.targets.hyprland.enable = true;
+    })
   ]);
 }

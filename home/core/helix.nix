@@ -36,13 +36,8 @@ in
         };
       };
     })
-    (
-      if (builtins.hasAttr "stylix" options) then
-        {
-          stylix.targets.helix.enable = true;
-        }
-      else
-        { }
-    )
+    (optionalAttrs (options ? stylix) {
+      stylix.targets.helix.enable = true;
+    })
   ]);
 }

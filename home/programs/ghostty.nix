@@ -34,13 +34,8 @@ in
         ghostty.terminfo
       ];
     }
-    (
-      if (builtins.hasAttr "stylix" options) then
-        {
-          stylix.targets.ghostty.enable = true;
-        }
-      else
-        { }
-    )
+    (optionalAttrs (options ? stylix) {
+      stylix.targets.ghostty.enable = true;
+    })
   ]);
 }

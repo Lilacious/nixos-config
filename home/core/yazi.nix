@@ -30,13 +30,8 @@ in
       };
       home.packages = [ pkgs.ueberzugpp ];
     })
-    (
-      if (builtins.hasAttr "stylix" options) then
-        {
-          stylix.targets.yazi.enable = true;
-        }
-      else
-        { }
-    )
+    (optionalAttrs (options ? stylix) {
+      stylix.targets.yazi.enable = true;
+    })
   ]);
 }

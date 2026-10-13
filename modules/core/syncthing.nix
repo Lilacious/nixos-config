@@ -41,22 +41,17 @@ in
         }
       ];
     }
-    (
-      if (builtins.hasAttr "syncthing" options.services) then
-        (mkIf cfg.enable {
-          services = {
-            syncthing = {
-              enable = true;
-              inherit (cfg) settings;
-              inherit user;
-              group = "users";
-              dataDir = "/home/${user}/Sync"; # Default folder for new synced folders
-              configDir = "/home/${user}/.local/state/syncthing"; # Folder for Syncthing's settings and keys
-            };
-          };
-        })
-      else
-        { }
-    )
+    (optionalAttrs (options.services ? syncthing) (mkIf cfg.enable {
+      services = {
+        syncthing = {
+          enable = true;
+          inherit (cfg) settings;
+          inherit user;
+          group = "users";
+          dataDir = "/home/${user}/Sync"; # Default folder for new synced folders
+          configDir = "/home/${user}/.local/state/syncthing"; # Folder for Syncthing's settings and keys
+        };
+      };
+    }))
   ];
 }

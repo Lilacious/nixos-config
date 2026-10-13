@@ -34,13 +34,8 @@ in
       nixpkgs.config.allowUnfree = mkDefault true;
     }
     # nix-darwin has no hardware options
-    (
-      if (builtins.hasAttr "hardware" options) then
-        {
-          hardware.enableRedistributableFirmware = mkDefault true;
-        }
-      else
-        { }
-    )
+    (optionalAttrs (options ? hardware) {
+      hardware.enableRedistributableFirmware = mkDefault true;
+    })
   ]);
 }

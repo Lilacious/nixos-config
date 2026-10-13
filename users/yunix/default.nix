@@ -28,35 +28,20 @@ in
       ];
     }
     # nix-darwin
-    (
-      if (builtins.hasAttr "extraGroups" subOpt) then
-        {
-          extraGroups = [
-            "libvirtd"
-            "networkmanager"
-            "video"
-            "wheel"
-          ];
-        }
-      else
-        { }
-    )
+    (optionalAttrs (subOpt ? extraGroups) {
+      extraGroups = [
+        "libvirtd"
+        "networkmanager"
+        "video"
+        "wheel"
+      ];
+    })
     # initial password, change immediately after first login
-    (
-      if (builtins.hasAttr "isNormalUser" subOpt) then
-        {
-          isNormalUser = true;
-        }
-      else
-        { }
-    )
-    (
-      if (builtins.hasAttr "initialPassword" subOpt) then
-        {
-          initialPassword = "changeme";
-        }
-      else
-        { }
-    )
+    (optionalAttrs (subOpt ? isNormalUser) {
+      isNormalUser = true;
+    })
+    (optionalAttrs (subOpt ? initialPassword) {
+      initialPassword = "changeme";
+    })
   ];
 }

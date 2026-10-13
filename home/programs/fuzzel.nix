@@ -20,13 +20,8 @@ in
         enable = true;
       };
     }
-    (
-      if (builtins.hasAttr "stylix" options) then
-        {
-          stylix.targets.fuzzel.enable = true;
-        }
-      else
-        { }
-    )
+    (optionalAttrs (options ? stylix) {
+      stylix.targets.fuzzel.enable = true;
+    })
   ]);
 }

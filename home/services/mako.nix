@@ -33,13 +33,8 @@ in
         };
       };
     }
-    (
-      if (builtins.hasAttr "stylix" options) then
-        {
-          stylix.targets.mako.enable = true;
-        }
-      else
-        { }
-    )
+    (optionalAttrs (options ? stylix) {
+      stylix.targets.mako.enable = true;
+    })
   ]);
 }
