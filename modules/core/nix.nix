@@ -27,6 +27,7 @@ in
         ];
         auto-optimise-store = false;
         warn-dirty = false;
+        trusted-users = [ "@wheel" ];
 
         ## Binary cache
         builders-use-substitutes = true;

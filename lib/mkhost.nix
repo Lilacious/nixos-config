@@ -1,4 +1,4 @@
-# Host constructors, exported as `self.lib`
+# Host constructors
 { self, inputs }:
 let
   inherit (inputs.nixpkgs) lib;

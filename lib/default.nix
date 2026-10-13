@@ -4,5 +4,5 @@ let
   args = { inherit self inputs; };
 in
 {
-  flake.lib = import ./mkhost.nix args;
+  flake.lib = import ./mkhost.nix args // import ./mkdeploy.nix args;
 }
