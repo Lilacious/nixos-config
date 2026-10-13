@@ -2,6 +2,7 @@
   config,
   lib,
   options,
+  pkgs,
   ...
 }:
 with lib;
@@ -21,6 +22,8 @@ in
     ({
       programs.helix = {
         enable = true;
+        # default Nix language server
+        extraPackages = [ pkgs.nil ];
         settings = {
           keys.normal = {
             space.w = ":w";
