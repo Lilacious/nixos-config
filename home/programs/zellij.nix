@@ -17,18 +17,17 @@ in
 {
   options = {
     myHome.programs.zellij = {
-      enable = mkEnableOption "terminal workspace" // {
-        default = true;
-      };
+      enable = mkEnableOption "terminal workspace";
     };
   };
   config = mkIf cfg.enable (mkMerge [
     {
       programs.zellij = {
         enable = true;
-        enableBashIntegration = true;
-        enableFishIntegration = true;
-        enableZshIntegration = true;
+        # don't auto-start zellij in every shell
+        enableBashIntegration = false;
+        enableFishIntegration = false;
+        enableZshIntegration = false;
         settings = {
           pane_frames = false;
           show_startup_tips = false;
