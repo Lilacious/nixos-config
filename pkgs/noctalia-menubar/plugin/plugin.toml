@@ -1,0 +1,61 @@
+id          = "yunix/menubar"
+name        = "Menu Bar"
+version     = "1.0.0"
+plugin_api  = 27 # frameless search input
+author      = "yunix"
+icon        = "app-window"
+description = "macOS-style menu bar for niri and Hyprland: Apple menu behind the logo, app menu behind the bold app name, Spotlight app launcher and a Control Center."
+dependencies = ["python3"] # and niri msg or hyprctl, whichever compositor runs
+
+# the logo, toggles the Apple menu
+[[widget]]
+id    = "logo"
+entry = "logo.luau"
+
+# bold name of the focused app, toggles the app menu
+[[widget]]
+id    = "app"
+entry = "app.luau"
+
+# switches icon, toggles the Control Center
+[[widget]]
+id    = "control"
+entry = "control.luau"
+
+# about, settings, sleep, restart, shut down, lock, log out
+[[panel]]
+id              = "apple-menu"
+entry           = "apple-menu.luau"
+width           = 244
+height          = 229
+placement       = "floating"
+open_near_click = true
+
+# about, new window, window actions, quit
+[[panel]]
+id              = "app-menu"
+entry           = "app-menu.luau"
+width           = 264
+height          = 326
+placement       = "floating"
+open_near_click = true
+
+# Spotlight-style app launcher (Mod+Space, magnifier in the bar)
+[[panel]]
+id              = "spotlight"
+entry           = "spotlight.luau"
+width           = 560
+height          = 330 # field 40 + header 20 + 6 rows of 36, small gaps
+placement       = "floating"
+position        = "top_center"
+keyboard_focus  = "exclusive" # type right away
+capture_keys    = ["Up", "Down"]
+
+# macOS-style Control Center (the toggle icon in the bar)
+[[panel]]
+id              = "control-center"
+entry           = "control-center.luau"
+width           = 326 # 4 tiles of 67.5 + 3 gaps of 10, plus the 13pt inset
+height          = 386 # connectivity 145, display and sound 62 each, now playing 60, gaps
+placement       = "floating"
+open_near_click = true
