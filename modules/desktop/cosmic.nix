@@ -16,8 +16,6 @@ in
   };
 
   config = mkIf cfg.enable {
-    myModules.desktop.desktopEnvironment.enable = true;
-
     services.desktopManager.cosmic.enable = true;
   };
 }

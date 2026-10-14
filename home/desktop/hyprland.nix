@@ -27,7 +27,8 @@ in
     {
       wayland.windowManager.hyprland = {
         enable = true;
-        settings = {
+        # deep merge, so host settings only override the keys they set
+        settings = recursiveUpdate {
           general = {
             border_size = 2;
             gaps_in = 3;
@@ -124,8 +125,7 @@ in
             "GDK_BACKEND,wayland,x11,*"
             "QT_QPA_PLATFORM,wayland;xcb"
           ];
-        }
-        // osCfg.settings;
+        } osCfg.settings;
       };
       services = {
         hyprpolkitagent.enable = true;

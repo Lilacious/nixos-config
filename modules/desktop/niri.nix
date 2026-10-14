@@ -23,8 +23,6 @@ in
   imports = [ inputs.niri.nixosModules.niri ];
 
   config = mkIf cfg.enable {
-    myModules.desktop.windowManager.enable = true;
-
     programs.niri.enable = true;
     nixpkgs.overlays = [ inputs.niri.overlays.niri ];
     programs.niri.package = pkgs.niri-unstable;

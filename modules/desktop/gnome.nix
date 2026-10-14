@@ -20,10 +20,7 @@ in
   };
 
   config = mkIf cfg.gnome.enable {
-    myModules = {
-      desktop.desktopEnvironment.enable = true;
-      other.inputMethod.gtk = mkDefault true;
-    };
+    myModules.other.inputMethod.enable = mkDefault true;
 
     services.desktopManager.gnome.enable = true;
 

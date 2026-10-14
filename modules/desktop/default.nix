@@ -6,8 +6,17 @@
 }:
 with lib;
 let
-  WM = config.myModules.desktop.windowManager;
-  DE = config.myModules.desktop.desktopEnvironment;
+  cfg = config.myModules.desktop;
+  anyEnabled = any (d: cfg.${d}.enable);
+  desktopEnvironments = [
+    "cosmic"
+    "gnome"
+    "plasma"
+  ];
+  windowManagers = [
+    "hyprland"
+    # "niri"
+  ];
 in
 {
   imports = [
@@ -27,36 +36,25 @@ in
     myModules.desktop = {
       enable = mkOption {
         type = types.bool;
-        default = WM.enable || DE.enable;
+        default = cfg.desktopEnvironment.enable || cfg.windowManager.enable;
       };
 
-      desktopEnvironment = {
-        enable = mkOption {
-          type = types.bool;
-          default = false;
-        };
+      # derived from the lists above, not meant to be set
+      desktopEnvironment.enable = mkOption {
+        type = types.bool;
+        default = anyEnabled desktopEnvironments;
+        readOnly = true;
       };
 
-      windowManager = {
-        enable = mkOption {
-          type = types.bool;
-          default = WM.wayland || WM.xserver;
-        };
-
-        wayland = mkOption {
-          type = types.bool;
-          default = false;
-        };
-
-        xserver = mkOption {
-          type = types.bool;
-          default = false;
-        };
+      windowManager.enable = mkOption {
+        type = types.bool;
+        default = anyEnabled windowManagers;
+        readOnly = true;
       };
     };
   };
 
-  config = mkIf config.myModules.desktop.enable {
+  config = mkIf cfg.enable {
     programs.firefox.enable = true;
 
     # Enable audio
