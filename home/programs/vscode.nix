@@ -50,7 +50,8 @@ in
               "vscodevim"."vim" = 1;
             };
             "extensions"."autoUpdate" = "off";
-            "editor"."fontFamily" = "Agave Nerd Font";
+            "editor"."fontFamily" = "JetBrainsMono Nerd Font";
+            "editor"."fontSize" = 13;
             "editor"."rulers" = [ 100 ];
             "files"."enableTrash" = false;
             "files"."insertFinalNewline" = true;

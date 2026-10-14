@@ -8,7 +8,7 @@
   security.pam.services.sudo_local.touchIdAuth = true;
 
   fonts.packages = [
-    pkgs.nerd-fonts.agave
+    pkgs.nerd-fonts.jetbrains-mono
   ];
 
   environment.variables = {

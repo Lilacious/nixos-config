@@ -22,7 +22,7 @@ in
         enableZshIntegration = true;
         enableBashIntegration = true;
         settings = {
-          font-size = 12;
+          font-size = 10;
           scrollback-limit = 10000;
           # Ship the xterm-ghostty terminfo entry to hosts we ssh into, so
           # remote shells get a TERM they can actually look up.

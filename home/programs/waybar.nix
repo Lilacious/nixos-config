@@ -286,7 +286,7 @@ in
             @define-color base0E #cba6f7;
             @define-color base0F #f2cdcd;
             * {
-                font-family: "Agave Nerd Font";
+                font-family: "JetBrainsMono Nerd Font";
                 font-size: 10pt;
             }
           '';

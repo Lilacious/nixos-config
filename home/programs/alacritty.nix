@@ -11,7 +11,7 @@ let
   cfg = config.myHome.programs.alacritty;
 
   # font needs to be a bit bigger on MacOS
-  fontSize = if isDarwin then 16 else 12;
+  fontSize = if isDarwin then 16 else 10;
 in
 {
   options = {
@@ -90,19 +90,19 @@ in
           programs.alacritty = {
             font = {
               normal = {
-                family = "Agave Nerd Font";
+                family = "JetBrainsMono Nerd Font";
                 style = "Regular";
               };
               bold = {
-                family = "Agave Nerd Font";
+                family = "JetBrainsMono Nerd Font";
                 style = "Bold";
               };
               italic = {
-                family = "Agave Nerd Font";
+                family = "JetBrainsMono Nerd Font";
                 style = "Italic";
               };
               bold_italic = {
-                family = "Agave Nerd Font";
+                family = "JetBrainsMono Nerd Font";
                 style = "Bold Italic";
               };
             };

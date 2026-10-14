@@ -18,22 +18,18 @@ in
   config = mkIf cfg.enable {
     fonts = {
       enableDefaultPackages = true;
+      # noto cjk fonts are part of enableDefaultPackages
       packages = with pkgs; [
-        noto-fonts-cjk-serif
-        noto-fonts-cjk-sans
-        nerd-fonts.agave
-        nerd-fonts.arimo
-        nerd-fonts.fira-code
-        nerd-fonts.inconsolata
+        inter
+        nerd-fonts.jetbrains-mono
+        source-serif
       ];
 
       fontconfig = {
         enable = true;
         defaultFonts = {
           serif = [
-            "Agave Nerd Font"
-            "FiraCode Nerd Font"
-            "DejaVu Serif"
+            "Source Serif 4"
             "Noto Serif CJK JP"
             "Noto Serif CJK SC"
             "Noto Serif CJK TC"
@@ -43,16 +39,18 @@ in
             "Noto Color Emoji"
           ];
           sansSerif = [
-            "Arimo Nerd Font"
-            "DejaVu Sans"
+            "Inter"
             "Noto Sans CJK JP"
             "Noto Sans CJK SC"
             "Noto Sans CJK TC"
             "Noto Sans CJK KR"
           ];
           monospace = [
-            "Inconsolata Nerd Font"
-            "DejaVu Sans Mono"
+            "JetBrainsMono Nerd Font Mono"
+            "Noto Sans Mono CJK JP"
+            "Noto Sans Mono CJK SC"
+            "Noto Sans Mono CJK TC"
+            "Noto Sans Mono CJK KR"
           ];
         };
       };

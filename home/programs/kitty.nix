@@ -23,8 +23,8 @@ in
       themeFile = "Catppuccin-Mocha";
       font = {
         # looks blurry apparently due to no Sub-pixel anti-aliasing
-        name = "Agave Nerd Font";
-        size = 12;
+        name = "JetBrainsMono Nerd Font";
+        size = 10;
       };
       settings = {
         remember_window_size = false;
