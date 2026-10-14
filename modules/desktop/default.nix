@@ -20,6 +20,7 @@ in
     ./plasma.nix
     ./plymouth.nix
     ./printing.nix
+    ./ssh-agent.nix
   ];
 
   options = {
