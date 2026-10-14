@@ -26,6 +26,12 @@
 
   ## Use proprietary NVIDIA drivers
   services.xserver.videoDrivers = [ "nvidia" ];
+  # needed for wayland
+  boot.kernelModules = [
+    "nvidia"
+    "nvidia_modeset"
+    "nvidia_drm"
+  ];
   hardware.nvidia = {
     package = config.boot.kernelPackages.nvidiaPackages.latest;
     open = true;

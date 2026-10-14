@@ -10,15 +10,10 @@ in
 {
   config = mkIf cfg.enable {
     services = {
-      xserver = {
-        enable = true;
-        displayManager = {
-          gdm.enable = mkIf (!cfg.plasma.enable) true;
-        };
-      };
       # displayManager.defaultSession = "gnome";
       displayManager = {
         enable = true;
+        gdm.enable = mkIf (!cfg.plasma.enable) true;
         sddm = {
           enable = mkIf cfg.plasma.enable true;
           wayland.enable = true;

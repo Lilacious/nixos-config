@@ -34,6 +34,10 @@ in
         plasma = {
           enable = true;
 
+          input.keyboard.layouts = [
+            { layout = osConfig.services.xserver.xkb.layout; }
+          ];
+
           kwin = {
             nightLight = {
               enable = true;
