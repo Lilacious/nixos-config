@@ -21,11 +21,11 @@ in
 
   config = mkIf cfg.gnome.enable {
     myModules = {
-      desktop.desktopEnvironment.enable = mkForce true;
+      desktop.desktopEnvironment.enable = true;
       other.inputMethod.gtk = mkDefault true;
     };
 
-    services.xserver.desktopManager.gnome.enable = true;
+    services.desktopManager.gnome.enable = true;
 
     environment.gnome.excludePackages = with pkgs; [
       gnome-contacts

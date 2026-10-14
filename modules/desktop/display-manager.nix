@@ -13,7 +13,9 @@ in
       # displayManager.defaultSession = "gnome";
       displayManager = {
         enable = true;
-        gdm.enable = mkIf (!cfg.plasma.enable) true;
+        # plasma > cosmic > gnome/others
+        gdm.enable = mkIf (!cfg.plasma.enable && !cfg.cosmic.enable) true;
+        cosmic-greeter.enable = mkIf (cfg.cosmic.enable && !cfg.plasma.enable) true;
         sddm = {
           enable = mkIf cfg.plasma.enable true;
           wayland.enable = true;

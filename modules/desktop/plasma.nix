@@ -28,14 +28,22 @@ in
     services.desktopManager.plasma6.enable = true;
 
     environment = {
-      plasma6.excludePackages = with pkgs.kdePackages; [
-        konsole # terminal
-        elisa # music player
-        kate # text editor
-        khelpcenter # kde documentation
-        okular # document viewer
-        krdp # rdp application
-      ];
+      plasma6.excludePackages =
+        with pkgs.kdePackages;
+        [
+          elisa # music player
+          kate # text editor
+          khelpcenter # kde documentation
+          krdp # rdp application
+          ktexteditor # elevated actions for kate
+          okular # document viewer
+          plasma-browser-integration
+          plasma-keyboard # touch keyboard
+          qrca # qr code scanner
+          qtvirtualkeyboard # used by plasma-keyboard
+        ]
+        # only needed for the plasma x11 session
+        ++ optional (!config.services.xserver.enable) kwin-x11;
     };
   };
 }
