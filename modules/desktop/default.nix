@@ -15,7 +15,7 @@ let
   ];
   windowManagers = [
     "hyprland"
-    # "niri"
+    "niri"
   ];
 in
 {
@@ -25,7 +25,7 @@ in
     ./display-manager.nix
     ./gnome.nix
     ./hyprland.nix
-    #./niri.nix
+    ./niri.nix
     ./plasma.nix
     ./plymouth.nix
     ./printing.nix

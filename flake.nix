@@ -54,8 +54,6 @@
 
     stylix.url = "github:nix-community/stylix";
 
-    #niri.url = "github:sodiboo/niri-flake";
-
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
 
     plasma-manager.url = "github:nix-community/plasma-manager";

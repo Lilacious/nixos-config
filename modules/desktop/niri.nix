@@ -1,6 +1,5 @@
 # For home config see nix-config/home/desktop/niri.nix
 {
-  inputs,
   config,
   lib,
   pkgs,
@@ -8,7 +7,7 @@
 }:
 with lib;
 let
-  cfg = config.myModules.desktop.niri;
+  cfg = config.myModules.desktop;
 in
 {
   options = {
@@ -20,19 +19,24 @@ in
     };
   };
 
-  imports = [ inputs.niri.nixosModules.niri ];
-
-  config = mkIf cfg.enable {
+  config = mkIf cfg.niri.enable {
     programs.niri.enable = true;
-    nixpkgs.overlays = [ inputs.niri.overlays.niri ];
-    programs.niri.package = pkgs.niri-unstable;
+
+    programs.noctalia = {
+      enable = true;
+      recommendedServices.enable = true;
+      systemd = {
+        enable = true;
+        target = "niri.service";
+      };
+    };
+
     environment = {
-      variables.NIXOS_OZONE_WL = "1";
+      sessionVariables.NIXOS_OZONE_WL = "1";
 
       systemPackages = with pkgs; [
+        xwayland-satellite
         wl-clipboard
-        wayland-utils
-        swaybg
       ];
     };
   };
