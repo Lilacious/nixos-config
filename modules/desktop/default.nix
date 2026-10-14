@@ -26,6 +26,7 @@ in
     ./hyprland.nix
     ./multi.nix
     ./niri.nix
+    ./noctalia.nix
     ./plasma.nix
     ./plymouth.nix
     ./printing.nix

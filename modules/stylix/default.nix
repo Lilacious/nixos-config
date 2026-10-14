@@ -27,8 +27,12 @@
         name = "Noto Color Emoji";
       };
 
-      # JetBrains Mono runs larger than most fonts
-      sizes.terminal = 10;
+      sizes = {
+        # JetBrains Mono runs larger than most fonts
+        terminal = 10;
+        # 10pt is about 13px, the macOS system font size
+        applications = 10;
+      };
     };
   };
 }

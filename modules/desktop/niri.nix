@@ -22,15 +22,6 @@ in
   config = mkIf cfg.niri.enable {
     programs.niri.enable = true;
 
-    programs.noctalia = {
-      enable = true;
-      recommendedServices.enable = true;
-      systemd = {
-        enable = true;
-        target = "niri.service";
-      };
-    };
-
     environment = {
       sessionVariables.NIXOS_OZONE_WL = "1";
 

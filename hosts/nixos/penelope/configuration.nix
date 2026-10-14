@@ -31,7 +31,26 @@
   myModules = {
     desktop = {
       gnome.enable = false;
-      plasma.enable = true;
+      plasma.enable = false;
+      niri.enable = true;
+      hyprland = {
+        enable = true;
+        # 1536x864 like niri picks it, which noctalia's lock screen layout is made for
+        settings.monitor = [
+          {
+            output = "eDP-1";
+            mode = "preferred";
+            position = "auto";
+            scale = 1.25;
+          }
+          {
+            output = "";
+            mode = "preferred";
+            position = "auto";
+            scale = "auto";
+          }
+        ];
+      };
 
       services = {
         printing.enable = true;

@@ -23,6 +23,7 @@ in
     ./gnome.nix
     ./hyprland.nix
     ./niri.nix
+    ./noctalia.nix
     ./plasma.nix
     ./theme.nix
   ];
