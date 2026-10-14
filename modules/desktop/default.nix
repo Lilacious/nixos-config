@@ -22,14 +22,13 @@ in
   imports = [
     ./audio.nix
     ./cosmic.nix
-    ./display-manager.nix
     ./gnome.nix
     ./hyprland.nix
+    ./multi.nix
     ./niri.nix
     ./plasma.nix
     ./plymouth.nix
     ./printing.nix
-    ./ssh-agent.nix
   ];
 
   options = {
@@ -70,6 +69,15 @@ in
       xkb.layout = mkDefault "de";
       # Disable xterm
       excludePackages = with pkgs; [ xterm ];
+    };
+
+    # remembers ssh key password for 4h
+    programs.ssh = {
+      # gnome-keyring brings its own agent, both cannot be enabled
+      startAgent = mkDefault (!config.services.gnome.gcr-ssh-agent.enable);
+      extraConfig = ''
+        AddKeysToAgent 4h
+      '';
     };
 
     # Enable polkit
