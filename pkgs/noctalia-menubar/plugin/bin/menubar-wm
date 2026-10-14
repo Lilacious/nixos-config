@@ -1,0 +1,522 @@
+#!/usr/bin/env python3
+"""Window helpers for the menubar plugin and niri keybinds, on niri or Hyprland.
+
+  menubar-wm new-window [APP_ID]          start the app again
+  menubar-wm quit-app [APP_ID]            close every window of an app
+  menubar-wm force-quit [APP_ID]          kill the app's processes
+  menubar-wm app-info APP_ID [PID]        name, description, version as JSON
+  menubar-wm apps                         launchable apps as JSON, most used first
+  menubar-wm launch DESKTOP_FILE          start an app and count the launch
+  menubar-wm cc-state                     Control Center state as JSON
+  menubar-wm cc airplane|low-power        toggle Airplane Mode / Low Power Mode
+  menubar-wm screenshot                   select a region, save and copy it
+  menubar-wm hypr-watch                   Hyprland: the frontmost window as a JSON line per change
+"""
+import glob
+import hashlib
+import json
+import os
+import re
+import signal
+import socket
+import subprocess
+import sys
+import urllib.request
+
+# each session imports its own XDG_CURRENT_DESKTOP ("niri" or "Hyprland") into the
+# systemd user environment noctalia starts with
+HYPRLAND = "Hyprland" in os.environ.get("XDG_CURRENT_DESKTOP", "")
+
+
+def niri_json(*args):
+    return json.loads(subprocess.check_output(["niri", "msg", "--json", *args]))
+
+
+def action(*args):
+    subprocess.run(["niri", "msg", "action", *args], check=False)
+
+
+def hypr_json(*args):
+    return json.loads(subprocess.check_output(["hyprctl", "-j", *args]))
+
+
+def dispatch(dispatcher):
+    """Run an hl.dsp call: with hyprland.lua, hyprctl dispatch evaluates hl.dispatch(<arg>)."""
+    subprocess.run(["hyprctl", "dispatch", dispatcher], check=False, stdout=subprocess.DEVNULL)
+
+
+def lua_string(text):
+    # a JSON string is a Lua string literal; non-ASCII stays raw UTF-8, which Lua takes as is
+    return json.dumps(text, ensure_ascii=False)
+
+
+def hypr_window(client):
+    """A Hyprland client in the shape of a niri window."""
+    return {
+        "id": client["address"],
+        "app_id": client["class"] or None,
+        "title": client["title"],
+        "pid": client["pid"],
+        "is_floating": client["floating"],
+        "workspace_id": client["workspace"]["id"],
+    }
+
+
+def hypr_frontmost():
+    """The active workspace's last focused window. Unlike the focused window it stays put
+    while a noctalia panel holds keyboard focus, which Hyprland reports as no window."""
+    workspace = hypr_json("activeworkspace")
+    for client in hypr_json("clients"):
+        if client["address"] == workspace["lastwindow"] and client["workspace"]["id"] == workspace["id"]:
+            return hypr_window(client)
+    return None
+
+
+def focused_window():
+    if HYPRLAND:
+        return hypr_frontmost()
+    return niri_json("focused-window")
+
+
+def windows():
+    if HYPRLAND:
+        return [hypr_window(c) for c in hypr_json("clients") if c["mapped"]]
+    return niri_json("windows")
+
+
+def close_window(window_id):
+    if HYPRLAND:
+        dispatch(f'hl.dsp.window.close({{ window = "address:{window_id}" }})')
+    else:
+        action("close-window", "--id", str(window_id))
+
+
+def spawn(command):
+    if HYPRLAND:
+        dispatch(f"hl.dsp.exec_cmd({lua_string(command)})")
+    else:
+        action("spawn-sh", "--", command)
+
+
+def app_of(arg):
+    if arg:
+        return arg
+    window = focused_window()
+    return window["app_id"] if window else None
+
+
+def desktop_entry(app_id):
+    """Desktop entry for an app id: <app_id>.desktop, else a StartupWMClass match."""
+    dirs = [os.environ.get("XDG_DATA_HOME", os.path.expanduser("~/.local/share"))]
+    dirs += os.environ.get("XDG_DATA_DIRS", "/usr/local/share:/usr/share").split(":")
+    files = [os.path.join(d, "applications", app_id + ".desktop") for d in dirs]
+    files += sorted(set(f for d in dirs for f in glob.glob(os.path.join(d, "applications", "*.desktop"))))
+    for path in files:
+        entry = parse_desktop(path)
+        if entry is None:
+            continue
+        base = os.path.basename(path)[: -len(".desktop")]
+        if base == app_id or base.lower() == app_id.lower() or entry.get("StartupWMClass", "").lower() == app_id.lower():
+            entry["_path"] = path
+            entry["_id"] = base
+            return entry
+    return None
+
+
+def parse_desktop(path):
+    try:
+        with open(path, encoding="utf-8") as f:
+            lines = f.read().splitlines()
+    except OSError:
+        return None
+    entry, main = {}, False
+    for line in lines:
+        if line.startswith("["):
+            main = line.strip() == "[Desktop Entry]"
+        elif main and "=" in line:
+            key, value = line.split("=", 1)
+            if re.fullmatch(r"\w+", key) and key not in entry:
+                entry[key] = value
+    return entry
+
+
+def new_window(app_id):
+    entry = desktop_entry(app_id) if app_id else None
+    if not entry or "Exec" not in entry:
+        return
+    command = re.sub(r"\s*%[a-zA-Z]", "", entry["Exec"])
+    if entry.get("Terminal") == "true":
+        command = f"{os.environ.get('TERMINAL', 'ghostty')} -e {command}"
+    spawn(command)
+
+
+def app_info(app_id, pid=None):
+    entry = desktop_entry(app_id) or {}
+    version = None
+    if pid:
+        # /nix/store/<hash>-<name>-<version>/bin/... -> <version>
+        try:
+            exe = os.readlink(f"/proc/{pid}/exe")
+            store = re.match(r"/nix/store/[a-z0-9]{32}-([^/]+)", exe)
+            if store:
+                found = re.search(r"-(\d[\w.+~-]*)$", store.group(1))
+                version = found.group(1) if found else None
+        except OSError:
+            pass
+    name = entry.get("Name") or app_id.split(".")[-1].capitalize()
+    print(json.dumps({
+        "name": name,
+        "comment": entry.get("Comment") or entry.get("GenericName") or "",
+        "icon": entry.get("Icon") or "",
+        "desktopId": entry.get("_id") or app_id,
+        "version": version or "",
+    }))
+
+
+USAGE = os.path.join(os.environ.get("XDG_STATE_HOME", os.path.expanduser("~/.local/state")), "noctalia-menubar", "usage.json")
+NOCTALIA_USAGE = os.path.join(os.environ.get("XDG_STATE_HOME", os.path.expanduser("~/.local/state")), "noctalia", "usage_counts.json")
+
+
+def read_json(path, default):
+    try:
+        with open(path, encoding="utf-8") as f:
+            return json.load(f)
+    except (OSError, ValueError):
+        return default
+
+
+def app_id_of(path):
+    return os.path.basename(path)[: -len(".desktop")]
+
+
+def usage_counts():
+    """Launch counts per app id (the same file shows up under several profile paths):
+    our own plus noctalia's launcher history."""
+    counts = {}
+    for source in (read_json(NOCTALIA_USAGE, {}).get("Applications", {}), read_json(USAGE, {})):
+        for path, n in source.items():
+            counts[app_id_of(path)] = counts.get(app_id_of(path), 0) + n
+    return counts
+
+
+def icon_theme():
+    """The GTK icon theme name, hicolor when unset."""
+    try:
+        with open(os.path.expanduser("~/.config/gtk-3.0/settings.ini"), encoding="utf-8") as f:
+            for line in f:
+                if line.strip().startswith("gtk-icon-theme-name"):
+                    return line.split("=", 1)[1].strip()
+    except OSError:
+        pass
+    return "hicolor"
+
+
+def icon_path(name, dirs, themes):
+    """Resolve an Icon= value to a file: absolute path, else the theme's apps icons
+    (scalable first, then the closest sizes to 32px), else pixmaps."""
+    if not name:
+        return ""
+    if os.path.isabs(name):
+        return name if os.path.exists(name) else ""
+    sizes = ["scalable", "32x32", "48x48", "64x64", "128x128", "256x256", "24x24", "512x512"]
+    for theme in themes:
+        for d in dirs:
+            base = os.path.join(d, "icons", theme)
+            if not os.path.isdir(base):
+                continue
+            for size in sizes:
+                for sub in (f"{size}/apps", f"apps/{size}"):
+                    for ext in ("svg", "png"):
+                        path = os.path.join(base, sub, f"{name}.{ext}")
+                        if os.path.exists(path):
+                            return path
+    for d in dirs:
+        for ext in ("svg", "png", "xpm"):
+            path = os.path.join(d, "pixmaps", f"{name}.{ext}")
+            if os.path.exists(path):
+                return path
+    return ""
+
+
+def apps():
+    dirs = [os.environ.get("XDG_DATA_HOME", os.path.expanduser("~/.local/share"))]
+    dirs += os.environ.get("XDG_DATA_DIRS", "/usr/local/share:/usr/share").split(":")
+    counts = usage_counts()
+    themes = [icon_theme(), "hicolor"]
+    seen, out = set(), []
+    for d in dirs:
+        for path in sorted(glob.glob(os.path.join(d, "applications", "*.desktop"))):
+            app_id = os.path.basename(path)[: -len(".desktop")]
+            if app_id in seen:
+                continue
+            seen.add(app_id)
+            entry = parse_desktop(path)
+            if not entry or entry.get("Type", "Application") != "Application":
+                continue
+            if entry.get("NoDisplay") == "true" or entry.get("Hidden") == "true" or "Exec" not in entry:
+                continue
+            out.append({
+                "id": app_id,
+                "path": path,
+                "name": entry.get("Name", app_id),
+                "comment": entry.get("Comment") or entry.get("GenericName") or "",
+                "keywords": entry.get("Keywords", "").replace(";", " ").strip(),
+                "icon": icon_path(entry.get("Icon", ""), dirs, themes),
+                "usage": counts.get(app_id, 0),
+            })
+    out.sort(key=lambda a: (-a["usage"], a["name"].lower()))
+    print(json.dumps(out))
+
+
+def launch(path):
+    entry = parse_desktop(path)
+    if not entry or "Exec" not in entry:
+        return
+    command = re.sub(r"\s*%[a-zA-Z]", "", entry["Exec"])
+    if entry.get("Terminal") == "true":
+        command = f"{os.environ.get('TERMINAL', 'ghostty')} -e {command}"
+    spawn(command)
+    counts = read_json(USAGE, {})
+    counts[path] = counts.get(path, 0) + 1
+    os.makedirs(os.path.dirname(USAGE), exist_ok=True)
+    with open(USAGE, "w", encoding="utf-8") as f:
+        json.dump(counts, f)
+
+
+# ---------------------------------------------------------------- control center
+
+
+def output(*args):
+    """stdout of a command, "" when it fails or is missing."""
+    try:
+        return subprocess.run(args, capture_output=True, text=True, timeout=3).stdout.strip()
+    except (OSError, subprocess.SubprocessError):
+        return ""
+
+
+def busctl(*args):
+    text = output("busctl", "--user", "--json=short", *args)
+    try:
+        return json.loads(text)["data"] if text else None
+    except (ValueError, KeyError):
+        return None
+
+
+def wifi():
+    ssid = ""
+    # active connections, not "dev wifi": that one can wait for a rescan
+    for line in output("nmcli", "-t", "-f", "TYPE,NAME", "connection", "show", "--active").splitlines():
+        if line.startswith("802-11-wireless:"):
+            ssid = line.split(":", 1)[1].replace("\\:", ":")
+            break
+    return {"on": output("noctalia", "msg", "wifi-status") == "on", "ssid": ssid}
+
+
+def bluetooth():
+    device = ""
+    for line in output("bluetoothctl", "devices", "Connected").splitlines():
+        parts = line.split(" ", 2)
+        if len(parts) == 3:
+            device = parts[2]
+            break
+    return {"on": output("noctalia", "msg", "bluetooth-status") == "on", "device": device}
+
+
+def brightness():
+    for d in sorted(glob.glob("/sys/class/backlight/*")):
+        try:
+            with open(d + "/brightness") as now, open(d + "/max_brightness") as top:
+                return int(now.read()) / max(1, int(top.read()))
+        except (OSError, ValueError):
+            continue
+    return None
+
+
+def volume():
+    text = output("wpctl", "get-volume", "@DEFAULT_AUDIO_SINK@")  # "Volume: 0.50 [MUTED]"
+    match = re.search(r"([0-9.]+)", text)
+    return {"value": float(match.group(1)) if match else 0.0, "muted": "MUTED" in text}
+
+
+def artwork(url):
+    """A local file for the cover: file:// as is, http(s) downloaded once into the cache."""
+    if url.startswith("file://"):
+        return urllib.request.url2pathname(url[7:])
+    if not url.startswith(("http://", "https://")):
+        return ""
+    cache = os.path.expanduser("~/.cache/noctalia-menubar/art")
+    path = os.path.join(cache, hashlib.sha1(url.encode()).hexdigest())
+    if not os.path.exists(path):
+        try:
+            os.makedirs(cache, exist_ok=True)
+            with urllib.request.urlopen(url, timeout=3) as response:
+                data = response.read()
+            with open(path + ".part", "wb") as f:
+                f.write(data)
+            os.replace(path + ".part", path)
+        except OSError:
+            return ""
+    return path
+
+
+def media():
+    """The playing MPRIS player, else a paused one."""
+    names = busctl("call", "org.freedesktop.DBus", "/org/freedesktop/DBus", "org.freedesktop.DBus", "ListNames")
+    best = None
+    for name in (names[0] if names else []):
+        if not name.startswith("org.mpris.MediaPlayer2."):
+            continue
+        player = ("/org/mpris/MediaPlayer2", "org.mpris.MediaPlayer2.Player")
+        status = busctl("get-property", name, *player, "PlaybackStatus")
+        if status not in ("Playing", "Paused"):
+            continue
+        if best is None or status == "Playing":
+            best = (name, status)
+        if status == "Playing":
+            break
+    if best is None:
+        return None
+    meta = busctl("get-property", best[0], "/org/mpris/MediaPlayer2", "org.mpris.MediaPlayer2.Player", "Metadata") or {}
+
+    def field(key):
+        value = (meta.get(key) or {}).get("data", "")
+        return ", ".join(value) if isinstance(value, list) else str(value)
+
+    return {
+        "title": field("xesam:title"),
+        "artist": field("xesam:artist"),
+        "art": artwork(field("mpris:artUrl")),
+        "playing": best[1] == "Playing",
+    }
+
+
+def cc_state():
+    profile = output("powerprofilesctl", "get")
+    print(json.dumps({
+        "wifi": wifi(),
+        "bluetooth": bluetooth(),
+        "dnd": output("noctalia", "msg", "notification-dnd-status") == "on",
+        "lowPower": profile == "power-saver",
+        "brightness": brightness(),
+        "volume": volume(),
+        "media": media(),
+    }))
+
+
+def cc(what):
+    if what == "airplane":
+        # on while both radios are off; turning it off brings both back
+        radios_on = wifi()["on"] or bluetooth()["on"]
+        state = "disable" if radios_on else "enable"
+        output("noctalia", "msg", "wifi-" + state)
+        output("noctalia", "msg", "bluetooth-" + state)
+    elif what == "low-power":
+        # turning it off goes back to the profile from before, like performance
+        saved = os.path.expanduser("~/.local/state/noctalia-menubar/profile")
+        current = output("powerprofilesctl", "get")
+        if current == "power-saver":
+            previous = "balanced"
+            try:
+                with open(saved) as f:
+                    previous = f.read().strip() or previous
+            except OSError:
+                pass
+            output("powerprofilesctl", "set", previous)
+        else:
+            os.makedirs(os.path.dirname(saved), exist_ok=True)
+            with open(saved, "w") as f:
+                f.write(current)
+            output("powerprofilesctl", "set", "power-saver")
+
+
+# ---------------------------------------------------------------- Hyprland
+
+
+# events that can change the frontmost window or its title
+HYPR_EVENTS = {
+    b"activewindowv2",
+    b"openwindow",
+    b"closewindow",
+    b"windowtitlev2",
+    b"movewindowv2",
+    b"changefloatingmode",
+    b"workspacev2",
+    b"focusedmonv2",
+}
+
+
+def hypr_watch():
+    """Print the frontmost window (or null) as a JSON line whenever it changes, from
+    Hyprland's event socket; the app name widget reads it like niri's event stream."""
+    path = os.path.join(
+        os.environ.get("XDG_RUNTIME_DIR", f"/run/user/{os.getuid()}"),
+        "hypr",
+        os.environ["HYPRLAND_INSTANCE_SIGNATURE"],
+        ".socket2.sock",
+    )
+    events = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+    events.connect(path)
+    last = []  # nothing printed yet
+
+    def emit():
+        try:
+            current = hypr_frontmost()
+        except (OSError, subprocess.SubprocessError, ValueError, KeyError):
+            return
+        if last != [current]:
+            last[:] = [current]
+            print(json.dumps(current), flush=True)
+
+    emit()
+    with events.makefile("rb") as lines:
+        for line in lines:
+            if line.split(b">>", 1)[0] in HYPR_EVENTS:
+                emit()
+
+
+def screenshot():
+    if HYPRLAND:
+        subprocess.run(["grimblast", "--notify", "copysave", "area"], check=False)
+    else:
+        action("screenshot")
+
+
+def main():
+    command = sys.argv[1] if len(sys.argv) > 1 else ""
+    arg = sys.argv[2] if len(sys.argv) > 2 else None
+
+    if command == "new-window":
+        new_window(app_of(arg))
+    elif command == "quit-app":
+        app = app_of(arg)
+        for window in windows():
+            if window["app_id"] == app:
+                close_window(window["id"])
+    elif command == "force-quit":
+        app = app_of(arg)
+        for pid in {w["pid"] for w in windows() if w["app_id"] == app and w.get("pid")}:
+            try:
+                os.kill(pid, signal.SIGKILL)
+            except OSError:
+                pass
+    elif command == "apps":
+        apps()
+    elif command == "launch" and arg:
+        launch(arg)
+    elif command == "cc-state":
+        cc_state()
+    elif command == "cc" and arg:
+        cc(arg)
+    elif command == "screenshot":
+        screenshot()
+    elif command == "hypr-watch":
+        hypr_watch()
+    elif command == "app-info" and arg:
+        app_info(arg, sys.argv[3] if len(sys.argv) > 3 else None)
+    else:
+        print(__doc__.strip(), file=sys.stderr)
+        sys.exit(1)
+
+
+if __name__ == "__main__":
+    main()
