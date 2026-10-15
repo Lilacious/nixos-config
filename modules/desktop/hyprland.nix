@@ -2,11 +2,12 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 with lib;
 let
-  cfg = config.myModules.desktop.hyprland;
+  cfg = config.myModules.desktop;
 in
 {
   options = {
@@ -53,7 +54,18 @@ in
     };
   };
 
-  config = mkIf cfg.enable {
+  config = mkIf cfg.hyprland.enable {
     programs.hyprland.enable = true;
+
+    # secret service for apps and noctalia, like programs.niri sets it
+    services.gnome.gnome-keyring.enable = mkDefault true;
+
+    environment = {
+      sessionVariables.NIXOS_OZONE_WL = "1";
+
+      systemPackages = with pkgs; [
+        wl-clipboard
+      ];
+    };
   };
 }
