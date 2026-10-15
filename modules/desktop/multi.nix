@@ -28,6 +28,7 @@ let
     {
       plasma = "sddm";
       niri = "noctalia-greeter";
+      hyprland = "noctalia-greeter";
       cosmic = "cosmic-greeter";
     }
     .${primary} or "gdm";
