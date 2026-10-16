@@ -58,6 +58,7 @@ in
             "files"."trimTrailingWhitespace" = true;
             "nix"."enableLanguageServer" = true;
             "nix"."serverPath" = getExe pkgs.nil;
+            "terminal"."integrated"."stickyScroll"."enabled" = false;
             "vim"."useSystemClipboard" = true;
             "vim"."enableNeovim" = true;
             "vim"."neovimUseConfigFile" = false;
