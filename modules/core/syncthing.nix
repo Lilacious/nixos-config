@@ -45,17 +45,31 @@ in
         }
       ];
     }
-    (optionalAttrs (options.services ? syncthing) (mkIf cfg.enable {
-      services = {
-        syncthing = {
-          enable = true;
-          inherit (cfg) settings;
-          inherit user;
-          group = "users";
-          dataDir = "/home/${user}/Sync"; # Default folder for new synced folders
-          configDir = "/home/${user}/.local/state/syncthing"; # Folder for Syncthing's settings and keys
+    (optionalAttrs (options.services ? syncthing) (
+      mkIf cfg.enable {
+        services = {
+          syncthing = {
+            enable = true;
+            inherit (cfg) settings;
+            inherit user;
+            group = "users";
+            openDefaultPorts = true;
+            dataDir = "/home/${user}/Sync"; # Default folder for new synced folders
+            configDir = "/home/${user}/.local/state/syncthing"; # Folder for Syncthing's settings and keys
+          };
         };
-      };
-    }))
+      }
+    ))
+    (optionalAttrs (options ? networking.firewall) (
+      mkIf (config.myModules.desktop.enable or false) {
+        networking.firewall = {
+          allowedTCPPorts = [ 22000 ];
+          allowedUDPPorts = [
+            22000
+            21027
+          ];
+        };
+      }
+    ))
   ];
 }
