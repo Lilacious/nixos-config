@@ -1,6 +1,6 @@
 {
   imports = [
-    ./deimos
+    ./phobos
     ./kalypso
     ./penelope
   ];

@@ -1,6 +1,6 @@
 { self, ... }:
 {
-  flake.nixosConfigurations.deimos = self.lib.mkNixos "deimos" {
+  flake.nixosConfigurations.phobos = self.lib.mkNixos "phobos" {
     profile = "wsl";
     system = "x86_64-linux";
     modules = [
