@@ -28,7 +28,6 @@ in
 
       # Enable "Silent Boot"
       consoleLogLevel = 3;
-      initrd.verbose = false;
       kernelParams = [
         "quiet"
         "rd.systemd.show_status=auto"

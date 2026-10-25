@@ -92,10 +92,6 @@ in
           rev = "2961b52fc1fe6a5a87c7a959a79512e5c2f3ffe5";
           hash = "sha256-3GopEvTySUvo0ghGz4CF6xbN7x3kbB/IHEY7Dwr4dls=";
         };
-        mcpServers.nixos = {
-          type = "stdio";
-          command = getExe pkgs.mcp-nixos;
-        };
       };
       home.packages = [
         pkgs.nodejs # needed for ponytail plugin hooks
