@@ -8,9 +8,12 @@
 
   # Show failed systemd units on interactive login
   environment.loginShellInit = ''
-    printf "\nFailed systemd units:\n"
-    systemctl --no-pager --failed || true
+    if [[ $- == *i* ]]; then
+      printf "\nFailed systemd units:\n"
+      systemctl --no-pager --failed || true
+    fi
   '';
+
 
   documentation = {
     # html docs and info are not required, man pages are enough
