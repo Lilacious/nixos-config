@@ -14,6 +14,7 @@ in
     ./locale.nix
     ./nix.nix
     ./packages.nix
+    ./ssh-agent.nix
     ./syncthing.nix
     ./zsh.nix
   ];
